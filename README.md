@@ -34,8 +34,8 @@ There's a few special files.
 
 Run this:
 ```
-git clone https://github.com/kiosion/kiosion/dotfiles.git ~/.dotfiles
-cd ~/
+git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 script/bootstrap
 ```
 *( Work in progress, I'm adapting [holman's install script](https://github.com/holman/dotfiles/script/bootstrap) to work for my setup )*
