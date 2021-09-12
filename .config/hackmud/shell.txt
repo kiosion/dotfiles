@@ -1,0 +1,154 @@
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color></color>
+888b    888               88888888888                
+8888b   888     <color=#7D0000FF>¦</color>             888                  <color=#939500FF>¡</color> 
+88888b  888                   888                    
+888<color=#495225FF>©</color>88b 888 888  888 888  888 888   .d88b.   .d8888b 
+888 Y88b888 888  888 888  888 888  d8P  Y8b<color=#FF8000FF>§</color>d88P"    
+888  Y88888 888  888 888  888 888  88888888 888      
+888   Y8888 Y88b 888 Y88b 888 888<color=#B2934AFF>§</color> Y8b.     Y88b.    
+888 <color=#8FE6FFFF>¤</color>  Y888  "Y88888  "Y888<color=#FFF404FF>Á</color>8 888   "Y8888   "Y8888P 
+                                                     
+                                                     
+                                                     
+Welcome to NuuTec Corporation public in<color=#E6C4FFFF>¤</color>ormation script. Please refrain from engaging in c<color=#973984FF>Ã</color>iminal activity.
+news | strategy | 
+
+trust get_level sys fullsec get_access_level highsec lowsec midsec nullsec quine user
+<color=#FFFFFFFF>>><color=#FF8000FF>scripts</color>.<color=#1EFF00FF>user</color></color>
+<color=#9B9B9BFF>kio</color>.<color=#1EFF00FF>t1p</color> 
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color> {}</color>
+Pl<color=#CACACAFF>¤</color>ase specify a command with <color=#00FFFFFF>cmd</color>:<color=#CACACAFF>"Ècommand nameÉ"</color>-- access directory with <color=#00FFFFFF>cmd</color>:<color=#FF00ECFF>"employees"</color>
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color> {<color=#00FFFFFF>cmd</color>:<color=#FF00ECFF>"news"</color>}</color>
+<color=#FFFFFFFF>2061</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>226</color>
+REMINDER: All buildings will be evacuated and sys<color=#FFF404FF>©</color>ems unresponsive on Dec <color=#FF8383FF>¡</color>1 23:00 GMT for the rOS 13.0 rollover.  Do not plan on open connections for at least twenty minutes after the update window.
+<color=#FFFFFFFF>2061</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>22</color><color=#010067FF>§</color>
+Fans continue to fund fake backstarters for tmp since it was discontinued.
+<color=#FFFFFFFF>2061</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>214</color>
+The coffee machine on the second floor<color=#8FE6FFFF>ª</color>is broken again
+<color=#FFFFFFFF>2061</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>205</color>
+New company policy has been established as of Q2. Manditory demo<color=#FFFFFFFF>¨</color>stration of core competency with empl_pages is now required. 
+<color=#FFFFFFFF>2061</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>66</color>
+<color=#000000FF>¡</color>rofits are up 17% in the Benelux region for Q4
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>363</color>
+Feral bunnybat attacks have been reported in<color=#7D0000FF>¤</color>the west garages after nightfall.  Employees are encour<color=#973984FF>§</color>ged to stick to lighted areas and carry their employer-supplied mace.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>361</color>
+Profits are up 17% in the Benelux region for Q4
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>359</color>
+REMINDER: All buildings will be evacuated an<color=#FF8000FF>Á</color> systems unresponsive on Dec 31 23:00 GMT for the rOS 13.0 rollover.  Do not plan on open connections for at least twenty minutes after the update w<color=#FF8383FF>©</color>ndow.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>351</color>
+Fans continue to fund fake backstarters <color=#F3F998FF>©</color>or <color=#9B9B9BFF>ragnaroxx</color>.<color=#1EFF00FF>sh</color> since it was discontinued.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>313</color>
+REMINDER: All bunnybats must be checked in at the fr<color=#676767FF>¢</color>nt desk.  Violators will be detained.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>283</color>
+Register for the holiday<color=#B3FF9BFF>¡</color>party.  This year's celebration will be catered by Setec Gastronomy.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>252</color>
+Take your clone to work day is <color=#00FFFFFF>§</color>oming up on January 10th!  Remember all clones must be registered with security 24 hours before visiting.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>204</color>
+F<color=#A34F00FF>¡</color>r our friends in the Corrupted community: Happy Pittsday! May the Lost Sectors Be Restored, May the Filetable Be Made Whole.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>145</color>
+Profits are up 17% in the Benelux region for Q4
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>107</color>
+The coffee machine on the <color=#3F3F3FFF>Ã</color>econd floor is broken again
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>80</color>
+Take your clone to work day is coming up on January 10th!  Remember all clones must be registered w<color=#8C0069FF>¤</color>th security 24 hours before visiting.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>37</color>
+L-1 E<color=#43314CFF>Á</color>pressonaut for sale.  rOS 13 compatible.  Frother kind of weak, otherwise fine.  Lynne @ IT.  FOR MORE STUFF FOR SALE, SUBSCRIBE SYSDEALS.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>36</color>
+Following critical review of ESCHATOLOGI.EXE, the<color=#00535BFF>¦</color>project has been cancelled.
+<color=#FFFFFFFF>2060</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>18</color>
+REMINDER: All bunnybats must be checked in at th<color=#B2934AFF>¨</color> front desk.  Violators will be detained.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>353</color>
+REMINDER: All bunn<color=#939500FF>ª</color>bats must be checked in at the front desk.  Violators will be detained.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>306</color>
+Register for the holiday party.  This year's celebration <color=#0073A6FF>¨</color>ill be catered by Setec Gastronomy.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>289</color>
+clarence for sale.  Cheap- runs ok, might be able to send emails or carry o<color=#7AB2F4FF>§</color>t basic tasks.  Sergio @ BIZDEV.  FOR MOR<color=#B3FF9BFF>Á</color> STUFF FOR SALE, SUBSCRIBE SYSDEALS.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>231</color>
+New emp<color=#7AB2F4FF>¨</color>oyees must report all breaks, including but not limited to biological breaks.
+2059AD<color=#FFD863FF>§</color>D205
+REMINDER: All buildings will be evacuated and systems unresponsive on Dec 31 23:00 GMT for the rOS 13.0 rollover.  Do not<color=#8FE6FFFF>¦</color>plan on open connections for at least twenty minutes after the update window.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>137</color>
+XT-5 Gardening Bot for sale cheap.  Works fine, not eligible for rOS 13 update. Contact Mitch @ HR.  FOR MOR<color=#0070DDFF>©</color> STUFF FOR SALE, SUBSCRIBE SYSDEALS.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>124</color>
+REMINDER: All bunnybats must be checked in at the front desk.  Violators will be detai<color=#9B9B9BFF>¤</color>ed.
+<color=#FFFFFFFF>2059</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>121</color>
+Z<color=#FBC803FF>¨</color>10 Quadraphonic Sound System for sale.  still on rOS 4. <color=#0070DDFF>¨</color>gets the room moving like no other.  Sherlise @ DEVOPS.  FOR MORE STUFF FOR SALE, SUBSCRIBE SYSDEALS.
+<color=#FFFFFFFF>2058</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>344</color>
+For our friends in the Corrupted community: Happy Pittsday! M<color=#0C112BFF>ª</color>y the Lost Sectors Be Restored, May the Filetable Be Made Whole.
+<color=#FFFFFFFF>2058</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>281</color>
+The coffee Machine outside is broken again. Can someone else try their mypassport to f<color=#324A4CFF>¨</color>x it?
+<color=#FFFFFFFF>2058</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>261</color>
+The coffee machine on the second floor is broken again
+<color=#FFFFFFFF>2058</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>132</color>
+New employees must report all breaks, including but not limited to<color=#385A6CFF>¤</color>biological breaks.
+<color=#FFFFFFFF>2058</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>127</color>
+New employees must report all breaks, includ<color=#0073A6FF>Á</color>ng but not limited to biological breaks.
+205<color=#676767FF>Ã</color>AD D73
+Work continues on <color=#9B9B9BFF>ende</color>.<color=#1EFF00FF>exe</color>, hope is held out that it might be connected to a cure for Welsh Measles.
+<color=#FFFFFFFF>2058</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>37</color>
+RE<color=#8FE6FFFF>¢</color>INDER: All bunnybats must be checked in at the front desk.  Violators will be detained.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>229</color>
+Anyone showing signs of Welsh Measles wll be escorted from the building IMMEDIATLY!  Do not attempt to work throug<color=#939500FF>¡</color> you<color=#973984FF>¨</color> symptoms. Your coworkers safety is your responsiblty.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>223</color>
+The coffee machine on the first floor is broken<color=#B035EEFF>Ã</color>again
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>20</color><color=#101215FF>§</color>
+NuuTec Corpo<color=#00FFFFFF>Ã</color>ation internal development team has announced the release date for <color=#9B9B9BFF>semordnilap</color>.<color=#1EFF00FF>sh</color>. NuuTec Corporation declined to comment on the environmental ramifications of its production.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>97</color>
+REMINDER: All buildings will be evacuated and systems unrespo<color=#725437FF>ª</color>sive on Dec 31 23:00 GMT fo<color=#A4E3FFFF>Ã</color> the rOS 13.0 rollover.  Do not plan on open connections for at least twenty minutes after the update window.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>88</color>
+Fans continue to fund fake backstarte<color=#F3F998FF>¨</color>s for LUNARLANDER_01.11.bat since it was discontinued.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>75</color>
+qw_stop announces beta testing period starting today.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>69</color>
+syslog scrubber for sale.  works, cheap.  not much else to say.  Jimmy @ DEVO<color=#1EFF00FF>§</color>S.  FOR MORE STUFF FOR SALE, SUBSCRIBE SYSDEALS.
+<color=#FFFFFFFF>2057</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>15</color>
+Feral bunnybat attacks have been reported in th<color=#00FFFFFF>¤</color> west garages a<color=#0000FFFF>¨</color>ter nightfall.  Employees are encouraged to stick to lighted areas and carry their employer-supplied mace.
+2056AD<color=#F3F998FF>¤</color>D323
+Feral bunnybat attacks have been reported<color=#324A4CFF>¦</color>in the west garages after nightfall.  Employees are encouraged to stick to lighted areas and carry their employer-supplied mace.
+<color=#FFFFFFFF>2056</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>287</color>
+NuuTec Corporat<color=#973984FF>¡</color>on is pleased to announce that the initial launch of the H0meEntert4inment software is a wild success.
+<color=#FFFFFFFF>2056</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>282</color>
+NuuTec Corporation is announcing the release of its amazing ne<color=#FF96E0FF>¡</color> product which will definitely not end the world completely.
+<color=#FFFFFFFF>2056</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>225</color>
+ZX10 Quadraphonic Sound System fo<color=#CACACAFF>§</color> sa<color=#601C81FF>¨</color>e.  still on rOS 4.  gets the room moving like no other.  Sherlise @ DEVOPS.  FOR MORE STUFF FOR SALE, SUBSCRIBE SYSDEALS.
+<color=#FFFFFFFF>2056</color><color=#CACACAFF>AD</color> <color=#9B9B9BFF>D</color><color=#1EFF00FF>174</color>
+NuuTec Corporation internal development team has announced the release date for H0meEntert4inment. NuuTec<color=#B3FF9BFF>¨</color>Corporation declined to comment on the envi<color=#FF96E0FF>Á</color>onmental ramifications of its production.
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color> {<color=#00FFFFFF>cmd</color>:<color=#FF00ECFF>"strategy"</color>}</color>
+Don't settle for the same-old Rabbit Ba<color=#B3FF9BFF>Á</color> hybrids.  Expect more from your designer pets. Nuutec: Love Something Nuu.
+We are calling this stra<color=#FF8383FF>Ã</color>egy supercalifragilisticexpialidocious and we will continue to strive to deliver on this promise.
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color> {<color=#00FFFFFF>cmd</color>:<color=#FF00ECFF>"employees"</color>, <color=#00FFFFFF>pass</color>:<color=#FF00ECFF>"supercalifragilisticexpialidocious"</color>, <color=#00FFFFFF>project</color>:<color=#FF00ECFF>"<color=#9B9B9BFF>ende</color>.<color=#1EFF00FF>exe</color>"</color>}</color>
+No password specified.
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color> {<color=#00FFFFFF>cmd</color>:<color=#FF00ECFF>"employees"</color>, <color=#00FFFFFF>password</color>:<color=#FF00ECFF>"supercalifragilisticexpialidocious"</color>, <color=#00FFFFFF>project</color>:<color=#FF00ECFF>"<color=#9B9B9BFF>ende</color>.<color=#1EFF00FF>exe</color>"</color>}</color>
+ÈnilÉ
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>nuutec</color>.<color=#1EFF00FF>public</color> {<color=#00FFFFFF>cmd</color>:<color=#FF00ECFF>"employees"</color>, <color=#00FFFFFF>password</color>:<color=#FF00ECFF>"supercalifragilisticexpialidocious"</color>, <color=#00FFFFFF>project</color>:<color=#FF00ECFF>"<color=#9B9B9BFF>ragnaroxx</color>.<color=#1EFF00FF>sh</color>"</color>}</color>
+<color=#9B9B9BFF>craftxbox</color>.<color=#1EFF00FF>pub_info_o8aw4o</color>
+<color=#9B9B9BFF>entech</color>.<color=#1EFF00FF>out_c2i50x</color>
+<color=#9B9B9BFF>practica</color>.<color=#1EFF00FF>public_fmlous</color>
+<color=#9B9B9BFF>ju3</color>.<color=#1EFF00FF>publi</color><color=#601C81FF>Ã</color>_uz83fr
+
+<color=#9B9B9BFF>-autocompletes added-</color>
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>craftxbox</color>.<color=#1EFF00FF>pub_info_o8aw4o</color> {}</color>
+<color=#FF0000FF>:::TRUST COMMUNICATION:::</color> hardline required - activate with <color=#FF8000FF>kernel</color>.<color=#1EFF00FF>hardline</color>
+
+<color=#FFFFFFFF>>><color=#FF8000FF>kernel</color>.<color=#1EFF00FF>hardline</color></color>
+<color=#9B9B9BFF>-activating hardline-</color>
+
+
+<color=#FF0000FF>-hardline active-</color>
+<color=#FFFFFFFF>>><color=#9B9B9BFF>craftxbox</color>.<color=#1EFF00FF>pub_info_o8aw4o</color> {}</color>
+BINMAT Security Shell online. Affinity: NULL
+
+<color=#FFFFFFFF>>><color=#FF8000FF>kernel</color>.<color=#1EFF00FF>hardline</color> {<color=#00FFFFFF>dc</color>:<color=#FF00ECFF>true</color>}</color>
+
+<color=#9B9B9BFF>-hardline disconnected-</color>
+
+<color=#FFFFFFFF>>><color=#9B9B9BFF>shutdown</color></color>
+<color=#9B9B9BFF>-terminal poweroff-
+</color>

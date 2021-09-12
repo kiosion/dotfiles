@@ -1,0 +1,1 @@
+/Users/maxim/.local/share/omf/themes/kawasaki/fish_prompt.fish
