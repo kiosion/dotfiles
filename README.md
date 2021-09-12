@@ -40,7 +40,7 @@ git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
-*( Work in progress, I'm adapting [holman's install script](https://github.com/holman/dotfiles/script/bootstrap) to work for my setup )*
+*( Work in progress, I'm adapting [holman's install script](https://github.com/holman/dotfiles/blob/master/script/bootstrap) to work for my setup )*
 
 This will symlink the appropriate files in .dotfiles to your home directory. Everything is configured and tweaked within ~/.dotfiles.
 
