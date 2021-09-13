@@ -1,2 +1,4 @@
 # MacOS System Files
 *.DS_Store
+
+git/gitconfig.local.symlink
