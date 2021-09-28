@@ -1,3 +1,5 @@
+## Dotfiles
+
 Dotfiles are how you personalize your system and programs, these are mine! :)
 
 I was tired of having everything unorganized, and slightly different on all my devices. That inspired me to upload my most common config files here, both to use when distro-hopping and in case anyone wanted to use my configs as starting points!
