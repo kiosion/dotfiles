@@ -23,6 +23,7 @@ A lot. Check them out in the file browser above to see what components may work 
 
     bin/: Anything in bin/ will be added to $PATH and be made available everywhere.
     home/: Any files here are from my home directory.
+    home/.config/: Various config files
     misc/*: Some subdirectories containing misc system files.
 
 ## Install
