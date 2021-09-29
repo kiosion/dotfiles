@@ -12,11 +12,12 @@ I was tired of having everything unorganized, and slightly different on all my d
 A lot. Check them out in the file browser above to see what components may work for you.
 
 ## Components
+I've tried to split this repo into individual components, to make it easier on myself to install, and to make it more modular for customising.
 
     bin/: Anything in bin/ will be added to $PATH and be made available everywhere.
-    home/: Any files here are from my home directory.
-    home/.config/: Various config files
+    home/: Various files from my home directory
     misc/*: Some subdirectories containing misc system files.
+    */: Individual programs / components to be installed using their install.sh files.
 
 ## Install
 
