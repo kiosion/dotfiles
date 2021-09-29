@@ -1,0 +1,441 @@
+;
+;______________________________/\\\\\\___________________/\\\_____________________________________        
+; _____________________________\////\\\__________________\/\\\_____________________________________       
+;  ___/\\\\\\\\\___________________\/\\\_______/\\\__/\\\_\/\\\_____________________________________      
+;   __/\\\/////\\\_____/\\\\\_______\/\\\______\//\\\/\\\__\/\\\_________/\\\\\\\\\_____/\\/\\\\\\\__     
+;    _\/\\\\\\\\\\____/\\\///\\\_____\/\\\_______\//\\\\\___\/\\\\\\\\\__\////////\\\___\/\\\/////\\\_    
+;     _\/\\\//////____/\\\__\//\\\____\/\\\________\//\\\____\/\\\////\\\___/\\\\\\\\\\__\/\\\___\///__   
+;      _\/\\\_________\//\\\__/\\\_____\/\\\_____/\\_/\\\_____\/\\\__\/\\\__/\\\/////\\\__\/\\\_________  
+;       _\/\\\__________\///\\\\\/____/\\\\\\\\\_\//\\\\/______\/\\\\\\\\\__\//\\\\\\\\/\\_\/\\\_________ 
+;        _\///_____________\/////_____\/////////___\////________\/////////____\////////\//__\///__________
+;
+;
+; polybar config
+
+[colors]
+;background = ${xrdb:color0:#222}
+;background = #1D2021
+background = #000000
+background-alt = #b2b3f4
+;foreground = ${xrdb:color7:#222}
+foreground = #ffffff
+foreground-alt = #adadad
+primary = #5761ee
+secondary = #b2b3f4
+alert = #f2e884
+
+[bar/wide]
+monitor = DP-4 
+width = 100%
+height = 24
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+;fixed-center = true 
+;bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #5761ee
+
+border-size = 0 
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = MonoLisa:pixelsize=10;1
+font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=11";1
+font-2 = "Font Awesome 5 Pro Brands,Font Awesome Pro Brands Regular:pixelsize=11";1
+font-3 = hack:pixelsize=10;1
+
+modules-left = bspwm xwindow
+modules-center = date
+;modules-right = pulseaudio-control upt memory cpu eth
+modules-right = cpu memory upt pulseaudio-control
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+
+;override-redirect = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-font = 1
+
+[module/xkeyboard]
+type = internal/xkeyboard
+;blacklist-0 = num lock
+
+format-prefix = "KEY "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.primary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#b2b3f4}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+label-*-font = 1
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index% 
+;label-focused-background = #b2b3f4
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = #b2b3f4
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+label-*-font = 1
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${colors.primary}
+label = %percentage:2%%
+
+label-font = 1
+
+[module/memory]
+type = custom/script
+interval = 1
+format-prefix = "MEM "
+format-prefix-foreground = ${colors.foreground-alt}
+exec = ~/.config/polybar/scripts/memory.sh
+
+;format-underline = ${colors.primary}
+
+*-font = 1
+
+;[module/pkg]
+;type = custom/script
+;interval = 60
+;format-prefix = "PKG "
+;format-prefix-foreground = ${colors.foreground-alt}
+;exec = ~/.config/polybar/scripts/pkg.sh
+;format-underline = #98971A
+
+[module/upt]
+type = custom/script
+interval = 60
+format-prefix = "UPT "
+format-prefix-foreground = ${colors.foreground-alt}
+exec = ~/.config/polybar/scripts/upt.sh
+;format-underline = #5761ee
+
+*-font = 1
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #5761ee
+label-connected = %essid%
+
+format-disconnected =
+
+*-font = 1
+
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+;format-connected-underline = #5761ee
+format-connected-prefix = "NET "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+
+*-font = 1
+
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = " %d-%m-%Y"
+
+time = %H:%M:%S
+time-alt = %H:%M:%S
+
+format-prefix = "CLK " 
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #5761ee
+
+label = %date% %time%
+
+*-font = 1
+
+[module/pulseaudio-control]
+type = custom/script
+
+tail = true
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+label-muted = Muted
+label-muted-foreground = #666
+
+# Icons mixed from FA5 and Material Icons
+# exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo:   Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:   Headphones" listen
+
+exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: Headphones" listen
+
+click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+click-left = pulseaudio-control togmute
+click-middle = exec pavucontrol &
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
+
+format-prefix = "VOL "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #5761ee
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = Mute
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #b2b3f4
+bar-volume-foreground-6 = #f2e884
+bar-volume-gradient = true 
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = ""
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #b2b3f4
+bar-volume-foreground-6 = #f2e884
+bar-volume-gradient = true 
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+;format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
