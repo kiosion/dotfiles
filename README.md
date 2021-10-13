@@ -16,7 +16,9 @@ I've tried to split this repo into individual components, to make it easier on m
 
     bin/: Anything in bin/ will be added to $PATH and be made available everywhere.
     home/: Various files from my home directory
-    misc/*: Some subdirectories containing misc system files.
+    misc/: Some subdirectories containing misc system files.
+    system/: System files... grub, my fstab, etc
+    pkgs/pkgs: Output of `paru -Q`, to be installed automatically after paru's built.
     */: Individual programs / components to be installed using their install.sh files.
 
 ## Install
