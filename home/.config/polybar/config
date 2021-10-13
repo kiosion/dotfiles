@@ -46,8 +46,8 @@ border-color = #00000000
 padding-left = 0
 padding-right = 1
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 2
+module-margin-right = 1
 
 font-0 = MonoLisa:pixelsize=10;1
 font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=11";1
@@ -56,8 +56,7 @@ font-3 = hack:pixelsize=10;1
 
 modules-left = bspwm xwindow
 modules-center = date
-;modules-right = pulseaudio-control upt memory cpu eth
-modules-right = cpu memory upt pulseaudio-control
+modules-right = cpu memory upt pulseaudio-control powermenu
 
 tray-position = right
 tray-padding = 2
@@ -70,8 +69,8 @@ tray-padding = 2
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+;cursor-click = pointer
+;cursor-scroll = pointer
 
 [module/xwindow]
 type = internal/xwindow
@@ -108,19 +107,27 @@ label-*-font = 1
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index% 
+ws-icon-0 = 1;term
+ws-icon-1 = 2;web
+ws-icon-2 = 3;music
+ws-icon-3 = 4;code
+ws-icon-4 = 5;ps
+ws-icon-5 = 6;games
+ws-icon-6 = 7;etc
+
+label-focused = %icon% 
 ;label-focused-background = #b2b3f4
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %index%
+label-occupied = %icon%
 label-occupied-padding = 2
 
-label-urgent = %index%!
+label-urgent = %icon%!
 label-urgent-background = #b2b3f4
 label-urgent-padding = 2
 
-label-empty = %index%
+label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
@@ -269,7 +276,7 @@ label = %date% %time%
 type = custom/script
 
 tail = true
-label-padding = 2
+label-padding = 0
 label-foreground = ${colors.foreground}
 
 label-muted = Muted
@@ -278,9 +285,9 @@ label-muted-foreground = #666
 # Icons mixed from FA5 and Material Icons
 # exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo:   Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:   Headphones" listen
 
-exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: Headphones" listen
+exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: Headphones" --sink-nickname "alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7HZUXY16047AA-00.analog-stereo: Scarlett Solo" listen
 
-click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-sink
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 130 up
@@ -403,28 +410,44 @@ type = custom/menu
 expand-right = true
 
 format-spacing = 1
+;label-open-padding-right = 1
+;label-close-padding-right = 1
+label-padding = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+format-prefix = "PWR "
+format-prefix-padding-left = 1
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-open = Open
+label-open-foreground = ${colors.foreground}
+label-close = Close
+label-close-foreground = ${colors.foreground}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = R
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = S
 menu-0-1-exec = menu-open-2
+menu-0-2 = K
+menu-0-2-exec = menu-open-3
 
-menu-1-0 = cancel
+menu-1-0 = Close
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1 = Reboot
+menu-1-1-exec = reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-0 = Close
+menu-2-0-exec = menu-open-0
+menu-2-1 = Shutdown
+menu-2-1-exec = poweroff
+
+menu-3-0 = Close
+menu-3-0-exec = menu-open-0
+menu-3-1 = Kill X
+menu-3-1-exec = ~/logout
+
+*-font = 1
 
 [settings]
 screenchange-reload = true
