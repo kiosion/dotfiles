@@ -1,3 +1,4 @@
 #!/bin/sh
 
-# To-do :)
+echo "==> Installing pkgs list..."
+paru -S --needed --noconfirm - < pkgs
