@@ -3,4 +3,11 @@
 # Get paru installed
 sudo ../paru/install.sh
 
-#
+# Install packages
+sudo ../pkgs/install.sh
+
+# Move system files
+sudo ../system/install.sh
+
+# Move user files
+sudo ../home/install.sh
