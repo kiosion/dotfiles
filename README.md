@@ -29,6 +29,6 @@ Run:
 ```
 git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-sudo script/install.sh
+chmod +X script/install && sudo script/install
 ```
 *( Work in progress, for now, you can simply manually move files into place :p )*
