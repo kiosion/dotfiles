@@ -21,12 +21,12 @@ I've tried to split this repo into individual components, to make it easier on m
     pkgs/pkgs: Output of `paru -Q`, to be installed automatically after paru's built.
     */: Individual programs / components to be installed using their install.sh files.
 
-## Install
+## Installation
 
-Run this:
+Run:
 ```
 git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap
+sudo script/install.sh
 ```
-*( Work in progress, I'm adapting [holman's install script](https://github.com/holman/dotfiles/blob/master/script/bootstrap) to work for my setup and preferred shell. For now, you can simply manually move files into place :p )*
+*( Work in progress, for now, you can simply manually move files into place :p )*
