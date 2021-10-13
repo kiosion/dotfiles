@@ -10,4 +10,7 @@ sudo ../pkgs/install.sh
 sudo ../system/install.sh
 
 # Move user files
-sudo ../home/install.sh
+../home/install.sh
+
+# Bin
+sudo ../bin/install.sh
