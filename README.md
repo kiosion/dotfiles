@@ -23,6 +23,8 @@ I've tried to split this repo into individual components, to make it easier on m
 
 ## Installation
 
+Please note, this script is intended for a fresh install on specifically my computer and will overwrite files, as well as implement my grub config. Customize it first and use caution if you're running it under an already-configured installation.
+
 Run:
 ```
 git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles
