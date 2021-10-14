@@ -9,7 +9,7 @@ I was tired of having everything unorganized, and slightly different on all my d
 
 ## What's inside
 
-A lot. Check them out in the file browser above to see what components may work for you.
+A lot of files. Check out the file browser above to see what parts of my config may work for you.
 
 ## Components
 I've tried to split this repo into individual components, to make it easier on myself to install, and to make it more modular for customising.
