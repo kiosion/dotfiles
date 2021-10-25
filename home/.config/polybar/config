@@ -13,25 +13,30 @@
 ; polybar config
 
 [colors]
-;background = ${xrdb:color0:#222}
-;background = #1D2021
-background = #000000
-background-alt = #b2b3f4
-;foreground = ${xrdb:color7:#222}
-foreground = #ffffff
+#background = #000000
+background = #E6282a36
+background-alt = #44475a
+foreground = #f8f8f2
 foreground-alt = #adadad
-primary = #5761ee
-secondary = #b2b3f4
-alert = #f2e884
+primary = #bd93f9
+secondary = #e2cffc
+alert = #8be9fd
+cyan = #8be9fd
+green = #50fa7b
+orange = #ffb86c
+pink = #ff79c6
+purple = #bd93f9
+purple-alt = #BFc49ff9
+red = #ff5555
+yellow = #f1fa8c
 
 [bar/wide]
 monitor = DP-4 
-width = 100%
-height = 24
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-;fixed-center = true 
+width = 98.7%
+height = 26
+offset-x = 0.65% 
+offset-y = 1.25%
+fixed-center = true 
 ;bottom = true
 
 background = ${colors.background}
@@ -40,8 +45,11 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = #5761ee
 
-border-size = 0 
-border-color = #00000000
+radius-top = 0
+radius-bottom = 0
+
+border-size = 2
+border-color = #CCbe92fc
 
 padding-left = 0
 padding-right = 1
@@ -51,20 +59,16 @@ module-margin-right = 1
 
 font-0 = MonoLisa:pixelsize=10;1
 font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=11";1
-font-2 = "Font Awesome 5 Pro Brands,Font Awesome Pro Brands Regular:pixelsize=11";1
-font-3 = hack:pixelsize=10;1
+font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=10";1
 
 modules-left = bspwm xwindow
 modules-center = date
-modules-right = cpu memory upt pulseaudio-control powermenu
+modules-right = xkeyboard cpu temperature memory upt pulseaudio-control
 
-tray-position = right
+tray-position = center
 tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-
-;override-redirect = true
+tray-detached = true
+tray-offset-x = 1640
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -80,18 +84,15 @@ label-font = 1
 [module/xkeyboard]
 type = internal/xkeyboard
 ;blacklist-0 = num lock
-
-format-prefix = "KEY "
+format-prefix = "キー "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.primary}
 
-label-layout = %layout%
-label-layout-underline = ${colors.primary}
+;label-layout = map: %layout%
 
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-padding = 1
+label-indicator-margin = 0
+label-indicator-background = ${colors.purple-alt}
+#label-indicator-underline = ${colors.primary}
 
 [module/filesystem]
 type = internal/fs
@@ -107,34 +108,35 @@ label-*-font = 1
 [module/bspwm]
 type = internal/bspwm
 
-ws-icon-0 = 1;term
-ws-icon-1 = 2;web
-ws-icon-2 = 3;music
-ws-icon-3 = 4;code
-ws-icon-4 = 5;ps
-ws-icon-5 = 6;games
-ws-icon-6 = 7;etc
+ws-icon-0 = 1;一
+ws-icon-1 = 2;二
+ws-icon-2 = 3;三
+ws-icon-3 = 4;四
+ws-icon-4 = 5;五
+ws-icon-5 = 6;六
+ws-icon-6 = 7;七
+
+wd-icon-0-font = 2
 
 label-focused = %icon% 
-;label-focused-background = #b2b3f4
-label-focused-underline= ${colors.primary}
+#label-focused-underline= ${colors.primary}
+label-focused-background = ${colors.purple-alt}
 label-focused-padding = 2
 
 label-occupied = %icon%
 label-occupied-padding = 2
 
 label-urgent = %icon%!
-label-urgent-background = #b2b3f4
+label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-label-*-font = 1
-
-; Separator in between workspaces
-; label-separator = |
+label-active-font = 5
+label-focused-font = 5
+label-occupied-font = 5
 
 [module/mpd]
 type = internal/mpd
@@ -174,36 +176,32 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 1
-format-prefix = "CPU "
+format-prefix = "プロセッサー "
+format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.primary}
 label = %percentage:2%%
-
 label-font = 1
 
 [module/memory]
 type = custom/script
 interval = 1
-format-prefix = "MEM "
+format-prefix = "メモリー "
+format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/memory.sh
+label-font = 1
 
-;format-underline = ${colors.primary}
-
-*-font = 1
-
-;[module/pkg]
-;type = custom/script
-;interval = 60
-;format-prefix = "PKG "
-;format-prefix-foreground = ${colors.foreground-alt}
-;exec = ~/.config/polybar/scripts/pkg.sh
-;format-underline = #98971A
+[module/pkgs]
+type = custom/script
+interval = 60
+format-prefix = "パッケージ "
+format-prefix-foreground = ${colors.foreground-alt}
+exec = ~/.config/polybar/scripts/pkgs.sh
 
 [module/upt]
 type = custom/script
 interval = 60
-format-prefix = "UPT "
+format-prefix = "アップタイム "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/upt.sh
 ;format-underline = #5761ee
@@ -221,20 +219,6 @@ label-connected = %essid%
 
 format-disconnected =
 
-*-font = 1
-
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
 [module/eth]
 type = internal/network
 interface = enp0s31f6
@@ -247,13 +231,6 @@ label-connected = %local_ip%
 
 format-disconnected =
 
-*-font = 1
-
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 1
@@ -264,9 +241,9 @@ date-alt = " %d-%m-%Y"
 time = %H:%M:%S
 time-alt = %H:%M:%S
 
-format-prefix = "CLK " 
+format-prefix = "クロック "
+format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #5761ee
 
 label = %date% %time%
 
@@ -278,12 +255,9 @@ type = custom/script
 tail = true
 label-padding = 0
 label-foreground = ${colors.foreground}
-
+label-margin-right = 14
 label-muted = Muted
-label-muted-foreground = #666
-
-# Icons mixed from FA5 and Material Icons
-# exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo:   Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:   Headphones" listen
+label-muted-foreground = ${colors.foreground-alt}
 
 exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: Headphones" --sink-nickname "alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7HZUXY16047AA-00.analog-stereo: Scarlett Solo" listen
 
@@ -293,9 +267,11 @@ click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 130 up
 scroll-down = pulseaudio-control --volume-max 130 down
 
-format-prefix = "VOL "
+format-prefix = "ボリューム "
+format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #5761ee
+
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -387,78 +363,30 @@ animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
+interval = 1
+thermal-zone = 2
+warn-temperature = 80
 
-format = <ramp> <label>
-;format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-prefix = "温度 "
+format-warn-prefix = "温度 "
+format-prefix-foreground = ${colors.foreground-alt}
+#format-warn-underline = ${self.format-underline}
+#format-warn-background = ${colors.purple-alt}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-;label-open-padding-right = 1
-;label-close-padding-right = 1
-label-padding = 1
-
-format-prefix = "PWR "
-format-prefix-padding-left = 1
-format-prefix-foreground = ${colors.foreground-alt}
-
-label-open = Open
-label-open-foreground = ${colors.foreground}
-label-close = Close
-label-close-foreground = ${colors.foreground}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = R
-menu-0-0-exec = menu-open-1
-menu-0-1 = S
-menu-0-1-exec = menu-open-2
-menu-0-2 = K
-menu-0-2-exec = menu-open-3
-
-menu-1-0 = Close
-menu-1-0-exec = menu-open-0
-menu-1-1 = Reboot
-menu-1-1-exec = reboot
-
-menu-2-0 = Close
-menu-2-0-exec = menu-open-0
-menu-2-1 = Shutdown
-menu-2-1-exec = poweroff
-
-menu-3-0 = Close
-menu-3-0-exec = menu-open-0
-menu-3-1 = Kill X
-menu-3-1-exec = ~/logout
-
-*-font = 1
+label-warn-foreground = ${colors.red}
 
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
+compositing-border = over
+pseudo-transparency = true
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 2
+margin-bottom = 2
 
 ; vim:ft=dosini

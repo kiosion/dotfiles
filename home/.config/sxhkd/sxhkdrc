@@ -14,35 +14,41 @@
 
 # lock
 super + Escape
-	i3lock -i /mnt/kepler/Photos/Wallpaper/Cyberpunk/wallhaven-y8er97.png
+	$HOME/.config/sxhkd/screen_lock.sh
 # screenshot 
 alt + Escape
-	flameshot gui
+	screencloud --area
+#	flameshot gui
 # rofi
 super + @space
-	dmenu_run #rofi -show run
+	rofi -show run
 # clipmenu
 super + c
-	clipmenu -i -fn Terminus:size=12 -nb '#1D2021' -nf '#D79921' -sb '#98971A' -sf '#1D2021'
-#	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
+	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
 # pavucontrol
 alt + shift + v
 	pavucontrol
 # libreoffice
 alt + l
-	firejail libreoffice
+	libreoffice
 # nitrogen
 alt + shift + w
-	firejail nitrogen
+	nitrogen
 # reload sxhkd
 super + shift + Escape
 	pkill -USR1 -x sxhkd
+# reload polybar
+super + shift + p
+	pkill -15 polybar && ~/.config/polybar/launch.sh
 # nemo
 alt + e
 	nemo
 # terminal 
 alt + t
 	alacritty
+# termius
+alt + y
+	termius-beta
 # vsc
 alt + c
 	code
@@ -52,12 +58,15 @@ alt + i
 # firefox TODO: use firejail, fix directory & device access
 alt + f
 	firefox
+# chrome
+alt + w
+	google-chrome-stable
 # discord
 alt + d
 	discord-canary
 # spotify
 alt + s
-	firejail spotify
+	spotify
 # foobar2k
 alt + o
 	bash && /home/kio/.wine/drive_c/Program\ Files\ (x86)/foobar2000/foobar2000.exe
@@ -70,6 +79,10 @@ alt + m
 # blender
 alt + b
 	blender
+
+# photoshop
+alt + p
+	photoshop
 
 ### VOLUME ###
 
