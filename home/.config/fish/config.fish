@@ -11,6 +11,9 @@
 #
 # Configuration options for fish shell
 
+# set ssh agent correctly
+fish_ssh_agent
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -46,6 +49,26 @@ set -g __fish_git_prompt_color_branch_begin   white
 set -g __fish_git_prompt_color_branch_end     white
 set -g __fish_git_prompt_color_branch         bryellow
 
+# cmd aliases
+alias btw "neofetch"
+alias l "ls -l"
+alias la "ls -la"
+alias wm-s "wmname LG3D"
+alias wm-u "wmname bspwm"
+alias virsh "virsh --connect qemu:///system"
+alias fucking "sudo"
+alias gib "paru -S"
+alias yeet "paru -R"
+
+# add vue to path
+set -x PATH ~/.npm-global/bin:$PATH
+
+# if on tty1, launch startx automatically
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty
+    end
+end
 
 # load pyenv automatically
 # status is-interactive; and pyenv init --path | source
