@@ -27,8 +27,6 @@ Please note, this script is intended for a fresh install on specifically my comp
 
 Run:
 ```
-git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-chmod +x script/install && sudo script/install
+git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && chmod +x script/install && sudo script/install
 ```
 *( Work in progress, for now, you can simply manually move files into place :p )*
