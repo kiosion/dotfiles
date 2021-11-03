@@ -1,16 +1,38 @@
 #!/bin/sh
 
-# Get paru installed
-sudo ../paru/install.sh
-
+# Build & install Paru
+{ 
+sudo ../paru/install.sh 
+} || { 
+echo "=> Paru install failed, aborting!" && exit 
+}
+&&
 # Install packages
-sudo ../pkgs/install.sh
-
+{ 
+sudo ../pkgs/install.sh 
+} || { 
+echo "=> Packages install failed!" 
+}
+&&
 # Move system files
-sudo ../system/install.sh
-
+{ 
+sudo ../system/install.sh 
+} || { 
+echo "=> Moving sys files failed!"
+}
+&&
 # Move user files
-../home/install.sh
-
+{ 
+../home/install.sh 
+} || { 
+echo "=> Moving usr files failed!" 
+}
+&&
 # Bin
-sudo ../bin/install.sh
+{ 
+sudo ../bin/install.sh 
+} || { 
+echo "=> Moving files to bin failed!" 
+}
+&&
+echo "=> Finished!" && exit
