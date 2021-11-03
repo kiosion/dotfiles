@@ -1,16 +1,13 @@
 #!/bin/sh
 
-# get path
-echo $0
-full_path=$(realpath $0)
-dir_path=$(dirname $full_path)
-
 # .config
-# TODO: recursively symlink components in .config
+# TODO: recursively symlink components in .config and other dirs
 
 # Xorg stuff
-ln -s $dir_path/.xinitrc ~/.xinitrc
-ln -s $dir_path/.xresources ~/.xresources
+ln -s .xinitrc ~/.xinitrc
+ln -s .xresources ~/.xresources
 
 # Vim
-#mv .vim/ ~/.vim
+ln -s vim/.vim/* ~/.vim/*
+ln -s vim/.vimrc ~/.vimrc
+ln -s vim/.viminfo ~/.viminfo
