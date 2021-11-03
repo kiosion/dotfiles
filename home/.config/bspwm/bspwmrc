@@ -10,22 +10,23 @@
 ##        _\/////////___\//////////__\///_____________\///__\///_____\///___\///___\///__\///_____________\////////__
 ##
 ### AUTOSTART ###
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xrandr --auto &
+nitrogen --restore &
 sxhkd &
+/usr/bin/gnome-keyring-daemon --start --daemonize -- components=secrets &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom --experimental-backend &
 $HOME/.config/polybar/launch.sh
-nitrogen --restore &
-screencloud -c &
 clipmenud &
 nm-applet &
+screencloud -c &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
 
 ### MONITORS ###
 
-## Main monitor
+## Main ultrawide
 ##xrandr --output DP-4 --mode 3440x1440 --rate 120
 
 ## WORKSPACES ##
@@ -52,6 +53,7 @@ bspc rule -a vlc state=floating
 bspc rule -a foobar2000 state=floating
 bspc rule -a foobar2000.exe state=floating
 bspc rule -a wine state=floating
+bspc rule -a MultiMC state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &

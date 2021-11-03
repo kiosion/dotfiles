@@ -20,8 +20,8 @@ alt + Escape
 	screencloud --area
 #	flameshot gui
 # rofi
-super + @space
-	rofi -show run
+super + @Return
+	rofi -fullscreen -show run
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
