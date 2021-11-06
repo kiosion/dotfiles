@@ -1,10 +1,8 @@
 ## Dotfiles
 
-Dotfiles are how you personalize your system and programs, these are mine! :)
+Dotfiles are how you personalize your system and programs, these are mine! I uploaded my most common config files here both to use when distro-hopping and in case anyone wanted to use my configs as starting points :)
 
-I was tired of having everything slightly different on all my devices, so I uploaded my most common config files here, both to use when distro-hopping and in case anyone wanted to use my configs as starting points!
-
-<img src="img.png"></img>
+<img src="img.png"></img>[^1]
 
 
 ## What's inside
@@ -33,3 +31,4 @@ chmod +x script/install && \
 sudo script/install
 ```
 *( Work in progress, for now, you can simply manually move files into place :p )*
+[^1]: Wallpaper by the talented [Astero](https://www.artstation.com/pranetoid).
