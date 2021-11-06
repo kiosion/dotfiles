@@ -13,16 +13,18 @@
 xrandr --auto &
 nitrogen --restore &
 sxhkd &
-/usr/bin/gnome-keyring-daemon --start --daemonize -- components=secrets &
+#/usr/bin/gnome-keyring-daemon --start --daemonize --components=secrets &
+eval $(gnome-keyring-daemon --start) && export SSH_AUTH_SOCK &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom --experimental-backend &
-$HOME/.config/polybar/launch.sh
+$HOME/.config/polybar/launch.sh &
 clipmenud &
 nm-applet &
 screencloud -c &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
+/home/kio/fixmouse.sh &
 
 ### MONITORS ###
 
@@ -53,7 +55,7 @@ bspc rule -a vlc state=floating
 bspc rule -a foobar2000 state=floating
 bspc rule -a foobar2000.exe state=floating
 bspc rule -a wine state=floating
-bspc rule -a MultiMC state=floating
+bspc rule -a multimc state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &

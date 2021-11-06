@@ -59,6 +59,7 @@ alias virsh "virsh --connect qemu:///system"
 alias fucking "sudo"
 alias gib "paru -S"
 alias yeet "paru -R"
+alias img "tiv -a -r 0.5"
 
 # add vue to path
 set -x PATH ~/.npm-global/bin:$PATH
