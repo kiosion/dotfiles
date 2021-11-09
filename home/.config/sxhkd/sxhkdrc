@@ -10,105 +10,136 @@
 #        _\//////////__\///____\///__\///____\///__\///____\///___\///////\//__
 #
 #
-### LAUNCHERS ###
+### SYSTEM ###
 
-# lock
-super + Escape
+# lock screen
+super + l
 	$HOME/.config/sxhkd/screen_lock.sh
-# screenshot 
+# screenshot
 alt + Escape
 	screencloud --area
-#	flameshot gui
 # rofi
 super + @Return
 	rofi -fullscreen -show run
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
-# pavucontrol
-alt + shift + v
-	pavucontrol
-# libreoffice
-alt + l
-	libreoffice
-# nitrogen
-alt + shift + w
-	nitrogen
+
+### RELOAD ###
+
+# quit/reload bspwm
+super + r; b; q
+        bspc quit
+# reload bspwm
+super + r; b; r
+        bspc wm -r
 # reload sxhkd
-super + shift + Escape
-	pkill -USR1 -x sxhkd
+super + r; s
+    pkill -USR1 -x sxhkd
+# start polybar
+super + r; p; s
+	~/.config/polybar/launch.sh 
 # reload polybar
-super + shift + p
-	pkill -15 polybar && ~/.config/polybar/launch.sh
-# nemo
-alt + e
-	nemo
-# terminal 
+super + r; p; r
+        pkill -15 polybar && ~/.config/polybar/launch.sh
+# stop polybar
+super + r; p; q
+        pkill -15 polybar
+
+### SETTINGS ###
+
+# nitrogen
+alt + s; n
+    nitrogen
+
+### UTILS ###
+
+# alacritty
 alt + t
-	alacritty
+    alacritty
 # termius
 alt + y
-	termius-beta
-# vsc
-alt + c
-	code
-# intellij
-alt + i
-	wmname LG3D && /usr/bin/intellij-idea-ultimate-edition
-# firefox TODO: use firejail, fix directory & device access
-alt + f
-	firefox
-# chrome
-alt + w
-	google-chrome-stable
-# discord
-alt + d
-	discord-canary
-# spotify
-alt + s
-	spotify
-# foobar2k
-alt + o
-	bash && /home/kio/.wine/drive_c/Program\ Files\ (x86)/foobar2000/foobar2000.exe
-# steam
-alt + g
-	steam
-# multimc
-alt + m
-	multimc
-# blender
-alt + b
-	blender
+    termius-beta
+# nemo
+alt + n
+    nemo
 
+### CREATIVE ###
+
+# blender
+alt + c; b
+    blender
 # photoshop
-alt + p
-	photoshop
+alt + c; p
+    photoshop
+alt + c; l
+    libreoffice
+
+### CODE ###
+
+# visual studio code
+alt + c; v
+    code
+# intellij idea ultimate
+alt + c; i
+    wmname LG3D && /usr/bin/intellij-idea-ultimate-edition
+
+### WEB/SOCIAL ###
+
+# chrome
+alt + w; c
+        google-chrome-stable
+# firefox
+alt + w; f
+        firefox
+# discord
+alt + w; d
+    discord-canary
+# telegram
+alt + w; t
+    telegram-desktop
+
+
+### GAMES ###
+
+# steam
+alt + g; s
+        steam
+# multimc
+alt + g; m
+        multimc
+
+### MUSIC ###
+
+# spotify
+alt + m; s
+        spotify
+
+# foobar2000
+alt + m; f
+        bash && /home/kio/.wine/drive_c/Program\ Files/foobar2000/foobar2000.exe
 
 ### VOLUME ###
 
-# inc. vol by 1%
+# inc. vol by 2%
 alt + period
-	pactl set-sink-volume @DEFAULT_SINK@ +1%
-# inc. vol by 5%
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+# inc. vol by 10%
 alt + shift + period
-	pactl set-sink-volume @DEFAULT_SINK@ +5%
-# lower vol by 1%
+	pactl set-sink-volume @DEFAULT_SINK@ +10%
+# lower vol by 2%
 alt + comma
-	pactl set-sink-volume @DEFAULT_SINK@ -1%
-# lower vol by 5%
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+# lower vol by 10%
 alt + shift + comma
-	pactl set-sink-volume @DEFAULT_SINK@ -5%
+	pactl set-sink-volume @DEFAULT_SINK@ -10%
 # mute vol
 alt + slash 
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ### BSPWM HOTKEYS ###
 
-# quit/restart bspwm
-super + shift + {q,r}
-	bspc {quit,wm -r}
-
-# close and kill
+# close and kill selected node
 super + q
 	bspc node -c
 
@@ -123,7 +154,6 @@ super + y
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
-
 
 ### STATE/FLAGS ###
 
@@ -187,6 +217,7 @@ super + ctrl + shift + space
 
 
 ### MOVE/RESIZE ###
+
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
