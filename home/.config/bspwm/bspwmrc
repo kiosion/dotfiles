@@ -13,8 +13,6 @@
 xrandr --auto &
 nitrogen --restore &
 sxhkd &
-#/usr/bin/gnome-keyring-daemon --start --daemonize --components=secrets &
-eval $(gnome-keyring-daemon --start) && export SSH_AUTH_SOCK &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom --experimental-backend &
 $HOME/.config/polybar/launch.sh &
@@ -32,7 +30,7 @@ xsetroot -cursor_name left_ptr
 ##xrandr --output DP-4 --mode 3440x1440 --rate 120
 
 ## WORKSPACES ##
-bspc monitor DP-4 -d 1 2 3 4 5 6 7
+bspc monitor DP-4 -d 1 2 3 4 5 6 7 8 9 10
 
 ### COLORS ###
 bspc config normal_border_color		"#f1e8fc"

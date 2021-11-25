@@ -50,6 +50,7 @@ set -g __fish_git_prompt_color_branch_end     white
 set -g __fish_git_prompt_color_branch         bryellow
 
 # cmd aliases
+alias neofetch "neofetch --ascii_distro arch_old"
 alias btw "neofetch"
 alias l "ls -l"
 alias la "ls -la"
