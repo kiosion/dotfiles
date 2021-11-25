@@ -262,7 +262,7 @@ label-margin-right = 14
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
-exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: Headphones" --sink-nickname "alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7HZUXY16047AA-00.analog-stereo: Scarlett Solo" listen
+exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: MOTU M2" listen
 
 click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-sink
 click-left = pulseaudio-control togmute
