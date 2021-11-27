@@ -38,7 +38,7 @@ Along with all that, there's config files for a bunch of programs I use regularl
 
 ## Installation
 
-Please note, this script is intended for a fresh install on specifically my computer and will overwrite files, as well as implement my grub config. Customize it first and use caution if you're running it under an already-configured installation.
+Please note, this script is intended for specifically my computer and will overwrite files as well as implement my grub and fstab configs. Customize it first and use caution if running under an already-configured install.
 
 Run:
 ```
