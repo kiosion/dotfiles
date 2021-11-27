@@ -1,23 +1,40 @@
 ## Dotfiles
 
-Dotfiles are how you personalize your system and programs, these are mine! I uploaded my most common config files here both to use when distro-hopping and in case anyone wanted to use my configs as starting points :)
+Dotfiles are how you personalize your system and programs, typically prefaced with a '.' and hidden by default. I uploaded my most common config files and scripts here both to use when distro-hopping, and in case anyone wanted to use my configs as starting points :)
 
 <img src="img.png"></img>[^1]
 
 
 ## What's inside
 
-A *lot*. Check out the file browser above to see what parts of my config may work for you.
+- [My DE config](#my-de-config)
+- [System files](#system-files)
+- [Scripts](#scripts)
+- [Themes](#themes)
+- [Program configs](#program-configs)
 
-## Components
-I've tried to split this repo into individual components, to make it easier on myself to install, and to make it more modular for customising.
+### My DE config
+Currently, I don't use a DE as such, but simply use a tiling WM (window manager) plus a hotkey daemon and status bar. 
+#### [bspwm](https://github.com/baskerville/bspwm)
+My current WM is bspwm, however I plan on switching to [XMonad](https://github.com/xmonad/xmonad) and will include those config files here as well once I do!
 
-    bin/: Anything in bin/ will be added to $PATH and be made available everywhere.
-    home/: Various files from my home directory
-    misc/: Some subdirectories containing misc system files.
-    system/: System files... grub, my fstab, etc
-    pkgs/pkgs: Output of `paru -Q`, to be installed automatically after paru's built.
-    */: Individual programs / components to be installed using their install.sh files.
+#### [sxhkd](https://github.com/baskerville/sxhkd)
+The second bit of my desktop configuration is my hotkey daemon of choice, sxhkd.
+
+#### [polybar](https://github.com/polybar/polybar)
+For my status bar / virtual desktop switcher I currently use the versitile & minimal Polybar, along with some  scripts and helpers written for it.
+
+### System files
+Included here are also various system files for specifically my computer - Stuff like my GRUB config, tweaks to various systemd processes, my fstab configuration, etc.
+
+### Scripts
+I've also included a bunch of quality-of-life scripts and helpers I've written for various functions. From things like a volume widget for [Polybar](https://github.com/polybar/polybar) to my fullscreen [Rofi](https://github.com/davatorium/rofi) theme.
+
+### Themes
+Themes I've written for Polybar, bspwm, and other UI stuff.
+
+### Program configs
+Along with all that, there's config files for a bunch of programs I use regularly - Stuff like my Visual Studio Code dotfiles, my Chrome flags setup, Nemo configuration, etc.
 
 ## Installation
 
