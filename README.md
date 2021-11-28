@@ -14,7 +14,7 @@ Dotfiles are how you personalize your system and programs, typically prefaced wi
 - [Program configs](#program-configs)
 
 ### My DE config
-Currently, I don't use a DE as such, but simply use a tiling WM (window manager) plus a hotkey daemon and status bar. 
+Currently, I don't use a desktop environment, just a tiling WM plus a hotkey daemon and status bar. 
 #### [bspwm](https://github.com/baskerville/bspwm)
 My current WM is bspwm, however I plan on switching to [XMonad](https://github.com/xmonad/xmonad) and will include those config files here as well once I do!
 
@@ -23,6 +23,9 @@ The second bit of my desktop configuration is my hotkey daemon of choice, sxhkd.
 
 #### [polybar](https://github.com/polybar/polybar)
 For my status bar / virtual desktop switcher I currently use the versitile & minimal Polybar, along with some  scripts and helpers written for it.
+
+#### [nitrogen](https://github.com/l3ib/nitrogen)
+I use nitrogen as a simple program to set my desktop wallpaper. No config required and super easy to use :)
 
 ### System files
 Included here are also various system files for specifically my computer - Stuff like my GRUB config, tweaks to various systemd processes, my fstab configuration, etc.
