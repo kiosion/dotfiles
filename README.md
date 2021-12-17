@@ -25,7 +25,7 @@ The second bit of my desktop configuration is my hotkey daemon of choice, sxhkd.
 For my status bar / virtual desktop switcher I currently use the versitile & minimal Polybar, along with some  scripts and helpers written for it.
 
 #### [nitrogen](https://github.com/l3ib/nitrogen)
-I use nitrogen as a simple program to set my desktop wallpaper. No config required and super easy to use :)
+I use nitrogen to set my desktop wallpaper. No config required and super easy to use :)
 
 ### System files
 Included here are also various system files for specifically my computer - Stuff like my GRUB config, tweaks to various systemd processes, my fstab configuration, etc.
