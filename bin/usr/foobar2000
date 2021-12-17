@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd ~/.wine/drive_c/Program\ Files/foobar2000/
-./foobar2000.exe & disown

@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-source /opt/Adobe/Adobe_Substance_3D_Painter/
-exec /opt/Adobe/Adobe_Substance_3D_Painter/'Adobe Substance 3D Painter' &
