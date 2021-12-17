@@ -3,7 +3,7 @@
 Dotfiles are how you personalize your system and programs, typically prefaced with a '.' and hidden by default. I uploaded my most common config files and scripts here both to use when distro-hopping, and in case anyone wanted to use my configs as starting points :)
 
 <img src="img.png"></img>[^1]
-
+ 
 
 ## What's inside
 
