@@ -63,6 +63,7 @@ alias yeet "paru -R"
 alias img "tiv -a -r 0.5"
 alias xmr "xmrig --donate-level 2 -o xmr-us-east1.nanopool.org:14433 -u 47z353DVtHkGTamcj7KYPtPsuCn481HAbL3uR2PLgxdQ2QYYJuwYmHcaQVRiFbGnaxDU2jKZTyMr15dx2HEuYhP471jsioW --tls --coin monero"
 alias handbrake "hbc"
+alias python "python3"
 
 # add vue to path
 set -x PATH ~/.npm-global/bin:$PATH

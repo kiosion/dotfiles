@@ -22,7 +22,7 @@ screencloud -c &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
-/home/kio/fixmouse.sh &
+/usr/bin/fixmouse &
 
 ### MONITORS ###
 

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# quit bspwm
+bspc quit
+
+# quit xorg and xserver
+pkill -15 Xorg
+pkill -15 Xserver
+pkill -15 Xsel
+
+# kill clipmenud
+pkill -15 clipmenud
+
+# switch to TTY1 login, not working for some reason...
+exit

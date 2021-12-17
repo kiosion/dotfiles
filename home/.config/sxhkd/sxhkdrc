@@ -17,7 +17,8 @@ super + l
 	$HOME/.config/sxhkd/screen_lock.sh
 # screenshot
 alt + Escape
-	screencloud --area
+        flameshot gui
+#	screencloud --area
 # rofi
 super + @Return
 	rofi -fullscreen -show run
