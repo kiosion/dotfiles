@@ -13,8 +13,8 @@
 ; polybar config
 
 [colors]
-#background = #000000
-background = #E6282a36
+background = #000000
+;background = #E6282a36
 background-alt = #44475a
 foreground = #f8f8f2
 foreground-alt = #adadad
@@ -32,10 +32,14 @@ yellow = #f1fa8c
 
 [bar/wide]
 monitor = DP-4 
-width = 98.7%
-height = 26
-offset-x = 0.65% 
-offset-y = 1.25%
+;width = 98.7%
+width = 100%
+;height = 26
+height = 28
+;offset-x = 0.65% 
+offset-x = 0%
+;offset-y = 1.25%
+offset-y = 0%
 fixed-center = true 
 ;bottom = true
 
@@ -48,8 +52,8 @@ line-color = #5761ee
 radius-top = 0
 radius-bottom = 0
 
-border-size = 2
-border-color = #CCbe92fc
+;border-size = 2
+;border-color = #CCbe92fc
 
 padding-left = 0
 padding-right = 1
@@ -65,10 +69,11 @@ modules-left = bspwm xwindow
 modules-center = date
 modules-right = xkeyboard cpu temperature memory upt pulseaudio-control
 
-tray-position = center
+tray-position = right
 tray-padding = 2
-tray-detached = true
-tray-offset-x = 1640
+tray-padding-right = 2
+;tray-detached = true
+;tray-offset-x = 1640
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -91,8 +96,8 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label-indicator-padding = 1
 label-indicator-margin = 0
-label-indicator-background = ${colors.purple-alt}
-#label-indicator-underline = ${colors.primary}
+;label-indicator-background = ${colors.purple-alt}
+label-indicator-underline = ${colors.purple-alt}
 
 [module/filesystem]
 type = internal/fs
@@ -116,14 +121,14 @@ ws-icon-4 = 5;五
 ws-icon-5 = 6;六
 ws-icon-6 = 7;七
 ws-icon-7 = 8;八
-ws-icon-8 = 9;九
-ws-icon-9 = 10;十
+;ws-icon-8 = 9;九
+;ws-icon-9 = 10;十
 
 wd-icon-0-font = 2
 
 label-focused = %icon% 
-#label-focused-underline= ${colors.primary}
-label-focused-background = ${colors.purple-alt}
+label-focused-underline= ${colors.purple-alt}
+;label-focused-background = ${colors.purple-alt}
 label-focused-padding = 2
 
 label-occupied = %icon%
@@ -208,7 +213,6 @@ format-prefix = "アップタイム "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/upt.sh
 ;format-underline = #5761ee
-
 *-font = 1
 
 [module/wlan]
@@ -258,11 +262,11 @@ type = custom/script
 tail = true
 label-padding = 0
 label-foreground = ${colors.foreground}
-label-margin-right = 14
+label-margin-right = 1
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
-exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: MOTU M2" listen
+exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.iec958-stereo: Speakers" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: MOTU M2" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Valve Index" listen
 
 click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-sink
 click-left = pulseaudio-control togmute
@@ -274,7 +278,6 @@ format-prefix = "ボリューム "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #5761ee
-
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -389,7 +392,7 @@ compositing-border = over
 pseudo-transparency = true
 
 [global/wm]
-margin-top = 2
-margin-bottom = 2
-
+margin-top = 0
+margin-bottom = 0
+wm-restack = bspwm 
 ; vim:ft=dosini

@@ -30,7 +30,7 @@ xsetroot -cursor_name left_ptr
 ##xrandr --output DP-4 --mode 3440x1440 --rate 120
 
 ## WORKSPACES ##
-bspc monitor DP-4 -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor DP-4 -d 1 2 3 4 5 6 7 8
 
 ### COLORS ###
 bspc config normal_border_color		"#f1e8fc"
@@ -54,6 +54,7 @@ bspc rule -a foobar2000 state=floating
 bspc rule -a foobar2000.exe state=floating
 bspc rule -a wine state=floating
 bspc rule -a multimc state=floating
+bspc rule -a Nemo state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &
