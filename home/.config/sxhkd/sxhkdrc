@@ -73,6 +73,7 @@ alt + c; b
 # photoshop
 alt + c; p
     photoshop
+# libre office
 alt + c; l
     libreoffice
 
@@ -95,7 +96,7 @@ alt + w; f
         firefox
 # discord
 alt + w; d
-    discord-canary
+    discord
 # telegram
 alt + w; t
     telegram-desktop
