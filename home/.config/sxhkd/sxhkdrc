@@ -65,16 +65,19 @@ alt + y
 alt + n
     nemo
 
-### CREATIVE ###
+### PRODUCTIVITY ###
 
 # blender
-alt + c; b
+alt + p; b
     blender
 # photoshop
-alt + c; p
-    photoshop
+alt + p; p
+    adobe-photoshop
+# substance painter
+alt + p; s
+    adobe-substance-painter
 # libre office
-alt + c; l
+alt + p; l
     libreoffice
 
 ### CODE ###
@@ -82,10 +85,11 @@ alt + c; l
 # visual studio code
 alt + c; v
     code
-# intellij idea ultimate
+# jetbrains intellij idea ultimate
 alt + c; i
-    wmname LG3D && /usr/bin/intellij-idea-ultimate-edition
-
+    wmname LG3D && intellij-idea-ultimate-edition
+# jetbrains pycharm
+    pycharm
 ### WEB/SOCIAL ###
 
 # chrome
