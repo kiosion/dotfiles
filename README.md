@@ -2,7 +2,8 @@
 
 Dotfiles are how you personalize your system and programs, typically prefaced with a '.' and hidden by default. I uploaded my most common config files and scripts here both to use when distro-hopping, and in case anyone wanted to use my configs as starting points :)
 
-<img src="img.png"></img>[^1]
+<img src="img.png"></img>
+<img src="img2.png"></img>[^1]
  
 
 ## What's inside
@@ -41,7 +42,7 @@ Along with all that, there's config files for a bunch of programs I use regularl
 
 ## Installation
 
-Please note, this script is intended for specifically my computer and will overwrite files as well as implement my grub and fstab configs. Customize it first and use caution if running under an already-configured install.
+This script is intended for my pc and *will* overwrite files as well as implement my grub and fstab configs, etc. Customize it first and use caution if running under an already-configured install.
 
 Run:
 ```
@@ -50,5 +51,5 @@ cd ~/.dotfiles && \
 chmod +x script/install && \
 sudo script/install
 ```
-*( Work in progress, for now, you can simply manually move files into place :p )*
-[^1]: Wallpaper by the talented [Astero](https://www.artstation.com/pranetoid).
+*( Work in progress, for now, just manually move files into place :p )*
+[^1]: Wallpapers by the talented [Astero](https://www.artstation.com/pranetoid).
