@@ -6,7 +6,7 @@ Dotfiles are how you personalize your system and programs, typically prefaced wi
 <img src="img2.png"></img>[^1]
  
 
-## What's inside
+## What's inside (linux)
 
 - [My DE config](#my-de-config)
 - [System files](#system-files)
@@ -17,7 +17,7 @@ Dotfiles are how you personalize your system and programs, typically prefaced wi
 ### My DE config
 Currently, I don't use a desktop environment, just a tiling WM plus a hotkey daemon and status bar. 
 #### [bspwm](https://github.com/baskerville/bspwm)
-My current window manager is bspwm, however I plan on eventually switching to [XMonad](https://github.com/xmonad/xmonad) and will include those config files here as well once I do!
+My current window manager is bspwm, however I plan on switching soon to [Hypr](https://github.com/vaxerski/Hypr) and will include its config files here as well once I do!
 
 #### [sxhkd](https://github.com/baskerville/sxhkd)
 The second bit of my desktop configuration is my hotkey daemon of choice, sxhkd.
@@ -40,9 +40,12 @@ Themes I've written for Polybar, bspwm, and other UI stuff.
 ### Program configs
 Along with all that, there's config files for a bunch of programs I use regularly - Stuff like my Visual Studio Code dotfiles, my Chrome flags setup, Nemo configuration, etc.
 
+## What's inside (macos)
+------
+
 ## Installation
 
-This script is intended for my pc and *will* overwrite files as well as implement my grub and fstab configs, etc. Customize it first and use caution if running under an already-configured install.
+This script is intended for my desktop pc and *will* overwrite files as well as implement my grub and fstab configs, etc. Customize it first and use caution if running under an already-configured install.
 
 Run:
 ```
