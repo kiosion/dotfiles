@@ -13,7 +13,7 @@
 ### SYSTEM ###
 
 # lock screen
-super + l
+super + Escape
 	$HOME/.config/sxhkd/screen_lock.sh
 # screenshot
 alt + Escape
@@ -90,6 +90,10 @@ alt + c; i
     wmname LG3D && intellij-idea-ultimate-edition
 # jetbrains pycharm
     pycharm
+# jetbrains webstorm
+alt + c; w
+    webstorm
+
 ### WEB/SOCIAL ###
 
 # chrome

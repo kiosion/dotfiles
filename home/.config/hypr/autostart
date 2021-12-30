@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#echo '## User Autostart'
+
+## Services
+
+#xrandr --auto &
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec xsetroot -cursor_name left_ptr &
+exec /usr/bin/fixmouse &
+
+## Applications
+
+exec picom --experimental-backends &
+exec nitrogen --restore &
+exec /home/kio/.config/polybar/launch.sh &
+exec clipmenud &
+#exec nm-applet &
+exec alacritty

@@ -14,8 +14,9 @@ xrandr --auto &
 nitrogen --restore &
 sxhkd &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-picom --experimental-backend &
-$HOME/.config/polybar/launch.sh &
+picom &
+# picom --experimental-backend &
+/home/kio/.config/polybar/launch.sh &
 clipmenud &
 nm-applet &
 screencloud -c &
@@ -39,22 +40,18 @@ bspc config presel_feedback_color	"#bd93f9"
 
 ### BORDERS ###
 bspc config border_width	2
-bspc config window_gap		18
+bspc config window_gap		20
 
 ### RULES ###
-bspc rule -a Deadbeef state=floating
 bspc rule -a Nitrogen state=floating
-bspc rule -a Galculator state=floating
 bspc rule -a mpv state=floating
 bspc rule -a Pavucontrol state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
 bspc rule -a vlc state=floating
 bspc rule -a foobar2000 state=floating
 bspc rule -a foobar2000.exe state=floating
 bspc rule -a wine state=floating
 bspc rule -a multimc state=floating
-bspc rule -a Nemo state=floating
+#bspc rule -a Nemo state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &

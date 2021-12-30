@@ -48,4 +48,6 @@ export GNOME_KEYRING_PID
 
 # start bspwm
 exec bspwm
+# start hypr
+#exec Hypr
 #exec dbus-launch --sh-syntax --exit-with-session bspwm
