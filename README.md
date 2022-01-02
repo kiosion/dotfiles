@@ -1,6 +1,6 @@
 ## Dotfiles
 
-Dotfiles are how you personalize your system and programs, typically prefaced with a '.' and hidden by default. I uploaded my most common config files and scripts here both to use when distro-hopping, and in case anyone wanted to use my configs as starting points :)
+Dotfiles are used in personalizing your system and programs, here are mine :)
 
 <img src="img.png"></img>
 <img src="img2.png"></img>[^1]
@@ -41,7 +41,9 @@ Themes I've written for Polybar, bspwm, and other UI stuff.
 Along with all that, there's config files for a bunch of programs I use regularly - Stuff like my Visual Studio Code dotfiles, my Chrome flags setup, Nemo configuration, etc.
 
 ## What's inside (macos)
-------
+
+uhhh #todo
+
 
 ## Installation
 
