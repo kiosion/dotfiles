@@ -20,6 +20,7 @@ picom &
 clipmenud &
 nm-applet &
 screencloud -c &
+alacritty &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
@@ -28,7 +29,7 @@ xsetroot -cursor_name left_ptr
 ### MONITORS ###
 
 ## Main ultrawide
-##xrandr --output DP-4 --mode 3440x1440 --rate 120
+xrandr --output DP-4 --mode 3440x1440 --rate 120
 
 ## WORKSPACES ##
 bspc monitor DP-4 -d 1 2 3 4 5 6 7 8
