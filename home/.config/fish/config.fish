@@ -55,7 +55,7 @@ set -g __fish_git_prompt_color_branch_end   white
 set -g __fish_git_prompt_color_branch       bryellow
 
 # cmd aliases
-alias neofetch "neofetch --ascii_distro arch_old"
+alias neofetch "neofetch --ascii_distro arch --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C"
 alias btw "neofetch"
 alias l "ls -l"
 alias la "ls -la"
@@ -69,8 +69,12 @@ alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
 alias python "python3"
 alias pf "pfetch"
+
 # this seems stupid asf but is to leave additional padding at the top. dont @ me.
 alias clear "clear && echo ''"
+
+#yiffer-dl
+alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 
 # add vue to path
 set -x PATH ~/.npm-global/bin:$PATH
