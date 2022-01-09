@@ -10,7 +10,7 @@
 ##        _\/////////___\//////////__\///_____________\///__\///_____\///___\///___\///__\///_____________\////////__
 ##
 ### AUTOSTART ###
-#xrandr --auto &
+xrandr --auto &
 nitrogen --restore &
 sxhkd &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -20,7 +20,7 @@ picom &
 clipmenud &
 nm-applet &
 screencloud -c &
-alacritty &
+#alacritty &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
