@@ -5,7 +5,8 @@ ln -s .config/*/ ~/*/
 
 # Xorg stuff
 ln -s .xinitrc ~/.xinitrc
-ln -s .xresources ~/.xresources
+ln -s .Xresources ~/.Xresources
+ln -s .Xauthority ~/.Xauthority
 
 # Vim
 ln -s vim/.vim/* ~/.vim/*
