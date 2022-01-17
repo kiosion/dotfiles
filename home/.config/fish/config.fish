@@ -70,6 +70,9 @@ alias handbrake "hbc"
 alias python "python3"
 alias pf "pfetch"
 
+#xmrig
+alias xmrigrun "~/.dotfiles/home/scripts/xmrigrun"
+
 # this seems stupid asf but is to leave additional padding at the top. dont @ me.
 alias clear "clear && echo ''"
 
