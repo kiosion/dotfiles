@@ -41,7 +41,7 @@ bspc config presel_feedback_color	"#bd93f9"
 
 ### BORDERS ###
 bspc config border_width	2
-bspc config window_gap		20
+bspc config window_gap		18
 
 ### RULES ###
 bspc rule -a Nitrogen state=floating
