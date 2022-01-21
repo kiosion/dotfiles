@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Mount SMB shares to proper locations
+sudo mount -t cifs //volta/Plex /mnt/volta/plex -o credentials=/etc/smbcreds,gid=984,uid=1000 && \
+sudo mount -t cifs //volta/Lightspeed /mnt/volta/lightspeed -o credentials=/etc/smbcred,gid=984,uid=1000 && \
+sudo mount -t cifs //volta/Dropbox /mnt/volta/Dropbox -o credentials=/etc/smbcreds,gid=984,uid=1000 && \
+sudo mount -t cifs //volta/Backups /mnt/volta/Backups -o credentials=/etc/smbcreds,gid=984,uid=1000 && \
+echo "Shares mounted to /mnt/volta/* successfully." || \
+echo "One or more shares failed to mount."
