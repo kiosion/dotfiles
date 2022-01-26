@@ -19,6 +19,9 @@ fish_ssh_agent
     #echo "" && echo "Welcome, "(whoami)"! | Arch "(uname -sr)"" && echo ""
 #end
 
+# set starship config location
+set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
+
 # enable starship theme
 starship init fish | source
 
