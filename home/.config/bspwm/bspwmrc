@@ -45,14 +45,14 @@ bspc config window_gap		18
 
 ### RULES ###
 bspc rule -a Nitrogen state=floating
-bspc rule -a mpv state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a vlc state=floating
 bspc rule -a foobar2000 state=floating
 bspc rule -a foobar2000.exe state=floating
 bspc rule -a wine state=floating
-bspc rule -a multimc state=floating
-#bspc rule -a Nemo state=floating
+bspc rule -a MultiMC state=floating
+bspc rule -a Nemo state=floating
+bspc rule -a firewall-config state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &

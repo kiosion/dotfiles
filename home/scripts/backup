@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Create tarball gzip archive of home dir
+cd /home/kio/
+tar -zcvf home-backup.tar.gz \
+--exclude=./home.tar.gz \
+--exclude=./.cache \
+--exclude=./.local/share/Steam \
+--exclude=./.steam \
+--exclude=./.local/share/Trash \
+--exclude=./.gradle \
+--exclude=./.paradoxlauncher \
+--exclude=./.npm \
+--exclude=./.mysql \
+--exclude=./.jdks \
+--exclude=./.codetogether \
+--exclude=./vmware \
+--exclude=./tesla \
+--exclude=./kepler \
+--exclude=./Nextcloud \
+--exclude=./.Wurst\ encryption \
+--exclude=./.tabnine \
+--exclude=./.npm-global \
+--exclude=./.minecraft \
+--exclude=./.local/share/vulkan \
+--exclude=./.local/share/unity3d \
+--exclude=./.local/share/UnityHub \
+--exclude=./.hunter \
+--exclude=./.local/share/JetBrains \
+--exclude=./.local/share/multimc \
+--exclude=./go \
+--exclude=./.dotnet \
+--exclude=./.cmake \
+--exclude=./.cargo \
+--exclude=./.audacity-data \
+.
+
+# Move to backup SMB share, rename previous
+# TODO
+echo "Done!"
