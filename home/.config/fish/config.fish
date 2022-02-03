@@ -25,21 +25,26 @@ set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
 # enable starship theme
 starship init fish | source
 
-# cmd aliases
-alias neofetch "neofetch --ascii_distro arch --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C"
+# aliases
+alias neofetch "neofetch --ascii_distro arch_old --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C --block_range -1 -1"
 alias btw "neofetch"
 alias l "ls -l"
 alias la "ls -la"
-alias wm-s "wmname LG3D"
-alias wm-u "wmname bspwm"
+alias md "mkdir -p"
+alias wm-l "wmname LG3D"
+alias wm-b "wmname bspwm"
 alias virsh "virsh --connect qemu:///system"
-alias fucking "sudo"
-alias gib "paru -S"
-alias yeet "paru -R"
 alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
-alias python "python3"
 alias pf "pfetch"
+alias py "python"
+
+# paru
+alias gib "paru -S"
+alias yeet "paru -R"
+alias yeet-deps "paru -Rscn"
+alias update "paru -Syu"
+alias update-aur "paru -Sua"
 
 # xmrig
 alias xmrigrun "~/.dotfiles/home/scripts/xmrigrun"
