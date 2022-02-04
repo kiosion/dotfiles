@@ -10,17 +10,16 @@
 ##        _\/////////___\//////////__\///_____________\///__\///_____\///___\///___\///__\///_____________\////////__
 ##
 ### AUTOSTART ###
-xrandr --auto &
+#xrandr --auto
 nitrogen --restore &
 sxhkd &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom &
-# picom --experimental-backend &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /home/kio/.config/polybar/launch.sh &
 clipmenud &
 nm-applet &
 screencloud -c &
-#alacritty &
+alacritty &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
@@ -28,8 +27,8 @@ xsetroot -cursor_name left_ptr
 
 ### MONITORS ###
 
-## Main ultrawide
-xrandr --output DP-4 --mode 3440x1440 --rate 120
+## MAIN ##
+xrandr --auto DP-4 --mode 3440x1440 --rate 120
 
 ## WORKSPACES ##
 bspc monitor DP-4 -d 1 2 3 4 5 6 7 8
@@ -51,6 +50,7 @@ bspc rule -a foobar2000 state=floating
 bspc rule -a foobar2000.exe state=floating
 bspc rule -a wine state=floating
 bspc rule -a MultiMC state=floating
+bspc rule -a multimc state=floating
 bspc rule -a Nemo state=floating
 bspc rule -a firewall-config state=floating
 
@@ -59,6 +59,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config split_ratio		0.50
 
+## POINTER ACTIONS ##
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner

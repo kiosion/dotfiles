@@ -39,6 +39,9 @@ alias handbrake "hbc"
 alias pf "pfetch"
 alias py "python"
 
+# yt-dlp
+alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
+
 # paru
 alias gib "paru -S"
 alias yeet "paru -R"
