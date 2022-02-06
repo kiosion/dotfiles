@@ -37,6 +37,7 @@ alias virsh "virsh --connect qemu:///system"
 alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
 alias pf "pfetch"
+alias python3 "python"
 alias py "python"
 
 # yt-dlp

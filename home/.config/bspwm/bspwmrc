@@ -53,6 +53,8 @@ bspc rule -a MultiMC state=floating
 bspc rule -a multimc state=floating
 bspc rule -a Nemo state=floating
 bspc rule -a firewall-config state=floating
+bspc rule -a Emacs state=tiled
+bspc rule -a Doom Emacs state=tiled
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &
