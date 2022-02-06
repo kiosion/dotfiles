@@ -22,7 +22,7 @@ alt + Escape
 #	screencloud --area
 # rofi
 super + @Return
-	rofi -fullscreen -show run
+	rofi -fullscreen -show run -icon-theme "Papirus-Dark" -show-icons
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"

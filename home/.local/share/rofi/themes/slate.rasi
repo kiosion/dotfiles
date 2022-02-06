@@ -39,7 +39,18 @@ listview {
 
 element {
   border: 0 0 1px 0;
-  padding: 2%;
+  padding: 1em 2em 1em 2em;
+}
+
+element-text {
+  padding: 0.2em 0 0 0;
+  background-color: transparent;
+}
+
+element-icon {
+  padding: 0 1em 0 0;
+  size: 1.5em;
+  background-color: transparent;
 }
 
 selected {
@@ -50,4 +61,8 @@ selected {
 element selected {
   background-color: #2e343f;
   padding: 0;
+}
+
+element-text selected {
+  color: #bd93f9;
 }
