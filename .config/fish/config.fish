@@ -56,9 +56,6 @@ alias xmrigrun "~/.dotfiles/home/scripts/xmrigrun"
 # yiffer-dl
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 
-# thefuck
-thefuck --alias | source
-
 # vue
 set -x PATH ~/.npm-global/bin:$PATH
 
