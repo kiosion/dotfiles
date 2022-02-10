@@ -1,60 +1,60 @@
 ## Dotfiles
 
-Dotfiles are used in personalizing your system and programs, here are mine :)
+Dotfiles are hidden files prefaced by '.' and used in personalizing your system and programs; here are mine :)
 
-<img src="img.png"></img>
-<img src="img2.png"></img>[^1]
- 
+## What's inside (Linux)
 
-## What's inside (linux)
+<img src="img.png"></img>[^1]
 
-- [My DE config](#my-de-config)
+- [DE config](#de-config)
 - [System files](#system-files)
 - [Scripts](#scripts)
 - [Themes](#themes)
 - [Program configs](#program-configs)
 
-### My DE config
-Currently, I don't use a desktop environment, just a tiling WM plus a hotkey daemon and status bar. 
+### DE config
+Instead of a desktop environment, I just use a tiling WM, hotkey daemon, and status bar. This way, there's less bloat and things are easier to tinker with :) 
+
 #### [bspwm](https://github.com/baskerville/bspwm)
-My current window manager is bspwm, however I plan on switching soon to [Hypr](https://github.com/vaxerski/Hypr) and will include its config files here as well once I do!
+My current window manager is bspwm; I've tried others such as [Hypr](https://github.com/vaxerski/Hypr), but I've found bspwm to be the most stable and open to configuration.
 
 #### [sxhkd](https://github.com/baskerville/sxhkd)
-The second bit of my desktop configuration is my hotkey daemon of choice, sxhkd.
+My hotkey daemon of choice is sxhkd, although there are many others.
+
+#### [alacritty](https://github.com/alacritty/alacritty)
+Alacritty is my favourite terminal emulator; I use it for its simplicity and how well it works under bspwm (not having an ugly title bar / status bar, for one).
 
 #### [polybar](https://github.com/polybar/polybar)
-For my status bar / virtual desktop switcher I currently use Polybar, along with some scripts I've written for it.
+For my status bar / virtual desktop switcher I use Polybar along with some scripts I've written for it.
 
 #### [nitrogen](https://github.com/l3ib/nitrogen)
-I use Nitrogen to set my desktop wallpaper. No configuration required and super easy to use :)
+I use Nitrogen to set my desktop wallpaper in Xorg
 
 ### System files
-Included here are also various system files for my pc specifically - Stuff like my GRUB config, tweaks to various systemd processes, fstab configuration, etc.
+Included here are also various system files for my pc - Stuff like my GRUB config, tweaks to systemd processes, and fstab.
 
 ### Scripts
-I've also included a bunch of quality-of-life scripts and helpers I've written. Things like a volume widget for [Polybar](https://github.com/polybar/polybar) and my fullscreen [Rofi](https://github.com/davatorium/rofi) theme.
+I've also included a bunch of quality-of-life scripts / helpers I've written. Things like a volume widget for [Polybar](https://github.com/polybar/polybar), a logout script for when using Xorg without a greeter, and bash scripts to automate system backups and restores.
 
 ### Themes
-Themes I've written for Polybar, bspwm, and other UI stuff.
+My themes for Polybar, bspwm, and other UI stuff.
 
 ### Program configs
-Along with all that, there's config files for a bunch of programs I use regularly - Stuff like my Visual Studio Code dotfiles, my Chrome flags setup, Nemo configuration, etc.
+Along with all that, there's config files for a bunch of programs I use regularly - Stuff like my VSC dotfiles, Chrome flags and theme, and Nemo configuration.
 
-## What's inside (macos)
+## What's inside (MacOS)
 
-uhhh #todo
+<img src="img2.png"></img>
 
+- [WM config](#wm-config)
+- [Scripts](#mac-scripts)
+- [Program configs](#mac-program-configs)
+
+Still #TODO :)
 
 ## Installation
 
-This script is intended for my desktop pc and *will* overwrite files as well as implement my grub and fstab configs, etc. Customize it first and use caution if running under an already-configured install.
+The install script included is intended for my pc and *will* overwrite files as well as implement my grub and fstab configs. If there are bits of my config you like, clone the repo and manually move files, instead of using the install script.
 
-Run:
-```
-git clone https://github.com/kiosion/dotfiles.git ~/.dotfiles && \
-cd ~/.dotfiles && \
-chmod +x script/install && \
-sudo script/install
-```
-*( Work in progress, for now, just manually move files into place :p )*
+
 [^1]: Wallpapers by the talented [Astero](https://www.artstation.com/pranetoid).
