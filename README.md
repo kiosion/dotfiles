@@ -34,7 +34,13 @@ I use Nitrogen to set my desktop wallpaper in Xorg
 Included here are also various system files for my pc - Stuff like my GRUB config, tweaks to systemd processes, and fstab.
 
 ### Scripts
-I've also included a bunch of quality-of-life scripts / helpers I've written. Things like a volume widget for [Polybar](https://github.com/polybar/polybar), a logout script for when using Xorg without a greeter, and bash scripts to automate system backups and restores.
+I've also included some basic scripts / helpers I've written.
+
+#### [backup.sh](https://github.com/kiosion/dotfiles/blob/master/scripts/backup)
+This is a script I wrote to automate backing up my home directory, compressing it to a tarball using gzip, then moving it to my archival server using rsync. It uses pv in order to display a progress bar throughout this.
+
+#### [logout.sh](https://github.com/kiosion/dotfiles/blob/master/scripts/logout)
+A super-simple script that just kills Xorg and some other processes in order to exit to the TTY, assuming you created your session using Xinit.
 
 ### Themes
 My themes for Polybar, bspwm, and other UI stuff.
