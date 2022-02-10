@@ -1,0 +1,19 @@
+[ConfigDialog]
+DP-4 Height 3440x1440=300
+DP-4 Width 3440x1440=420
+
+[MainWindow]
+DP-4 Height 3440x1440=803
+DP-4 Width 3440x1440=1152
+DP-4 XPosition 3440x1440=220
+DP-4 YPosition 3440x1440=227
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABCMAAAKXAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=16
+
+[Open-with settings]
+CompletionMode=1
+History=alac,nemo

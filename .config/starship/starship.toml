@@ -1,0 +1,26 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+# Username config
+[username]
+show_always = false
+
+# Hostname config
+[hostname]
+ssh_only = true
+format = "[$hostname](green) in "
+disabled = false
+
+# Dir config
+[directory]
+truncation_length = 3
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 🔒"

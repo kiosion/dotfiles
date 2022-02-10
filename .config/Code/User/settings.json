@@ -1,0 +1,44 @@
+{
+    "editor.suggestSelection": "first",
+    "editor.fontLigatures": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.fontFamily": "MonoLisa, 'Fira Code', Consolas, 'Courier New', monospace",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "vsicons.dontShowNewVersionMessage": true,
+    "explorer.confirmDelete": false,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "discord.idleTimeout": 120,
+    "explorer.confirmDragAndDrop": false,
+    "git.enableCommitSigning": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "gitlens.defaultTimeFormat": "H:mm",
+    "workbench.colorTheme": "Dracula Refined",
+    "codetogether.userName": "kio",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "tabnine.experimentalAutoImports": true,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "python": true
+    },
+    "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
+    "discord.lowerDetailsDebugging": "{empty}",
+    "window.menuBarVisibility": "toggle",
+    "editor.mouseWheelZoom": true
+}
