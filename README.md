@@ -3,6 +3,7 @@
   <p>Dotfiles are hidden files prefaced by '.' and used in personalizing your system and programs; here are mine :)</p>
   <p>•&nbsp;<a href="#my-linux-config">Linux</a>&nbsp; •&nbsp;<a href="#my-macos-config">MacOS</a> •&nbsp;<a href="#installation">Install/Clone</a></p>
 </div>
+
 <br>
 <h2 align="center">My Linux config</h2>
 
@@ -53,6 +54,7 @@ My themes for Polybar, bspwm, and other UI stuff.
 ### [Program configs](https://github.com/kiosion/dotfiles/blob/master/.config/)
 Along with all that, there's config files for a bunch of programs I use regularly - Stuff like VSC, Chrome, Nemo, Discord, etc.
 
+<br>
 <h2 align="center">My MacOS config</h2>
 
 <img src="img/macos.png"></img>[^1]
@@ -75,7 +77,12 @@ Shkd is my favourite MacOS hotkey daemon, and is the one I've been using the lon
 ### [Program configs](https://github.com/kiosion/dotfiles/blob/master/.macos/.config/)
 I've also included some various configs / install scripts for programs and utilities I use on MacOS.
 
-## Installation
-The install script included is intended for my pc and *will* overwrite files as well as implement my grub and fstab configs. If there are bits of my config you like, clone the repo and manually move files, instead of using the install script.
+<br>
+<h2 align="center">Installation</h2>
+
+The install script included is intended for my pc and *will* overwrite files as well as implement my fstab and grub. If there are pieces of my configs you like, clone the repo and manually move files into place.
+
+Run: `git clone git@github.com:kiosion/dotfiles.git kio-dotfiles/`
+
 
 [^1]: Wallpapers created by [Astero](https://www.artstation.com/pranetoid).
