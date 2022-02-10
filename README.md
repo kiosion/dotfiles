@@ -4,7 +4,7 @@ Dotfiles are hidden files prefaced by '.' and used in personalizing your system 
 
 ## What's inside (Linux)
 
-<img src="img.png"></img>[^1]
+<img src="img/arch.png"></img>[^1]
 
 - [DE config](#de-config)
 - [System files](#system-files)
@@ -50,7 +50,7 @@ Along with all that, there's config files for a bunch of programs I use regularl
 
 ## What's inside (MacOS)
 
-<img src="img2.png"></img>
+<img src="img/macos.png"></img>
 
 - [WM config](#wm-config)
 - [Scripts](#mac-scripts)
