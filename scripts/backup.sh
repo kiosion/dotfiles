@@ -9,19 +9,21 @@ curDate="$(date +"%d-%m-%Y")"
 # Set dir to backup
 bkDir="/home/kio/"
 
-# Ensure dir doesn't already exist
-if [ -d "${cwd}homeBackup/" ]; then
+# Ensure file doesn't already exist
+if [ -f "${cwd}homeBackup/home-backup.tar.gz" ]; then
     echo ""
-    echo "=> Error: Directory already exists! Aborting..."
+    echo "=> Error: File already exists! Aborting..."
     exit 1
 fi
 
-# Create dir
-echo ""
-echo "=> Creating directory for backup..."
-mkdir -p "${cwd}homeBackup/"
-cd "${cwd}homeBackup/"
-sleep 1
+# Create dir if doesn't exist
+if [ -d "${cwd}homeBackup/" ]; then
+    echo ""
+    echo "=> Creating directory for backup..."
+    mkdir -p "${cwd}homeBackup/"
+    cd "${cwd}homeBackup/"
+    sleep 1
+fi
 
 # Set source size
 size_source=`du -sb --exclude=.cache --exclude=.vscode/* --exclude=.local/share/Trash --exclude=Nextcloud /home/kio/ 2>/dev/null | awk '{print $1}'`
@@ -36,7 +38,7 @@ clear
 
 # Run tar cmd
 echo ""
-tar cf - --ignore-failed-read -P --exclude=/home/kio/.cache --exclude=/home/kio/.local/share/Trash --exclude=Nextcloud /home/kio/ | pv -s ${size_source} -w 80 -n Progress: | gzip > home-backup.tar.gz
+tar cf - --ignore-failed-read -P --exclude=/home/kio/.cache --exclude=/home/kio/.local/share/Trash --exclude=Nextcloud /home/kio/ | pv -s ${size_source} | gzip > home-backup.tar.gz
 
 # When finished creating archive
 clear
@@ -45,20 +47,25 @@ echo "=> Archive creation complete!"
 sleep 1
 
 # Create directory on backup share
+remoteCwd="/mnt/volta/backups/Devices/Galileo/"
+echo ""
 echo "=> Creating destination directory..."
-#mkdir -P /mnt/volta/backups/Devices/Galileo/${curDate}/
-#if []; then
-#    echo ""
-#    echo "=> Error: Destination directory could not be created, aborting..."
-#    exit 1
-#fi
-echo "=> Destination directory created!"
+if [ -d "${remoteCwd}${curDate}/" ]; then
+    echo ""
+    echo "=> Destination directory exists, skipping..."
+fi
+if [ ! -d "${remoteCwd}${curDate}/" ]; then
+echo "=> Creating destination directory..."
+    mkdir -P ${remoteCwd}${curDate}/
+    echo ""
+    echo "=> Destination directory created!"
+fi
 sleep 1
 clear
 
 # Copy file to backup SMB share
 echo ""
-echo "=> Preparing to copy archive file with rsync..."
+echo "=> Preparing to copy archive with rsync..."
 
 # Set source size
 size_source=`du -bs ${cwd}homeBackup/ | sed -r "s/^[^0-9]*([0-9]+).*$/\1/"`
@@ -67,17 +74,15 @@ echo "=> Total to copy: $size_source_gb GB"
 sleep 1
 clear
 # Run rsync cmd
-#rsync -rtDq --ignore-errors ${cwd}/homeBackup/home-backup.tar.gz /mnt/volta/backups/Devices/Galileo/${curDate}/home-backup.tar.gz &
+rsync -rtDq --stats --ignore-errors ${cwd}homeBackup/home-backup.tar.gz ${remoteCwd}${curDate}/home-backup.tar.gz | pv -s ${size_source}
 
-echo "=> Copying archive file with rsync..."
-sleep 1
 clear
 # Show progress
 #while [[ `jobs | grep "rsync"` ]]; do
-	#size_target=`du -bs $cwd/$curDate$bkDir 2>/dev/null | sed -r "s/^[^0-9]*([0-9]+).*$/\1/"`
-  #size_target_gb=`echo $size_target | awk '{print $1/1000/1000/1000}'`
-  #calc_done=`expr 100 \* $size_target / $size_source`
-#	pv -s $size_source -d $(pidof rsync)
+#    size_target=`du -bs $cwd/$curDate$bkDir 2>/dev/null | sed -r "s/^[^0-9]*([0-9]+).*$/\1/"`
+#    size_target_gb=`echo $size_target | awk '{print $1/1000/1000/1000}'`
+#    calc_done=`expr 100 \* $size_target / $size_source`
+#    echo "$"
 #done
 echo ""
 echo "=> Done!"
