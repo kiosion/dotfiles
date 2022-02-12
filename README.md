@@ -80,7 +80,7 @@ Yabai is the tiling window manager I use on MacOS. My current config makes it cl
 Shkd is my favourite MacOS hotkey daemon, and is the one I've been using the longest.
 
 #### ⇒ [ubersicht](http://tracesof.net/uebersicht/)
-I use Ubersicht as my polybar-stand-in on MacOS. Not quite as powerful, but it's still better (I think) than the stock Apple menubar, and looks nicer too :)
+I use Ubersicht plus a modified version of [pecan](https://github.com/zzzeyez/Pecan) as my polybar-stand-in on MacOS. Not quite as powerful, but it's still better-looking (I think) than the stock Apple menubar :)
 
 ### [Program configs](https://github.com/kiosion/dotfiles/blob/master/.macos/.config/)
 I've also included some various configs / install scripts for programs and utilities I use on MacOS.

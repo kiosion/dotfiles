@@ -1,0 +1,277 @@
+/* pecan is a bar for Ubersicht */
+/* written by daniel neemann (@zzzeyez) */
+
+/* import colors */
+@import url(colors.css);
+
+/* import config */
+/* place the included config.css at ~/.config/pecan.css to make your own */
+@import url(pecan.css);
+
+:root {
+  /*this changes xanthia appearance 
+  when pecan is running with no config */
+  --default-xanthia-font-size: 12px;
+  --default-xanthia-font-family: Menlo;
+  --default-alignment-right-xanthia-image: 0px;
+  --default-alignment-left-xanthia-image: auto;
+  --default-height-xanthia-image: calc(
+    var(--height, 36px) - calc(var(--border, 3px) * 2)
+  );
+  --default-margin-top-xanthia: calc(
+    var(--padding-top, 10px) + var(--border, 3px)
+  );
+  --default-margin-horizontal-xanthia: calc(
+    var(--padding-right, 10px) + calc(var(--text-padding, 1ch) * 4) + 14ch +
+      calc(var(--border, 3px) * 3 + var(--default-height-xanthia-image))
+  );
+  --default-margin-top-xanthia-image: var(--default-margin-top-xanthia);
+  --default-margin-horizontal-xanthia-image: calc(
+    var(--padding-right, 10px) + calc(var(--text-padding, 1ch) * 4) + 14ch +
+      calc(var(--border, 3px) * 3)
+  );
+  --default-background-xanthia: var(
+    --background-xanthia,
+    var(--color4, #222)
+  );
+  --default-foreground-xanthia: var(
+    --foreground-xanthia,
+    var(--background, #eee)
+  );
+  --default-border-radius-left-xanthia-image: 0px;
+  --default-border-radius-right-xanthia: 0px;
+  --default-shadow-xanthia: 0px 1px 1px 1px rgba(0, 0, 0, 0.18);
+
+	/*landscape*/
+	--default-height-landscape: calc(
+		var(--height, 36px) - var(--border, 3px) * 2
+	);
+	--default-margin-landscape: calc(
+	var(--padding-top, 10px) + var(--border, 3px)
+	);
+	--default-border-landscape: var(--border, 3px);
+	--default-border-radius-landscape: var(--border-radius-inner, 3px);
+	--default-shadow-landscape: 0px 1px 1px 1px rgba(0, 0, 0, 0.18);
+
+}
+
+/* get monitor width */
+.screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* bar background */
+.pecanbackground {
+  background-color: var(--background-base, NONE);
+  display: block;
+  position: absolute;
+  height: var(--height, 36px);
+  padding: 0px;
+  top: var(--alignment-top, 0);
+  right: 0;
+  bottom: var(--alignment-bottom, auto);
+  left: 0;
+  margin-top: var(--padding-top, 10px);
+  margin-right: var(--padding-right, 10px);
+  margin-bottom: var(--padding-top, 10px);
+  margin-left: var(--padding-left, 10px);
+  opacity: var(--opacity, 1);
+  z-index: -1;
+  box-shadow: var(--shadow, 0px 4px 10px 4px rgba(0, 0, 0, 0.0));
+  border-top-left-radius: var(--border-radius, 4px);
+  border-top-right-radius: var(--border-radius, 4px);
+  border-bottom-right-radius: var(--border-radius, 4px);
+  border-bottom-left-radius: var(--border-radius, 4px);
+}
+
+/* invisible container to align center element */
+.pecanholder {
+  background-color: none;
+  display: inline-block;
+  position: absolute;
+  padding: 0px;
+  height: var(--height, 36px);
+  top: var(--alignment-top, 0);
+  right: 0;
+  bottom: var(--alignment-bottom, auto);
+  left: 0;
+  margin-top: var(--padding-top, 10px);
+  margin-right: var(--padding-right, 10px);
+  margin-bottom: var(--padding-top, 10px);
+  margin-left: var(--padding-left, 10px);
+}
+
+/* workspace indicator -- far left */
+.pecanworkspace {
+  font: var(--font-size, 12px) var(--font, Menlo);
+  color: var(--foreground-workspace, var(--background, #eee));
+  display: inline-block;
+  position: absolute;
+  background-color: var(--background-workspace, var(--color1, #222));
+  opacity: var(--opacity-inner, 1);
+  top: var(--alignment-top, 0);
+  right: auto;
+  bottom: var(--alignment-bottom, auto);
+  left: 0;
+  padding: 0 var(--text-padding, 1ch);
+  margin-top: calc(var(--padding-top, 10px) + var(--border, 3px));
+  margin-bottom: calc(var(--padding-top, 10px) + var(--border, 3px));
+  margin-left: calc(
+	var(--padding-left, 10px) + var(--border, 3px) + var(--landscape-width-total, 0px)
+	);
+  line-height: calc(var(--height, 36px) - calc(var(--border, 3px) * 2));
+  border-top-left-radius: var(--border-radius-inner, 3px);
+  border-top-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-left-radius: var(--border-radius-inner, 3px);
+  box-shadow: var(--shadow-inner, 0px 1px 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+/* load -- 2nd to the left */
+.pecanload {
+  font: var(--font-size, 12px) var(--font, Menlo);
+  color: var(--foreground-load, var(--background, #eee));
+  background-color: var(--background-load, var(--color2, #222));
+  opacity: var(--opacity-inner, 1);
+  position: absolute;
+  display: inline-block;
+  width: 16ch;
+  top: var(--alignment-top, 0);
+  right: auto;
+  bottom: var(--alignment-bottom, auto);
+  left: 0;
+  padding: 0 var(--text-padding, 1ch);
+  margin-top: calc(var(--border, 3px) + var(--padding-top, 10px));
+  margin-bottom: calc(var(--border, 3px) + var(--padding-top, 10px));
+  margin-left: calc(
+		var(--landscape-width-total, 0px) + 
+    var(--padding-left, 10px) + calc(var(--text-padding, 1ch) * 2) + 1ch +
+      calc(var(--border, 3px) * 4)
+  );
+  line-height: calc(var(--height, 36px) - calc(var(--border, 3px) * 2));
+  border-top-left-radius: var(--border-radius-inner, 3px);
+  border-top-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-left-radius: var(--border-radius-inner, 3px);
+  box-shadow: var(--shadow-inner, 0px 1px 1px 1px rgba(0, 0, 0, 0.18));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pecanload .light {
+  color: var(--load-light);
+}
+
+.pecanload .moderate {
+  color: var(--load-moderate);
+}
+
+.pecanload .heavy {
+  color: var(--load-heavy);
+}
+
+/* network -- 3rd to left */
+.pecannetwork {
+  font: var(--font-size, 12px) var(--font, Menlo);
+  background-color: var(--background-network, var(--color3, #222));
+  opacity: var(--opacity-inner, 1);
+  color: var(--foreground-network, var(--background, #eee));
+  position: absolute;
+  display: inline-block;
+  top: var(--alignment-top, 0);
+  right: auto;
+  bottom: var(--alignment-bottom, auto);
+  left: 0;
+  padding: 0 var(--text-padding, 1ch);
+  margin-top: calc(var(--border, 3px) + var(--padding-top, 10px));
+  margin-bottom: calc(var(--border, 3px) + var(--padding-top, 10px));
+  margin-left: calc(
+		var(--landscape-width-total, 0px) + 
+    var(--padding-left, 10px) + calc(var(--text-padding, 1ch) * 4) + 1ch +
+      calc(var(--border, 3px) * 8) + 16ch
+  );
+  line-height: calc(var(--height, 36px) - calc(var(--border, 3px) * 2));
+  border-top-left-radius: var(--border-radius-inner, 3px);
+  border-top-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-left-radius: var(--border-radius-inner, 3px);
+  box-shadow: var(--shadow-inner, 0px 1px 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+/* date -- center */
+.pecandate {
+  font: var(--font-size, 12px) var(--font, Menlo);
+  color: var(--foreground-date, var(--color7, #eee));
+  background-color: var(--background-date, var(--background, #222));
+  opacity: var(--opacity-inner, 1);
+  position: absolute;
+  display: inline-block;
+  padding: 0 var(--text-padding, 1ch);
+  width: auto;
+  top: var(--alignment-top, 0);
+  bottom: var(--alignment-bottom, auto);
+  left: 50%;
+  transform: translate(-50%);
+  margin: calc(var(--padding-top, 10px) + var(--border, 3px));
+  line-height: calc(var(--height, 36px) - calc(var(--border, 3px) * 2));
+  text-align: center;
+  border-top-left-radius: var(--border-radius-inner, 3px);
+  border-top-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-left-radius: var(--border-radius-inner, 3px);
+  box-shadow: var(--shadow-inner, 0px 1px 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+/* battery percentage -- 2nd to right */
+.pecanbattery {
+  font: var(--font-size, 12px) var(--font, Menlo);
+  color: var(--foreground-battery, var(--background, #eee));
+  display: inline-block;
+  position: absolute;
+  background-color: var(--background-battery, var(--color5, #222));
+  opacity: var(--opacity-inner, 1);
+  padding: 0 var(--text-padding, 1ch);
+  top: var(--alignment-top, 0);
+  right: 0;
+  bottom: var(--alignment-bottom, auto);
+  left: auto;
+  margin-top: calc(var(--padding-top, 10px) + var(--border, 3px));
+  margin-right: calc(
+    var(--padding-right, 10px) + calc(var(--text-padding, 1ch) * 2) + 9ch +
+      calc(var(--border, 3px) * 2)
+  );
+  margin-bottom: calc(var(--padding-top, 10px) + var(--border, 3px));
+  line-height: calc(var(--height, 36px) - calc(var(--border, 3px) * 2));
+  border-top-left-radius: var(--border-radius-inner, 3px);
+  border-top-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-left-radius: var(--border-radius-inner, 3px);
+  box-shadow: var(--shadow-inner, 0px 1px 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+/* clock -- far right */
+.pecanclock {
+  font: var(--font-size, 12px) var(--font, Menlo);
+  color: var(--foreground-clock, var(--background, #eee));
+  display: inline-block;
+  position: absolute;
+  background-color: var(--background-clock, var(--color6, #222));
+  opacity: var(--opacity-inner, 1);
+  padding: 0 var(--text-padding, 1ch);
+  margin: var(--border, 3px);
+  top: var(--alignment-top, 0);
+  right: 0;
+  bottom: var(--alignment-bottom, auto);
+  left: auto;
+  margin-top: calc(var(--padding-top, 10px) + var(--border, 3px));
+  margin-right: calc(var(--border, 3px) + var(--padding-right, 10px));
+  margin-bottom: calc(var(--padding-top, 10px) + var(--border, 3px));
+  line-height: calc(var(--height, 36px) - calc(var(--border, 3px) * 2));
+  border-top-left-radius: var(--border-radius-inner, 3px);
+  border-top-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-right-radius: var(--border-radius-inner, 3px);
+  border-bottom-left-radius: var(--border-radius-inner, 3px);
+  box-shadow: var(--shadow-inner, 0px 1px 1px 1px rgba(0, 0, 0, 0.18));
+}
