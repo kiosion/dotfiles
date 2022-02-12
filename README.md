@@ -88,7 +88,7 @@ Like with my linux dotfilse, I've also included a full list of every formulae an
 <br>
 <h2 align="center">Installation</h2>
 
-The install script included is intended for my pc and *will* overwrite files as well as implement my fstab and grub. If there are pieces of my configs you like, clone the repo and manually move files into place.
+The install scripts included in each OS dir are intended for my devices and *will* overwrite files as well as implement system-specific configurations. *If there are pieces of my configs you like, clone the repo and manually move files into place.*
 
 Run: `git clone git@github.com:kiosion/dotfiles.git kio-dotfiles/`
 
