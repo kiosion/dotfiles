@@ -33,8 +33,7 @@ key_bindings:
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
 
 # Theme configuration
-window:
-    opacity: 0.60
+background_opacity: 0.90
 
 colors:
   primary:
