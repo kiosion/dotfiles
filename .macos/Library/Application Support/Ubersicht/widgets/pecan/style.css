@@ -13,7 +13,7 @@
   when pecan is running with no config */
   --default-xanthia-font-size: 12px;
   --default-xanthia-font-family: Menlo;
-  --default-alignment-right-xanthia-image: 0px;
+  --default-alignment-right-xanthia-image: 10px;
   --default-alignment-left-xanthia-image: auto;
   --default-height-xanthia-image: calc(
     var(--height, 36px) - calc(var(--border, 3px) * 2)
@@ -22,7 +22,7 @@
     var(--padding-top, 10px) + var(--border, 3px)
   );
   --default-margin-horizontal-xanthia: calc(
-    var(--padding-right, 10px) + calc(var(--text-padding, 1ch) * 4) + 14ch +
+    var(--padding-right, 20px) + calc(var(--text-padding, 1ch) * 4) + 14ch +
       calc(var(--border, 3px) * 3 + var(--default-height-xanthia-image))
   );
   --default-margin-top-xanthia-image: var(--default-margin-top-xanthia);
