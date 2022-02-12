@@ -1,0 +1,13 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = kiosion
+	email = hi@kio.dev
+	signingkey = 8A2C67E22184F162
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
