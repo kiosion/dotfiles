@@ -14,11 +14,6 @@
 # set ssh agent correctly
 fish_ssh_agent
 
-# greeter cmd for new windows
-#if status is-interactive
-    #echo "" && echo "Welcome, "(whoami)"! | Arch "(uname -sr)"" && echo ""
-#end
-
 # set starship config location
 set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
 
@@ -33,7 +28,6 @@ alias la "ls -la"
 alias md "mkdir -p"
 alias wm-l "wmname LG3D"
 alias wm-b "wmname bspwm"
-alias virsh "virsh --connect qemu:///system"
 alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
 alias pf "pfetch"
@@ -42,16 +36,6 @@ alias py "python"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
-
-# paru
-alias gib "paru -S"
-alias yeet "paru -R"
-alias yeet-deps "paru -Rscn"
-alias update "paru -Syu"
-alias update-aur "paru -Sua"
-
-# xmrig
-alias xmrigrun "~/.dotfiles/home/scripts/xmrigrun"
 
 # yiffer-dl
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
