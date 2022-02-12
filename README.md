@@ -17,6 +17,7 @@ I'm currently using Arch Linux as my main distro, with xorg + bspwm + sxhkd as m
 - [Scripts](#scripts)
 - [Themes](#themes)
 - [Program configs](#program-configs)
+- [Packages](#packages)
 
 ### DE config
 Instead of a desktop environment I use a tiling wm, hotkey daemon, and status bar. This way there's less bloat and things are easier to tinker with. 
@@ -54,6 +55,9 @@ My themes for Polybar, bspwm, and other UI stuff.
 ### [Program configs](https://github.com/kiosion/dotfiles/blob/master/.config/)
 Along with all that, there's config files for a bunch of programs I use regularly - Stuff like VSC, Chrome, Nemo, Discord, etc.
 
+### [Packages](https://github.com/kiosion/dotfiles/blob/master/.pkgs/paru/)
+Mostly for my own convienence, but I've also included a complete list of every package and program installed using Paru on my system. This makes full system restores super easy, go ahead and take a peek if you want :)
+
 <br>
 <h2 align="center">My MacOS config</h2>
 
@@ -64,6 +68,7 @@ For MacOS, I currently use a tiling window manager plus hotkey daemon. Not much 
 ### What's included here
 - [WM config](#wm-config)
 - [Program configs](#program-configs-1)
+- [Packages](#packages-1)
 
 ### WM config
 On MacOS, I use the default desktop environment, however have some additional programs/tweaks to make it slightly more linux-like.
@@ -76,6 +81,9 @@ Shkd is my favourite MacOS hotkey daemon, and is the one I've been using the lon
 
 ### [Program configs](https://github.com/kiosion/dotfiles/blob/master/.macos/.config/)
 I've also included some various configs / install scripts for programs and utilities I use on MacOS.
+
+### [Packages](https://github.com/kiosion/dotfiles/blob/master/.pkgs/brew/)
+Like with my linux dotfilse, I've also included a full list of every formulae and cask installed with Brew.
 
 <br>
 <h2 align="center">Installation</h2>

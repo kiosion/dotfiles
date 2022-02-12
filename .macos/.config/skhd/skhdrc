@@ -106,13 +106,14 @@
 # ]
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+#cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+alt - t : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # open code
-alt - c : open -na /Applications/Visual\ Studio\ Code.app
+alt - v : open -na /Applications/Visual\ Studio\ Code.app
 
 # open firefox
-alt - f : open -na /Applications/Firefox.app
+alt - c : open -na /Applications/Google\ Chrome.app
 
 # close focused window
 alt - w : chunkc tiling::window --close
