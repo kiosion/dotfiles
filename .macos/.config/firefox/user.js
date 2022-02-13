@@ -12,6 +12,7 @@ user_pref("browser.compactmode.show", true);
 user_pref("browser.contentblocking.category", "custom");
 user_pref("browser.download.panel.shown", true);
 user_pref("browser.formfill.enable", false);
+user_pref("browser.menu.showViewImageInfo", true);
 user_pref("browser.protections_panel.infoMessage.seen", true);
 user_pref("browser.search.region", "CA");
 user_pref("browser.search.suggest.enabled.private", true);

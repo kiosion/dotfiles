@@ -11,3 +11,7 @@ toolbar#TabsToolbar {
 hbox#nav-bar-customization-target {
   padding-left: 70px !important;
 }
+/* Remove some stuff from context menus  */
+#context-sendimage, #context-sep-setbackground, #context-setDesktopBackground, #context-inspect-a11y {
+  display: none !important;
+}
