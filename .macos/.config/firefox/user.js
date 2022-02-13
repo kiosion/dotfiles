@@ -1,9 +1,5 @@
 // Mozilla User Preferences
 
-// To change a preference value, you can either:
-// - modify it via the UI (e.g. via about:config in the browser); or
-// - set it within a user.js file in your profile.
-
 user_pref("accessibility.force_disabled", 1);
 user_pref("accessibility.typeaheadfind.flashBar", 0);
 user_pref("browser.aboutConfig.showWarning", false);
@@ -58,3 +54,4 @@ user_pref("privacy.trackingprotection.socialtracking.enabled", true);
 user_pref("privacy.userContext.enabled", true);
 user_pref("privacy.userContext.ui.enabled", true);
 user_pref("security.insecure_connection_text.enabled", true);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
