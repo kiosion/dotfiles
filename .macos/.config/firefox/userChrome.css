@@ -1,0 +1,13 @@
+toolbar#TabsToolbar {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding-top: 10px;
+}
+
+.toolbar-items {
+  display: none;
+}
+
+hbox#nav-bar-customization-target {
+  padding-left: 70px !important;
+}
