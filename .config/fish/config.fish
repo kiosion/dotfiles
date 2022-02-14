@@ -41,7 +41,7 @@ alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 
 # vue
-set -x PATH ~/.npm-global/bin:$PATH
+#set -x PATH ~/.npm-global/bin:$PATH
 
 # if on tty1, launch startx automatically
 #if status is-login
