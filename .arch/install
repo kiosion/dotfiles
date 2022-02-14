@@ -2,37 +2,30 @@
 
 # Build & install Paru
 { 
-sudo ../paru/install.sh 
+sudo ../.pkgs/paru/install.sh 
 } || { 
 echo "=> Paru install failed, aborting!" && exit 
 }
 &&
 # Install packages
 { 
-sudo ../pkgs/install.sh 
+sudo paru -S $(cat ../.pkgs/paru/pkgs | cut -d' ' -f1)
 } || { 
 echo "=> Packages install failed!" 
 }
 &&
 # Move system files
 { 
-sudo ../system/install.sh 
+sudo ./ln.sh
 } || { 
 echo "=> Moving sys files failed!"
 }
 &&
 # Move user files
 { 
-../home/install.sh 
+sudo ../.config/ln.sh
 } || { 
 echo "=> Moving usr files failed!" 
-}
-&&
-# Bin
-{ 
-sudo ../bin/install.sh 
-} || { 
-echo "=> Moving files to bin failed!" 
 }
 &&
 echo "=> Finished!" && exit
