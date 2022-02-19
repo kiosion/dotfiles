@@ -19,9 +19,9 @@ super + Escape
 alt + Escape
         screencloud --area
 #        flameshot gui
-#	screencloud --area
+
 # rofi
-super + @Return
+super + @space
 	rofi -fullscreen -show run -icon-theme "Papirus-Dark" -show-icons
 # clipmenu
 super + c
@@ -52,48 +52,52 @@ super + r; p; q
 
 # nitrogen
 alt + s; n
-    nitrogen
+        nitrogen
 
 ### UTILS ###
 
 # alacritty
-alt + t
-    alacritty
+super + @Return
+        alacritty
 # termius
 alt + y
-    termius-beta
+        termius-beta
 # nemo
 alt + n
-    nemo
+        nemo
 
 ### PRODUCTIVITY ###
 
 # blender
 alt + p; b
-    blender
+        blender
 # photoshop
 alt + p; p
-    adobe-photoshop
+        adobe-photoshop
 # substance painter
 alt + p; s
-    adobe-substance-painter
+        adobe-substance-painter
 # libre office
 alt + p; l
-    libreoffice
+        libreoffice
 
 ### CODE ###
 
 # visual studio code
-alt + c; v
-    code
-# jetbrains intellij idea ultimate
+alt + c; c
+        code
+# intellij idea ultimate
 alt + c; i
-    wmname LG3D && intellij-idea-ultimate-edition
-# jetbrains pycharm
-    pycharm
-# jetbrains webstorm
+        wmname LG3D && intellij-idea-ultimate-edition
+# pycharm
+alt + c; y
+        pycharm
+# phpstorm
+alt + c; p
+        phpstorm
+# webstorm
 alt + c; w
-    webstorm
+        webstorm
 
 ### WEB/SOCIAL ###
 
@@ -105,11 +109,10 @@ alt + w; f
         firefox
 # discord
 alt + w; d
-    discord
+        discord
 # telegram
 alt + w; t
-    telegram-desktop
-
+        telegram-desktop
 
 ### GAMES ###
 
