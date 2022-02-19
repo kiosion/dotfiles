@@ -1,4 +1,5 @@
 {
+    "php.validate.executablePath": "/opt/lampp/bin/php",
     "editor.suggestSelection": "first",
     "editor.fontLigatures": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -28,7 +29,6 @@
         "**/.settings": true,
         "**/.factorypath": true
     },
-    "tabnine.experimentalAutoImports": true,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
