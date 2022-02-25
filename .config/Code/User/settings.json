@@ -10,7 +10,7 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.fontFamily": "MonoLisa, 'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "MonoLisa, 'Cascadia Code', 'Fira Code iScript', monospace",
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "vsicons.dontShowNewVersionMessage": true,
     "explorer.confirmDelete": false,
@@ -37,8 +37,42 @@
         "markdown": false,
         "python": true
     },
+    "vscode_custom_css.imports": ["file:///home/kio/.dotfiles/.config/Code/custom-styles.css"],
+     "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": [
+            "comment",
+            "keyword",
+            "storage.modifier",
+            "storage.type.class.js",
+            "storage.type.js"
+          ],
+          "settings": {
+            "fontStyle": "italic bold"
+          }
+        },
+        {
+          "scope": [
+            "keyword.control.conditional",
+            "keyword.operator"
+          ],
+          "settings": {
+            "fontStyle": ""
+          }
+        }
+      ]
+    },
     "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
     "discord.lowerDetailsDebugging": "{empty}",
     "window.menuBarVisibility": "toggle",
-    "editor.mouseWheelZoom": true
+    "editor.mouseWheelZoom": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "block",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.smoothScrolling": true,
+    "editor.insertSpaces": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "files.insertFinalNewline": true
 }

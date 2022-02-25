@@ -1,0 +1,12 @@
+/* Set italics and comments to the script font */
+.mtk3, .mtk4 {
+    font-family: 'Fira Code iScript' !important;
+    font-style: italic bold;
+    font-size: 1.0rem;
+}
+.comment, .keyword, .storage.modifier, .storage.type.class.js, .storage.type.js {
+  font-family: 'Fira Code iScript' !important;
+  font-style: italic bold;
+  font-size: 1.0rem;
+}
+
