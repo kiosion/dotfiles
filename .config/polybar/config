@@ -13,7 +13,7 @@
 ; polybar config
 
 [colors]
-background = #000000
+background = #BF000000
 ;background = #E6282a36
 background-alt = #44475a
 foreground = #f8f8f2

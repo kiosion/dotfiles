@@ -31,11 +31,11 @@
     },
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
-        "python": true
+      "*": true,
+      "yaml": false,
+      "plaintext": true,
+      "markdown": false,
+      "python": true
     },
     "vscode_custom_css.imports": ["file:///home/kio/.dotfiles/.config/Code/custom-styles.css"],
      "editor.tokenColorCustomizations": {
@@ -65,14 +65,15 @@
     },
     "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
     "discord.lowerDetailsDebugging": "{empty}",
-    "window.menuBarVisibility": "toggle",
     "editor.mouseWheelZoom": true,
     "editor.cursorBlinking": "smooth",
-    "editor.cursorStyle": "block",
-    "editor.wordWrap": "wordWrapColumn",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.smoothScrolling": true,
     "editor.insertSpaces": false,
     "workbench.editor.untitled.hint": "hidden",
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "vim.cursorStylePerMode.insert": "line",
+    "explorer.compactFolders": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.enablePreview": false
 }

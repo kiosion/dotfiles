@@ -13,12 +13,11 @@
 #xrandr --auto
 nitrogen --restore &
 sxhkd &
-picom &
+picom --log-file /var/log/picom/picom.log &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /home/kio/.config/polybar/launch.sh &
 clipmenud &
 nm-applet &
-screencloud -c &
 alacritty &
 
 ### CURSOR ###
@@ -39,8 +38,8 @@ bspc config focused_border_color	"#bd93f9"
 bspc config presel_feedback_color	"#bd93f9"
 
 ### BORDERS ###
-bspc config border_width	2
-bspc config window_gap		16
+bspc config border_width	0
+bspc config window_gap		14
 
 ### RULES ###
 bspc rule -a Nitrogen state=floating
