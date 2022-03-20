@@ -163,6 +163,10 @@ super + y
 super + g
 	bspc node -s biggest.window
 
+# balance nodes to occupy same space
+super + b
+        bspc node --balance
+
 ### STATE/FLAGS ###
 
 # set the window state
