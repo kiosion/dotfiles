@@ -43,11 +43,14 @@ Included are also various system files for my pc - Stuff like my GRUB config, tw
 ### [Scripts](https://github.com/kiosion/dotfiles/blob/master/scripts/)
 I've also included some basic scripts / helpers I've written.
 
-#### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup)
+#### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup.sh)
 This is a script I wrote to automate backing up my home directory, compressing it to a tarball using gzip, then moving it to my archival server using rsync. It uses pv in order to display a progress bar throughout this.
 
-#### ⇒ [logout](https://github.com/kiosion/dotfiles/blob/master/.arch/usr/bin/logout)
-A super-simple script that just kills Xorg and some other processes in order to exit to the TTY, assuming you created your session using Xinit.
+#### ⇒ [screen_lock](https://github.com/kiosion/dotfiles/blob/master/.arch/usr/bin/screen_lock.sh)
+Takes a screenshot using scrot, applies blur filters, sets the background of i3-lock, and locks the screen. Obscures screen content while looking nice
+
+#### ⇒ [fixmouse](https://github.com/kiosion/dotfiles/blob/master/.arch/usr/bin/screen_lock.sh)
+A super-simple script that removes mouse acceleration because it sucks :)
 
 ### Themes
 My themes for Polybar, bspwm, and other UI stuff.
