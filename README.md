@@ -7,7 +7,7 @@
 <br>
 <h2 align="center">My Linux config</h2>
 
-<img src="img/arch.png"></img>[^1]
+<img src="img/arch.jpg"></img>[^1]
 
 I'm currently using Arch Linux as my main distro, with xorg + bspwm + sxhkd as my main interface. In the future I plan to check out some alternatives, namely other Arch-based distros and possibly FreeBSD.
 
