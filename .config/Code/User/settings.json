@@ -37,7 +37,7 @@
       "markdown": false,
       "python": true
     },
-    "vscode_custom_css.imports": ["file:///home/kio/.dotfiles/.config/Code/custom-styles.css"],
+    "vscode_custom_css.imports": ["file:///home/kio/.vscode/extensions/custom.css"],
      "editor.tokenColorCustomizations": {
       "textMateRules": [
         {
@@ -58,7 +58,7 @@
             "keyword.operator"
           ],
           "settings": {
-            "fontStyle": ""
+            "fontStyle": "bold"
           }
         }
       ]
