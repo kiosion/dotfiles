@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Dotfiles</h1>
-  <p>Dotfiles are hidden files prefaced by '.' and used in personalizing your system and programs; here are mine :)</p>
-  <p>•&nbsp;<a href="#my-linux-config">Linux</a>&nbsp; •&nbsp;<a href="#my-macos-config">MacOS</a> •&nbsp;<a href="#installation">Install/Clone</a></p>
+  <p>Dotfiles are hidden files prefaced by '.' and used in personalizing your system and programs; here are mine!</p>
+  <p><a href="#my-linux-config">&gt;&nbsp;Linux</a>&nbsp; <br><a href="#my-macos-config">&gt;&nbsp;MacOS</a> <br><a href="#installation">&gt;&nbsp;Install&nbsp;/&nbsp;Clone</a></p>
 </div>
 
 <br>
