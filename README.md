@@ -44,12 +44,12 @@ Included are also various system files for my pc - Stuff like my GRUB config, tw
 I've also included some basic scripts / helpers I've written.
 
 #### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup.sh)
-This is a script I wrote to automate backing up my home directory, compressing it to a tarball using gzip, then moving it to my archival server using rsync. It uses pv in order to display a progress bar throughout this.
+This is a script I wrote to automate backing up directories/drives. It takes two directories via arguments, compresses the source into a tarball, and stores it in the destination. In my case, it calls another script that encryptes the final tar archive using my pgp key, then pushes it to my Backblaze B2 bucket for safekeeping.
 
 #### ⇒ [screen_lock](https://github.com/kiosion/dotfiles/blob/master/scripts/screen_lock.sh)
 Takes a screenshot using scrot, applies blur filters, sets the background of i3-lock, and locks the screen. Obscures screen content while looking nice
 
-#### ⇒ [fixmouse](https://github.com/kiosion/dotfiles/blob/master/scripts/screen_lock.sh)
+#### ⇒ [fixmouse](https://github.com/kiosion/dotfiles/blob/master/scripts/fixmouse.sh)
 A super-simple script that removes mouse acceleration because it sucks :)
 
 ### Themes
