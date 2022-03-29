@@ -44,7 +44,7 @@ Included are also various system files for my pc - Stuff like my GRUB config, tw
 I've also included some basic scripts / helpers I've written.
 
 #### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup.sh)
-This is a script I wrote to automate backing up directories/drives. It takes two directories via arguments, compresses the source into a tarball, and stores it in the destination. In my case, it calls another script that encryptes the final tar archive using my pgp key, then pushes it to my Backblaze B2 bucket for safekeeping.
+This is a script I wrote to automate backing up directories/drives. It takes arguments + a source  and destination directory, compresses the source into a tarball, then stores it in the destination. Depending on the arguments passed, it can then encrypt the final archive using my gpg key, then push it to a Backblaze B2 bucket for long-term storage.
 
 #### ⇒ [screen_lock](https://github.com/kiosion/dotfiles/blob/master/scripts/screen_lock.sh)
 Takes a screenshot using scrot, applies blur filters, sets the background of i3-lock, and locks the screen. Obscures screen content while looking nice
