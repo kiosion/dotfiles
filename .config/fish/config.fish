@@ -37,6 +37,7 @@ alias pf "pfetch"
 alias python3 "python"
 alias py "python"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
+alias b2 "b2-linux"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"

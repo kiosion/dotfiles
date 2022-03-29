@@ -18,7 +18,6 @@ picom --log-file /var/log/picom/picom.log &
 /home/kio/.config/polybar/launch.sh &
 clipmenud &
 nm-applet &
-XDG_SESSION_TYPE=x11 plank &
 alacritty &
 
 ### CURSOR ###
