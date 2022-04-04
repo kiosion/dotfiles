@@ -60,19 +60,17 @@ Load()
 		sleep 0.5
 	done
 }
-# StopLoad()
-# {
-#     kill "$!"
-# }
 
 # Transfer func
 Transfer()
 {
     Load "Transferring archive to local backup share" &
     loadpid=$!
-    local source="${1}/${2}/${3}"
-    local destination="/mnt/volta/backups/archives/${2}"
-    local file="${3}"
+    local source="${1}"
+    local destination="/mnt/volta/backups/archives/${curDateY}-${curDateM}"
+    # Get basename of source + file extension
+    local fileExt="${source##*.}"
+    local file="$(basename "${source}").${fileExt}"
     # Check file doesn't exist and dir does
     if [ -d "${destination}/${file}" ]; then
         kill "$loadpid"
@@ -139,11 +137,17 @@ Upload()
     fi
     # Get file name
     local filename=$(basename "${file}")
+    # Check if file has space in it
+    if [[ "${file}" =~ \ |\' ]]; then
+
+        wait
+        return 0
+    else
+
+    fi
     # Upload file with b2
-    Load "Uploading file using b2 util" &
-    loadpid=$!
-    #b2-linux upload_file --noProgress "GalileoFiles" "${file}" "archives/${curDateY}-${curDateM}/${filename}"
-    kill "$loadpid"
+    b2-linux upload_file "GalileoFiles" "${file}" "archives/${curDateY}-${curDateM}/${filename}" | cut -d ":" -f2 | cut -d "|" -f1 | sed 's/[^0-9]*//g' >&1 | dialog --backtitle "Backup 0.0.2" --gauge "Uploading ${filename} using B2..." 10 60
+    wait
     return 0
 }
 
@@ -310,8 +314,12 @@ fi
 if [ "${encrypt}" = true ]; then
     Encrypt "${fileLoc}"
     wait
+    Load "Removing original archive" &
+    loadpid=$!
+    rm "${fileLoc}"
     # Set new file loc
     fileLoc="${fileLoc}.asc"
+    kill "$loadpid"
 fi
 
 # Set archive size
@@ -327,9 +335,7 @@ if [ "${upload}" = true ]; then
     # Check encryption
     if [ "${encrypt}" != true ]; then
         Error "Encryption required for upload"
-        wait
-        clear
-        exit 1
+        clear && exit 1
     fi
     # If size is > 10GB, confirm upload
     if [ ${size_source_gb} > 10 ]; then
@@ -362,7 +368,6 @@ if [ "${upload}" = true ]; then
     loadpid=$!
     rm "${fileLoc}"
     kill "$loadpid"
-    Print "Upload complete"
 fi
 
 # Transfer
@@ -371,7 +376,7 @@ if [ "$transfer" = true ]; then
     wait
     Load "Removing archive" &
     loadpid=$!
-    rm "${fileLoc}"
+    rm "${dstDir}/${curDateY}-${curDateM}/${curDate}${fn}.tar.gz"
     # Set new file loc
     fileLoc="/mnt/volta/backups/archives/${curDateY}-${curDateM}/${curDate}${fn}.tar.gz"
     kill "$loadpid"
