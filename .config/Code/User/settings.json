@@ -34,8 +34,11 @@
       "*": true,
       "yaml": false,
       "plaintext": true,
-      "markdown": false,
+      "markdown": true,
       "python": true
+    },
+    "files.associations": {
+        "*.css": "css",
     },
     "vscode_custom_css.imports": ["file:///home/kio/.vscode/extensions/custom.css"],
      "editor.tokenColorCustomizations": {
