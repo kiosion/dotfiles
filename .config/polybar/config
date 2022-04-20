@@ -245,10 +245,10 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %d-%m-%Y"
+date-alt = " %A, %d/%m/%Y"
 
 time = %H:%M:%S
-time-alt = %H:%M:%S
+time-alt =
 
 format-prefix = "クロック "
 format-prefix-font = 4

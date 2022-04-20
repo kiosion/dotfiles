@@ -34,8 +34,6 @@ alias wm-b "wmname bspwm"
 alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
 alias pf "pfetch"
-alias python3 "python"
-alias py "python"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
 alias b2 "b2-linux"
 

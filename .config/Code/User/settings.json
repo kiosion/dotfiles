@@ -1,4 +1,5 @@
 {
+    "eslint.workingDirectories": ["./sanity-cms", "./react-app"],
     "php.validate.executablePath": "/opt/lampp/bin/php",
     "editor.suggestSelection": "first",
     "editor.fontLigatures": true,
@@ -21,7 +22,6 @@
     "git.enableCommitSigning": true,
     "security.workspace.trust.untrustedFiles": "open",
     "gitlens.defaultTimeFormat": "H:mm",
-    "workbench.colorTheme": "Dracula Refined",
     "codetogether.userName": "kio",
     "files.exclude": {
         "**/.classpath": true,
@@ -78,5 +78,7 @@
     "vim.cursorStylePerMode.insert": "line",
     "explorer.compactFolders": false,
     "window.menuBarVisibility": "toggle",
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "workbench.colorTheme": "Dracula Refined",
+    "javascript.updateImportsOnFileMove.enabled": "never"
 }
