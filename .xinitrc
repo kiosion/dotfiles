@@ -56,4 +56,6 @@ export GNOME_KEYRING_PID
 exec bspwm
 # start hypr
 #exec Hypr
+# start awesome
+#exec awesome
 #exec dbus-launch --sh-syntax --exit-with-session bspwm

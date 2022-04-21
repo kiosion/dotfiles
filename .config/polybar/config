@@ -13,7 +13,8 @@
 ; polybar config
 
 [colors]
-background = #B3282a36
+background = #000000
+;background = #B3282a36
 ;transparent black: background = #99000000
 ;background = #E6282a36
 background-alt = #44475a
@@ -69,7 +70,7 @@ font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=10";1
 modules-left = bspwm xwindow
 modules-center = date
 #modules-right = xkeyboard cpu temperature memory upt pulseaudio-control
-modules-right = xkeyboard cpu temperature memory pulseaudio-control
+modules-right = playing cpu temperature memory pulseaudio-control
 
 tray-position = right
 tray-padding = 2
@@ -86,6 +87,7 @@ scroll-down = bspwm-deskprev
 [module/xwindow]
 type = internal/xwindow
 label = %title%
+label-maxlen = 80
 label-font = 1
 
 [module/xkeyboard]
@@ -123,13 +125,13 @@ ws-icon-4 = 5;五
 ws-icon-5 = 6;六
 ws-icon-6 = 7;七
 ws-icon-7 = 8;八
-;ws-icon-8 = 9;九
-;ws-icon-9 = 10;十
+ws-icon-8 = 9;九
+ws-icon-9 = 10;十
 
 wd-icon-0-font = 2
 
 label-focused = %icon% 
-label-focused-underline= ${colors.purple-alt}
+label-focused-foreground = ${colors.purple}
 ;label-focused-background = ${colors.purple-alt}
 label-focused-padding = 2
 
@@ -137,7 +139,7 @@ label-occupied = %icon%
 label-occupied-padding = 2
 
 label-urgent = %icon%!
-label-urgent-background = ${colors.red}
+label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
 
 label-empty = %icon%
@@ -161,31 +163,25 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/playing]
+type = custom/script
+interval = 2
+format-prefix = "ソング "
+format-prefix-font = 4
+format-prefix-foreground = ${colors.foreground-alt}
 
-format = <label> <bar>
-label = BL
+exec = ~/.config/polybar/scripts/playerctl.sh
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+click-left = playerctl play-pause
+scroll-down = playerctl previous
+scroll-up = playerctl next
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+label-maxlen = 60
+label-font = 1
 
 [module/cpu]
 type = internal/cpu
-interval = 1
+interval = 2
 format-prefix = "プロセッサー "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
@@ -194,7 +190,7 @@ label-font = 1
 
 [module/memory]
 type = custom/script
-interval = 1
+interval = 2
 format-prefix = "メモリー "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
@@ -214,7 +210,6 @@ interval = 60
 format-prefix = "アップタイム "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/upt.sh
-;format-underline = #5761ee
 *-font = 1
 
 [module/wlan]
@@ -233,7 +228,6 @@ type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
-;format-connected-underline = #5761ee
 format-connected-prefix = "NET "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -245,7 +239,7 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %A, %d/%m/%Y"
+date-alt = " %A, %d %B %Y"
 
 time = %H:%M:%S
 time-alt =
@@ -268,7 +262,7 @@ label-margin-right = 1
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
-exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: Speakers" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: MOTU M2" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Valve Index" listen
+exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Index" listen
 
 click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-sink
 click-left = pulseaudio-control togmute
@@ -279,34 +273,6 @@ scroll-down = pulseaudio-control --volume-max 130 down
 format-prefix = "ボリューム "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #5761ee
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = Mute
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #b2b3f4
-bar-volume-foreground-6 = #f2e884
-bar-volume-gradient = true 
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
 type = internal/alsa
@@ -336,50 +302,15 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
 [module/temperature]
 type = internal/temperature
-interval = 1
+interval = 2
 thermal-zone = 2
 warn-temperature = 80
 
 format-prefix = "温度 "
 format-warn-prefix = "温度 "
 format-prefix-foreground = ${colors.foreground-alt}
-#format-warn-underline = ${self.format-underline}
-#format-warn-background = ${colors.purple-alt}
 
 label = %temperature-c%
 label-warn = %temperature-c%
