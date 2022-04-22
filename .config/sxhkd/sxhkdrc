@@ -22,7 +22,7 @@ alt + Escape
 
 # rofi
 super + @space
-	rofi -fullscreen -show run -icon-theme "Papirus-Dark" -show-icons
+	rofi -show run -icon-theme "Papirus-Dark"
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
