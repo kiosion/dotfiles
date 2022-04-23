@@ -18,6 +18,7 @@ picom --log-file /var/log/picom/picom.log &
 /home/kio/.config/polybar/launch.sh &
 clipmenud &
 nm-applet &
+/usr/bin/wired &
 alacritty &
 
 ### CURSOR ###
