@@ -37,6 +37,9 @@ For my status bar / virtual desktop switcher I use Polybar along with some scrip
 #### ⇒ [nitrogen](https://github.com/l3ib/nitrogen)
 I use Nitrogen to set my desktop wallpaper in Xorg. It's lightweight and doesn't need any configuration.
 
+#### ⇒ [wired](https://github.com/Toqozz/wired-notify)
+wired-notify is what I use for my desktop notifications; it's lightweight and easy to write block configs for.
+
 ### [System files](https://github.com/kiosion/dotfiles/blob/master/.arch/)
 Included are also various system files for my pc - Stuff like my GRUB config, tweaks to systemd processes, and fstab.
 
