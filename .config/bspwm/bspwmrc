@@ -16,10 +16,8 @@ sxhkd &
 picom --log-file /var/log/picom/picom.log &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /home/kio/.config/polybar/launch.sh &
-clipmenud &
-nm-applet &
 /usr/bin/wired &
-alacritty &
+clipmenud &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 

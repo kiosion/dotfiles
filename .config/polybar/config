@@ -267,8 +267,8 @@ exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nick
 click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-sink
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
-scroll-up = pulseaudio-control --volume-max 130 up
-scroll-down = pulseaudio-control --volume-max 130 down
+scroll-up = pulseaudio-control --volume-max 130 up && /home/kio/.config/wired/vol.sh
+scroll-down = pulseaudio-control --volume-max 130 down && /home/kio/.config/wired/vol.sh
 
 format-prefix = "ボリューム "
 format-prefix-font = 4
