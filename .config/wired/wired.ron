@@ -92,8 +92,8 @@
         (
             name: "rootProgress",
             parent: "",
-            hook: Hook(parent_anchor: TR, self_anchor: TR),
-            offset: Vec2(x: -12.0, y: 40.0),
+            hook: Hook(parent_anchor: MM, self_anchor: MM),
+            offset: Vec2(x: 0.0, y: 0.0),
             render_criteria: [Progress],
             // https://github.com/Toqozz/wired-notify/wiki/NotificationBlock
             params: NotificationBlock((

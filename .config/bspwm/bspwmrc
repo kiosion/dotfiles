@@ -10,7 +10,6 @@
 ##        _\/////////___\//////////__\///_____________\///__\///_____\///___\///___\///__\///_____________\////////__
 ##
 ### AUTOSTART ###
-#xrandr --auto
 nitrogen --restore &
 sxhkd &
 picom --log-file /var/log/picom/picom.log &
@@ -66,5 +65,5 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
 bspc config focus_follows_pointer true
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
