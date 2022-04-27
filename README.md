@@ -55,6 +55,9 @@ Takes a screenshot using scrot, applies blur filters, sets the background of i3-
 #### ⇒ [fixmouse](https://github.com/kiosion/dotfiles/blob/master/scripts/fixmouse.sh)
 A super-simple script that removes mouse acceleration because it sucks :)
 
+#### ⇒ [vol](https://github.com/kiosion/dotfiles/blob/master/scripts/vol.sh)
+On volume change, pulls current volume from pactl and sends a notification using gdbus-call to create a volume hud popup
+
 ### Themes
 My themes for Polybar, bspwm, and other UI stuff.
 
