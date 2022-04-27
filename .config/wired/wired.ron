@@ -61,11 +61,11 @@
             params: TextBlock((
                 text: "%s",
                 font: "Arial Bold 11",
-                ellipsize: Middle,
+                ellipsize: End,
                 color: Color(hex: "#F3F3F3"),
                 color_hovered: Color(hex: "#DEDEDE"),
                 padding: Padding(left: 8.0, right: 8.0, top: 6.0, bottom: 2.0),
-                dimensions: (width: (min: 50, max: 150), height: (min: 0, max: 0)),
+                dimensions: (width: (min: 280, max: 280), height: (min: 0, max: 0)),
             )),
         ),
 
