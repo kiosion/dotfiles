@@ -107,16 +107,19 @@
 
 # open terminal, blazingly fast compared to iTerm/Hyper
 #cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-alt - t : /Applications/Alacritty.app/Contents/MacOS/alacritty
+cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # open code
-alt - v : open -na /Applications/Visual\ Studio\ Code.app
+alt - c : open -na /Applications/Visual\ Studio\ Code.app
 
 # open firefox
-alt - c : open -na /Applications/Google\ Chrome.app
+alt - f : open -na /Applications/firefox.app
+
+# open discord
+alt - d : open -na /Applications/discord.app
 
 # close focused window
-alt - w : chunkc tiling::window --close
+alt - q : chunkc tiling::window --close
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -125,28 +128,28 @@ alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
 # swap window
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+shift + cmd - h : yabai -m window --swap west
+shift + cmd - j : yabai -m window --swap south
+shift + cmd - k : yabai -m window --swap north
+shift + cmd - l : yabai -m window --swap east
 
 # move window
-ctrl + alt - h : yabai -m window --warp west
-ctrl + alt - j : yabai -m window --warp south
-ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - l : yabai -m window --warp east
+ctrl + cmd - h : yabai -m window --warp west
+ctrl + cmd - j : yabai -m window --warp south
+ctrl + cmd - k : yabai -m window --warp north
+ctrl + cmd - l : yabai -m window --warp east
 
 # balance size of windows
-shift + alt - 0 : yabai -m space --balance
+shift + cmd - 0 : yabai -m space --balance
 
 # make floating window fill screen
-shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+shift + cmd - up     : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
-shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+shift + cmd - left   : yabai -m window --grid 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+shift + cmd - right  : yabai -m window --grid 1:2:1:0:1:1
 
 # toggle focused window float
 alt + cmd - f : yabai -m window --toggle float
@@ -155,28 +158,28 @@ alt + cmd - f : yabai -m window --toggle float
 alt + cmd - s : yabai -m window --toggle sticky
 
 # move between desktops
-alt - right : yabai -m space --focus next
-alt - left : yabai -m space --focus prev
+cmd - right : yabai -m space --focus next
+cmd - left : yabai -m space --focus prev
 
 # fast focus desktop
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
+cmd - 1 : yabai -m space --focus 1
+cmd - 2 : yabai -m space --focus 2
+cmd - 3 : yabai -m space --focus 3
+cmd - 4 : yabai -m space --focus 4
+cmd - 5 : yabai -m space --focus 5
+cmd - 6 : yabai -m space --focus 6
+cmd - 7 : yabai -m space --focus 7
+cmd - 8 : yabai -m space --focus 8
 
 # send window to desktop
-shift + alt - 1 : yabai -m window --space  1
-shift + alt - 2 : yabai -m window --space  2
-shift + alt - 3 : yabai -m window --space  3
-shift + alt - 4 : yabai -m window --space  4
-shift + alt - 5 : yabai -m window --space  5
-shift + alt - 6 : yabai -m window --space  6
-shift + alt - 7 : yabai -m window --space  7
-shift + alt - 8 : yabai -m window --space  8
+shift + cmd - 1 : yabai -m window --space  1
+shift + cmd - 2 : yabai -m window --space  2
+shift + cmd - 3 : yabai -m window --space  3
+shift + cmd - 4 : yabai -m window --space  4
+shift + cmd - 5 : yabai -m window --space  5
+shift + cmd - 6 : yabai -m window --space  6
+shift + cmd - 7 : yabai -m window --space  7
+shift + cmd - 8 : yabai -m window --space  8
 
 # increase region size
 shift + alt - a : yabai -m window --resize left:-20:0

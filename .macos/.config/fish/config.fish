@@ -12,7 +12,8 @@
 # Configuration options for fish shell
 
 # set ssh agent correctly
-#fish_ssh_agent
+fish_ssh_agent
+set -gx SSH_AUTH_SOCK "/usr/local/var/run/yubikey-agent.sock"
 
 # set starship config location
 set -gx STARSHIP_CONFIG /Users/maxim/.config/starship/starship.toml
