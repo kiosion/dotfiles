@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR --export SSH_AUTH_SOCK:/home/kio/sshauthsock\x2esh
 SETUVAR TO_DIR:/home/kio/\x2etofish
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR _fisher_joehillen_2F_to_2D_fish_files:/home/kio/\x2econfig/fish/functions/to\x2efish\x1e/home/kio/\x2econfig/fish/conf\x2ed/to\x2efish\x1e/home/kio/\x2econfig/fish/completions/to\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/kio/\x2econfig/fish/functions/fisher\x2efish\x1e/home/kio/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_laughedelic_2F_fish__logo_files:/home/kio/\x2econfig/fish/functions/fish_logo\x2efish\x1e/home/kio/\x2econfig/fish/completions/fish_logo\x2efish
@@ -37,4 +37,5 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d\x1e\x22\x2c\x22\x1e\x27\x2c\x27

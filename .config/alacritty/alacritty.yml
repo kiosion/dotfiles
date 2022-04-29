@@ -34,7 +34,7 @@ key_bindings:
 
 # Theme configuration
 window:
-    opacity: 0.60
+    opacity: 0.75
 
 colors:
   primary:

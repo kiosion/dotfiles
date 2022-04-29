@@ -14,6 +14,9 @@
 # set ssh agent correctly
 fish_ssh_agent
 
+# set ssh auth sock
+set -gx SSH_AUTH_SOCK "/run/user/1000/yubikey-agent/yubikey-agent.sock"
+
 # set starship config location
 set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
 
@@ -31,8 +34,8 @@ alias wm-b "wmname bspwm"
 alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
 alias pf "pfetch"
-alias python3 "python"
-alias py "python"
+alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
+alias b2 "b2-linux"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"

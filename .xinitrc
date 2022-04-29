@@ -48,8 +48,14 @@ export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
+# start pantheon
+#io.elementary.wingpanel &
+#XDG_SESSION_TYPE=x11 plank &
+#exec gala
 # start bspwm
 exec bspwm
 # start hypr
 #exec Hypr
+# start awesome
+#exec awesome
 #exec dbus-launch --sh-syntax --exit-with-session bspwm

@@ -1,13 +1,13 @@
 <div align="center">
   <h1>Dotfiles</h1>
-  <p>Dotfiles are hidden files prefaced by '.' and used in personalizing your system and programs; here are mine :)</p>
-  <p>•&nbsp;<a href="#my-linux-config">Linux</a>&nbsp; •&nbsp;<a href="#my-macos-config">MacOS</a> •&nbsp;<a href="#installation">Install/Clone</a></p>
+  <p>Dotfiles are hidden files prefaced by '.' and used in personalizing your system and programs; here are mine!</p>
+  <p><a href="#my-linux-config">⇒&nbsp;Linux</a>&nbsp; <br><a href="#my-macos-config">⇒&nbsp;MacOS</a> <br><a href="#installation">⇒&nbsp;Install&nbsp;/&nbsp;Clone</a></p>
 </div>
 
 <br>
 <h2 align="center">My Linux config</h2>
 
-<img src="img/arch.png"></img>[^1]
+<img src="img/arch.jpg"></img>[^1]
 
 I'm currently using Arch Linux as my main distro, with xorg + bspwm + sxhkd as my main interface. In the future I plan to check out some alternatives, namely other Arch-based distros and possibly FreeBSD.
 
@@ -37,17 +37,26 @@ For my status bar / virtual desktop switcher I use Polybar along with some scrip
 #### ⇒ [nitrogen](https://github.com/l3ib/nitrogen)
 I use Nitrogen to set my desktop wallpaper in Xorg. It's lightweight and doesn't need any configuration.
 
+#### ⇒ [wired](https://github.com/Toqozz/wired-notify)
+wired-notify is what I use for my desktop notifications; it's lightweight and easy to write block configs for.
+
 ### [System files](https://github.com/kiosion/dotfiles/blob/master/.arch/)
 Included are also various system files for my pc - Stuff like my GRUB config, tweaks to systemd processes, and fstab.
 
 ### [Scripts](https://github.com/kiosion/dotfiles/blob/master/scripts/)
 I've also included some basic scripts / helpers I've written.
 
-#### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup)
-This is a script I wrote to automate backing up my home directory, compressing it to a tarball using gzip, then moving it to my archival server using rsync. It uses pv in order to display a progress bar throughout this.
+#### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup.sh)
+This is a script I wrote to automate backing up directories/drives. It takes arguments + a source  and destination directory, compresses the source into a tarball, then stores it in the destination. Depending on the arguments passed, it can then encrypt the final archive using my gpg key, then push it to a Backblaze B2 bucket for long-term storage.
 
-#### ⇒ [logout](https://github.com/kiosion/dotfiles/blob/master/.arch/usr/bin/logout)
-A super-simple script that just kills Xorg and some other processes in order to exit to the TTY, assuming you created your session using Xinit.
+#### ⇒ [screen_lock](https://github.com/kiosion/dotfiles/blob/master/scripts/screen_lock.sh)
+Takes a screenshot using scrot, applies blur filters, sets the background of i3-lock, and locks the screen. Obscures screen content while looking nice
+
+#### ⇒ [fixmouse](https://github.com/kiosion/dotfiles/blob/master/scripts/fixmouse.sh)
+A super-simple script that removes mouse acceleration because it sucks :)
+
+#### ⇒ [vol](https://github.com/kiosion/dotfiles/blob/master/scripts/vol.sh)
+On volume change, pulls current volume from pactl and sends a notification using gdbus-call to create a volume hud popup
 
 ### Themes
 My themes for Polybar, bspwm, and other UI stuff.

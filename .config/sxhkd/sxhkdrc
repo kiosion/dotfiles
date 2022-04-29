@@ -22,7 +22,7 @@ alt + Escape
 
 # rofi
 super + @space
-	rofi -fullscreen -show run -icon-theme "Papirus-Dark" -show-icons
+	rofi -show run -icon-theme "Papirus-Dark"
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
@@ -131,13 +131,13 @@ alt + m; f
 
 # inc. vol by 2%
 alt + period
-	pactl set-sink-volume @DEFAULT_SINK@ +2%
+	pactl set-sink-volume @DEFAULT_SINK@ +2% && pactl get-default-sink && /home/kio/.config/wired/vol.sh 
 # inc. vol by 10%
 alt + shift + period
 	pactl set-sink-volume @DEFAULT_SINK@ +10%
 # lower vol by 2%
 alt + comma
-	pactl set-sink-volume @DEFAULT_SINK@ -2%
+	pactl set-sink-volume @DEFAULT_SINK@ -2% && /home/kio/.config/wired/vol.sh
 # lower vol by 10%
 alt + shift + comma
 	pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -162,6 +162,10 @@ super + y
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
+
+# balance nodes to occupy same space
+super + b
+        bspc node --balance
 
 ### STATE/FLAGS ###
 
@@ -202,7 +206,7 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} 'focused:^{1-9,10}'
 
 ### PRESELECT ###
@@ -210,6 +214,9 @@ alt + {_,shift + }{1-9,0}
 # preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
+
+super + ctrl + {Left,Down,Up,Right}
+        bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}

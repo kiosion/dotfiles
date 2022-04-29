@@ -1,4 +1,5 @@
 {
+    "eslint.workingDirectories": ["./sanity-cms", "./react-app"],
     "php.validate.executablePath": "/opt/lampp/bin/php",
     "editor.suggestSelection": "first",
     "editor.fontLigatures": true,
@@ -21,7 +22,6 @@
     "git.enableCommitSigning": true,
     "security.workspace.trust.untrustedFiles": "open",
     "gitlens.defaultTimeFormat": "H:mm",
-    "workbench.colorTheme": "Dracula Refined",
     "codetogether.userName": "kio",
     "files.exclude": {
         "**/.classpath": true,
@@ -31,13 +31,16 @@
     },
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
-        "python": true
+      "*": true,
+      "yaml": false,
+      "plaintext": true,
+      "markdown": true,
+      "python": true
     },
-    "vscode_custom_css.imports": ["file:///home/kio/.dotfiles/.config/Code/custom-styles.css"],
+    "files.associations": {
+        "*.css": "css",
+    },
+    "vscode_custom_css.imports": ["file:///home/kio/.vscode/extensions/custom.css"],
      "editor.tokenColorCustomizations": {
       "textMateRules": [
         {
@@ -58,21 +61,24 @@
             "keyword.operator"
           ],
           "settings": {
-            "fontStyle": ""
+            "fontStyle": "bold"
           }
         }
       ]
     },
     "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
     "discord.lowerDetailsDebugging": "{empty}",
-    "window.menuBarVisibility": "toggle",
     "editor.mouseWheelZoom": true,
     "editor.cursorBlinking": "smooth",
-    "editor.cursorStyle": "block",
-    "editor.wordWrap": "wordWrapColumn",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.smoothScrolling": true,
     "editor.insertSpaces": false,
     "workbench.editor.untitled.hint": "hidden",
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "vim.cursorStylePerMode.insert": "line",
+    "explorer.compactFolders": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.enablePreview": false,
+    "workbench.colorTheme": "Dracula Refined",
+    "javascript.updateImportsOnFileMove.enabled": "never"
 }
