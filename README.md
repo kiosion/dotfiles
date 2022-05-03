@@ -23,31 +23,31 @@ I'm currently using Arch Linux as my main distro, with xorg + bspwm + sxhkd as m
 Instead of a desktop environment I use a tiling wm, hotkey daemon, and status bar. This way there's less bloat and things are easier to tinker with. 
 
 #### ⇒ [bspwm](https://github.com/baskerville/bspwm)
-My current window manager is bspwm; I've tried others such as [Hypr](https://github.com/vaxerski/Hypr) but have found bspwm to be the most stable, supported, and open to configuration.
+My current window manager is bspwm, although I'm working to switch either to [Hypr](https://github.com/vaxerski/Hypr) or AwesomeWM. These both have better native support for things like animations / bars.
 
 #### ⇒ [sxhkd](https://github.com/baskerville/sxhkd)
-My hotkey daemon is sxhkd, although there are many others to choose from.
+My hotkey daemon is sxhkd.
 
 #### ⇒ [alacritty](https://github.com/alacritty/alacritty)
-Alacritty is my favourite terminal emulator; I use it for its simplicity and how well it works under bspwm (not having an ugly title bar / status bar, for one). It's also the terminal emulator I use on MacOS, for the same reasons.
+Alacritty is my favourite terminal emulator; I use it for its simplicity and how well it works under tiling wm's (not having a title / status bar). It's also the terminal emulator I use on MacOS, for the same reasons.
 
 #### ⇒ [polybar](https://github.com/polybar/polybar)
-For my status bar / virtual desktop switcher I use Polybar along with some scripts I've written for it.
+For my status bar I use Polybar along with some scripts I've written for it.
 
 #### ⇒ [nitrogen](https://github.com/l3ib/nitrogen)
-I use Nitrogen to set my desktop wallpaper in Xorg. It's lightweight and doesn't need any configuration.
+I use Nitrogen to set my wallpaper in Xorg. It's lightweight and doesn't need any configuration.
 
 #### ⇒ [wired](https://github.com/Toqozz/wired-notify)
-wired-notify is what I use for my desktop notifications; it's lightweight and easy to write block configs for.
+wired-notify is what I use for my notifications; it's lightweight and easy to write config blocks for.
 
 ### [System files](https://github.com/kiosion/dotfiles/blob/master/.arch/)
-Included are also various system files for my pc - Stuff like my GRUB config, tweaks to systemd processes, and fstab.
+Included are various system files for my pc - Stuff like my GRUB config, tweaks to systemd processes, and my fstab.
 
 ### [Scripts](https://github.com/kiosion/dotfiles/blob/master/scripts/)
 I've also included some basic scripts / helpers I've written.
 
 #### ⇒ [backup](https://github.com/kiosion/dotfiles/blob/master/scripts/backup.sh)
-This is a script I wrote to automate backing up directories/drives. It takes arguments + a source  and destination directory, compresses the source into a tarball, then stores it in the destination. Depending on the arguments passed, it can then encrypt the final archive using my gpg key, then push it to a Backblaze B2 bucket for long-term storage.
+This is a script I wrote to automate backing up directories/drives. It takes arguments, a source, and destination directory, compresses the source into a tarball, then stores it in the destination. Depending on the arguments passed, it then encrypts the archive using my gpg key and pushes it to a Backblaze B2 bucket for long-term archival.
 
 #### ⇒ [screen_lock](https://github.com/kiosion/dotfiles/blob/master/scripts/screen_lock.sh)
 Takes a screenshot using scrot, applies blur filters, sets the background of i3-lock, and locks the screen. Obscures screen content while looking nice
