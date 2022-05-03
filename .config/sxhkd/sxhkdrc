@@ -13,7 +13,7 @@
 ### SYSTEM ###
 
 # lock screen
-super + Escape
+ctrl + Escape
 	$HOME/.config/sxhkd/screen_lock.sh
 # screenshot
 alt + Escape

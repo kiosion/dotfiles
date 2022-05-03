@@ -4,7 +4,7 @@
 
 ## Services
 
-#xrandr --auto &
+xrandr --auto &
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec xsetroot -cursor_name left_ptr &
 exec /usr/bin/fixmouse &
@@ -16,4 +16,4 @@ exec nitrogen --restore &
 exec /home/kio/.config/polybar/launch.sh &
 exec clipmenud &
 #exec nm-applet &
-exec alacritty
+#exec alacritty

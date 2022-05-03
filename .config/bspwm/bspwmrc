@@ -12,7 +12,7 @@
 ### AUTOSTART ###
 nitrogen --restore &
 sxhkd &
-picom --log-file /var/log/picom/picom.log &
+picom --experimental-backends --log-file /var/log/picom/picom.log &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /home/kio/.config/polybar/launch.sh &
 /usr/bin/wired &

@@ -34,11 +34,12 @@ key_bindings:
 
 # Theme configuration
 window:
-    opacity: 0.75
+    opacity: 0.7
 
 colors:
   primary:
-    background: '0x282a36'
+    #background: '0x282a36'
+    background: '0x333545'
     foreground: '0xf8f8f2'
   cursor:
     text: CellBackground

@@ -1,5 +1,8 @@
 {
-    "eslint.workingDirectories": ["./sanity-cms", "./react-app"],
+    "eslint.workingDirectories": [
+      "./sanity-cms",
+      "./react-app"
+    ],
     "php.validate.executablePath": "/opt/lampp/bin/php",
     "editor.suggestSelection": "first",
     "editor.fontLigatures": true,
@@ -80,5 +83,6 @@
     "window.menuBarVisibility": "toggle",
     "workbench.editor.enablePreview": false,
     "workbench.colorTheme": "Dracula Refined",
-    "javascript.updateImportsOnFileMove.enabled": "never"
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "tabnine.experimentalAutoImports": true
 }
