@@ -13,9 +13,13 @@ alsa-plugins 1:1.2.6-3
 alsa-topology-conf 1.2.5.1-1
 alsa-ucm-conf 1.2.6.3-1
 aom 3.3.0-1
+apr 1.7.0-3
+apr-util 1.6.1-9
 archlinux-keyring 20220224-1
 argon2 20190702-4
 aribb24 1.0.3-3
+asar 3.1.0-2
+asciidoc 10.1.4-1
 asciidoctor 2.0.17-1
 aspnet-runtime 6.0.2.sdk102-1
 at-spi2-atk 2.38.0-1
@@ -69,10 +73,14 @@ cider 1.3.0.2556.3a57be77-1
 cifs-utils 6.14-1
 cinnamon-desktop 5.2.1-1
 clang 13.0.1-2
+clion 1:2022.1-1
+clion-cmake 1:2022.1-1
+clion-jre 1:2022.1-1
 clipmenu 6.2.0-2
 clipnotify 1.0.2-2
 clucene 2.3.3.4-11
 cmake 3.23.1-1
+cmatrix-git 1.2.r112.g349c13b-1
 cmus 2.9.1-2
 compiler-rt 13.0.1-1
 corearchiver 4.3.0-1
@@ -82,6 +90,7 @@ cpio 2.13-2
 cracklib 2.9.7-2
 cronie 1.6.0-2
 cryptsetup 2.4.3-2
+csfml 2.5.1-1
 cuda 11.6.1-1
 cups 1:2.4.1-1
 cups-filters 1.28.15-1
@@ -99,7 +108,7 @@ device-mapper 2.03.15-1
 dialog 1:1.3_20220414-1
 diffutils 3.8-1
 discord 0.0.17-1
-discord-canary 0.0.134-1
+discord-canary 0.0.135-1
 djvulibre 3.5.28-3
 dkms 3.0.3-1
 dmenu 5.1-1
@@ -128,6 +137,7 @@ embree 3.13.3-1
 enchant 2.3.2-2
 exempi 2.6.1-1
 expat 2.4.8-1
+extremetuxracer 0.8.1-1
 faac 1.30-3
 faad2 2.10.0-1
 fakeroot 1.28-1
@@ -137,8 +147,10 @@ ffmpeg 2:5.0-6
 ffmpeg4.4 4.4.1-4
 ffmpegthumbnailer 2.2.2-4
 fftw 3.3.10-2
+figma-linux 0.9.6-0
 file 5.41-1
 filesystem 2021.12.07-1
+filezilla-svn 10632-1
 findutils 4.9.0-1
 firefox 99.0.1-1
 firewalld 1.0.3-3
@@ -151,7 +163,7 @@ fmt 8.1.1-2
 fontconfig 2:2.14.0-1
 fortune-mod 3.12.0-1
 freeglut 3.2.2-1
-freetype2 2.12.0-1
+freetype2 2.12.0-2
 fribidi 1.0.11-1
 fuse-common 3.10.5-1
 fuse2 2.9.9-4
@@ -320,7 +332,7 @@ lib32-faudio 22.04-1
 lib32-flac 1.3.4-2
 lib32-fontconfig 2:2.14.0-1
 lib32-freeglut 3.2.1-1
-lib32-freetype2 2.12.0-1
+lib32-freetype2 2.12.0-2
 lib32-fribidi 1.0.11-1
 lib32-gcc-libs 11.2.0-4
 lib32-gdk-pixbuf2 2.42.8-1
@@ -531,11 +543,13 @@ libfdk-aac 2.0.2-1
 libffi 3.4.2-5
 libffi7 3.3-2
 libfido2 1.10.0-1
+libfilezilla 1:0.37.1-1
 libfontenc 1.1.4-3
 libfreeaptx 0.1.1-1
 libfreehand 0.1.2-3
 libgcrypt 1.10.1-1
 libgcrypt15 1.5.6-6
+libgdiplus 5.6.1-3
 libgee 0.20.5-2
 libgit2 1:1.4.3-1
 libglade 2.6.4-8
@@ -687,6 +701,7 @@ liburing 2.1-1
 libusb 1.0.26-1
 libusb-compat 0.1.7-1
 libusbmuxd 2.0.2-1
+libutf8proc 2.7.0-2
 libuv 1.43.0-1
 libva 2.14.0-1
 libvdpau 1.5-1
@@ -797,15 +812,16 @@ mkinitcpio 31-2
 mkinitcpio-busybox 1.35.0-1
 mobile-broadband-provider-info 20220315-1
 mongo-c-driver 1.21.1-2
+mono 6.12.0.122-1
 mpc 0.34-2
 mpd 0.23.6-2
 mpdecimal 2.5.1-1
 mpfr 4.1.0.p13-2
 mpg123 1.29.3-1
-ms-outlook-nativefier 0.01-1
 mtdev 1.1.6-1
 mtools 1:4.0.39-1
 multimc-bin 0.6.14.2998-2
+nasm 2.15.05-1
 ncurses 6.3-2
 ndctl 72.1-1
 nemo 5.2.4-1
@@ -814,7 +830,6 @@ neon 0.32.2-1
 net-snmp 5.9.1-3
 net-tools 2.10-1
 netctl 1.28-1
-netdata-git v1.33.1.r233.g069512b31-1
 netpbm 10.73.37-1
 netstandard-targeting-pack 6.0.2.sdk102-1
 nettle 3.7.3-1
@@ -838,6 +853,7 @@ npth 1.6-3
 nspr 4.33-2
 nss 3.77-1
 nss-mdns 0.15.1-1
+numactl 2.0.14-2
 nvidia 510.60.02-15
 nvidia-dkms 510.60.02-1
 nvidia-settings 510.60.02-1
@@ -914,10 +930,11 @@ pfetch 0.6.0-3
 phinger-cursors 1.1-3
 phonon-qt5 4.11.1-3
 phonon-qt5-gstreamer 4.10.0-3
+picom-ibhagwan-git 1578_Next.297.gc4107bb_2021.11.03-1
 pinentry 1.2.0-1
 pipewire 1:0.3.50-1
 pipewire-media-session 1:0.4.1-1
-pipewire-pulse 1:0.3.50-1
+pipewire-pulse 1:0.3.50-2
 pixman 0.40.0-1
 pkgconf 1.8.0-1
 playerctl 2.4.1-2
@@ -941,7 +958,6 @@ pulseaudio-alsa 1:1.2.6-3
 pulseaudio-control 2.3.0-1
 pv 1.6.20-2
 pybind11 2.9.2-1
-pycharm-professional 2021.3.3-1
 pyenv 2.2.5-1
 pygtk 2.24.0-12
 pystring 1.1.3.git1-1
@@ -1107,6 +1123,8 @@ seahorse 1:41.0-2
 sed 4.8-1
 semver 7.3.7-1
 serd 0.30.10-1
+serf 1.3.9-5
+sfml 2.5.1-2
 shaderc 2022.1-2
 shadow 4.11.1-1
 shared-mime-info 2.0+144+g13695c7-1
@@ -1120,7 +1138,6 @@ snappy 1.1.9-2
 sord 0.16.8-1
 sound-theme-freedesktop 0.8-4
 soundtouch 2.3.1-2
-soundux-git 1:r1393.9c1cfa6-1
 source-highlight 3.1.9-7
 spandsp 0.0.6-3
 speech-dispatcher 0.11.1-2
@@ -1140,6 +1157,7 @@ steam 1.0.0.74-1
 steam-native-runtime 1.0.0.70-3
 strace 5.17-1
 substance-painter 7.4.1-1
+subversion 1.14.1-5
 sudo 1.9.10-1
 suil 0.10.10-2
 svt-av1 0.9.0-2
@@ -1193,6 +1211,7 @@ v4l-utils 1.22.1-1
 v4l2loopback-dkms 0.12.5-2
 vamp-plugin-sdk 2.10.0-1
 vi 1:070224-5
+vial-appimage v0.5-2
 vid.stab 1.1-3
 vim 8.2.4651-1
 vim-runtime 8.2.4651-1
@@ -1217,10 +1236,11 @@ webrtc-audio-processing 0.3.1-3
 wget 1.21.3-1
 which 2.21-5
 wildmidi 0.4.4-1
-wine 7.6-1
+wine 7.7-1
 wine-gecko 2.47.2-3
 wine-mono 7.2.0-1
-winetricks 20220328-1
+winetricks 20220411-1
+wired 0.10.1-1
 wireless_tools 30.pre9-3
 wireshark-cli 3.6.3-1
 wireshark-qt 3.6.3-1
