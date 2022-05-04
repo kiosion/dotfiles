@@ -16,7 +16,7 @@ fish_ssh_agent
 set -gx SSH_AUTH_SOCK "/usr/local/var/run/yubikey-agent.sock"
 
 # set starship config location
-set -gx STARSHIP_CONFIG /Users/maxim/.config/starship/starship.toml
+set -gx STARSHIP_CONFIG /Users/kio/.config/starship/starship.toml
 
 # enable starship theme
 starship init fish | source
