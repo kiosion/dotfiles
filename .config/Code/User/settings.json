@@ -14,7 +14,7 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "editor.fontFamily": "MonoLisa, 'Cascadia Code', 'Fira Code iScript', monospace",
+    "editor.fontFamily": "MonoLisa Nerd Font, 'Cascadia Code', 'Fira Code iScript', monospace",
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "vsicons.dontShowNewVersionMessage": true,
     "explorer.confirmDelete": false,
@@ -84,5 +84,9 @@
     "workbench.editor.enablePreview": false,
     "workbench.colorTheme": "Dracula Refined",
     "javascript.updateImportsOnFileMove.enabled": "never",
-    "tabnine.experimentalAutoImports": true
+    "tabnine.experimentalAutoImports": true,
+    "terminal.integrated.defaultProfile.osx": "fish",
+    "rpc.appName": "Visual Studio Code",
+    "rpc.showProblems": false,
+    "rpc.suppressNotifications": false
 }

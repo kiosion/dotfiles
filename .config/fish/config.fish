@@ -46,6 +46,11 @@ alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 # vue
 #set -x PATH ~/.npm-global/bin:$PATH
 
+# nvm
+function nvm
+  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+
 # if on tty1, launch startx automatically
 #if status is-login
 #    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1

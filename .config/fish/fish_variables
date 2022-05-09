@@ -3,12 +3,13 @@
 SETUVAR --export SSH_AUTH_SOCK:/home/kio/sshauthsock\x2esh
 SETUVAR TO_DIR:/home/kio/\x2etofish
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_edc_2F_bass_files:/home/kio/\x2econfig/fish/functions/__bass\x2epy\x1e/home/kio/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_joehillen_2F_to_2D_fish_files:/home/kio/\x2econfig/fish/functions/to\x2efish\x1e/home/kio/\x2econfig/fish/conf\x2ed/to\x2efish\x1e/home/kio/\x2econfig/fish/completions/to\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/kio/\x2econfig/fish/functions/fisher\x2efish\x1e/home/kio/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_laughedelic_2F_fish__logo_files:/home/kio/\x2econfig/fish/functions/fish_logo\x2efish\x1e/home/kio/\x2econfig/fish/completions/fish_logo\x2efish
 SETUVAR _fisher_laughedelic_2F_pisces_files:/home/kio/\x2econfig/fish/functions/_pisces_append\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_backspace\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_bind_pair\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_complete\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_insert_identical\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_insert_left\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_insert_right\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_jump\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_lookup\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_remove\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_should_insert\x2efish\x1e/home/kio/\x2econfig/fish/functions/_pisces_skip\x2efish\x1e/home/kio/\x2econfig/fish/conf\x2ed/pisces\x2efish
 SETUVAR _fisher_paysonwallach_2F_fish_2D_you_2D_should_2D_use_files:/home/kio/\x2econfig/fish/functions/__ysu__check_aliases\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__check_git_aliases\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__check_hardcore\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__flush_buffer\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__get_field\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__message\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__set_default\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__set_field\x2efish\x1e/home/kio/\x2econfig/fish/functions/__ysu__write_buffer\x2efish\x1e/home/kio/\x2econfig/fish/conf\x2ed/you_should_use\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejoehillen/to\x2dfish\x1epaysonwallach/fish\x2dyou\x2dshould\x2duse\x1elaughedelic/pisces\x1elaughedelic/fish_logo
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejoehillen/to\x2dfish\x1epaysonwallach/fish\x2dyou\x2dshould\x2duse\x1elaughedelic/pisces\x1elaughedelic/fish_logo\x1eedc/bass
 SETUVAR --export _microarchitecture:98
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
