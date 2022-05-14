@@ -3,6 +3,12 @@
       "./sanity-cms",
       "./react-app"
     ],
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
     "php.validate.executablePath": "/opt/lampp/bin/php",
     "editor.suggestSelection": "first",
     "editor.fontLigatures": true,
@@ -75,18 +81,19 @@
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": true,
     "editor.smoothScrolling": true,
-    "editor.insertSpaces": false,
     "workbench.editor.untitled.hint": "hidden",
     "files.insertFinalNewline": true,
     "vim.cursorStylePerMode.insert": "line",
     "explorer.compactFolders": false,
     "window.menuBarVisibility": "toggle",
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreview": true,
     "workbench.colorTheme": "Dracula Refined",
     "javascript.updateImportsOnFileMove.enabled": "never",
     "tabnine.experimentalAutoImports": true,
     "terminal.integrated.defaultProfile.osx": "fish",
     "rpc.appName": "Visual Studio Code",
     "rpc.showProblems": false,
-    "rpc.suppressNotifications": false
+    "rpc.suppressNotifications": false,
+    "editor.tabSize": 2,
+    "editor.accessibilitySupport": "off"
 }

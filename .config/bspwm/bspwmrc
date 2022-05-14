@@ -17,6 +17,7 @@ picom --experimental-backends --log-file /var/log/picom/picom.log &
 /home/kio/.config/polybar/launch.sh &
 /usr/bin/wired &
 clipmenud &
+wired &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 

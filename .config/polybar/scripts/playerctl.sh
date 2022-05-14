@@ -1,14 +1,14 @@
 #!/bin/sh
 
-if playerctl -p spotify metadata --format '{{status}}' | grep -q 'Playing'
+if playerctl -i firefox metadata --format '{{status}}' | grep -q 'Playing'
 then
-    out=`playerctl -p spotify metadata --format '{{artist}} - {{title}}'`
+    out=`playerctl -i firefox metadata --format '{{artist}} - {{title}}'`
     out=' + '$out
     echo $out
 else 
-    if playerctl -p spotify metadata --format '{{status}}' | grep -q 'Paused'
+    if playerctl -i firefox metadata --format '{{status}}' | grep -q 'Paused'
     then
-        out=`playerctl -p spotify metadata --format '{{artist}} - {{title}}'`
+        out=`playerctl -i firefox metadata --format '{{artist}} - {{title}}'`
         out=' - '$out
         echo $out
     else
