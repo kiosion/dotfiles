@@ -83,7 +83,6 @@
     "editor.smoothScrolling": true,
     "workbench.editor.untitled.hint": "hidden",
     "files.insertFinalNewline": true,
-    "vim.cursorStylePerMode.insert": "line",
     "explorer.compactFolders": false,
     "window.menuBarVisibility": "toggle",
     "workbench.editor.enablePreview": true,
@@ -95,5 +94,11 @@
     "rpc.showProblems": false,
     "rpc.suppressNotifications": false,
     "editor.tabSize": 2,
-    "editor.accessibilitySupport": "off"
+    "editor.accessibilitySupport": "off",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderWhitespace": "all",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.guides.bracketPairs": true,
+    "terminal.integrated.cursorBlinking": true,
+    "githubPullRequests.createOnPublishBranch": "never"
 }
