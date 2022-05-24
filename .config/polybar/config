@@ -34,16 +34,13 @@ yellow = #f1fa8c
 
 [bar/wide]
 monitor = DP-4 
-;width = 98.7%
+#width = 3424
 width = 100%
-;height = 26
 height = 28
-;offset-x = 0.65% 
-offset-x = 0%
-;offset-y = 1.25%
-offset-y = 0%
+offset-x = 0
+offset-y = 0
 fixed-center = true 
-;bottom = true
+#bottom = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -69,8 +66,7 @@ font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=10";1
 
 modules-left = bspwm xwindow
 modules-center = date
-#modules-right = xkeyboard cpu temperature memory upt pulseaudio-control
-modules-right = playing cpu temperature memory pulseaudio-control
+modules-right = playing cpu memory pulseaudio-control
 
 tray-position = right
 tray-padding = 2
@@ -81,8 +77,69 @@ tray-padding-right = 2
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
-;cursor-click = pointer
-;cursor-scroll = pointer
+[bar/topleft]
+monitor = DP-2
+width = 136
+height = 25
+offset-x = 10
+offset-y = 8
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+#line-size = 2
+#line-color = #5761ee
+
+radius-top = 4
+radius-bottom = 4
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 2
+module-margin-right = 1
+
+font-0 = MonoLisa:pixelsize=9;1
+font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=10";1
+font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=9";1
+
+modules-left = bspwm
+
+#tray-position = right
+#tray-padding = 2
+#tray-padding-right = 4
+#tray-padding-left = 4
+#tray-detached = true
+#tray-offset-x = 1788
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+[bar/topright]
+monitor = DP-2
+width = 162
+height = 25
+offset-x = 1748
+offset-y = 6
+fixed-center = true
+bottom = true
+
+radius-top = 4
+radius-bottom = 4
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 2
+module-margin-right = 1
+
+font-0 = MonoLisa:pixelsize=9;1
+font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=10";1
+font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=9";1
+
+modules-right = date
 
 [module/xwindow]
 type = internal/xwindow
@@ -249,7 +306,7 @@ format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
-
+label-margin-right = 1
 *-font = 1
 
 [module/pulseaudio-control]
@@ -258,13 +315,13 @@ type = custom/script
 tail = true
 label-padding = 0
 label-foreground = ${colors.foreground}
-label-margin-right = 1
+label-margin-right = 0
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
 exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Index" listen
 
-click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-sink
+click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1" next-sink
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 130 up && /home/kio/.config/wired/vol.sh
