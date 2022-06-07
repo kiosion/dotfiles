@@ -100,5 +100,8 @@
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     "editor.guides.bracketPairs": true,
     "terminal.integrated.cursorBlinking": true,
-    "githubPullRequests.createOnPublishBranch": "never"
+    "githubPullRequests.createOnPublishBranch": "never",
+    "[javascript]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+    }
 }

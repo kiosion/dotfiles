@@ -107,6 +107,12 @@ alt + w; d
 # telegram
 alt + w; t
         telegram-desktop
+# slack
+alt + w; s
+        slack
+# zoom
+alt + w; z
+        zoom
 
 ### GAMES ###
 

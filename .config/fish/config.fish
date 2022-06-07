@@ -36,6 +36,7 @@ alias handbrake "hbc"
 alias pf "pfetch"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
 alias b2 "b2-linux"
+alias gits "git status"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
@@ -50,6 +51,9 @@ alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
+
+# force colour
+set -g FORCE_COLOR 1
 
 # if on tty1, launch startx automatically
 #if status is-login
