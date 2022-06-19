@@ -68,9 +68,12 @@ modules-left = bspwm xwindow
 modules-center = date
 modules-right = playing cpu memory pulseaudio-control
 
+tray-detached = false
+tray-maxsize = 22
 tray-position = right
 tray-padding = 2
 tray-padding-right = 2
+tray-scale = 1.0
 ;tray-detached = true
 ;tray-offset-x = 1640
 

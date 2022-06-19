@@ -57,6 +57,8 @@ bspc rule -a firewall-config state=floating
 bspc rule -a Emacs state=tiled
 bspc rule -a Doom Emacs state=tiled
 bspc rule -a CoreImage state=floating
+bspc rule -a join? state=floating
+bspc rule -a Zoom state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &
