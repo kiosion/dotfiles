@@ -53,7 +53,7 @@ function nvm
 end
 
 # force colour
-set -g FORCE_COLOR 1
+set -gx FORCE_COLOR 1
 
 # if on tty1, launch startx automatically
 #if status is-login

@@ -23,6 +23,8 @@ alt + Escape
 # rofi
 super + @space
 	rofi -show run -icon-theme "Papirus-Dark"
+super + shift + @m
+        rofi -show emoji -icon-theme "Papirus-Dark"
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
