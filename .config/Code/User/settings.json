@@ -1,107 +1,133 @@
 {
-    "eslint.workingDirectories": [
-      "./sanity-cms",
-      "./react-app"
-    ],
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    ],
-    "php.validate.executablePath": "/opt/lampp/bin/php",
-    "editor.suggestSelection": "first",
-    "editor.fontLigatures": true,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    },
-    "editor.fontFamily": "MonoLisa Nerd Font, 'Cascadia Code', 'Fira Code iScript', monospace",
-    "terminal.integrated.defaultProfile.windows": "Command Prompt",
-    "vsicons.dontShowNewVersionMessage": true,
-    "explorer.confirmDelete": false,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "discord.idleTimeout": 120,
-    "explorer.confirmDragAndDrop": false,
-    "git.enableCommitSigning": true,
-    "security.workspace.trust.untrustedFiles": "open",
-    "gitlens.defaultTimeFormat": "H:mm",
-    "codetogether.userName": "kio",
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    },
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-      "*": true,
-      "yaml": false,
-      "plaintext": true,
-      "markdown": true,
-      "python": true
-    },
-    "files.associations": {
-        "*.css": "css",
-    },
-    "vscode_custom_css.imports": ["file:///home/kio/.vscode/extensions/custom.css"],
-     "editor.tokenColorCustomizations": {
-      "textMateRules": [
-        {
-          "scope": [
-            "comment",
-            "keyword",
-            "storage.modifier",
-            "storage.type.class.js",
-            "storage.type.js"
-          ],
-          "settings": {
-            "fontStyle": "italic bold"
-          }
-        },
-        {
-          "scope": [
-            "keyword.control.conditional",
-            "keyword.operator"
-          ],
-          "settings": {
-            "fontStyle": "bold"
-          }
+  "eslint.workingDirectories": [
+    "./sanity-cms",
+    "./react-app"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "php.validate.executablePath": "/opt/lampp/bin/php",
+  "editor.suggestSelection": "first",
+  "editor.fontLigatures": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "editor.fontFamily": "MonoLisa Nerd Font, 'Cascadia Code', 'Fira Code iScript', monospace",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "vsicons.dontShowNewVersionMessage": true,
+  "explorer.confirmDelete": false,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "discord.idleTimeout": 120,
+  "explorer.confirmDragAndDrop": false,
+  "git.enableCommitSigning": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "gitlens.defaultTimeFormat": "H:mm",
+  "codetogether.userName": "kio",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true,
+    "python": true,
+    "scss": true,
+    "typescript": true
+  },
+  "files.associations": {
+    "*.css": "css",
+  },
+  "vscode_custom_css.imports": [
+    "file:///home/kio/.vscode/extensions/custom.css"
+  ],
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "keyword",
+          "storage.modifier",
+          "storage.type.class.js",
+          "storage.type.js"
+        ],
+        "settings": {
+          "fontStyle": "italic bold"
         }
-      ]
-    },
-    "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
-    "discord.lowerDetailsDebugging": "{empty}",
-    "editor.mouseWheelZoom": true,
-    "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": true,
-    "editor.smoothScrolling": true,
-    "workbench.editor.untitled.hint": "hidden",
-    "files.insertFinalNewline": true,
-    "explorer.compactFolders": false,
-    "window.menuBarVisibility": "toggle",
-    "workbench.editor.enablePreview": true,
-    "workbench.colorTheme": "Dracula Refined",
-    "javascript.updateImportsOnFileMove.enabled": "never",
-    "tabnine.experimentalAutoImports": true,
-    "terminal.integrated.defaultProfile.osx": "fish",
-    "rpc.appName": "Visual Studio Code",
-    "rpc.showProblems": false,
-    "rpc.suppressNotifications": false,
-    "editor.tabSize": 2,
-    "editor.accessibilitySupport": "off",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.renderWhitespace": "all",
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    "editor.guides.bracketPairs": true,
-    "terminal.integrated.cursorBlinking": true,
-    "githubPullRequests.createOnPublishBranch": "never",
-    "[javascript]": {
-      "editor.defaultFormatter": "HookyQR.beautify"
-    }
+      },
+      {
+        "scope": [
+          "keyword.control.conditional",
+          "keyword.operator"
+        ],
+        "settings": {
+          "fontStyle": "bold"
+        }
+      }
+    ]
+  },
+  "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
+  "discord.lowerDetailsDebugging": "{empty}",
+  "editor.mouseWheelZoom": true,
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.smoothScrolling": true,
+  "workbench.editor.untitled.hint": "hidden",
+  "files.insertFinalNewline": true,
+  "explorer.compactFolders": false,
+  "workbench.editor.enablePreview": true,
+  "workbench.colorTheme": "Dracula Refined",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "tabnine.experimentalAutoImports": true,
+  "terminal.integrated.defaultProfile.osx": "fish",
+  "rpc.appName": "Visual Studio Code",
+  "rpc.showProblems": false,
+  "rpc.suppressNotifications": false,
+  "editor.tabSize": 2,
+  "editor.accessibilitySupport": "off",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.renderWhitespace": "all",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": true,
+  "terminal.integrated.cursorBlinking": true,
+  "githubPullRequests.createOnPublishBranch": "never",
+  "[javascript]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "redhat.telemetry.enabled": false,
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "prettier.singleQuote": true,
+  "editor.wordWrap": "on",
+  "editor.linkedEditing": true,
+  "bookmarks.useWorkaroundForFormatters": true,
+  "cSpell.language": "en,en-GB,en-CA",
+  "cSpell.enabled": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "svelte.enable-ts-plugin": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.scrollback": 10000,
+  "window.menuBarVisibility": "hidden",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  }
 }

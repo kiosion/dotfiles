@@ -27,7 +27,7 @@ xsetroot -cursor_name left_ptr
 
 ## MAIN ##
 #xrandr --auto DP-4 --mode 3440x1440 --rate 120
-xrandr --output DP-4 --mode 3440x1440 --rate 120 --output DP-2 --mode 1920x1080 --rate 240 --above DP-4
+xrandr --output DP-4 --mode 3440x1440 --rate 120 --output DP-2 --mode 1920x1080 --rate 240 --pos 760x0
 
 
 ## WORKSPACES ##
@@ -59,6 +59,8 @@ bspc rule -a Doom Emacs state=tiled
 bspc rule -a CoreImage state=floating
 bspc rule -a join? state=floating
 bspc rule -a Zoom state=floating
+bspc rule -a Peek state=floating
+bspc rule -a peek state=floating
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &

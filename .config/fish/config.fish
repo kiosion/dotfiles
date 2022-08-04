@@ -37,6 +37,10 @@ alias pf "pfetch"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
 alias b2 "b2-linux"
 alias gits "git status"
+alias gitc "git checkout"
+
+# Capybara tests
+alias capy "bundle exec cucumber -p chrome -p mac-rc"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
@@ -44,16 +48,16 @@ alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
 # yiffer-dl
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 
-# vue
-#set -x PATH ~/.npm-global/bin:$PATH
-
-# nvm
+# init nvm
 function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
-# force colour
+# force tty colour
 set -gx FORCE_COLOR 1
+
+# init rbenv
+status --is-interactive; and rbenv init - fish | source
 
 # if on tty1, launch startx automatically
 #if status is-login
@@ -64,5 +68,3 @@ set -gx FORCE_COLOR 1
 
 # load pyenv automatically
 # status is-interactive; and pyenv init --path | source
-# pyenv init - | source
-# fish_add_path /usr/local/sbin

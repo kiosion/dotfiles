@@ -11,6 +11,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     family: MonoLisa Nerd Font
+    
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
