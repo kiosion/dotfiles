@@ -1,0 +1,9 @@
+[Unit]
+Description=Automount network shares on boot
+
+[Automount]
+Where=/mnt/volta/plex
+
+[Install]
+WantedBy=multi-user.target
+

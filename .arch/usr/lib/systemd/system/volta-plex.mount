@@ -1,0 +1,13 @@
+[Unit]
+Description=automount network shares on boot
+Wants=network-online.target
+After=network-online.target
+
+[Mount]
+What=//volta/Plex
+Where=/mnt/volta/plex
+Type=cifs
+Options=credentials=/etc/smbcreds,gid=984,uid=1000,vers=2.1,nofail
+
+[Install]
+WantedBy=multi-user.target

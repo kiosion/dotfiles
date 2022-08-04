@@ -1,0 +1,9 @@
+[Unit]
+Description=Automount network shares on boot
+
+[Automount]
+Where=/mnt/volta/backups
+
+[Install]
+WantedBy=multi-user.target
+
