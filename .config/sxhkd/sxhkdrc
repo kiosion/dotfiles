@@ -20,6 +20,10 @@ alt + Escape
         screencloud --area
 #        flameshot gui
 
+# screenrecord
+alt + Tab
+        peek
+
 # rofi
 super + @space
 	rofi -show run -icon-theme "Papirus-Dark"

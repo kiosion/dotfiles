@@ -35,3 +35,8 @@ My Saved Places.
 \#*#
 .venv
 .venv/*
+]node_modules
+]node_modules/*
+]node_modules/
+target/debug
+target/debug/*

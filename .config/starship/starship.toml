@@ -38,3 +38,5 @@ truncation_length = 3
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 🔒"
 
+[gcloud]
+disabled = true

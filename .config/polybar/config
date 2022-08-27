@@ -322,9 +322,9 @@ label-margin-right = 0
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
-exec = pulseaudio-control --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --sink-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Index" listen
+exec = pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Index" listen
 
-click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1" next-sink
+click-right = pulseaudio-control --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1" next-node
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 130 up && /home/kio/.config/wired/vol.sh

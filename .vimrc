@@ -123,6 +123,9 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 
+" Collapse open split windows to just 1 line
+set wmh=0
+
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -152,5 +155,9 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Map Ctrl + <hjkl> to move between split view windows
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
 
 "------------------------------------------------------------
