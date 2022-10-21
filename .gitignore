@@ -1,3 +1,4 @@
 *.DS_Store
 **/fish_variables
 git/gitconfig.local.symlink
+**/*.swp

@@ -23,19 +23,30 @@ starship init fish | source
 
 # aliases
 alias btw "neofetch"
-alias l "ls -l"
-alias la "ls -la"
+alias l "ls -lh"
+alias la "ls -lah"
 alias md "mkdir -p"
 alias img "tiv -a -r 0.5"
 alias handbrake "hbc"
 alias pf "pfetch"
 alias python3 "python"
 alias py "python"
+alias gits "git status"
+alias gitc "git checkout"
+
+# Capybara
+alias capy "bundle exec cucumber -p chrome -p mac-rc"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
 
-# load pyenv automatically
-# status is-interactive; and pyenv init --path | source
-# pyenv init - | source
-# fish_add_path /usr/local/sbin
+# source cargo env
+set PATH $HOME/.cargo/bin $PATH
+
+# init nvm
+function nvm
+  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+
+# init rbenv
+
