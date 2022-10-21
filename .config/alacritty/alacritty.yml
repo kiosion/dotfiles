@@ -2,29 +2,22 @@
 
 # Font configuration
 font:
-  # Normal (roman) font face
   normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
+    #family: scientifica Nerd Font
     family: MonoLisa Nerd Font
-    
-    # family: CodeNewRoman Nerd Font
-    # family: RobotoMono Nerd Font
-    # family: Hack
-    # family: JetBrains Mono
-    # family: UbuntuMono Nerd Font
-    # family: Monofur Nerd Font
-    # family: TerminessTTF Nerd Font
-    # family: Mononoki Nerd Font
-
-    # The `style` can be specified to pick a specific face.
     style: Regular
-
+  #italic:
+    #family: scientificaItalic Nerd Font
+    #family: Fira Code iScript
+    #style: Italic
+  #bold:
+    #family: scientificaBold Nerd Font
+    #family: MonoLisa Nerd Font
+    #style: Medium
   size: 9
+  offset:
+    x: 0
+    y: 0
 
 # Spacing
 
@@ -36,6 +29,9 @@ key_bindings:
 # Theme configuration
 window:
     opacity: 0.7
+    padding:
+      x: 0
+      y: 0
 
 colors:
   primary:
@@ -55,9 +51,9 @@ colors:
     focused_match:
       foreground: '0x44475a'
       background: '0xffb86c'
-    bar:
-      background: '0x282a36'
-      foreground: '0xf8f8f2'
+  footer_bar:
+     background: '0x282a36'
+     foreground: '0xf8f8f2'
   line_indicator:
     foreground: None
     background: None
@@ -91,3 +87,14 @@ colors:
     magenta: '0xff46b0'
     cyan:    '0x59dffc'
     white:   '0xe6e6d1'
+
+bell:
+  animation: EaseOutExpo
+  duration: 50
+  color: '#ffffff'
+  command: None
+
+cursor:
+  style:
+    shape: Block
+    blinking: On

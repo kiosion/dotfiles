@@ -40,3 +40,5 @@ My Saved Places.
 ]node_modules/
 target/debug
 target/debug/*
+*/target/debug
+*/target/debug/*

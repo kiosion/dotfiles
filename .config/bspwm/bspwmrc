@@ -18,6 +18,7 @@ picom --experimental-backends --log-file /var/log/picom/picom.log &
 /usr/bin/wired &
 clipmenud &
 wired &
+nm-applet &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
@@ -26,7 +27,6 @@ xsetroot -cursor_name left_ptr
 ### MONITORS ###
 
 ## MAIN ##
-#xrandr --auto DP-4 --mode 3440x1440 --rate 120
 xrandr --output DP-4 --mode 3440x1440 --rate 120 --output DP-2 --mode 1920x1080 --rate 240 --pos 760x0
 
 

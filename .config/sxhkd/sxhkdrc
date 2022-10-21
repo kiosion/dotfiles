@@ -13,12 +13,12 @@
 ### SYSTEM ###
 
 # lock screen
-ctrl + Escape
-	$HOME/.config/sxhkd/screen_lock.sh
+# ctrl + Escape
+#	$HOME/.config/sxhkd/screen_lock.sh
 # screenshot
 alt + Escape
-        screencloud --area
-#        flameshot gui
+#        screencloud --area
+        flameshot gui
 
 # screenrecord
 alt + Tab
@@ -32,6 +32,10 @@ super + period
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"
+
+# webcam
+alt + i
+        /usr/bin/initCamera
 
 ### RELOAD ###
 

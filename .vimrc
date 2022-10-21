@@ -1,4 +1,39 @@
 "-------------------------------------------------------------
+" Vim-plug setup {{{1
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+"-------------------------------------------------------------
+" Plugs {{{1
+
+call plug#begin()
+
+" vim-discord, RPC integration
+" Plug 'vbe0201/vimdiscord'
+
+" ALE, syntax highlighting and linting support
+" Plug 'dense-analysis/ale'
+
+" Airline status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" vim-javascript
+Plug 'pangloss/vim-javascript'
+
+call plug#end()
+
+"-------------------------------------------------------------
+" Plugin configs {{{1
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='lessnoise'
+
+"-------------------------------------------------------------
 " Features {{{1
 "
 " These options and commands enable some very useful features in Vim, that 

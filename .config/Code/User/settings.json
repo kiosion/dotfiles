@@ -25,8 +25,6 @@
   "vsicons.dontShowNewVersionMessage": true,
   "explorer.confirmDelete": false,
   "git.autofetch": true,
-  "git.confirmSync": false,
-  "discord.idleTimeout": 120,
   "explorer.confirmDragAndDrop": false,
   "git.enableCommitSigning": true,
   "security.workspace.trust.untrustedFiles": "open",
@@ -90,7 +88,6 @@
   "explorer.compactFolders": false,
   "workbench.editor.enablePreview": true,
   "workbench.colorTheme": "Dracula Refined",
-  "javascript.updateImportsOnFileMove.enabled": "never",
   "tabnine.experimentalAutoImports": true,
   "terminal.integrated.defaultProfile.osx": "fish",
   "rpc.appName": "Visual Studio Code",
@@ -126,8 +123,42 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "terminal.integrated.scrollback": 10000,
-  "window.menuBarVisibility": "hidden",
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
-  }
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "javascript.format.semicolons": "insert",
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "git.confirmSync": false,
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "typescript.format.semicolons": "insert",
+  "typescript.tsserver.maxTsServerMemory": 5120,
+  "files.maxMemoryForLargeFilesMB": 5120,
+  "eslint.lintTask.enable": true,
+  "eslint.options": {
+  },
+  "prettier.configPath": "./.prettierrc.json",
+  "svelte.plugin.svelte.format.config.singleQuote": true,
+  "svelte.plugin.svelte.format.enable": false,
+  "window.titleBarStyle": "custom",
+  "window.menuBarVisibility": "compact",
+  "githubPullRequests.pullBranch": "never",
+  "editor.cursorStyle": "block",
+  "discord.removeRemoteRepository": true,
+  "discord.idleTimeout": 14400,
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "[elixir]": {
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "elixirLS.projectDir": "./elixir-api/",
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "vitest.enable": true,
+  "vitest.showFailMessages": true,
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.petType": "clippy",
+  "vscode-pets.position": "explorer"
 }

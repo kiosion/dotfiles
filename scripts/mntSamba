@@ -1,0 +1,13 @@
+#!/bin/bash
+
+opts="credentials=/etc/smbcreds,gid=984,uid=1000,vers=2.1"
+
+echo "Mounting with options: $opts"
+
+sudo mount -v -t cifs //volta/Lightspeed /mnt/volta/lightspeed -o $opts
+
+sudo mount -v -t cifs //volta/Dropbox /mnt/volta/dropbox -o $opts
+
+sudo mount -v -t cifs //volta/Plex /mnt/volta/plex -o $opts
+
+sudo mount -v -t cifs //volta/Backups /mnt/volta/backups -o $opts

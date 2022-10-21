@@ -26,8 +26,8 @@ starship init fish | source
 # aliases
 alias neofetch "neofetch --ascii_distro arch_old --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C --block_range -1 -1"
 alias btw "neofetch"
-alias l "ls -l"
-alias la "ls -la"
+alias l "ls -l --block-size=M"
+alias la "ls -la --block-size=M"
 alias md "mkdir -p"
 alias wm-l "wmname LG3D"
 alias wm-b "wmname bspwm"
@@ -58,6 +58,10 @@ set -gx FORCE_COLOR 1
 
 # init rbenv
 status --is-interactive; and rbenv init - fish | source
+set -gx PATH /home/kio/.rbenv/shims:$PATH
+
+# init pyenv
+# status is-interactive; and pyenv init --path | source
 
 # if on tty1, launch startx automatically
 #if status is-login
@@ -66,5 +70,5 @@ status --is-interactive; and rbenv init - fish | source
 #    end
 #end
 
-# load pyenv automatically
-# status is-interactive; and pyenv init --path | source
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/kio/.ghcup/bin $PATH # ghcup-env

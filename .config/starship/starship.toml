@@ -1,11 +1,8 @@
 # Inserts a blank line between shell prompts
-add_newline = true 
+# add_newline = true 
 
 # Custom format
-format = """
-[┌───⤙](green bold) $all
-[│](green bold)
-[└─→](green bold) """
+format = """ $all [—→](green bold) """
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]
@@ -13,7 +10,7 @@ disabled = true
 #success_symbol = "[➜](green)"
 
 [line_break]
-disabled = true
+# disabled = true
 
 # Disable the package module, hiding it from the prompt completely
 [package]
