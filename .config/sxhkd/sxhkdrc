@@ -12,16 +12,13 @@
 #
 ### SYSTEM ###
 
-# lock screen
-# ctrl + Escape
-#	$HOME/.config/sxhkd/screen_lock.sh
 # screenshot
 alt + Escape
 #        screencloud --area
         flameshot gui
 
 # screenrecord
-alt + Tab
+alt + 1
         peek
 
 # rofi

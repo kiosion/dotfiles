@@ -8,8 +8,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ],
-  "php.validate.executablePath": "/opt/lampp/bin/php",
+],
+"php.validate.executablePath": "/opt/lampp/bin/php",
   "editor.suggestSelection": "first",
   "editor.fontLigatures": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -153,12 +153,17 @@
     "editor.defaultFormatter": "JakeBecker.elixir-ls"
   },
   "javascript.updateImportsOnFileMove.enabled": "never",
-  "elixirLS.projectDir": "./elixir-api/",
+  "elixirLS.projectDir": "./",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "vitest.enable": true,
   "vitest.showFailMessages": true,
   "vscode-pets.petSize": "medium",
   "vscode-pets.petType": "clippy",
-  "vscode-pets.position": "explorer"
+  "vscode-pets.position": "explorer",
+  "workbench.iconTheme": "vscode-icons",
+  "haskell.manageHLS": "GHCup",
+  "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
+  "discord.detailsEditing": "Editing a {LANG} file",
+  "discord.detailsDebugging": "Debugging a {LANG} file"
 }

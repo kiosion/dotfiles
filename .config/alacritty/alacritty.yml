@@ -3,7 +3,6 @@
 # Font configuration
 font:
   normal:
-    #family: scientifica Nerd Font
     family: MonoLisa Nerd Font
     style: Regular
   #italic:

@@ -33,7 +33,7 @@ red = #ff5555
 yellow = #f1fa8c
 
 [bar/wide]
-monitor = DP-4 
+monitor = DP-0 
 width = 100%
 height = 28
 offset-x = 0

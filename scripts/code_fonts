@@ -1,0 +1,9 @@
+#!/bin/sh
+
+style=".mtk3, .mtk4 { font-family: 'Fira Code iScript' !important; font-style: italic bold; font-size: 11.em; } .comment, .keyword, .storage.modifier, .storage.type.class.js, .storage.type.js { font-family: 'Fira Code iScript' !important; font-style: italic bold; font-size: 1.2em; }"
+
+# backup existing file
+sudo cp /opt/visual-studio-code/resources/app/out/vs/workbench/workbench.desktop.main.css /opt/visual-studio-code/resources/app/out/vs/workbench/workbench.desktop.main.css.bak
+
+# Insert style at start of file
+sudo sed -i "1s;^;$style
