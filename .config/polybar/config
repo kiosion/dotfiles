@@ -56,8 +56,8 @@ radius-bottom = 0
 padding-left = 0
 padding-right = 1
 
-module-margin-left = 2
-module-margin-right = 1
+module-margin-left = 1
+module-margin-right = 2
 
 font-0 = MonoLisa:pixelsize=10;1
 font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=11";1
@@ -65,7 +65,7 @@ font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=10";1
 
 modules-left = bspwm xwindow
 modules-center = date
-modules-right = playing cpu temperature memory pulseaudio-control
+modules-right = playing pkgs cpu memory eth pulseaudio-control
 
 tray-detached = false
 tray-maxsize = 18
@@ -146,13 +146,13 @@ modules-right = date
 [module/xwindow]
 type = internal/xwindow
 label = %title%
-label-maxlen = 80
+label-maxlen = 90
 label-font = 1
 
 [module/xkeyboard]
 type = internal/xkeyboard
 ;blacklist-0 = num lock
-format-prefix = "キー "
+format-prefix = "KB "
 format-prefix-foreground = ${colors.foreground-alt}
 
 ;label-layout = map: %layout%
@@ -167,9 +167,10 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1 = /home
 
-label-mounted = %{F#b2b3f4}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
+label-mounted = %mountpoint%: %percentage_used%%
+label-unmounted = %mountpoint% unmounted
 label-unmounted-foreground = ${colors.foreground-alt}
 label-*-font = 1
 
@@ -209,23 +210,10 @@ label-active-font = 5
 label-focused-font = 5
 label-occupied-font = 5
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
 [module/playing]
 type = custom/script
-interval = 2
-format-prefix = "ソング "
+interval = 1
+format-prefix = "SPT "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 
@@ -240,8 +228,8 @@ label-font = 1
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = "プロセッサー "
+interval = 1
+format-prefix = "CPU "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage:2%%
@@ -249,8 +237,8 @@ label-font = 1
 
 [module/memory]
 type = custom/script
-interval = 2
-format-prefix = "メモリー "
+interval = 1
+format-prefix = "MEM "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/memory.sh
@@ -259,39 +247,26 @@ label-font = 1
 [module/pkgs]
 type = custom/script
 interval = 60
-format-prefix = "パッケージ "
+format-prefix = "PKGS "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/pkgs.sh
 
 [module/upt]
 type = custom/script
 interval = 60
-format-prefix = "アップタイム "
+format-prefix = "UPT "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/scripts/upt.sh
 *-font = 1
 
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #5761ee
-label-connected = %essid%
-
-format-disconnected =
-
 [module/eth]
 type = internal/network
-interface = enp0s31f6
-interval = 3.0
-
+interface = enp95s0
+interval = 1
 format-connected-prefix = "NET "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
+label-connected = %netspeed%
+format-disconnected = "..."
 
 [module/date]
 type = internal/date
@@ -321,50 +296,22 @@ label-margin-right = 0
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
-exec = pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: Index" listen
+exec = pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1: Index" listen
 
-click-right = pulseaudio-control --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1" next-node
+click-right = pulseaudio-control --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-node
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 130 up && /home/kio/.config/wired/vol.sh
 scroll-down = pulseaudio-control --volume-max 130 down && /home/kio/.config/wired/vol.sh
 
-format-prefix = "ボリューム "
+format-prefix = "VOL "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = ""
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #b2b3f4
-bar-volume-foreground-6 = #f2e884
-bar-volume-gradient = true 
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/temperature]
 type = internal/temperature
 interval = 2
-thermal-zone = 2
+thermal-zone = 1
 warn-temperature = 80
 
 format-prefix = "温度 "

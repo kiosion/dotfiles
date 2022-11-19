@@ -1,0 +1,4 @@
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	localhost galileo.local galileo
+10.0.0.100	galileo

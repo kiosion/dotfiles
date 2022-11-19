@@ -36,8 +36,13 @@ alias handbrake "hbc"
 alias pf "pfetch"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
 alias b2 "b2-linux"
+# git
 alias gits "git status"
 alias gitc "git checkout"
+alias gitl1 "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gitl2 "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias commita "git commit --amend --no-edit"
+alias lastcommit "git show --stat --oneline HEAD"
 
 # Capybara tests
 alias capy "bundle exec cucumber -p chrome -p mac-rc"
