@@ -300,7 +300,7 @@ fi
 
 # Run tar cmd
 if [ "$compression" = false ]; then
-    tar cf - --ignore-failed-read -P --exclude=/home/$(whoami)/.vscode --exclude=/home/$(whoami)}/.cache --exclude=/home/$(whoami)/.local/share/Trash "${srcDir}" | (pv -s ${size_source} -n > "${curDate}${fn}.tar") 2>&1 | dialog --backtitle "Backup 0.0.2" --gauge "Archiving with Tar..." 10 60
+    tar cf - --ignore-failed-read -P --exclude=/home/$(whoami)/.vscode --exclude=/home/$(whoami)/.cache --exclude=/home/$(whoami)/.local/share/Trash "${srcDir}" | (pv -s ${size_source} -n > "${curDate}${fn}.tar") 2>&1 | dialog --backtitle "Backup 0.0.2" --gauge "Archiving with Tar..." 10 60
     fileLoc="${dstDir}/${curDateY}-${curDateM}/${curDate}${fn}.tar"
 else
     tar cf - --ignore-failed-read -P --exclude=/home/$(whoami)/.vscode --exclude=/home/$(whoami)/.cache --exclude=/home/$(whoami)/.local/share/Trash "${srcDir}" | (pv -s ${size_source} -n | gzip > "${curDate}${fn}.tar.gz") 2>&1 | dialog --backtitle "Backup 0.0.2" --gauge "Archiving with Tar & Gzip..." 10 60

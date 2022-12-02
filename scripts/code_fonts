@@ -5,5 +5,5 @@ style=".mtk3, .mtk4 { font-family: 'Fira Code iScript' !important; font-style: i
 # backup existing file
 sudo cp /opt/visual-studio-code/resources/app/out/vs/workbench/workbench.desktop.main.css /opt/visual-studio-code/resources/app/out/vs/workbench/workbench.desktop.main.css.bak
 
-# Insert style at start of file
-sudo sed -i "1s;^;$style
+# Insert style at start of file, on new line
+sudo sed -i "1i $style" /opt/visual-studio-code/resources/app/out/vs/workbench/workbench.desktop.main.css
