@@ -11,3 +11,5 @@ sudo mount -v -t cifs //volta/Dropbox /mnt/volta/dropbox -o $opts
 sudo mount -v -t cifs //volta/Plex /mnt/volta/plex -o $opts
 
 sudo mount -v -t cifs //volta/Backups /mnt/volta/backups -o $opts
+
+sudo mount -v -t cifs //volta/Torrents /mnt/volta/torrents -o $opts

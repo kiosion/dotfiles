@@ -44,6 +44,9 @@ alias gitl2 "git log --graph --abbrev-commit --decorate --format=format:'%C(bold
 alias commita "git commit --amend --no-edit"
 alias lastcommit "git show --stat --oneline HEAD"
 
+# Autocommit
+alias autoc "OPENAI_API_KEY=$OPENAI_API_KEY auto-commit --review"
+
 # Capybara tests
 alias capy "bundle exec cucumber -p chrome -p mac-rc"
 
@@ -77,3 +80,5 @@ set -gx PATH /home/kio/.rbenv/shims:$PATH
 
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/kio/.ghcup/bin $PATH # ghcup-env
+
+export PATH="$PATH:/home/kio/.bin"

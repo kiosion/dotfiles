@@ -7,7 +7,8 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "svelte"
 ],
 "php.validate.executablePath": "/opt/lampp/bin/php",
   "editor.suggestSelection": "first",
@@ -49,9 +50,9 @@
   "files.associations": {
     "*.css": "css",
   },
-  "vscode_custom_css.imports": [
-    "file:///home/kio/.vscode/extensions/custom.css"
-  ],
+  // "vscode_custom_css.imports": [
+  //   "file:///home/kio/.vscode/extensions/webrender.synthwave-x-fluoromachine-0.0.12/synthwave-x-fluoromachine.css"
+  // ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -80,14 +81,13 @@
   "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
   "discord.lowerDetailsDebugging": "{empty}",
   "editor.mouseWheelZoom": true,
-  "editor.cursorBlinking": "expand",
+  "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.smoothScrolling": true,
   "workbench.editor.untitled.hint": "hidden",
   "files.insertFinalNewline": true,
   "explorer.compactFolders": false,
   "workbench.editor.enablePreview": true,
-  "workbench.colorTheme": "Dracula Refined",
   "tabnine.experimentalAutoImports": true,
   "terminal.integrated.defaultProfile.osx": "fish",
   "rpc.appName": "Visual Studio Code",
@@ -145,7 +145,6 @@
   "window.titleBarStyle": "custom",
   "window.menuBarVisibility": "compact",
   "githubPullRequests.pullBranch": "never",
-  "editor.cursorStyle": "block",
   "discord.removeRemoteRepository": true,
   "discord.idleTimeout": 14400,
   "svelte.plugin.svelte.note-new-transformation": false,
@@ -161,9 +160,31 @@
   "vscode-pets.petSize": "medium",
   "vscode-pets.petType": "clippy",
   "vscode-pets.position": "explorer",
-  "workbench.iconTheme": "vscode-icons",
   "haskell.manageHLS": "GHCup",
   "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
   "discord.detailsEditing": "Editing a {LANG} file",
-  "discord.detailsDebugging": "Debugging a {LANG} file"
+  "discord.detailsDebugging": "Debugging a {LANG} file",
+  "workbench.colorTheme": "Dracula Refined",
+  "[python]": {
+  },
+  "ruby.languageServer": {},
+  "rubyLsp.rubyVersionManager": "rbenv",
+  "rdbg.useBundler": false,
+  "rubyLsp.enabledFeatures": {
+  
+    "codeActions": true,
+    "diagnostics": true,
+    "documentHighlights": true,
+    "documentLink": true,
+    "documentSymbols": true,
+    "foldingRanges": true,
+    "formatting": true,
+    "hover": true,
+    "inlayHint": true,
+    "onTypeFormatting": true,
+    "selectionRanges": true,
+    "semanticHighlighting": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "workbench.iconTheme": "icons",
 }
