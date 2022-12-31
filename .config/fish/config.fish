@@ -9,6 +9,7 @@
 #       ____\/\\\______\/\\\__/\\\\\\\\\\_\/\\\___\/\\\_ 
 #        ____\///_______\///__\//////////__\///____\///__
 #
+
 # Configuration options for fish shell
 
 # set ssh agent correctly
@@ -23,6 +24,14 @@ set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
 # enable starship theme
 starship init fish | source
 
+# add some common bins to PATH
+if not contains -- $HOME/.bin $PATH
+    set -gx PATH $HOME/.bin:$PATH
+end
+if not contains -- $HOME/.local/bin $PATH
+    set -gx PATH $HOME/.local/bin:$PATH
+end
+
 # aliases
 alias neofetch "neofetch --ascii_distro arch_old --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C --block_range -1 -1"
 alias btw "neofetch"
@@ -36,24 +45,15 @@ alias handbrake "hbc"
 alias pf "pfetch"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
 alias b2 "b2-linux"
-# git
 alias gits "git status"
 alias gitc "git checkout"
 alias gitl1 "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gitl2 "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias commita "git commit --amend --no-edit"
 alias lastcommit "git show --stat --oneline HEAD"
-
-# Autocommit
 alias autoc "OPENAI_API_KEY=$OPENAI_API_KEY auto-commit --review"
-
-# Capybara tests
 alias capy "bundle exec cucumber -p chrome -p mac-rc"
-
-# yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
-
-# yiffer-dl
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 
 # init nvm
@@ -66,10 +66,21 @@ set -gx FORCE_COLOR 1
 
 # init rbenv
 status --is-interactive; and rbenv init - fish | source
-set -gx PATH /home/kio/.rbenv/shims:$PATH
+if not contains -- $HOME/.rbenv/shims $PATH
+    set -gx PATH $HOME/.rbenv/shims:$PATH
+end
 
 # init pyenv
-# status is-interactive; and pyenv init --path | source
+status is-interactive; and pyenv init --path | source
+
+# init ghcup / cabal
+status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+if not contains -- $HOME/.ghcup/bin $PATH
+    set -gx PATH $HOME/.ghcup/bin:$PATH
+end
+if not contains -- $HOME/.cabal/bin $PATH
+    set -gx PATH $HOME/.cabal/bin:$PATH
+end
 
 # if on tty1, launch startx automatically
 #if status is-login
@@ -78,7 +89,4 @@ set -gx PATH /home/kio/.rbenv/shims:$PATH
 #    end
 #end
 
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/kio/.ghcup/bin $PATH # ghcup-env
-
-export PATH="$PATH:/home/kio/.bin"
+# export PATH="$PATH:/home/kio/.bin"
