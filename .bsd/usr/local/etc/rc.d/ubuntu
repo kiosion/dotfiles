@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# PROVIDE: ubuntu
+# REQUIRE: archdep mountlate
+# KEYWORD: nojail
+#
+
+. /etc/rc.subr
+
+name="ubuntu"
+desc="Ubuntu for FreeBSD Linux Binary Compatibility"
+rcvar="ubuntu_enable"
+start_cmd="${name}_start"
+stop_cmd=":"
+
+unmounted()
+{
+  [ `stat -f "%d" "$1"` == `stat -f "%d" "$1/.."` -a `stat -f "%i" "$1"` != `stat -f "%i" "$1/.."` ]
+}
+
+ubuntu_start()
+{
+  local _tmpdir
+  load_kld -e 'linux(aout|elf)' linux
+  case `sysctl -n hw.machine_arch` in
+    amd64)
+      load_kld -e 'linux64elf' linux64
+      ;;
+  esac
+  if [ -x "/compat/ubuntu/sbin/ldconfigDisabled" ]; then
+    _tmpdir=`mktemp -d -t linux-ldconfig`
+    /compat/ubuntu/sbin/ldconfig -C ${_tmpdir}/ld.so.cache
+    if ! cmp -s "${_tmpdir}/ld.so.cache" "/compat/ubuntu/etc/ld.so.cache"; then
+      cat "${_tmpdir}/ld.so.cache" > "/compat/ubuntu/etc/ld.so.cache"
+    fi
+    rm -rf ${_tmpdir}
+  fi
+  load_kld pty
+  if [ `sysctl -ni kern.elf64.fallback_brand` -eq "-1" ]; then
+    sysctl kern.elf64.fallback_brand=3 > /dev/null
+  fi
+  if [ `sysctl -ni kern.elf32.fallback_brand` -eq "-1" ]; then
+    sysctl kern.elf32.fallback_brand=3 > /dev/null
+  fi
+  sysctl compat.linux.emul_path="/compat/ubuntu"
+  unmounted "/compat/ubuntu/dev" && (mount -o nocover -t devfs devfs "/compat/ubuntu/dev" || exit 1)
+  unmounted "/compat/ubuntu/dev/fd" && (mount -o nocover,linrdlnk -t fdescfs fdescfs "/compat/ubuntu/dev/fd" || exit 1)
+  unmounted "/compat/ubuntu/dev/shm" && (mount -o nocover,mode=1777 -t tmpfs tmpfs "/compat/ubuntu/dev/shm" || exit 1)
+  unmounted "/compat/ubuntu/home" && (mount -t nullfs /home "/compat/ubuntu/home" || exit 1)
+  unmounted "/compat/ubuntu/proc" && (mount -o nocover -t linprocfs linprocfs "/compat/ubuntu/proc" || exit 1)
+  unmounted "/compat/ubuntu/sys" && (mount -o nocover -t linsysfs linsysfs "/compat/ubuntu/sys" || exit 1)
+  unmounted "/compat/ubuntu/tmp" && (mount -t nullfs /tmp "/compat/ubuntu/tmp" || exit 1)
+  unmounted /dev/fd && (mount -o nocover -t fdescfs fdescfs /dev/fd || exit 1)
+  unmounted /proc && (mount -o nocover -t procfs procfs /proc || exit 1)
+  true
+}
+
+load_rc_config $name
+run_rc_command "$1"
+
