@@ -6,6 +6,9 @@
 # TODO: Menu opt to pre-install Paru
 # would also need to be run post-install and post-user-creation
 
+# TODO: opt to install packages from given file
+# would need to be run after setting up Paru
+
 import logging
 import os
 import time
