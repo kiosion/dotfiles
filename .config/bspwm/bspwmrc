@@ -75,7 +75,7 @@ bspc rule -a join? state=floating
 bspc rule -a Zoom state=floating
 bspc rule -a Peek state=floating
 bspc rule -a peek state=floating
-bspc rule -a Alacritty state=pseudo_tiled
+#bspc rule -a Alacritty state=pseudo_tiled
 
 ### OTHER SHIT ###
 pgrep -x sxhkd > /dev/null || sxhkd &

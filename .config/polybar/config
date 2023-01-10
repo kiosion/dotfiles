@@ -296,13 +296,15 @@ label-margin-right = 0
 label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
-exec = pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1: Index" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2: YU6" listen
-
-click-right = pulseaudio-control --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo,alsa_output.pci-0000_00_1f.3.iec958-stereo" next-node
+exec = pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1: Index" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2: YU6" --node-nickname "yu6.rtl: YU6" listen
+;; here 'pactl move-sink-input' is run to make sure the loopback input-sink's input is correct, since setting the default sink also changes its input for some fucking reason idek anymore
+;; cmd substitution is to find its dyn id, changes on pipewire/pulseaudio server restart
+;; probably a better way to do this altogether but i dont care
+click-right = pulseaudio-control --node-type output --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-node && pactl move-sink-input $(echo $(pactl list sink-inputs | grep -e "Sink Input" -e "node.name") | grep -o "Sink Input #[0-9]* node\.name = \"yu6.rtl\"" | sed -e 's/^.*#//' -e 's/ .*//') alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
-scroll-up = pulseaudio-control --volume-max 130 up && /home/kio/.config/wired/vol.sh
-scroll-down = pulseaudio-control --volume-max 130 down && /home/kio/.config/wired/vol.sh
+scroll-up = pulseaudio-control --volume-max 100 up && /home/kio/.config/wired/vol.sh
+scroll-down = pulseaudio-control --volume-max 100 down && /home/kio/.config/wired/vol.sh
 
 format-prefix = "VOL "
 format-prefix-font = 4
