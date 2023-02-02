@@ -27,16 +27,17 @@ key_bindings:
 
 # Theme configuration
 window:
-    opacity: 0.6
+    opacity: 0.65
     padding:
       x: 8
       y: 6
 
 colors:
   primary:
-    #background: '0x282a36'
-    background: '0x333545'
-    foreground: '0xf8f8f2'
+    #background: '0x333545'
+    #background: '0x4f5260'
+    background: '0x505068'
+    foreground: '0xFAFAFA'
   cursor:
     text: CellBackground
     cursor: CellForeground

@@ -51,3 +51,8 @@ export GNOME_KEYRING_PID
 # start bspwm
 exec bspwm
 
+# start gnome
+#export XDG_SESSION_TYPE=x11
+#export GDK_BACKEND=x11
+#exec gnome-session
+

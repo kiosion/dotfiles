@@ -42,3 +42,8 @@ target/debug
 target/debug/*
 */target/debug
 */target/debug/*
+.elixir_ls
+.elixir_ls/*
+elixir-api/deps
+elixir-api/deps/*
+elixir-api/deps/**/*

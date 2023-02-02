@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+dir="~/.config/polybar/scripts/rofi"
+uptime=$(uptime -p | sed -e 's/up //g')
+
+# Truncate uptime to 3 highest units - e.g. "1 day, 2 hours, 3 minutes"
+uptime=$(echo $uptime | awk -F, '{print $1 "," $2 "," $3}' | sed -e 's/,//g')
+
+rofi_command="rofi -no-config -theme $dir/powermenu.rasi"
+
+# Opts
+shutdown=" Shutdown"
+reboot=" Reboot"
+logout=" Logout"
+
+# Confirm
+confirm_exit() {
+    rofi -dmenu -no-config -i -no-fixed-num-lines -p "Are you sure? : " -theme $dir/confirm.rasi
+}
+
+# Message
+msg() {
+    rofi -no-config -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
+}
+
+# Variable passed to rofi
+options="$shutdown\n$reboot\n$logout"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
+echo "chose:" $chosen
+case $chosen in
+    $shutdown)
+    ans=$(confirm_exit &)
+    # ans to lowercase
+    ans=$(echo $ans | tr '[:upper:]' '[:lower:]')
+    if [[ $ans == "yes" || $ans == "y"]]; then
+        # systemctl poweroff
+        exit 0
+    elif [[ $ans == "no" || $ans == "n" ]]; then
+        exit 0
+    else
+        msg
+    fi
+    ;;
+    $reboot)
+    ans=$(confirm_exit &)
+    # ans to lowercase
+    # ans=$(echo $ans | tr '[:upper:]' '[:lower:]')
+    if [[ $ans == "yes" || $ans == "y"]]; then
+        # systemctl reboot
+        exit 0
+    elif [[ $ans == "no" || $ans == "n" ]]; then
+        exit 0
+    else
+        msg
+    fi
+    ;;
+    $logout)
+    ans=$(confirm_exit &)
+    # ans to lowercase
+    ans=$(echo $ans | tr '[:upper:]' '[:lower:]')
+    if [[ $ans == "yes" || $ans == "y"]]; then
+        # bspc quit
+        exit 0
+    elif [[ $ans == "no" || $ans == "n" ]]; then
+        exit 0
+    else
+        msg
+    fi
+    ;;
+esac

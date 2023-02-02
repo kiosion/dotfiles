@@ -23,9 +23,9 @@ alt + 1
 
 # rofi
 super + @space
-	rofi -show run -icon-theme "Papirus-Dark"
+	rofi -show run
 super + period
-        rofi -show emoji -icon-theme "Papirus-Dark"
+        rofi -show emoji
 # clipmenu
 super + c
 	CM_LAUNCHER=rofi clipmenu -font "MonaLisa 12"

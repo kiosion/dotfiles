@@ -10,7 +10,7 @@
 ##        _\/////////___\//////////__\///_____________\///__\///_____\///___\///___\///__\///_____________\////////__
 
 ### VARS ###
-gap=8
+gap=12
 border=2
 panel_height=28
 export gap
@@ -42,9 +42,11 @@ bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9 0
 ##bspc monitor DP-2 -d 1 2 3
 
 ### COLORS ###
-bspc config normal_border_color		"#f8f8f2"
-bspc config focused_border_color	"#bd93f9"
-bspc config presel_feedback_color	"#bd93f9"
+#bspc config normal_border_color	"#ADB0C0"
+#bspc config focused_border_color	"#FAFAFA"
+bspc config normal_border_color         "#2d2d42"
+bspc config focused_border_color        "#0A0A0A"
+bspc config presel_feedback_color	"#5F6FD6"
 
 ### BORDERS ###
 bspc config border_width	$border

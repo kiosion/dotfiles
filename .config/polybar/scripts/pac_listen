@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1: Index" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2: YU6" --node-nickname "yu6.rtl: YU6" listen

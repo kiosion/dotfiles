@@ -13,33 +13,21 @@
 ; polybar config
 
 [colors]
-background = #000000
-;background = #B3282a36
-;transparent black: background = #99000000
-;background = #E6282a36
-background-alt = #44475a
-foreground = #f8f8f2
-foreground-alt = #adadad
-primary = #bd93f9
-secondary = #e2cffc
-alert = #8be9fd
-cyan = #8be9fd
-green = #50fa7b
-orange = #ffb86c
-pink = #ff79c6
-purple = #bd93f9
-purple-alt = #BFc49ff9
-red = #ff5555
-yellow = #f1fa8c
+background = #FFFFFF
+background-alt = #BDC0CF
+foreground = #000000
+foreground-alt = #5F5F66
+primary = #5F6FD6
+secondary = #777DA3
+alert = #E45C5C
 
 [bar/wide]
 monitor = DP-2 
 width = 100%
-height = 28
+height = 26
 offset-x = 0
 offset-y = 0
-fixed-center = true 
-;bottom = true
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,9 +37,6 @@ line-color = #5761ee
 
 radius-top = 0
 radius-bottom = 0
-
-;border-size = 2
-;border-color = #CCbe92fc
 
 padding-left = 0
 padding-right = 1
@@ -65,7 +50,7 @@ font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=10";1
 
 modules-left = bspwm xwindow
 modules-center = date
-modules-right = playing pkgs cpu memory eth pulseaudio-control
+modules-right = eth filesystem playing cpu memory pulseaudio-control
 
 tray-detached = false
 tray-maxsize = 18
@@ -73,75 +58,9 @@ tray-position = right
 tray-padding = 2
 tray-padding-right = 2
 tray-scale = 1.0
-;tray-detached = true
-;tray-offset-x = 1640
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-
-#[bar/topleft]
-#monitor = DP-2
-#width = 136
-#height = 25
-#offset-x = 10
-#offset-y = 8
-#fixed-center = true
-#bottom = true
-
-#background = ${colors.background}
-#foreground = ${colors.foreground}
-
-#line-size = 2
-#line-color = #5761ee
-
-#radius-top = 4
-#radius-bottom = 4
-
-#padding-left = 0
-#padding-right = 1
-
-#module-margin-left = 2
-#module-margin-right = 1
-
-#font-0 = MonoLisa:pixelsize=9;1
-#font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=10";1
-#font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=9";1
-
-#modules-left = bspwm
-
-#tray-position = right
-#tray-padding = 2
-#tray-padding-right = 4
-#tray-padding-left = 4
-#tray-detached = true
-#tray-offset-x = 1788
-
-#scroll-up = bspwm-desknext
-#scroll-down = bspwm-deskprev
-
-#[bar/topright]
-#monitor = DP-2
-#width = 162
-#height = 25
-#offset-x = 1748
-#offset-y = 6
-#fixed-center = true
-#bottom = true
-
-#radius-top = 4
-#radius-bottom = 4
-
-#padding-left = 0
-#padding-right = 1
-
-#module-margin-left = 2
-#module-margin-right = 1
-
-#font-0 = MonoLisa:pixelsize=9;1
-#font-1 = "Font Awesome 5 Pro,Font Awesome 5 Pro Regular:pixelsize=10";1
-#font-2 = "Noto Sans Mono CJK HK,NotoSansMonoCJKhk-Regular:pixelsize=9";1
-
-#modules-right = date
 
 [module/xwindow]
 type = internal/xwindow
@@ -149,29 +68,20 @@ label = %title%
 label-maxlen = 90
 label-font = 1
 
-[module/xkeyboard]
-type = internal/xkeyboard
-;blacklist-0 = num lock
-format-prefix = "KB "
-format-prefix-foreground = ${colors.foreground-alt}
-
-;label-layout = map: %layout%
-
-label-indicator-padding = 1
-label-indicator-margin = 0
-;label-indicator-background = ${colors.purple-alt}
-label-indicator-underline = ${colors.purple-alt}
-
 [module/filesystem]
 type = internal/fs
 interval = 25
 
 mount-0 = /
 mount-1 = /home
+mount-2 = /mnt/kepler
 
-label-mounted = %mountpoint%: %percentage_used%%
-label-unmounted = %mountpoint% unmounted
-label-unmounted-foreground = ${colors.foreground-alt}
+format-prefix = "FS "
+format-prefix-foreground = ${colors.foreground-alt}
+label-mounted = +%mountpoint%: %percentage_used%%
+label-mounted-foreground = ${colors.foreground}
+label-unmounted = -%mountpoint%
+
 label-*-font = 1
 
 [module/bspwm]
@@ -190,17 +100,17 @@ ws-icon-9 = 10;十
 
 wd-icon-0-font = 2
 
-label-focused = %icon% 
-label-focused-foreground = ${colors.purple}
-;label-focused-background = ${colors.purple-alt}
+label-focused = %icon%
 label-focused-padding = 2
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
 
 label-occupied = %icon%
 label-occupied-padding = 2
 
 label-urgent = %icon%!
-label-urgent-foreground = ${colors.red}
 label-urgent-padding = 2
+label-urgent-underline = ${colors.alert}
 
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
@@ -293,14 +203,13 @@ tail = true
 label-padding = 0
 label-foreground = ${colors.foreground}
 label-margin-right = 0
-label-muted = Muted
 label-muted-foreground = ${colors.foreground-alt}
 
 exec = pulseaudio-control --node-nicknames-from "device.description" --node-nickname "alsa_output.usb-Audioengine_Audioengine_2_-00.analog-stereo: A2" --node-nickname "alsa_output.usb-MOTU_M2_M2AE1E1DVI-00.analog-stereo: M2" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1: Index" --node-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2: YU6" --node-nickname "yu6.rtl: YU6" listen
 ;; here 'pactl move-sink-input' is run to make sure the loopback input-sink's input is correct, since setting the default sink also changes its input for some fucking reason idek anymore
 ;; cmd substitution is to find its dyn id, changes on pipewire/pulseaudio server restart
 ;; probably a better way to do this altogether but i dont care
-click-right = pulseaudio-control --node-type output --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-node && pactl move-sink-input $(echo $(pactl list sink-inputs | grep -e "Sink Input" -e "node.name") | grep -o "Sink Input #[0-9]* node\.name = \"yu6.rtl\"" | sed -e 's/^.*#//' -e 's/ .*//') alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2
+click-right = pulseaudio-control --node-type output --node-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo,alsa_output.pci-0000_00_1f.3.iec958-stereo,alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-node && pactl move-sink-input $(echo $(pactl list sink-inputs | grep -e "Sink Input" -e "node.name") | grep -o "Sink Input #[0-9]* node\.name = \"yu6.rtl\"" | sed -e 's/^.*#//' -e 's/ .*//') alsa_output.pci-0000_01_00.1.hdmi-stereo
 click-left = pulseaudio-control togmute
 click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 100 up && /home/kio/.config/wired/vol.sh
@@ -309,20 +218,6 @@ scroll-down = pulseaudio-control --volume-max 100 down && /home/kio/.config/wire
 format-prefix = "VOL "
 format-prefix-font = 4
 format-prefix-foreground = ${colors.foreground-alt}
-
-[module/temperature]
-type = internal/temperature
-interval = 2
-thermal-zone = 1
-warn-temperature = 80
-
-format-prefix = "温度 "
-format-warn-prefix = "温度 "
-format-prefix-foreground = ${colors.foreground-alt}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.red}
 
 [settings]
 screenchange-reload = true

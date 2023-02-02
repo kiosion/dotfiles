@@ -1,10 +1,9 @@
 configuration{
-    modi: "run,drun,emoji,window";
-    lines: 8;
+    modi: "drun,run,emoji,window";
     font: "MonoLisa Nerd Font 12";
     show-icons: true;
-    icon-theme: "Oranchelo";
-    terminal: "st";
+    icon-theme: "Kora grey Light";
+    terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -17,88 +16,125 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin"
+@import "/home/kio/.config/polybar/scripts/rofi/colors.rasi"
 
-element-text, element-icon , mode-switcher {
-    background-color: inherit;
-    text-color:       inherit;
+* {
+    background-color: @bg;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
 }
 
 window {
-    height: 380px;
+    height: 450px;
     width: 700px;
-    border: 3px;
-    border-color: @border-col;
-    background-color: @bg-col;
+    border: 2px;
+    border-radius: 2.459px;
+    border-color: @fg;
+    background-color: @bg;
+    padding: 0;
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    children: [ inputbar, listview, mode-switcher ];
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-col;
-    border-radius: 5px;
-    padding: 2px;
+    background-color: transparent;
+    border-radius: 2px;
+    padding: 4px;
+}
+
+scrollbar {
+    background-color: @bg;
+    handle-color: @bg;
+}
+
+sidebar {
+    background-color: @alert;
 }
 
 prompt {
-    background-color: @blue;
-    padding: 6px;
-    text-color: @bg-col;
+    background-color: @bd;
+    padding: 8px;
+    text-color: @bg;
     border-radius: 3px;
-    margin: 20px 0px 0px 20px;
+    margin: 18px 0px 0px 20px;
 }
 
 textbox-prompt-colon {
-    expand: false;
+    expand: true;
     str: ":";
+    text-color: @fg;
 }
 
 entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
-    background-color: @bg-col;
+    text-color: @fg;
+    background-color: transparent;
 }
 
 listview {
-    border: 0px 0px 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
-    columns: 2;
-    background-color: @bg-col;
+    border: 0px;
+    padding: 4px 0px 0px;
+    margin: 10px 12px 0px 24px;
+    columns: 1;
+    background-color: transparent;
+    border-color: @bg-alt;
+    spacing: 6px;
 }
 
 element {
-    padding: 5px;
-    background-color: @bg-col;
-    text-color: @fg-col  ;
+    background-color: transparent;
+    text-color: inherit;
+    orientation: horizontal;
+    border-radius: 3px;
+    children: [ element-icon, element-text ];
+    padding: 6px 8px;
+    bg: @bg;
+}
+
+element normal normal, element alternate normal {
+    background-color: @bg-alt;
+    text-color: @fg;
+}
+
+element-text {
+    expand: true;
+    margin: 3px 0px 0px 0px;
+    background-color: transparent;
 }
 
 element-icon {
-    size: 25px;
+    size: 24px;
+    margin: 0px 8px 0px 0px;
+    background-color: transparent;
 }
 
-element selected {
-    background-color:  @selected-col ;
-    text-color: @fg-col2  ;
+element selected normal {
+    background-color: @primary;
+    text-color: @bg;
 }
 
 mode-switcher {
     spacing: 0;
-  }
+}
 
 button {
-    padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @grey;
+    padding: 12px 10px 16px 10px;
+    background-color: @bg-alt;
+    text-color: @fg;
     vertical-align: 0.5; 
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @bg-col;
-  text-color: @blue;
+  background-color: @bg-alt;
+  text-color: @primary;
 }
