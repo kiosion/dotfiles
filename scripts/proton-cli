@@ -1,0 +1,49 @@
+#!/usr/bin/bash
+
+cwd=$(pwd)
+
+exe="${@: -1}"
+
+# Take input of steam gameID via '--id' flag
+while [[ $# -gt 0 ]]; do
+  key="$1"
+  case $key in
+    -i|--id)
+      gameID="$2"
+      shift
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
+# Get exe to run as only non-flagged argument, either before or after flags
+# exe="$1"
+# If path is relative, make it absolute using current working directory
+if [[ "$exe" != /* ]]; then
+  exe="$cwd/$exe"
+fi
+
+
+echo "Running '$exe' in Proton Experimental..."
+sleep 2
+
+# Check if PFX dir exists for given ID
+if [ ! -d "$HOME/.steam/steam/steamapps/compatdata/$gameID/pfx" ]; then
+  echo "PFX dir does not exist for gameID: $gameID"
+  #exit 1
+fi
+
+# Set up Wine prefix to Proton 7.0
+export W="$HOME/.steam/steam/steamapps/common/Proton - Experimental/dist"
+export WINEVERPATH="$W"
+export PATH="$W/bin:$PATH"
+export WINESERVER="$W/bin/wineserver"
+export WINELOADER="$W/bin/wine"
+export WINEDLLPATH="$W/lib/wine/fakedlls"
+export LD_LIBRARY_PATH="$W/lib:$LD_LIBRARY_PATH"
+export WINEPREFIX="$HOME/.steam/steam/steamapps/compatdata/$gameID/pfx"
+
+exec wine "$exe"

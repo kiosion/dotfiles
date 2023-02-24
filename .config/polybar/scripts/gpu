@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Query and display GPU usage from nvidia-smi
+
+cmd="nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | awk -F' ' '{print \$1}'"
+echo "$(eval $cmd)%"
+
+while true; do
+    total=0
+    for i in {1..4}; do
+        usage=$(eval $cmd)
+        total=$((total + usage))
+        sleep 1
+    done
+    echo "$((total / 5))%"
+    sleep 2
+done

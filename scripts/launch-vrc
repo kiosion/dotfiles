@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+exec steam "steam://rungameid/438100"
+

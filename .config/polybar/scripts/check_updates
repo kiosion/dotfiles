@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #
 #   checkupdates: Safely print a list of pending updates.
 #
@@ -22,15 +22,15 @@ declare -r myname='checkupdates'
 declare -r myver='1.0.0'
 
 plain() {
-	(( QUIET )) && return
-	local mesg=$1; shift
-	printf "${BOLD}    ${mesg}${ALL_OFF}\n" "$@" >&1
+    (( QUIET )) && return
+    local mesg=$1; shift
+    printf "${BOLD}    ${mesg}${ALL_OFF}\n" "$@" >&1
 }
 
 msg() {
-	(( QUIET )) && return
-	local mesg=$1; shift
-	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&1
+    (( QUIET )) && return
+    local mesg=$1; shift
+    printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&1
 }
 
 msg2() {
@@ -101,14 +101,14 @@ trap 'rm -f $CHECKUPDATES_DB/db.lck' INT TERM EXIT
 
 DBPath="$(pacman-conf DBPath)"
 if [[ -z "$DBPath" ]] || [[ ! -d "$DBPath" ]]; then
-	DBPath="/var/lib/pacman/"
+    DBPath="/var/lib/pacman/"
 fi
 
 mkdir -p "$CHECKUPDATES_DB"
 ln -s "${DBPath}/local" "$CHECKUPDATES_DB" &> /dev/null
 if ! fakeroot -- pacman -Sy --dbpath "$CHECKUPDATES_DB" --logfile /dev/null &> /dev/null; then
-       error 'Cannot fetch updates'
-       exit 1
+    error 'Cannot fetch updates'
+    exit 1
 fi
 pacman -Qu --dbpath "$CHECKUPDATES_DB" 2> /dev/null | grep -v '\[.*\]'
 

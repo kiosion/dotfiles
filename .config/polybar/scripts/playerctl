@@ -1,6 +1,6 @@
 #!/bin/sh
 
-anim=( '-_-' '^_^' '^_^' '^_^' )
+anim=( '*-*' '^-^' '^-^' '^-^' '^-^' '^-^' '^-^' )
 
 while true; do
     if playerctl -i firefox metadata --format '{{status}}' | grep -q 'Playing'
@@ -12,7 +12,7 @@ while true; do
             for i in "${anim[@]}"
             do
                 echo "$i $out"
-                sleep 0.4
+                sleep 0.1
             done
         done
     else
@@ -20,10 +20,10 @@ while true; do
         then
             out=`playerctl -i firefox metadata --format '{{artist}} - {{title}}'`
             echo "._. $out"
-            sleep 1
+            sleep 0.5
         else
             echo "-_-"
-            sleep 1
+            sleep 0.5
         fi
     fi
 done

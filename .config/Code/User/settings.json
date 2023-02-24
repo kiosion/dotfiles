@@ -45,7 +45,8 @@
     "markdown": true,
     "python": true,
     "scss": true,
-    "typescript": true
+    "typescript": true,
+    "elixir": true
   },
   "files.associations": {
     "*.css": "css",
@@ -87,7 +88,6 @@
   "workbench.editor.untitled.hint": "hidden",
   "files.insertFinalNewline": true,
   "explorer.compactFolders": false,
-  "workbench.editor.enablePreview": true,
   "tabnine.experimentalAutoImports": true,
   "terminal.integrated.defaultProfile.osx": "fish",
   "rpc.appName": "Visual Studio Code",
@@ -147,44 +147,25 @@
   "githubPullRequests.pullBranch": "never",
   "discord.removeRemoteRepository": true,
   "discord.idleTimeout": 14400,
-  "svelte.plugin.svelte.note-new-transformation": false,
   "[elixir]": {
     "editor.defaultFormatter": "JakeBecker.elixir-ls"
   },
   "javascript.updateImportsOnFileMove.enabled": "never",
   "elixirLS.projectDir": "./",
-  "editor.minimap.renderCharacters": false,
-  "editor.minimap.showSlider": "always",
   "vitest.enable": true,
   "vitest.showFailMessages": true,
-  "vscode-pets.petSize": "medium",
-  "vscode-pets.petType": "clippy",
-  "vscode-pets.position": "explorer",
   "haskell.manageHLS": "GHCup",
   "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
   "discord.detailsEditing": "Editing a {LANG} file",
   "discord.detailsDebugging": "Debugging a {LANG} file",
-  "workbench.colorTheme": "Dracula Refined",
+  "workbench.colorTheme": "Quiet Light",
   "[python]": {
+    "editor.formatOnType": true
   },
   "ruby.languageServer": {},
-  "rubyLsp.rubyVersionManager": "rbenv",
-  "rdbg.useBundler": false,
-  "rubyLsp.enabledFeatures": {
-  
-    "codeActions": true,
-    "diagnostics": true,
-    "documentHighlights": true,
-    "documentLink": true,
-    "documentSymbols": true,
-    "foldingRanges": true,
-    "formatting": true,
-    "hover": true,
-    "inlayHint": true,
-    "onTypeFormatting": true,
-    "selectionRanges": true,
-    "semanticHighlighting": true
-  },
   "typescript.updateImportsOnFileMove.enabled": "never",
   "workbench.iconTheme": "icons",
+  "editor.minimap.renderCharacters": false,
+  "workbench.sideBar.location": "right",
+  "svelte.plugin.css.diagnostics.enable": false
 }
