@@ -28,14 +28,17 @@ UUID=261ae7ad-df39-4119-bd2f-2f0ca250c4b4	/mnt/tesla			ext4			defaults,noatime,n
 ## /dev/sdb1 KEPLER 2TB (Data)
 UUID=7370618a-d5e2-44fb-aa81-18b2314f1b5f	/mnt/kepler			ext4			defaults,noatime,nofail			0 1
 #
+## /swapfile SWAP
+/swapfile					none				swap			defaults				0 0
+#
 ## //volta/backups VOLTA Backups
-//volta/Backups					/mnt/volta/backups		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,nofail	0 0
+#//10.0.1.1/Backups					/mnt/volta/backups		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,vers="2.1"	0 0
 #
 ## //volta/dropbox VOLTA Dropbox
-//volta/Dropbox					/mnt/volta/dropbox		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,nofail	0 0
+#//10.0.1.1/Dropbox					/mnt/volta/dropbox		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,vers="2.1"	0 0
 #
 ## //volta/lightspeed VOLTA Lightspeed
-//volta/Lightspeed				/mnt/volta/lightspeed		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,nofail	0 0
+#//10.0.1.1/Lightspeed				/mnt/volta/lightspeed		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,vers="2.1"	0 0
 #
 ## //volta/plex VOLTA Plex
-//volta/Plex					/mnt/volta/plex			cifs			credentials=/etc/smbcreds,gid=984,uid=1000,nofail	0 0
+#//10.0.1.1/Plex					/mnt/volta/plex			cifs			credentials=/etc/smbcreds,gid=984,uid=1000,vers="2.1"	0 0
