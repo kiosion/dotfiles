@@ -16,7 +16,8 @@
 alt + Escape
 #        screencloud --area
         flameshot gui
-
+Print
+        flameshot gui
 # screenrecord
 alt + 1
         peek
@@ -145,18 +146,24 @@ alt + m; f
 # inc. vol by 2%
 alt + period
 	pactl set-sink-volume @DEFAULT_SINK@ +2% && pactl get-default-sink && /home/kio/.config/wired/vol.sh 
+XF86AudioRaiseVolume
+        pactl set-sink-volume @DEFAULT_SINK@ +2% && pactl get-default-sink && /home/kio/.config/wired/vol.sh
 # inc. vol by 10%
 alt + shift + period
 	pactl set-sink-volume @DEFAULT_SINK@ +10%
 # lower vol by 2%
 alt + comma
 	pactl set-sink-volume @DEFAULT_SINK@ -2% && /home/kio/.config/wired/vol.sh
+XF86AudioLowerVolume
+        pactl set-sink-volume @DEFAULT_SINK@ -2% && /home/kio/.config/wired/vol.sh
 # lower vol by 10%
 alt + shift + comma
 	pactl set-sink-volume @DEFAULT_SINK@ -10%
 # mute vol
 alt + slash 
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMute
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ### BSPWM HOTKEYS ###
 

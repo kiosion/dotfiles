@@ -1,6 +1,6 @@
 #!/bin/sh
 
-anim=( '*-*' '^-^' '^-^' '^-^' '^-^' '^-^' '^-^' )
+anim=( '*-*' '*-*' '*-*' '^-^' '^-^' '^-^' '^-^' '^-^' '^-^' )
 
 while true; do
     if playerctl -i firefox metadata --format '{{status}}' | grep -q 'Playing'
