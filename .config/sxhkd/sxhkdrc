@@ -97,9 +97,6 @@ alt + c; c
 # intellij idea ultimate
 alt + c; i
         wmname LG3D && intellij-idea-ultimate-edition
-# pycharm
-alt + c; y
-        pycharm
 
 ### WEB/SOCIAL ###
 
@@ -111,7 +108,7 @@ alt + w; f
         firefox
 # discord
 alt + w; d
-        discord
+        discord-canary
 # telegram
 alt + w; t
         telegram-desktop

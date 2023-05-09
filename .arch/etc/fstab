@@ -13,23 +13,23 @@
 #
 ## UUID 					Mountpoint			Type			Arguments				Checks
 #
-## /dev/nvme1n1p1 BOOT
-UUID=19C0-FA8A					/boot/EFI			vfat			defaults,noatime			0 2
+## /dev/nvmeXn1p1 BOOT
+UUID=FD84-85B6					/boot/EFI			vfat			defaults,noatime			0 2
 #
-## /dev/nvme1n1p2 ROOT
-UUID=20ced561-9e12-4ca6-8f78-7a2306b3ec3a	/				ext4			defaults,noatime			0 1
+## /dev/nvmeXn1p3 ROOT
+UUID=af168f19-3f32-4327-beaa-79f8bbb6b7a8	/				btrfs			defaults,noatime			0 1
 #
 ## /dev/nvme1n1p3 HOME
-UUID=727b7416-9704-4496-9f93-b5931c7c6e88	/home				ext4			defaults,noatime			0 1
+#UUID=727b7416-9704-4496-9f93-b5931c7c6e88	/home				ext4			defaults,noatime			0 1
 #
 ## /dev/nvme0n1p1 TESLA 1TB (Steam)
-UUID=261ae7ad-df39-4119-bd2f-2f0ca250c4b4	/mnt/tesla			ext4			defaults,noatime,nofail			0 1
+#UUID=261ae7ad-df39-4119-bd2f-2f0ca250c4b4	/mnt/tesla			ext4			defaults,noatime,nofail			0 1
 #
 ## /dev/sdb1 KEPLER 2TB (Data)
 UUID=7370618a-d5e2-44fb-aa81-18b2314f1b5f	/mnt/kepler			ext4			defaults,noatime,nofail			0 1
 #
-## /swapfile SWAP
-/swapfile					none				swap			defaults				0 0
+## /dev/nvmeXn1p2 SWAP
+UUID=17b83d1f-3fe9-4762-b864-9bdd6edb67e0	none				swap			defaults				0 0
 #
 ## //volta/backups VOLTA Backups
 #//10.0.1.1/Backups					/mnt/volta/backups		cifs			credentials=/etc/smbcreds,gid=984,uid=1000,vers="2.1"	0 0

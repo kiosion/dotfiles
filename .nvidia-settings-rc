@@ -2,7 +2,7 @@
 # /home/kio/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Wed Feb 15 01:59:47 2023
+# Generated on Mon Apr 10 21:02:47 2023
 #
 
 # ConfigProperties:
@@ -12,10 +12,10 @@ DisplayStatusBar = Yes
 SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 UpdateRulesOnProfileNameChange = Yes
-Timer = ECC_Settings_(GPU_0),Yes,1000
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = ECC_Settings_(GPU_0),Yes,1000
 
 # Attributes:
 

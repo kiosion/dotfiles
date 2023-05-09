@@ -83,7 +83,7 @@
   "discord.lowerDetailsDebugging": "{empty}",
   "editor.mouseWheelZoom": true,
   "editor.cursorBlinking": "smooth",
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.smoothScrolling": true,
   "workbench.editor.untitled.hint": "hidden",
   "files.insertFinalNewline": true,
@@ -158,7 +158,7 @@
   "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
   "discord.detailsEditing": "Editing a {LANG} file",
   "discord.detailsDebugging": "Debugging a {LANG} file",
-  "workbench.colorTheme": "Quiet Light",
+  "workbench.colorTheme": "Catppuccin Macchiato",
   "[python]": {
     "editor.formatOnType": true
   },
@@ -167,5 +167,10 @@
   "workbench.iconTheme": "icons",
   "editor.minimap.renderCharacters": false,
   "workbench.sideBar.location": "right",
-  "svelte.plugin.css.diagnostics.enable": false
+  "svelte.plugin.css.diagnostics.enable": false,
+  "errorLens.excludeBySource": [
+    "ts(2559)",
+    "ts(2307)"
+  ],
+  "svelte.plugin.svelte.note-new-transformation": false
 }

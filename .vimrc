@@ -1,3 +1,5 @@
+set shell=/bin/bash
+
 "-------------------------------------------------------------
 " Vim-plug setup {{{1
 
@@ -18,6 +20,9 @@ call plug#begin()
 " ALE, syntax highlighting and linting support
 " Plug 'dense-analysis/ale'
 
+" YCM, autocomplete
+" Plug 'valloric/youcompleteme'
+
 " Airline status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -26,6 +31,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'pangloss/vim-javascript'
 
 call plug#end()
+
+"-------------------------------------------------------------
+" Vundle {{{1
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugin 'valloric/
+
+call vundle#end()
+filetype plugin indent on
 
 "-------------------------------------------------------------
 " Plugin configs {{{1

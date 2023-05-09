@@ -2,23 +2,45 @@
 
 anim=( '*-*' '*-*' '*-*' '^-^' '^-^' '^-^' '^-^' '^-^' '^-^' )
 
-while true; do
-    if playerctl -i firefox metadata --format '{{status}}' | grep -q 'Playing'
-    then
-        out=`playerctl -i firefox metadata --format '{{artist}} - {{title}}'`
-        # Loop through the animation array a few times so we don't constantly hit playerctl
-        for i in {1..4}
+loop_anim() {
+    local times=$1
+    local delay=$2
+    local output=$3
+
+    for i in {1..$times}
+    do
+        for i in "${anim[@]}"
         do
-            for i in "${anim[@]}"
-            do
-                echo "$i $out"
-                sleep 0.1
-            done
+            echo "$i $output"
+            sleep $delay
         done
+    done
+}
+
+while true; do
+    spotify_meta=$(playerctl -i firefox,chrome metadata --format '{{status}}' 2>/dev/null)
+    firefox_meta=$(playerctl -i spotify,chrome metadata --format '{{status}}' 2>/dev/null)
+
+    if grep -q "Playing" <<< "$spotify_meta"
+    then
+        out=$(playerctl -i firefox,chrome metadata --format '{{artist}} - {{title}}')
+        loop_anim 4 0.1 "$out"
+
+    # If spotify's paused, and firefox isn't paused or playing, then show paused spotify state
+    elif grep -q "Paused" <<< "$spotify_meta" && ! grep -q "Paused" <<< "$firefox_meta" && ! grep -q "Playing" <<< "$firefox_meta"
+    then
+        out=$(playerctl -i firefox,chrome metadata --format '{{artist}} - {{title}}')
+        echo "._. $out"
+        sleep 0.5
     else
-        if playerctl -i firefox metadata --format '{{status}}' | grep -q 'Paused'
+        
+        if grep -q 'Playing' <<< "$firefox_meta"
         then
-            out=`playerctl -i firefox metadata --format '{{artist}} - {{title}}'`
+            out=$(playerctl -i spotify,chrome metadata --format '{{title}}')
+            loop_anim 4 0.1 "$out"
+        elif grep -q 'Paused' <<< "$firefox_meta"
+        then
+            out=$(playerctl -i spotify,chrome metadata --format '{{title}}')
             echo "._. $out"
             sleep 0.5
         else
@@ -27,3 +49,4 @@ while true; do
         fi
     fi
 done
+
