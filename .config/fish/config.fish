@@ -12,26 +12,6 @@
 
 # Configuration options for fish shell
 
-# set ssh agent correctly
-fish_ssh_agent
-
-# set ssh auth sock
-set -gx SSH_AUTH_SOCK "/run/user/1000/yubikey-agent/yubikey-agent.sock"
-
-# set starship config location
-set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
-
-# enable starship theme
-starship init fish | source
-
-# add some common bins to PATH
-if not contains -- $HOME/.bin $PATH
-    set -gx PATH $HOME/.bin:$PATH
-end
-if not contains -- $HOME/.local/bin $PATH
-    set -gx PATH $HOME/.local/bin:$PATH
-end
-
 # aliases
 alias neofetch "neofetch --ascii_distro arch_old --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C --block_range -1 -1"
 alias btw "neofetch"
@@ -55,6 +35,22 @@ alias autoc "OPENAI_API_KEY=$OPENAI_API_KEY auto-commit --review"
 alias capy "bundle exec cucumber -p chrome -p mac-rc"
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
+alias btrfs-snap="sudo btrfs subvolume snapshot / /snapshots/root_(date +'%Y-%m-%d_%H:%M')"
+
+# set ssh agent correctly
+fish_ssh_agent
+
+# set ssh auth sock
+set -gx SSH_AUTH_SOCK "/run/user/1000/yubikey-agent/yubikey-agent.sock"
+
+# set starship config location
+set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
+
+# set deno root
+set -gx DENO_INSTALL $HOME/.deno
+
+# enable starship theme
+starship init fish | source
 
 # init nvm
 function nvm
@@ -66,27 +62,68 @@ set -gx FORCE_COLOR 1
 
 # init rbenv
 status --is-interactive; and rbenv init - fish | source
-if not contains -- $HOME/.rbenv/shims $PATH
-    set -gx PATH $HOME/.rbenv/shims:$PATH
-end
 
 # init pyenv
 status is-interactive; and pyenv init --path | source
 
 # init ghcup / cabal
 status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-if not contains -- $HOME/.ghcup/bin $PATH
-    set -gx PATH $HOME/.ghcup/bin:$PATH
-end
-if not contains -- $HOME/.cabal/bin $PATH
-    set -gx PATH $HOME/.cabal/bin:$PATH
+
+# init asdf-vm
+source /opt/asdf-vm/asdf.fish
+
+# functions
+function add_to_path_if_not_exists
+    for dir in $argv
+        if not contains -- $dir $PATH
+            set -gx PATH $dir:$PATH
+        end
+    end
 end
 
-# if on tty1, launch startx automatically
-#if status is-login
-#    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-#        exec startx -- -keeptty
-#    end
-#end
+function dedupe_path
+    set -l deduped_path
 
-# export PATH="$PATH:/home/kio/.bin"
+    for dir in $PATH
+        if not contains -- $dir $deduped_path
+            set -a deduped_path $dir
+        end
+    end
+
+    set -gx PATH $deduped_path
+end
+
+add_to_path_if_not_exists $HOME/.rbenv/shims $HOME/.ghcup/bin $HOME/.cabal/bin $HOME/.dvm/bin $HOME/.deno/bin $HOME/.dotnet/tools $HOME/.local/bin $HOME/.bin
+
+dedupe_path
+
+# # init rbenv
+# status --is-interactive; and rbenv init - fish | source
+# if not contains -- $HOME/.rbenv/shims $PATH
+#     set -gx PATH $HOME/.rbenv/shims:$PATH
+# end
+
+# # init pyenv
+# status is-interactive; and pyenv init --path | source
+
+# # init ghcup / cabal
+# status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+# if not contains -- $HOME/.ghcup/bin $PATH
+#     set -gx PATH $HOME/.ghcup/bin:$PATH
+# end
+
+# if not contains -- $HOME/.cabal/bin $PATH
+#     set -gx PATH $HOME/.cabal/bin:$PATH
+# end
+
+# if not contains -- $HOME/.dvm/bin $PATH
+#     set -gx PATH $HOME/.dvm/bin:$PATH
+# end
+
+# if not contains -- $HOME/.deno/bin $PATH
+#     set -gx PATH $HOME/.deno/bin:$PATH
+# end
+
+# if not contains -- $HOME/.dotnet/tools $PATH
+#     set -gx PATH $PATH:$HOME/.dotnet/tools
+# end

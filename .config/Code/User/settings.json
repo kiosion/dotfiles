@@ -9,11 +9,10 @@
     "typescript",
     "typescriptreact",
     "svelte"
-],
-"php.validate.executablePath": "/opt/lampp/bin/php",
+  ],
+  "php.validate.executablePath": "/opt/lampp/bin/php",
   "editor.suggestSelection": "first",
   "editor.fontLigatures": true,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
@@ -21,7 +20,7 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "editor.fontFamily": "MonoLisa Nerd Font, 'Cascadia Code', 'Fira Code iScript', monospace",
+  "editor.fontFamily": "'MonoLisa Nerd Font', 'Fira Code iScript', monospace",
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "vsicons.dontShowNewVersionMessage": true,
   "explorer.confirmDelete": false,
@@ -30,7 +29,6 @@
   "git.enableCommitSigning": true,
   "security.workspace.trust.untrustedFiles": "open",
   "gitlens.defaultTimeFormat": "H:mm",
-  "codetogether.userName": "kio",
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -49,20 +47,31 @@
     "elixir": true
   },
   "files.associations": {
-    "*.css": "css",
+    "*.css": "css"
   },
-  // "vscode_custom_css.imports": [
-  //   "file:///home/kio/.vscode/extensions/webrender.synthwave-x-fluoromachine-0.0.12/synthwave-x-fluoromachine.css"
-  // ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
         "scope": [
-          "comment",
+          "support.function",
+          "entity.name.function",
+          "variable.parameter",
+          "meta.object.member.js",
+          "keyword.operator.assignment.ts"
+        ],
+        "settings": {
+          "fontStyle": "normal"
+        }
+      },
+      {
+        "scope": [
           "keyword",
           "storage.modifier",
+          "storage.type.class",
           "storage.type.class.js",
+          "storage.type.class.ts",
           "storage.type.js"
+          
         ],
         "settings": {
           "fontStyle": "italic bold"
@@ -70,11 +79,11 @@
       },
       {
         "scope": [
-          "keyword.control.conditional",
-          "keyword.operator"
+          "variable.language.this.js",
+          "meta.decorator.ts"
         ],
         "settings": {
-          "fontStyle": "bold"
+          "fontStyle": "italic"
         }
       }
     ]
@@ -86,13 +95,8 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.smoothScrolling": true,
   "workbench.editor.untitled.hint": "hidden",
-  "files.insertFinalNewline": true,
   "explorer.compactFolders": false,
-  "tabnine.experimentalAutoImports": true,
   "terminal.integrated.defaultProfile.osx": "fish",
-  "rpc.appName": "Visual Studio Code",
-  "rpc.showProblems": false,
-  "rpc.suppressNotifications": false,
   "editor.tabSize": 2,
   "editor.accessibilitySupport": "off",
   "diffEditor.ignoreTrimWhitespace": false,
@@ -101,13 +105,7 @@
   "editor.guides.bracketPairs": true,
   "terminal.integrated.cursorBlinking": true,
   "githubPullRequests.createOnPublishBranch": "never",
-  "[javascript]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
-  },
-  "liveServer.settings.donotVerifyTags": true,
-  "liveServer.settings.donotShowInfoMsg": true,
   "redhat.telemetry.enabled": false,
-  "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
   "prettier.singleQuote": true,
   "editor.wordWrap": "on",
@@ -135,7 +133,6 @@
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "typescript.format.semicolons": "insert",
   "typescript.tsserver.maxTsServerMemory": 5120,
-  "files.maxMemoryForLargeFilesMB": 5120,
   "eslint.lintTask.enable": true,
   "eslint.options": {
   },
@@ -152,17 +149,14 @@
   },
   "javascript.updateImportsOnFileMove.enabled": "never",
   "elixirLS.projectDir": "./",
-  "vitest.enable": true,
-  "vitest.showFailMessages": true,
   "haskell.manageHLS": "GHCup",
   "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
   "discord.detailsEditing": "Editing a {LANG} file",
   "discord.detailsDebugging": "Debugging a {LANG} file",
-  "workbench.colorTheme": "Catppuccin Macchiato",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "[python]": {
     "editor.formatOnType": true
   },
-  "ruby.languageServer": {},
   "typescript.updateImportsOnFileMove.enabled": "never",
   "workbench.iconTheme": "icons",
   "editor.minimap.renderCharacters": false,
@@ -172,5 +166,13 @@
     "ts(2559)",
     "ts(2307)"
   ],
-  "svelte.plugin.svelte.note-new-transformation": false
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "git.openRepositoryInParentFolders": "never",
+  "workbench.editor.empty.hint": "hidden",
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell"
+  },
+  "haskell.hlint.executablePath": "/usr/bin/hlint",
+  "haskell.hlint.run": "onType",
+  "editor.acceptSuggestionOnEnter": "off"
 }
