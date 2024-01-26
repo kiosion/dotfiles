@@ -11,14 +11,17 @@
 #
 # Configuration options for fish shell
 
-# set ssh agent correctly
-fish_ssh_agent
-set -gx SSH_AUTH_SOCK "/usr/local/var/run/yubikey-agent.sock"
+# setup homebrew
+eval (/opt/homebrew/bin/brew shellenv)
 
-# set starship config location
+# setup ssh agent correctly
+set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
+
+# setup gpg
+set -gx GPG_TTY (tty)
+
+# setup starship
 set -gx STARSHIP_CONFIG /Users/kio/.config/starship/starship.toml
-
-# enable starship theme
 starship init fish | source
 
 # aliases
@@ -27,15 +30,11 @@ alias l "ls -lh"
 alias la "ls -lah"
 alias md "mkdir -p"
 alias img "tiv -a -r 0.5"
-alias handbrake "hbc"
 alias pf "pfetch"
 alias python3 "python"
 alias py "python"
 alias gits "git status"
 alias gitc "git checkout"
-
-# Capybara
-alias capy "bundle exec cucumber -p chrome -p mac-rc"
 
 # yt-dlp
 alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
@@ -44,9 +43,16 @@ alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
 set PATH $HOME/.cargo/bin $PATH
 
 # init nvm
+set -gx NVM_DIR $HOME/.nvm
+
 function nvm
-  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+  bass source /opt/homebrew/opt/nvm/nvm.sh --no-use ';' nvm $argv
 end
 
-# init rbenv
+if status --is-login
+    nvm use default > /dev/null
+end
+
+# because macos is special and doesn't allow hiding the login message in new shells :)))))
+printf '\33c\e[3J'
 
