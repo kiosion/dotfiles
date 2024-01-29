@@ -3,13 +3,6 @@
     "./sanity-cms",
     "./react-app"
   ],
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "svelte"
-  ],
   "php.validate.executablePath": "/opt/lampp/bin/php",
   "editor.suggestSelection": "first",
   "editor.fontLigatures": true,
@@ -94,7 +87,6 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.smoothScrolling": true,
-  "workbench.editor.untitled.hint": "hidden",
   "explorer.compactFolders": false,
   "terminal.integrated.defaultProfile.osx": "fish",
   "editor.tabSize": 2,
@@ -107,6 +99,11 @@
   "githubPullRequests.createOnPublishBranch": "never",
   "redhat.telemetry.enabled": false,
   "eslint.format.enable": true,
+  "eslint.probe": [
+    "javascript",
+    "typescript",
+    "svelte"
+  ],
   "prettier.singleQuote": true,
   "editor.wordWrap": "on",
   "editor.linkedEditing": true,
@@ -117,16 +114,24 @@
   "zenMode.fullScreen": false,
   "zenMode.hideLineNumbers": false,
   "svelte.enable-ts-plugin": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
   "terminal.integrated.scrollback": 10000,
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
+    // "editor.defaultFormatter": "svelte.svelte-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "svelte",
+    "glimmer-ts",
+    "glimmer-js"
+  ],
   "javascript.format.semicolons": "insert",
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "git.confirmSync": false,
@@ -160,7 +165,6 @@
   "typescript.updateImportsOnFileMove.enabled": "never",
   "workbench.iconTheme": "icons",
   "editor.minimap.renderCharacters": false,
-  "workbench.sideBar.location": "right",
   "svelte.plugin.css.diagnostics.enable": false,
   "errorLens.excludeBySource": [
     "ts(2559)",
@@ -174,5 +178,21 @@
   },
   "haskell.hlint.executablePath": "/usr/bin/hlint",
   "haskell.hlint.run": "onType",
-  "editor.acceptSuggestionOnEnter": "off"
+  "editor.acceptSuggestionOnEnter": "off",
+  "[glimmer-js]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation"
+  },
+  "[glimmer-ts]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation"
+  },
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "warn"
+    }
+  ],
+  "workbench.activityBar.location": "top",
+  "workbench.sideBar.location": "right"
 }

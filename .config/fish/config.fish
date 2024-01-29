@@ -57,6 +57,8 @@ function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
+status --is-interactive; and nvm use default > /dev/null
+
 # force tty colour
 set -gx FORCE_COLOR 1
 
@@ -97,33 +99,3 @@ add_to_path_if_not_exists $HOME/.rbenv/shims $HOME/.ghcup/bin $HOME/.cabal/bin $
 
 dedupe_path
 
-# # init rbenv
-# status --is-interactive; and rbenv init - fish | source
-# if not contains -- $HOME/.rbenv/shims $PATH
-#     set -gx PATH $HOME/.rbenv/shims:$PATH
-# end
-
-# # init pyenv
-# status is-interactive; and pyenv init --path | source
-
-# # init ghcup / cabal
-# status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-# if not contains -- $HOME/.ghcup/bin $PATH
-#     set -gx PATH $HOME/.ghcup/bin:$PATH
-# end
-
-# if not contains -- $HOME/.cabal/bin $PATH
-#     set -gx PATH $HOME/.cabal/bin:$PATH
-# end
-
-# if not contains -- $HOME/.dvm/bin $PATH
-#     set -gx PATH $HOME/.dvm/bin:$PATH
-# end
-
-# if not contains -- $HOME/.deno/bin $PATH
-#     set -gx PATH $HOME/.deno/bin:$PATH
-# end
-
-# if not contains -- $HOME/.dotnet/tools $PATH
-#     set -gx PATH $PATH:$HOME/.dotnet/tools
-# end
