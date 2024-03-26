@@ -1,21 +1,7 @@
 #!/bin/sh
 
-anim=( '*-*' '*-*' '*-*' '^-^' '^-^' '^-^' '^-^' '^-^' '^-^' )
-
-loop_anim() {
-    local times=$1
-    local delay=$2
-    local output=$3
-
-    for i in {1..$times}
-    do
-        for i in "${anim[@]}"
-        do
-            echo "$i $output"
-            sleep $delay
-        done
-    done
-}
+secondary_colour="#a5abcb"
+tertiary_colour="#6e738d"
 
 while true; do
     spotify_meta=$(playerctl -i firefox,chrome metadata --format '{{status}}' 2>/dev/null)
@@ -23,30 +9,17 @@ while true; do
 
     if grep -q "Playing" <<< "$spotify_meta"
     then
-        out=$(playerctl -i firefox,chrome metadata --format '{{artist}} - {{title}}')
-        loop_anim 4 0.1 "$out"
+        echo $(playerctl -i firefox,chrome metadata --format "%{F$secondary_colour}{{duration(position)}}/{{duration(mpris:length)}}%{F-} %{F$tertiary_colour}-%{F-} {{artist}} - {{title}}")
+        sleep 0.1
 
     # If spotify's paused, and firefox isn't paused or playing, then show paused spotify state
     elif grep -q "Paused" <<< "$spotify_meta" && ! grep -q "Paused" <<< "$firefox_meta" && ! grep -q "Playing" <<< "$firefox_meta"
     then
-        out=$(playerctl -i firefox,chrome metadata --format '{{artist}} - {{title}}')
-        echo "._. $out"
+        echo $(playerctl -i firefox,chrome metadata --format "%{F$secondary_colour}{{duration(position)}}/{{duration(mpris:length)}}%{F-} %{F$tertiary_colour}-%{F-} {{artist}} - {{title}}")
         sleep 0.5
     else
-        
-        if grep -q 'Playing' <<< "$firefox_meta"
-        then
-            out=$(playerctl -i spotify,chrome metadata --format '{{title}}')
-            loop_anim 4 0.1 "$out"
-        elif grep -q 'Paused' <<< "$firefox_meta"
-        then
-            out=$(playerctl -i spotify,chrome metadata --format '{{title}}')
-            echo "._. $out"
-            sleep 0.5
-        else
-            echo "-_-"
-            sleep 0.5
-        fi
+        echo "%{F$secondary_colour}-:--/-:--%{F-} %{F$tertiary_colour}-%{F-} Idle"
+        sleep 0.5
     fi
 done
 

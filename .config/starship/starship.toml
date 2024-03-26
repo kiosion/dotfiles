@@ -1,8 +1,9 @@
 # Inserts a blank line between shell prompts
-# add_newline = true 
+add_newline = true 
 
 # Custom format
-format = """ $all [—→](green bold) """
+#format = """ $all [—→](green bold) """
+format = """$all[\\$](green bold) """
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]
@@ -10,7 +11,7 @@ disabled = true
 #success_symbol = "[➜](green)"
 
 [line_break]
-# disabled = true
+disabled = true
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -35,5 +36,3 @@ truncation_length = 3
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 🔒"
 
-[gcloud]
-disabled = true

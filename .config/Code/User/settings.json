@@ -1,8 +1,5 @@
 {
-  "eslint.workingDirectories": [
-    "./sanity-cms",
-    "./react-app"
-  ],
+  "eslint.workingDirectories": ["./sanity-cms", "./svelte-app", "./next"],
   "php.validate.executablePath": "/opt/lampp/bin/php",
   "editor.suggestSelection": "first",
   "editor.fontLigatures": true,
@@ -24,12 +21,22 @@
   "gitlens.defaultTimeFormat": "H:mm",
   "files.exclude": {
     "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.git": false,
     "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
+    "**/.settings": true
   },
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
+    "COBOL": true,
+    "COBOLIT": true,
+    "ACUCOBOL": true,
+    "COBOL_MF_LISTFILE": false,
+    "COBOL_PCOB_LISTFILE": false,
+    "COBOL_ACU_LISTFILE": false,
+    "COBOL_MF_PREP": false,
+    "mfu": false,
+    "utreport": false,
     "*": true,
     "yaml": true,
     "plaintext": true,
@@ -64,17 +71,13 @@
           "storage.type.class.js",
           "storage.type.class.ts",
           "storage.type.js"
-          
         ],
         "settings": {
           "fontStyle": "italic bold"
         }
       },
       {
-        "scope": [
-          "variable.language.this.js",
-          "meta.decorator.ts"
-        ],
+        "scope": ["variable.language.this.js", "meta.decorator.ts"],
         "settings": {
           "fontStyle": "italic"
         }
@@ -84,7 +87,7 @@
   "discord.lowerDetailsEditing": "Line: {current_line} of {total_lines}",
   "discord.lowerDetailsDebugging": "{empty}",
   "editor.mouseWheelZoom": true,
-  "editor.cursorBlinking": "smooth",
+  "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.smoothScrolling": true,
   "explorer.compactFolders": false,
@@ -99,15 +102,14 @@
   "githubPullRequests.createOnPublishBranch": "never",
   "redhat.telemetry.enabled": false,
   "eslint.format.enable": true,
-  "eslint.probe": [
-    "javascript",
-    "typescript",
-    "svelte"
-  ],
+  // "eslint.probe": [
+  //   "javascript",
+  //   "typescript",
+  //   "svelte"
+  // ],
   "prettier.singleQuote": true,
   "editor.wordWrap": "on",
   "editor.linkedEditing": true,
-  "bookmarks.useWorkaroundForFormatters": true,
   "cSpell.language": "en,en-GB,en-CA",
   "cSpell.enabled": false,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -122,15 +124,16 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[svelte]": {
-    // "editor.defaultFormatter": "svelte.svelte-vscode"
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "svelte.svelte-vscode"
   },
   "eslint.validate": [
+    "glimmer-ts",
+    "glimmer-js",
     "javascript",
     "javascriptreact",
-    "svelte",
-    "glimmer-ts",
-    "glimmer-js"
+    "typescript",
+    "typescriptreact",
+    "svelte"
   ],
   "javascript.format.semicolons": "insert",
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
@@ -139,8 +142,7 @@
   "typescript.format.semicolons": "insert",
   "typescript.tsserver.maxTsServerMemory": 5120,
   "eslint.lintTask.enable": true,
-  "eslint.options": {
-  },
+  "eslint.options": {},
   "prettier.configPath": "./.prettierrc.json",
   "svelte.plugin.svelte.format.config.singleQuote": true,
   "svelte.plugin.svelte.format.enable": false,
@@ -166,11 +168,7 @@
   "workbench.iconTheme": "icons",
   "editor.minimap.renderCharacters": false,
   "svelte.plugin.css.diagnostics.enable": false,
-  "errorLens.excludeBySource": [
-    "ts(2559)",
-    "ts(2307)"
-  ],
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "errorLens.excludeBySource": ["ts(2559)", "ts(2307)"],
   "git.openRepositoryInParentFolders": "never",
   "workbench.editor.empty.hint": "hidden",
   "[haskell]": {
@@ -187,12 +185,26 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.foldingStrategy": "indentation"
   },
-  "eslint.rules.customizations": [
-    {
-      "rule": "*",
-      "severity": "warn"
-    }
-  ],
+  // "eslint.rules.customizations": [
+  //   {
+  //     "rule": "*",
+  //     "severity": "warn"
+  //   }
+  // ],
   "workbench.activityBar.location": "top",
-  "workbench.sideBar.location": "right"
+  "editor.formatOnSave": true,
+  "prettier.documentSelectors": [
+    "**/*.gts",
+    "**/*.gjs",
+    "**/*.svelte",
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "playwright.reuseBrowser": false,
+  "playwright.showTrace": true,
+  "editor.multiCursorPaste": "full",
+  "errorLens.enabledDiagnosticLevels": [
+    "warning",
+    "info"
+  ]
 }

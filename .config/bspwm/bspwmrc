@@ -10,8 +10,8 @@
 ##        _\/////////___\//////////__\///_____________\///__\///_____\///___\///___\///__\///_____________\////////__
 
 ### VARS ###
-gap=12
-border=2
+gap=10
+border=1
 panel_height=28
 export gap
 export border
@@ -19,14 +19,15 @@ export panel_height
 
 ### AUTOSTART ###
 nitrogen --restore &
-sxhkd &
+pgrep -x sxhkd > /dev/null || sxhkd &
 picom --experimental-backends --log-file /var/log/picom/picom.log &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/home/kio/.config/polybar/launch.sh &
-wired &
-clipmenud &
-nm-applet &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || true &
+/home/kio/.config/polybar/launch.sh || true &
+wired || true &
+pgrep -x clipmenud > /dev/null || clipmenud &
+#nm-applet &
 alacritty &
+~/.dotfiles/scripts/session_restore.sh || true &
 
 ### CURSOR ###
 xsetroot -cursor_name left_ptr 
@@ -39,12 +40,11 @@ xrandr --output DP-2 --primary --mode 3440x1440 --rate 120
 
 ## WORKSPACES ##
 bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9
-##bspc monitor DP-2 -d 1 2 3
 
 ### COLORS ###
 bspc config normal_border_color         "#6e738d"
 bspc config focused_border_color        "#c6a0f6"
-bspc config presel_feedback_color	"#939ab7" #"#5F6FD6"
+bspc config presel_feedback_color	"#939ab7"
 
 ### BORDERS ###
 bspc config border_width	$border
@@ -78,7 +78,7 @@ bspc rule -a peek state=floating
 #bspc rule -a Alacritty state=pseudo_tiled
 
 ### OTHER SHIT ###
-pgrep -x sxhkd > /dev/null || sxhkd &
+#pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config split_ratio             0.52
 bspc config focus_follows_pointer   true
@@ -90,8 +90,4 @@ bspc config paddingless_monocle     false
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
-
-## BSPC-SPECIFIC SCRIPTS ###
-
-#/home/kio/.dotfiles/scripts/euclid_balancer & 
 

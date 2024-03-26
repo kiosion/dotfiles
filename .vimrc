@@ -15,7 +15,7 @@ endif
 call plug#begin()
 
 " vim-discord, RPC integration
-" Plug 'vbe0201/vimdiscord'
+Plug 'vimsence/vimsence'
 
 " ALE, syntax highlighting and linting support
 " Plug 'dense-analysis/ale'

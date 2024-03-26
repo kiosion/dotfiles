@@ -1,15 +1,16 @@
 #!/bin/sh
 
+# save state
+~/.dotfiles/scripts/session_save.fish || true
+
+# kill clipmenu
+pkill -15 clipmenud
+
 # quit bspwm
 bspc quit
 
 # quit xorg and xserver
-pkill -15 Xorg
-pkill -15 Xserver
-pkill -15 Xsel
+#pkill -15 Xorg
+#pkill -15 Xserver
 
-# kill clipmenud
-pkill -15 clipmenud
-
-# switch to TTY1 login, not working for some reason...
-exit
+#kill -SIGUSR1 $PPID

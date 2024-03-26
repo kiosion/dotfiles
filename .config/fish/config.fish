@@ -21,7 +21,7 @@ alias md "mkdir -p"
 alias wm-l "wmname LG3D"
 alias wm-b "wmname bspwm"
 alias img "tiv -a -r 0.5"
-alias handbrake "hbc"
+alias handbrake "ghb"
 alias pf "pfetch"
 alias gpg-enc "gpg --encrypt --sign --armor -r hi@kio.dev"
 alias b2 "b2-linux"
@@ -37,6 +37,30 @@ alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
 alias ydl "python ~/Nextcloud/Development/yiffer-dl/ydl.py"
 alias btrfs-snap="sudo btrfs subvolume snapshot / /snapshots/root_(date +'%Y-%m-%d_%H:%M')"
 
+# setup zoxide
+status --is-interactive; and zoxide init --cmd cd fish | source
+
+# git aliases
+function gitdiffremote
+    set -l current_branch (git symbolic-ref --short HEAD)
+    git diff $current_branch..origin/$current_branch
+end
+function gitmydiff
+    set -l main_branch (git branch --all | grep -Eo '\b(main|master)\b' | head -n 1)
+    if test -z "$main_branch"
+        # echo in red
+        echo (set_color red) "No main branch found..." (set_color normal)
+        git fetch origin main:main
+        git diff main...HEAD
+    else
+        set main_branch (string replace -r 'remotes/[^/]+/' '' $main_branch)
+        git fetch origin $main_branch:$main_branch
+        git diff $main_branch...HEAD
+    end
+end
+
+set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY "YES"
+
 # set ssh agent correctly
 fish_ssh_agent
 
@@ -50,7 +74,7 @@ set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
 set -gx DENO_INSTALL $HOME/.deno
 
 # enable starship theme
-starship init fish | source
+status --is-interactive; and starship init fish | source
 
 # init nvm
 function nvm

@@ -108,13 +108,13 @@ alt + w; f
         firefox
 # discord
 alt + w; d
-        discord-canary
+        discord
 # telegram
 alt + w; t
         telegram-desktop
 # slack
 alt + w; s
-        slack
+        /usr/bin/slack
 # zoom
 alt + w; z
         zoom
