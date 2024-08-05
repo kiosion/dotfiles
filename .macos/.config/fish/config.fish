@@ -21,7 +21,7 @@ set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
 set -gx GPG_TTY (tty)
 
 # setup starship
-set -gx STARSHIP_CONFIG /Users/kio/.config/starship/starship.toml
+set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 starship init fish | source
 
 # aliases
@@ -36,13 +36,10 @@ alias py "python"
 alias gits "git status"
 alias gitc "git checkout"
 
-# yt-dlp
-alias ytdl "yt-dlp -f bestvideo+bestaudio --merge-output-format mkv"
-
 # source cargo env
 set PATH $HOME/.cargo/bin $PATH
 
-# init nvm
+# setup nvm
 set -gx NVM_DIR $HOME/.nvm
 
 function nvm
@@ -53,6 +50,8 @@ if status --is-login
     nvm use default > /dev/null
 end
 
-# because macos is special and doesn't allow hiding the login message in new shells :)))))
-printf '\33c\e[3J'
+if status --is-interactive
+    # because macos is special and doesn't allow hiding the login message in new shells :)))))
+    printf '\33c\e[3J'
+end
 
