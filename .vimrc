@@ -58,9 +58,7 @@ let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch#icon=''
 
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='minimalist'
-"let g:airline_theme='molokai'
-let g:airline_theme='lessnoise'
+let g:airline_theme='deus'
 
 " git-gutter
 highlight SignColumn ctermbg=NONE
@@ -186,7 +184,7 @@ endif
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " press <Enter> to continue"
-set cmdheight=2
+set cmdheight=1
 
 " Display line numbers on the left
 set nu rnu
@@ -222,6 +220,8 @@ set expandtab
 "
 " Useful mappings
 
+nnoremap <Esc> k
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
@@ -247,17 +247,17 @@ nnoremap <Leader>wk :wincmd K<CR>
 nnoremap <Leader>wh :wincmd H<CR>
 nnoremap <Leader>wl :wincmd L<CR>
 
-" Move selected lines up (visual) (Ctrl+Shift+J)
-xnoremap <C-[> :m-2<CR>gv=gv
+" Move selected lines up (visual) (Option+K)
+xnoremap ˚ :m-2<CR>gv=gv
 
-" Move selected lines down (visual) (Ctrl+Shift+K)
-xnoremap <C-]> :m'>+1<CR>gv=gv
+" Move selected lines down (visual) (Option+J)
+xnoremap ∆ :m'>+1<CR>gv=gv
 
-" Move current line up (Ctrl+Shift+K)
-nnoremap <C-[> :<C-u>m-2<CR>==
+" Move current line up (Option+K)
+nnoremap ˚ :<C-u>m-2<CR>==
 
-" Move current line down (Ctrl+Shift+J)
-nnoremap <C-]> :<C-u>m+<CR>==
+" Move current line down (Option+J)
+nnoremap ∆ :<C-u>m+<CR>==
 
 " Move to the next tab
 nnoremap <Leader>l :tabnext<CR>
@@ -287,3 +287,4 @@ nnoremap <Leader>[ :tabm -1<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 
 "------------------------------------------------------------
+

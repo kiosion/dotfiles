@@ -1,12 +1,9 @@
 [shell]
 program = "/opt/homebrew/bin/fish"
 
-# Enable alt key to send ESC sequences
-[alt_send_esc]
-enabled = true
-
 [colors.bright]
-black = "0x4d4d4d"
+#black = "0x4d4d4d"
+black = "0x5F5F5E"
 blue = "0xcaa9fa"
 cyan = "0x9aedfe"
 green = "0x5af78e"
@@ -47,9 +44,9 @@ yellow = "0xf1fa8c"
 background = "0x282a36"
 foreground = "0xf8f8f2"
 
-[colors.search.bar]
-background = "0x282a36"
-foreground = "0xf8f8f2"
+#[colors.search.bar]
+#background = "0x282a36"
+#foreground = "0xf8f8f2"
 
 [colors.search.focused_match]
 background = "0xffb86c"
@@ -79,5 +76,16 @@ action = "SpawnNewInstance"
 key = "Return"
 mods = "Control|Shift"
 
+#[[keyboard.bindings]]
+#key = "J"
+#mods = "Alt"
+#chars = "\\x1bJ"
+
 [window]
-opacity = 0.9
+#option_as_alt = 'Both'
+opacity = 0.6
+blur = true
+dynamic_title = true
+resize_increments = true
+decorations = 'Transparent'
+padding = { x = 0, y = 28 }
