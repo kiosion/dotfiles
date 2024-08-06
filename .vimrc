@@ -45,6 +45,9 @@ Plug 'jreybert/vimagit'
 " git-gutter
 Plug 'airblade/vim-gitgutter'
 
+" multi-cursors
+Plug 'mg979/vim-visual-multi'
+
 call plug#end()
 
 "-------------------------------------------------------------
@@ -60,9 +63,15 @@ let g:airline#extensions#branch#icon=''
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 
+"------------------------------------------------------------
+" Colour customization {{{1
+
+" vim
+highlight LineNr ctermbg=NONE ctermfg=248
+highlight Search ctermbg=10 ctermfg=8
+
 " git-gutter
 highlight SignColumn ctermbg=NONE
-" display add/remove/modified changes without bg
 highlight GitGutterAdd ctermbg=NONE ctermfg=2
 highlight GitGutterChange ctermbg=NONE ctermfg=3
 highlight GitGutterDelete ctermbg=NONE ctermfg=1
@@ -249,6 +258,16 @@ nnoremap <Leader>wl :wincmd L<CR>
 
 
 if has('macunix')
+  " Yank to system clipboard
+  vnoremap <Leader>y "+y
+  nnoremap <Leader>Y "+yg_
+
+  " Paste from system clipboard
+  nnoremap <Leader>p "+p
+  nnoremap <Leader>P "+P
+  vnoremap <Leader>p "+p
+  vnoremap <Leader>P "+P
+
   " Move selected lines up (visual) (Option+K)
   xnoremap ˚ :m-2<CR>gv=gv
 
