@@ -5,6 +5,9 @@ add_newline = true
 #format = """ $all [—→](green bold) """
 format = """$all[\\$](green bold) """
 
+# Allow for git/nvm/asdf exec in complex dirs
+command_timeout = 1200
+
 # Replace the "❯" symbol in the prompt with "➜"
 [character]
 disabled = true
@@ -35,4 +38,3 @@ disabled = false
 truncation_length = 3
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 🔒"
-

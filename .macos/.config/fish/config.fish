@@ -14,6 +14,8 @@
 # setup homebrew
 eval (/opt/homebrew/bin/brew shellenv)
 
+fish_add_path /usr/local/bin
+
 # setup ssh agent correctly
 set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
 
@@ -37,7 +39,7 @@ alias gits "git status"
 alias gitc "git checkout"
 
 # source cargo env
-set PATH $HOME/.cargo/bin $PATH
+fish_add_path $HOME/.cargo/bin
 
 # setup nvm
 set -gx NVM_DIR $HOME/.nvm
@@ -50,7 +52,13 @@ if status --is-login
     nvm use default > /dev/null
 end
 
+# setup asdf
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
 if status --is-interactive
+    # init zoxide
+    zoxide init fish --cmd cd | source
+
     # because macos is special and doesn't allow hiding the login message in new shells :)))))
     printf '\33c\e[3J'
 end

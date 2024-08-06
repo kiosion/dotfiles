@@ -15,11 +15,11 @@ endif
 call plug#begin()
 
 " vim-discord, RPC integration
-Plug 'vimsence/vimsence'
+" Plug 'vimsence/vimsence'
 
 " ALE, syntax highlighting and linting support
-" Plug 'dense-analysis/ale'
 
+" Plug 'dense-analysis/ale'
 " YCM, autocomplete
 " Plug 'valloric/youcompleteme'
 
@@ -33,13 +33,41 @@ Plug 'github/copilot.vim'
 " vim-javascript
 Plug 'pangloss/vim-javascript'
 
+" NERDTree
+Plug 'preservim/nerdtree'
+
+" fugitive
+Plug 'tpope/vim-fugitive'
+
+" Vimagit
+Plug 'jreybert/vimagit'
+
+" git-gutter
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 "-------------------------------------------------------------
 " Plugin configs {{{1
 
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch#icon=''
+
 let g:airline_powerline_fonts = 1
+"let g:airline_theme='minimalist'
+"let g:airline_theme='molokai'
 let g:airline_theme='lessnoise'
+
+" git-gutter
+highlight SignColumn ctermbg=NONE
+" display add/remove/modified changes without bg
+highlight GitGutterAdd ctermbg=NONE ctermfg=2
+highlight GitGutterChange ctermbg=NONE ctermfg=3
+highlight GitGutterDelete ctermbg=NONE ctermfg=1
 
 "-------------------------------------------------------------
 " Features {{{1
@@ -97,7 +125,7 @@ set showcmd
 
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
-" set hlsearch
+set hlsearch
 
 " Modelines have historically been a source of security vulnerabilities.
 " As such, it may be a good idea to disable them and use the securemodelines
@@ -112,6 +140,9 @@ set showcmd
 " change Vim's behaviour in ways which deviate from the true Vi way, but
 " which are considered to add usability. Which, if any, of these options to
 " use is very much a personal preference, but they are harmless.
+
+" Configure default ':term' opts
+set shell=/opt/homebrew/bin/fish
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -195,12 +226,64 @@ set expandtab
 " which is the default
 map Y y$
 
+" Copy to system clipboard in visual mode
+vnoremap <Leader>y "+y
+
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Map Ctrl + <hjkl> to move between split view windows
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
+" Swap horizontal splits
+nnoremap <Leader>wj :wincmd J<CR>
+nnoremap <Leader>wk :wincmd K<CR>
+
+" Swap vertical splits
+nnoremap <Leader>wh :wincmd H<CR>
+nnoremap <Leader>wl :wincmd L<CR>
+
+" Move selected lines up (visual) (Ctrl+Shift+J)
+xnoremap <C-[> :m-2<CR>gv=gv
+
+" Move selected lines down (visual) (Ctrl+Shift+K)
+xnoremap <C-]> :m'>+1<CR>gv=gv
+
+" Move current line up (Ctrl+Shift+K)
+nnoremap <C-[> :<C-u>m-2<CR>==
+
+" Move current line down (Ctrl+Shift+J)
+nnoremap <C-]> :<C-u>m+<CR>==
+
+" Move to the next tab
+nnoremap <Leader>l :tabnext<CR>
+" Move to the previous tab
+nnoremap <Leader>h :tabprevious<CR>
+" Move to the first tab
+nnoremap <Leader>1 :tabfirst<CR>
+" Move to the last tab
+nnoremap <Leader>$ :tablast<CR>
+" Move to a specific tab number
+nnoremap <Leader>2 :tabn 2<CR>
+nnoremap <Leader>3 :tabn 3<CR>
+nnoremap <Leader>4 :tabn 4<CR>
+nnoremap <Leader>5 :tabn 5<CR>
+nnoremap <Leader>6 :tabn 6<CR>
+nnoremap <Leader>7 :tabn 7<CR>
+nnoremap <Leader>8 :tabn 8<CR>
+nnoremap <Leader>9 :tabn 9<CR>
+nnoremap <Leader>0 :tabn 10<CR>
+
+" Move current tab to the right
+nnoremap <Leader>] :tabm +1<CR>
+" Move current tab to the left
+nnoremap <Leader>[ :tabm -1<CR>
+
+" Toggle NERDTree
+nnoremap <C-b> :NERDTreeToggle<CR>
 
 "------------------------------------------------------------
