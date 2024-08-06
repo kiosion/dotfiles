@@ -247,17 +247,32 @@ nnoremap <Leader>wk :wincmd K<CR>
 nnoremap <Leader>wh :wincmd H<CR>
 nnoremap <Leader>wl :wincmd L<CR>
 
-" Move selected lines up (visual) (Option+K)
-xnoremap ˚ :m-2<CR>gv=gv
 
-" Move selected lines down (visual) (Option+J)
-xnoremap ∆ :m'>+1<CR>gv=gv
+if has('macunix')
+  " Move selected lines up (visual) (Option+K)
+  xnoremap ˚ :m-2<CR>gv=gv
 
-" Move current line up (Option+K)
-nnoremap ˚ :<C-u>m-2<CR>==
+  " Move selected lines down (visual) (Option+J)
+  xnoremap ∆ :m'>+1<CR>gv=gv
 
-" Move current line down (Option+J)
-nnoremap ∆ :<C-u>m+<CR>==
+  " Move current line up (Option+K)
+  nnoremap ˚ :<C-u>m-2<CR>==
+
+  " Move current line down (Option+J)
+  nnoremap ∆ :<C-u>m+<CR>==
+elseif has('unix') && !has('macunix')
+  " Move selected lines up (visual) (Alt+K)
+  xnoremap <A-K> :m-2<CR>gv=gv
+
+  " Move selected lines down (visual) (Alt+J)
+  xnoremap <A-J> :m'>+1<CR>gv=gv
+
+  " Move selected line up (Alt+K)
+  nnoremap <A-K> :<C-u>m-2<CR>==
+
+  " Move selected line down (Alt+J)
+  nnoremap <A-J> :<C-u>m+<CR>==
+endif
 
 " Move to the next tab
 nnoremap <Leader>l :tabnext<CR>
