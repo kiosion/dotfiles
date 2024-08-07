@@ -76,16 +76,11 @@ action = "SpawnNewInstance"
 key = "Return"
 mods = "Control|Shift"
 
-#[[keyboard.bindings]]
-#key = "J"
-#mods = "Alt"
-#chars = "\\x1bJ"
-
 [window]
-#option_as_alt = 'Both'
-opacity = 0.6
+opacity = 0.5
 blur = true
 dynamic_title = true
 resize_increments = true
 decorations = 'Transparent'
-padding = { x = 0, y = 28 }
+padding = { x = 8, y = 28 }
+

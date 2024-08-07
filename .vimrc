@@ -1,4 +1,4 @@
-set shell=/bin/bash
+set shell=/bin/zsh
 
 "-------------------------------------------------------------
 " Vim-plug setup {{{1
@@ -52,6 +52,8 @@ call plug#end()
 
 "-------------------------------------------------------------
 " Plugin configs {{{1
+
+let g:copilot_ignore_node_version = 1
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -256,6 +258,13 @@ nnoremap <Leader>wk :wincmd K<CR>
 nnoremap <Leader>wh :wincmd H<CR>
 nnoremap <Leader>wl :wincmd L<CR>
 
+" Resize split horizontally
+nnoremap <C-Right> <C-w>>
+nnoremap <C-Left> <C-w><
+
+" Resize split vertically
+nnoremap <C-Up> <C-w>+
+nnoremap <C-Down> <C-w>-
 
 if has('macunix')
   " Yank to system clipboard

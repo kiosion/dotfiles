@@ -1,14 +1,13 @@
 # Inserts a blank line between shell prompts
-add_newline = true 
+add_newline = true
 
 # Custom format
-#format = """ $all [—→](green bold) """
 format = """$all[\\$](green bold) """
 
-# Allow for git/nvm/asdf exec in complex dirs
+# Allow higher timeout for git/nvm/asdf/etc exec in complex dirs
 command_timeout = 1200
 
-# Replace the "❯" symbol in the prompt with "➜"
+# Replace the "❯" symbol in the prompt
 [character]
 disabled = true
 #success_symbol = "[➜](green)"
@@ -35,6 +34,7 @@ disabled = false
 
 # Dir config
 [directory]
-truncation_length = 3
+truncation_length = 4
+truncate_to_repo = false
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 🔒"
