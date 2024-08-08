@@ -1,0 +1,7 @@
+{
+  "diagnostic.displayByAle": true,
+  "suggest.floatConfig": {
+    "border": true
+  }
+}
+
