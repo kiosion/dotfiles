@@ -13,70 +13,92 @@ endif
 " Plugs {{{1
 
 call plug#begin()
+  " ALE, syntax highlighting and linting support
+  Plug 'dense-analysis/ale'
 
-" vim-discord, RPC integration
-" Plug 'vimsence/vimsence'
+  " coc.nvim, autocompletion and ts stuff
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" ALE, syntax highlighting and linting support
+  " Airline status line
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
-" Plug 'dense-analysis/ale'
-" YCM, autocomplete
-" Plug 'valloric/youcompleteme'
+  " CoPilot
+  Plug 'github/copilot.vim'
 
-" Airline status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  " vim-javascript
+  Plug 'pangloss/vim-javascript'
 
-" CoPilot
-Plug 'github/copilot.vim'
+  " NERDTree
+  Plug 'preservim/nerdtree'
 
-" vim-javascript
-Plug 'pangloss/vim-javascript'
+  " fzf
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
-" NERDTree
-Plug 'preservim/nerdtree'
+  " fugitive
+  Plug 'tpope/vim-fugitive'
 
-" fugitive
-Plug 'tpope/vim-fugitive'
+  " Vimagit
+  Plug 'jreybert/vimagit'
 
-" Vimagit
-Plug 'jreybert/vimagit'
+  " git-gutter
+  Plug 'airblade/vim-gitgutter'
 
-" git-gutter
-Plug 'airblade/vim-gitgutter'
-
-" multi-cursors
-Plug 'mg979/vim-visual-multi'
+  " multi-cursors
+  Plug 'mg979/vim-visual-multi'
 
 call plug#end()
 
 "-------------------------------------------------------------
 " Plugin configs {{{1
 
+" Copilot
 let g:copilot_ignore_node_version = 1
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#hunks#enabled=0
+" ALE
+let g:ale_linters = {
+ \ 'javascript': ['prettier', 'eslint'],
+ \ 'typescript': ['prettier', 'eslint'],
+ \ 'typescriptreact': ['prettier', 'eslint'],
+ \ 'javascriptreact': ['prettier', 'eslint'],
+ \}    
+
+let g:ale_pattern_options = {
+ \ '.*node_modules.*$': {'ale_enabled': 0},
+ \ '.*dist.*$': {'ale_enabled': 0},
+ \ '.*-config.js$': {'ale_enabled': 0},
+ \ '.*/build/.*$': {'ale_enabled': 0},
+ \}
+
+let g:ale_fix_on_save = 1
+
+" coc.nvim
+let b:coc_suggest_disable = 1
+
+" Airline   
+let g:airline#extensions#tabline#enabled = 1    
+let g:airline#extensions#tabline#formatter = 'unique_tail'    
+let g:airline#extensions#hunks#enabled=0    
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch#icon=''
+  
+let g:airline_powerline_fonts = 1  
 
-let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 
-"------------------------------------------------------------
-" Colour customization {{{1
+"------------------------------------------------------------  
+" Colour customization {{{1  
 
-" vim
-highlight LineNr ctermbg=NONE ctermfg=248
-highlight Search ctermbg=10 ctermfg=8
+set termguicolors
 
-" git-gutter
-highlight SignColumn ctermbg=NONE
-highlight GitGutterAdd ctermbg=NONE ctermfg=2
-highlight GitGutterChange ctermbg=NONE ctermfg=3
-highlight GitGutterDelete ctermbg=NONE ctermfg=1
+colorscheme catppuccin_mocha
+
+" coc.nvim
+highlight CocFloating ctermbg=DarkGrey ctermfg=LightGrey
+highlight CocMenuSel ctermbg=250 ctermfg=16
+highlight CocListBgGrey ctermbg=DarkGrey ctermfg=LightGrey
+highlight CocListLine ctermbg=DarkGrey ctermfg=LightGrey
 
 "-------------------------------------------------------------
 " Features {{{1
@@ -326,8 +348,69 @@ nnoremap <Leader>] :tabm +1<CR>
 " Move current tab to the left
 nnoremap <Leader>[ :tabm -1<CR>
 
-" Toggle NERDTree
-nnoremap <C-b> :NERDTreeToggle<CR>
+" Run :Files command with Ctrl+Shift+F
+nnoremap <C-S-F> :Files<CR>
+inoremap <C-S-F> <Esc>:Files<CR>
+vnoremap <C-S-F> <Esc>:Files<CR>
+
+" Move between ALE errors/warnings
+nnoremap <Leader>aj :ALENext<CR>
+nnoremap <Leader>ak :ALEPrevious<CR>
+
+" Jump to definition on c-]
+autocmd FileType javascript map <buffer> <c-]> :ALEGoToDefinition<CR>
+autocmd FileType typescript map <buffer> <c-]> :ALEGoToDefinition<CR>
+autocmd FileType typescriptreact map <buffer> <c-]> :ALEGoToDefinition<CR>
+
+" Hover over definition with K
+nnoremap <silent> K :call ShowDocumentation()<CR>
+"nnoremap K :ALEHover<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" NERDTree stuff (TODO: move to new section, keybinds is getting unwieldy)
+
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! CheckIfCurrentBufferIsFile()
+  return strlen(expand('%')) > 0
+endfunction
+
+" Call NERDTreeFind if NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && CheckIfCurrentBufferIsFile() && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufRead * call SyncTree()
+
+function! ToggleTree()
+  if CheckIfCurrentBufferIsFile()
+    if IsNERDTreeOpen()
+      NERDTreeClose
+    else
+      NERDTreeFind
+    endif
+  else
+    NERDTree
+  endif
+endfunction
+
+" Toggle NERDTree with Ctrl + B
+nmap <C-b> :call ToggleTree()<CR>
 
 "------------------------------------------------------------
 

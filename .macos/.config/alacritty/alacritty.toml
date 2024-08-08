@@ -2,7 +2,6 @@
 program = "/opt/homebrew/bin/fish"
 
 [colors.bright]
-#black = "0x4d4d4d"
 black = "0x5F5F5E"
 blue = "0xcaa9fa"
 cyan = "0x9aedfe"
