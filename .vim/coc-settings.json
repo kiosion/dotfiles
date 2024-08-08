@@ -4,6 +4,6 @@
   "suggest.floatConfig": {
     "border": true
   },
-  "svelte.enable-ts-plugin": true
+  "elixir.pathToElixirLS": "/opt/homebrew/bin/elixir-ls"
 }
 

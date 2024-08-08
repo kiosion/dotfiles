@@ -20,6 +20,8 @@ call plug#begin()
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
   Plug 'othree/html5.vim'
 
+  Plug 'elixir-editors/vim-elixir'
+
   " coc.nvim, autocompletion and ts stuff
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -52,6 +54,8 @@ call plug#begin()
   " multi-cursors
   Plug 'mg979/vim-visual-multi'
 
+  " vim-wakatime
+  Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 "-------------------------------------------------------------
@@ -426,10 +430,10 @@ nnoremap <Leader>rw :Rg <C-r><C-w><CR>
 nnoremap <Leader>aj :ALENext<CR>
 nnoremap <Leader>ak :ALEPrevious<CR>
 
-" Jump to definition on c-]
-autocmd FileType javascript map <buffer> <c-]> :ALEGoToDefinition<CR>
-autocmd FileType typescript map <buffer> <c-]> :ALEGoToDefinition<CR>
-autocmd FileType typescriptreact map <buffer> <c-]> :ALEGoToDefinition<CR>
+" Jump to definition w/ coc.nvim on c-]
+"autocmd FileType javascript map <buffer> <c-]> :ALEGoToDefinition<CR>
+"autocmd FileType typescript map <buffer> <c-]> :ALEGoToDefinition<CR>
+"autocmd FileType typescriptreact map <buffer> <c-]> :ALEGoToDefinition<CR>
 
 " Hover over definition with K
 nnoremap <silent> K :call ShowDocumentation()<CR>
