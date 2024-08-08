@@ -17,7 +17,6 @@ call plug#begin()
   Plug 'dense-analysis/ale'
 
   " vim-svelte-plugin, syntax + indent support for svelte filetypes
-  "Plug 'leafOfTree/vim-svelte-plugin'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
   Plug 'othree/html5.vim'
 
@@ -66,11 +65,7 @@ let g:svelte_preprocessor_tags = [
 
 let g:svelte_preprocessors = ['typescript', 'scss']
 
-"let g:vim_svelte_plugin_use_typescript = 1
-"let g:vim_svelte_plugin_use_sass = 1
-
 " fzf
-" let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git -n dist -n build\) -prune -o -print'
 let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules --exclude dist --exclude build'
 
 " Copilot
@@ -83,7 +78,21 @@ let g:ale_linters = {
  \ 'typescriptreact': ['prettier', 'eslint'],
  \ 'javascriptreact': ['prettier', 'eslint'],
  \ 'svelte': ['prettier', 'eslint'],
- \}    
+ \ 'html': ['prettier'],
+ \ 'css': ['prettier'],
+ \ 'scss': ['prettier'],
+ \}
+
+let g:ale_fixers = {
+ \ 'javascript': ['prettier', 'eslint'],
+ \ 'typescript': ['prettier', 'eslint'],
+ \ 'typescriptreact': ['prettier', 'eslint'],
+ \ 'javascriptreact': ['prettier', 'eslint'],
+ \ 'svelte': ['prettier', 'eslint'],
+ \ 'html': ['prettier'],
+ \ 'css': ['prettier'],
+ \ 'scss': ['prettier'],
+ \}
 
 let g:ale_pattern_options = {
  \ '.*node_modules.*$': {'ale_enabled': 0},
@@ -93,6 +102,11 @@ let g:ale_pattern_options = {
  \}
 
 let g:ale_fix_on_save = 1
+
+" GitGutter
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
 
 " Airline   
 let g:airline#extensions#tabline#enabled = 1    
@@ -110,7 +124,7 @@ let g:airline_theme='deus'
 
 set termguicolors
 
-colorscheme catppuccin_mocha
+colorscheme catppuccin_macchiato
 
 " coc.nvim
 highlight CocFloating ctermbg=DarkGrey ctermfg=LightGrey
@@ -191,7 +205,10 @@ set hlsearch
 " use is very much a personal preference, but they are harmless.
 
 " Configure default ':term' opts
-"set shell=/opt/homebrew/bin/fish
+set shell=fish
+
+" Fold by syntax, not manually or indent
+set foldmethod=syntax
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -284,6 +301,9 @@ vnoremap <C-y> 5<C-y>
 let mapleader = ","
 
 " Useful mappings
+
+" Toggle fold of current line's code block
+"nnoremap <Leader>z za
 
 "nnoremap <Esc> k
 

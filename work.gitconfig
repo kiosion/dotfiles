@@ -1,0 +1,17 @@
+[user]
+	email = maxim.dietz@goteleport.com
+	name = Maxim Dietz
+        signingkey = 8A2C67E22184F162
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	autoSetupRemote = true

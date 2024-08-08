@@ -63,7 +63,7 @@ endfunction
 
 
 
-call s:hi("Normal", "NONE", s:text, s:base, "NONE", "NONE")
+call s:hi("Normal", "NONE", s:text, "NONE", "NONE", "NONE")
 call s:hi("Visual", "NONE", "NONE", s:surface1,"bold", "bold")
 call s:hi("Conceal", "NONE", s:overlay1, "NONE", "NONE", "NONE")
 call s:hi("ColorColumn", "NONE", "NONE", s:surface0, "NONE", "NONE")
@@ -82,10 +82,10 @@ call s:hi("ErrorMsg", "NONE", s:red, "NONE", "bolditalic"    , "bold,italic")
 call s:hi("VertSplit", "NONE", s:crust, "NONE", "NONE", "NONE")
 call s:hi("Folded", "NONE", s:blue, s:surface1, "NONE", "NONE")
 call s:hi("FoldColumn", "NONE", s:overlay0, s:base, "NONE", "NONE")
-call s:hi("SignColumn", "NONE", s:surface1, s:base, "NONE", "NONE")
+call s:hi("SignColumn", "NONE", s:surface1, "NONE", "NONE", "NONE")
 call s:hi("IncSearch", "NONE", s:surface1, s:pink, "NONE", "NONE")
 call s:hi("CursorLineNR", "NONE", s:lavender, "NONE", "NONE", "NONE")
-call s:hi("LineNr", "NONE", s:surface1, "NONE", "NONE", "NONE")
+call s:hi("LineNr", "NONE", s:overlay0, "NONE", "NONE", "NONE")
 call s:hi("MatchParen", "NONE", s:peach, "NONE", "bold", "bold")
 call s:hi("ModeMsg", "NONE", s:text, "NONE", "bold", "bold")
 call s:hi("MoreMsg", "NONE", s:blue, "NONE", "NONE", "NONE")
@@ -113,7 +113,7 @@ call s:hi("Title", "NONE", s:blue, "NONE", "bold", "bold")
 call s:hi("VisualNOS", "NONE", "NONE", s:surface1, "bold", "bold")
 call s:hi("WarningMsg", "NONE", s:yellow, "NONE", "NONE", "NONE")
 call s:hi("WildMenu", "NONE", "NONE", s:overlay0, "NONE", "NONE")
-call s:hi("Comment", "NONE", s:surface2, "NONE", "NONE", "NONE")
+call s:hi("Comment", "NONE", s:overlay2, "NONE", "NONE", "NONE")
 call s:hi("Constant", "NONE", s:peach, "NONE", "NONE", "NONE")
 call s:hi("Identifier", "NONE", s:flamingo, "NONE", "NONE", "NONE")
 call s:hi("Statement", "NONE", s:mauve, "NONE", "NONE", "NONE")
@@ -142,6 +142,7 @@ call s:hi("Typedef", "NONE", s:yellow, "NONE", "NONE", "NONE")
 call s:hi("debugPC", "NONE", "NONE", s:crust, "NONE", "NONE")
 call s:hi("debugBreakpoint", "NONE", s:overlay0, s:base, "NONE", "NONE")
 
+" Misk links
 hi link Define PreProc
 hi link Macro PreProc
 hi link PreCondit PreProc
@@ -155,6 +156,19 @@ hi link StatusLineTerm StatusLine
 hi link StatusLineTermNC StatusLineNC
 hi link Terminal Normal
 hi link Ignore Comment
+
+" ALE
+call s:hi("ALEErrorSign", "NONE", s:red, "NONE", "NONE", "NONE")
+call s:hi("ALEWarningSign", "NONE", s:yellow, "NONE", "NONE", "NONE")
+call s:hi("ALEVirtualTextError", "NONE", s:red, "NONE", "NONE", "NONE")
+call s:hi("ALEVirtualTextWarning", "NONE", s:yellow, "NONE", "NONE", "NONE")
+call s:hi("ALEError", "NONE", s:surface1, s:red, "NONE", "NONE")
+call s:hi("ALEWarning", "NONE", s:surface1, s:yellow, "NONE", "NONE")
+
+" GitGutter
+hi link GitGutterAdd DiffAdd
+hi link GitGutterChange DiffChange
+hi link GitGutterDelete DiffDelete
 
 " Set terminal colors for playing well with plugins like fzf
 let g:terminal_ansi_colors = [
