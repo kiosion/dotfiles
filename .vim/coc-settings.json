@@ -1,7 +1,9 @@
 {
   "diagnostic.displayByAle": true,
+  "suggest.enableFloat": true,
   "suggest.floatConfig": {
     "border": true
-  }
+  },
+  "svelte.enable-ts-plugin": true
 }
 

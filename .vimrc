@@ -16,6 +16,11 @@ call plug#begin()
   " ALE, syntax highlighting and linting support
   Plug 'dense-analysis/ale'
 
+  " vim-svelte-plugin, syntax + indent support for svelte filetypes
+  "Plug 'leafOfTree/vim-svelte-plugin'
+  Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  Plug 'othree/html5.vim'
+
   " coc.nvim, autocompletion and ts stuff
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -53,6 +58,21 @@ call plug#end()
 "-------------------------------------------------------------
 " Plugin configs {{{1
 
+" vim-svelte-plugin
+let g:svelte_preprocessor_tags = [
+  \ { 'name': 'scss', 'tag': 'style' },
+  \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' },
+  \ ]
+
+let g:svelte_preprocessors = ['typescript', 'scss']
+
+"let g:vim_svelte_plugin_use_typescript = 1
+"let g:vim_svelte_plugin_use_sass = 1
+
+" fzf
+" let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git -n dist -n build\) -prune -o -print'
+let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules --exclude dist --exclude build'
+
 " Copilot
 let g:copilot_ignore_node_version = 1
 
@@ -62,6 +82,7 @@ let g:ale_linters = {
  \ 'typescript': ['prettier', 'eslint'],
  \ 'typescriptreact': ['prettier', 'eslint'],
  \ 'javascriptreact': ['prettier', 'eslint'],
+ \ 'svelte': ['prettier', 'eslint'],
  \}    
 
 let g:ale_pattern_options = {
@@ -246,11 +267,25 @@ set expandtab
 "set tabstop=4
 
 "------------------------------------------------------------
+" Scroll options {{{1
+set scrolloff=5
+
+" Smooth scrolling mappings
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
+inoremap <C-e> <Esc>5<C-e>i
+inoremap <C-y> <Esc>5<C-y>i
+vnoremap <C-e> 5<C-e>
+vnoremap <C-y> 5<C-y>
+
+"------------------------------------------------------------
 " Mappings {{{1
-"
+
+let mapleader = ","
+
 " Useful mappings
 
-nnoremap <Esc> k
+"nnoremap <Esc> k
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
@@ -258,10 +293,17 @@ map Y y$
 
 " Copy to system clipboard in visual mode
 vnoremap <Leader>y "+y
+vnoremap <Leader>Y "+yg_
+
+" Paste from system clipboard
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+" pane/split stuff
 
 " Map Ctrl + <hjkl> to move between split view windows
 nnoremap <C-J> <C-W>j
@@ -285,17 +327,9 @@ nnoremap <C-Left> <C-w><
 nnoremap <C-Up> <C-w>+
 nnoremap <C-Down> <C-w>-
 
+" line manipulation stuff
+
 if has('macunix')
-  " Yank to system clipboard
-  vnoremap <Leader>y "+y
-  nnoremap <Leader>Y "+yg_
-
-  " Paste from system clipboard
-  nnoremap <Leader>p "+p
-  nnoremap <Leader>P "+P
-  vnoremap <Leader>p "+p
-  vnoremap <Leader>P "+P
-
   " Move selected lines up (visual) (Option+K)
   xnoremap ˚ :m-2<CR>gv=gv
 
@@ -322,6 +356,8 @@ else
   nnoremap <A-Down> :<C-u>m+<CR>==
 endif
 
+" tab stuff
+
 " Move to the next tab
 nnoremap <Leader>l :tabnext<CR>
 " Move to the previous tab
@@ -346,10 +382,25 @@ nnoremap <Leader>] :tabm +1<CR>
 " Move current tab to the left
 nnoremap <Leader>[ :tabm -1<CR>
 
-" Run :Files command with Ctrl+F
-nnoremap <C-F> :Files<CR>
-inoremap <C-F> <Esc>:Files<CR>
-vnoremap <C-F> <Esc>:Files<CR>
+" fzf stuff
+
+" Run :Files command with <Leader>fn
+nnoremap <Leader>fn :Files<CR>
+vnoremap <Leader>fn <Esc>:Files<CR>
+
+" Run :Rg command with <Leader>r
+nnoremap <Leader>rg :Rg<CR>
+vnoremap <Leader>rg <Esc>:Rg<CR>
+
+" Remap :Rg to only search file contents and ignore names/extensions
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+" Rg current word under cursor
+nnoremap <Leader>rw :Rg <C-r><C-w><CR>
+
+" ALE / coc stuff
 
 " Move between ALE errors/warnings
 nnoremap <Leader>aj :ALENext<CR>
@@ -362,7 +413,6 @@ autocmd FileType typescriptreact map <buffer> <c-]> :ALEGoToDefinition<CR>
 
 " Hover over definition with K
 nnoremap <silent> K :call ShowDocumentation()<CR>
-"nnoremap K :ALEHover<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
@@ -374,6 +424,9 @@ endfunction
 
 " Accept completion with Enter if coc is active, otherwise just Enter
 inoremap <silent><expr> <Enter> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+
+" Close coc with <Esc> if active, otherwise just <Esc>
+inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#close() : "\<Esc>"
 
 " NERDTree stuff (TODO: move to new section, keybinds is getting unwieldy)
 
