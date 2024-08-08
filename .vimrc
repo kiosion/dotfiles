@@ -73,9 +73,6 @@ let g:ale_pattern_options = {
 
 let g:ale_fix_on_save = 1
 
-" coc.nvim
-let g:coc_suggest_disable = 1
-
 " Airline   
 let g:airline#extensions#tabline#enabled = 1    
 let g:airline#extensions#tabline#formatter = 'unique_tail'    
@@ -374,6 +371,9 @@ function! ShowDocumentation()
     call feedkeys('K', 'in')
   endif
 endfunction
+
+" Accept completion with Enter if coc is active, otherwise just Enter
+inoremap <silent><expr> <Enter> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
 
 " NERDTree stuff (TODO: move to new section, keybinds is getting unwieldy)
 
