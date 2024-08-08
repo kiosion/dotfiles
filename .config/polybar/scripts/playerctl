@@ -5,7 +5,6 @@ tertiary_colour="#6e738d"
 
 while true; do
     spotify_meta=$(playerctl -i firefox,chrome metadata --format '{{status}}' 2>/dev/null)
-    firefox_meta=$(playerctl -i spotify,chrome metadata --format '{{status}}' 2>/dev/null)
 
     if grep -q "Playing" <<< "$spotify_meta"
     then
@@ -13,9 +12,9 @@ while true; do
         sleep 0.1
 
     # If spotify's paused, and firefox isn't paused or playing, then show paused spotify state
-    elif grep -q "Paused" <<< "$spotify_meta" && ! grep -q "Paused" <<< "$firefox_meta" && ! grep -q "Playing" <<< "$firefox_meta"
+    elif grep -q "Paused" <<< "$spotify_meta"
     then
-        echo $(playerctl -i firefox,chrome metadata --format "%{F$secondary_colour}{{duration(position)}}/{{duration(mpris:length)}}%{F-} %{F$tertiary_colour}-%{F-} {{artist}} - {{title}}")
+        echo $(playerctl -i firefox,chrome metadata --format "%{F$secondary_colour}{{duration(position)}}/{{duration(mpris:length)}}%{F-} %{F$tertiary_colour}-%{F-} %{F$secondary_colour}{{artist}} - {{title}}%{F-}")
         sleep 0.5
     else
         echo "%{F$secondary_colour}-:--/-:--%{F-} %{F$tertiary_colour}-%{F-} Idle"

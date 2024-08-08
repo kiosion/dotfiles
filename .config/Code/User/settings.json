@@ -158,8 +158,6 @@
   "elixirLS.projectDir": "./",
   "haskell.manageHLS": "GHCup",
   "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
-  "discord.detailsEditing": "Editing a {LANG} file",
-  "discord.detailsDebugging": "Debugging a {LANG} file",
   "workbench.colorTheme": "Catppuccin Mocha",
   "[python]": {
     "editor.formatOnType": true
@@ -206,5 +204,6 @@
   "errorLens.enabledDiagnosticLevels": [
     "warning",
     "info"
-  ]
+  ],
+  "github.copilot.editor.enableAutoCompletions": true
 }

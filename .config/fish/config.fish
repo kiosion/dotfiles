@@ -14,7 +14,7 @@
 
 # aliases
 alias neofetch "neofetch --ascii_distro arch_old --disk_show '/' '/mnt/kepler/' '/mnt/tesla/' --cpu_temp C --block_range -1 -1"
-alias btw "neofetch"
+#alias btw "neofetch"
 alias l "ls -l --block-size=M"
 alias la "ls -la --block-size=M"
 alias md "mkdir -p"
@@ -45,6 +45,7 @@ function gitdiffremote
     set -l current_branch (git symbolic-ref --short HEAD)
     git diff $current_branch..origin/$current_branch
 end
+
 function gitmydiff
     set -l main_branch (git branch --all | grep -Eo '\b(main|master)\b' | head -n 1)
     if test -z "$main_branch"
@@ -73,6 +74,9 @@ set -gx STARSHIP_CONFIG /home/kio/.config/starship/starship.toml
 # set deno root
 set -gx DENO_INSTALL $HOME/.deno
 
+# set GOROOT w/ asdf
+source ~/.asdf/plugins/golang/set-env.fish
+
 # enable starship theme
 status --is-interactive; and starship init fish | source
 
@@ -96,7 +100,7 @@ status is-interactive; and pyenv init --path | source
 status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 
 # init asdf-vm
-source /opt/asdf-vm/asdf.fish
+status is-interactive; and source /opt/asdf-vm/asdf.fish
 
 # functions
 function add_to_path_if_not_exists
@@ -119,7 +123,7 @@ function dedupe_path
     set -gx PATH $deduped_path
 end
 
-add_to_path_if_not_exists $HOME/.rbenv/shims $HOME/.ghcup/bin $HOME/.cabal/bin $HOME/.dvm/bin $HOME/.deno/bin $HOME/.dotnet/tools $HOME/.local/bin $HOME/.bin
+status is-interactive; and add_to_path_if_not_exists $HOME/.rbenv/shims $HOME/.ghcup/bin $HOME/.cabal/bin $HOME/.dvm/bin $HOME/.deno/bin $HOME/.dotnet/tools $HOME/.local/bin $HOME/.bin
 
-dedupe_path
+status is-interactive; and dedupe_path
 
