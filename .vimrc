@@ -1,4 +1,4 @@
-set shell=/bin/zsh
+set shell=/bin/bash
 
 "-------------------------------------------------------------
 " Vim-plug setup {{{1
@@ -74,7 +74,7 @@ let g:ale_pattern_options = {
 let g:ale_fix_on_save = 1
 
 " coc.nvim
-let b:coc_suggest_disable = 1
+let g:coc_suggest_disable = 1
 
 " Airline   
 let g:airline#extensions#tabline#enabled = 1    
@@ -173,7 +173,7 @@ set hlsearch
 " use is very much a personal preference, but they are harmless.
 
 " Configure default ':term' opts
-set shell=/opt/homebrew/bin/fish
+"set shell=/opt/homebrew/bin/fish
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -310,18 +310,19 @@ if has('macunix')
 
   " Move current line down (Option+J)
   nnoremap ∆ :<C-u>m+<CR>==
-elseif has('unix') && !has('macunix')
-  " Move selected lines up (visual) (Alt+K)
-  xnoremap <A-K> :m-2<CR>gv=gv
+else 
+  " TODO: Why don't A-J/K work on linux? Not already bound or anything...
+  " Move selected lines up (visual) (Alt+Up)
+  xnoremap <A-Up> :m-2<CR>gv=gv
 
-  " Move selected lines down (visual) (Alt+J)
-  xnoremap <A-J> :m'>+1<CR>gv=gv
+  " Move selected lines down (visual) (Alt+Down)
+  xnoremap <A-Down> :m'>+1<CR>gv=gv
 
-  " Move selected line up (Alt+K)
-  nnoremap <A-K> :<C-u>m-2<CR>==
+  " Move selected line up (Alt+Up)
+  nnoremap <A-Up> :<C-u>m-2<CR>==
 
-  " Move selected line down (Alt+J)
-  nnoremap <A-J> :<C-u>m+<CR>==
+  " Move selected line down (Alt+Down)
+  nnoremap <A-Down> :<C-u>m+<CR>==
 endif
 
 " Move to the next tab
@@ -348,10 +349,10 @@ nnoremap <Leader>] :tabm +1<CR>
 " Move current tab to the left
 nnoremap <Leader>[ :tabm -1<CR>
 
-" Run :Files command with Ctrl+Shift+F
-nnoremap <C-S-F> :Files<CR>
-inoremap <C-S-F> <Esc>:Files<CR>
-vnoremap <C-S-F> <Esc>:Files<CR>
+" Run :Files command with Ctrl+F
+nnoremap <C-F> :Files<CR>
+inoremap <C-F> <Esc>:Files<CR>
+vnoremap <C-F> <Esc>:Files<CR>
 
 " Move between ALE errors/warnings
 nnoremap <Leader>aj :ALENext<CR>
