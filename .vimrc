@@ -18,8 +18,11 @@ call plug#begin()
 
   " vim-svelte-plugin, syntax + indent support for svelte filetypes
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  
+  " html5.vim, for html/xml syntax highlighting
   Plug 'othree/html5.vim'
 
+  " vim-elixir, syntax + lsp for erlang/elixir
   Plug 'elixir-editors/vim-elixir'
 
   " coc.nvim, autocompletion and ts stuff
@@ -50,6 +53,9 @@ call plug#begin()
 
   " git-gutter
   Plug 'airblade/vim-gitgutter'
+
+  " tailwindcss intellisense
+  Plug 'airblade/vim-tailwind'
 
   " multi-cursors
   Plug 'mg979/vim-visual-multi'
@@ -85,6 +91,8 @@ let g:ale_linters = {
  \ 'html': ['prettier'],
  \ 'css': ['prettier'],
  \ 'scss': ['prettier'],
+ \ 'go': ['golangci-lint', 'gofmt', 'gopls'],
+ \ 'elixir': ['mix_format'],
  \}
 
 let g:ale_fixers = {
@@ -96,6 +104,8 @@ let g:ale_fixers = {
  \ 'html': ['prettier'],
  \ 'css': ['prettier'],
  \ 'scss': ['prettier'],
+ \ 'go': ['gofmt', 'gopls'],
+ \ 'elixir': ['mix_format'],
  \}
 
 let g:ale_pattern_options = {
@@ -430,10 +440,10 @@ nnoremap <Leader>rw :Rg <C-r><C-w><CR>
 nnoremap <Leader>aj :ALENext<CR>
 nnoremap <Leader>ak :ALEPrevious<CR>
 
-" Jump to definition w/ coc.nvim on c-]
-"autocmd FileType javascript map <buffer> <c-]> :ALEGoToDefinition<CR>
-"autocmd FileType typescript map <buffer> <c-]> :ALEGoToDefinition<CR>
-"autocmd FileType typescriptreact map <buffer> <c-]> :ALEGoToDefinition<CR>
+" Jump to definition w/ coc.nvim on gD
+nnoremap gD <Plug>(coc-definition)
+" Jump to definition in new split tab on gd
+nnoremap gd :vsplit<CR><C-w>w<Plug>(coc-definition)
 
 " Hover over definition with K
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -444,6 +454,33 @@ function! ShowDocumentation()
   else
     call feedkeys('K', 'in')
   endif
+endfunction
+
+" Scroll within active popup via <C-j> and <C-k>
+nnoremap <C-j> :call ScrollPopup(3)<CR>
+nnoremap <C-k> :call ScrollPopup(-3)<CR>
+
+function! ScrollPopup(nlines)
+    let winids = popup_list()
+    if len(winids) == 0
+        return
+    endif
+
+    " Ignore hidden popups
+    let prop = popup_getpos(winids[0])
+    if prop.visible != 1
+        return
+    endif
+
+    let firstline = prop.firstline + a:nlines
+    let buf_lastline = str2nr(trim(win_execute(winids[0], "echo line('$')")))
+    if firstline < 1
+        let firstline = 1
+    elseif prop.lastline + a:nlines > buf_lastline
+        let firstline = buf_lastline + prop.firstline - prop.lastline
+    endif
+
+    call popup_setoptions(winids[0], {'firstline': firstline})
 endfunction
 
 " Accept completion with Enter if coc is active, otherwise just Enter
