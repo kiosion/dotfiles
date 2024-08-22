@@ -19,7 +19,8 @@ eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path /usr/local/bin
 
 # Set SSH agent socket to yubikey-agent
-set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
+# TODO: Finish config of ~/.ssh/config for per-host socket use
+# set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
 
 # Setup gpg
 set -gx GPG_TTY (tty)
