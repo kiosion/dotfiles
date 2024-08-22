@@ -67,6 +67,9 @@ call plug#end()
 "-------------------------------------------------------------
 " Plugin configs {{{1
 
+" raise max mem for ale/coc/ripgrep
+set mmp=5000
+
 " vim-svelte-plugin
 let g:svelte_preprocessor_tags = [
   \ { 'name': 'scss', 'tag': 'style' },
@@ -456,9 +459,14 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Scroll within active popup via <C-j> and <C-k>
-nnoremap <C-j> :call ScrollPopup(3)<CR>
-nnoremap <C-k> :call ScrollPopup(-3)<CR>
+" Scroll within active popup via <C-j> and <C-k> - if no popups, use ctrl-j/k
+" to switch between horiz splits
+nnoremap <silent><expr> <C-j> PopupVisible() ? ScrollPopup(3) : "\<C-W>j"
+nnoremap <silent><expr> <C-k> PopupVisible() ? ScrollPopup(-3) : "\<C-W>k"
+
+function! PopupVisible()
+    return len(popup_list()) > 0
+endfunction
 
 function! ScrollPopup(nlines)
     let winids = popup_list()

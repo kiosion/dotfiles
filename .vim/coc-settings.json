@@ -4,6 +4,9 @@
   "suggest.floatConfig": {
     "border": true
   },
-  "elixir.pathToElixirLS": "/opt/homebrew/bin/elixir-ls"
+  "elixir.pathToElixirLS": "/opt/homebrew/bin/elixir-ls",
+  "go.goplsOptions": {
+    "completeUnimported": true
+  }
 }
 

@@ -10,6 +10,8 @@
 #        ____\///_______\///__\//////////__\///____\///__
 #
 # Configuration options for fish shell
+#set -gx AWS_PROFILE "teleport-dev"
+set -gx AWS_DEFAULT_REGION "us-east-1"
 
 # Setup homebrew
 eval (/opt/homebrew/bin/brew shellenv)
