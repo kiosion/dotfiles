@@ -271,8 +271,8 @@ endif
 " press <Enter> to continue"
 set cmdheight=1
 
-" Display line numbers on the left
-set nu rnu
+" Display line numbers on the left (nu for normal, rnu for rel, both for mix)
+set nu
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -394,6 +394,9 @@ else
 endif
 
 " tab stuff
+
+" shadow gr to act as gT and move to the previous tab
+nnoremap gr gT
 
 " Move to the next tab
 nnoremap <Leader>l :tabnext<CR>
