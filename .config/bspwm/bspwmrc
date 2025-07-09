@@ -34,12 +34,13 @@ xsetroot -cursor_name left_ptr
 /usr/bin/fixmouse &
 
 ### MONITORS ###
-xrandr --output DP-2 --primary --mode 3440x1440 --rate 120
+xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60
+##xrandr --output DP-2 --primary --mode 3440x1440 --rate 120
 ##    --output DP-2 --primary --mode 3440x1440 --rate 120 --pos 0x1080
 ##  --output DP-2 --mode 1920x1080 --rate 240 --pos 760x0
 
 ## WORKSPACES ##
-bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9
+bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9
 
 ### COLORS ###
 bspc config normal_border_color         "#6e738d"

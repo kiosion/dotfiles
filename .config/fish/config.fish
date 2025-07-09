@@ -91,16 +91,19 @@ status --is-interactive; and nvm use default > /dev/null
 set -gx FORCE_COLOR 1
 
 # init rbenv
-status --is-interactive; and rbenv init - fish | source
+#status --is-interactive; and rbenv init - fish | source
 
 # init pyenv
-status is-interactive; and pyenv init --path | source
+#status is-interactive; and pyenv init --path | source
 
 # init ghcup / cabal
-status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+#status is-interactive; and set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 
 # init asdf-vm
 status is-interactive; and source /opt/asdf-vm/asdf.fish
+
+# fn to init conda
+#eval /opt/anaconda/bin/conda "shell.fish" "hook" $argv | source
 
 # functions
 function add_to_path_if_not_exists
@@ -125,5 +128,24 @@ end
 
 status is-interactive; and add_to_path_if_not_exists $HOME/.rbenv/shims $HOME/.ghcup/bin $HOME/.cabal/bin $HOME/.dvm/bin $HOME/.deno/bin $HOME/.dotnet/tools $HOME/.local/bin $HOME/.bin
 
+#set -U fish_user_paths "/opt/anaconda/bin" $fish_user_paths
+
 status is-interactive; and dedupe_path
+
+#if status is-interactive
+#    set -x CRYPTOGRAPHY_OPENSSL_NO_LEGACY 1
+
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    #    if test -f /opt/anaconda/bin/conda
+    #        eval /opt/anaconda/bin/conda "shell.fish" "hook" $argv | source
+    #    else
+    #        if test -f "/opt/anaconda/etc/fish/conf.d/conda.fish"
+    #            . "/opt/anaconda/etc/fish/conf.d/conda.fish"
+    #        else
+    #            set -x PATH "/opt/anaconda/bin" $PATH
+    #        end
+    #    end
+    # <<< conda initialize <<<
+    #end
 
