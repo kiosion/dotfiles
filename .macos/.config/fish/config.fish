@@ -10,17 +10,22 @@
 #        ____\///_______\///__\//////////__\///____\///__
 #
 # Configuration options for fish shell
-#set -gx AWS_PROFILE "teleport-dev"
 set -gx AWS_DEFAULT_REGION "us-east-1"
 
-# Setup homebrew
-eval (/opt/homebrew/bin/brew shellenv)
+# Setup user PATHs
+#eval (/opt/homebrew/bin/brew shellenv)
+fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/sbin
 
 fish_add_path /usr/local/bin
 
+fish_add_path --prepend $HOME/.local/share/mise/shims
+
+fish_add_path $HOME/.cargo/bin
+
 # Set SSH agent socket to yubikey-agent
 # TODO: Finish config of ~/.ssh/config for per-host socket use
-# set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
+set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
 
 # Setup gpg
 set -gx GPG_TTY (tty)
@@ -40,39 +45,7 @@ alias python3 "python"
 alias py "python"
 alias gits "git status"
 alias gitc "git checkout"
-
-# Source cargo bin
-fish_add_path $HOME/.cargo/bin
-
-# Init nvm
-set -gx NVM_DIR $HOME/.nvm
-function nvm
-  bass source /opt/homebrew/opt/nvm/nvm.sh --no-use ';' nvm $argv
-end
-
-if status --is-login
-    nvm use default > /dev/null
-end
-
-# Init asdf
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
-
-# Query current ver of Go set in asdf so we can use its /lib
-function update_go_path
-    set -l go_version (asdf current golang | awk '{print $2}')
-    set -l go_base_path $HOME/.asdf/installs/golang/$go_version
-    set -l go_packages_path $go_base_path/packages/bin
-    
-    if not contains $go_packages_path $PATH
-        fish_add_path $go_packages_path
-    end
-    
-    if not set -q GOBIN
-        set -gx GOBIN $go_packages_path
-    end
-end
-
-update_go_path
+alias cls "clear"
 
 if status --is-interactive
     # Init Zoxide (don't alias `cd` outside of interactive shells)
