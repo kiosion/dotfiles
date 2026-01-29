@@ -5,7 +5,8 @@
 [commit]
 	gpgsign = true
 [core]
-	editor = vim
+        editor = vim
+	excludesfile = ~/.gitignore
 [init]
 	defaultBranch = main
 [filter "lfs"]

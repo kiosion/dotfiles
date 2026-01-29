@@ -2,3 +2,7 @@
 **/fish_variables
 git/gitconfig.local.symlink
 **/*.swp
+.claude/settings.local.json
+.claude/cache
+CLAUDE.md
+

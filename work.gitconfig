@@ -6,6 +6,7 @@
 	gpgsign = true
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [init]
 	defaultBranch = main
 [filter "lfs"]
