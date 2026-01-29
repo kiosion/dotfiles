@@ -10,7 +10,6 @@ command_timeout = 1200
 # Replace the "❯" symbol in the prompt
 [character]
 disabled = true
-#success_symbol = "[➜](green)"
 
 [line_break]
 disabled = true

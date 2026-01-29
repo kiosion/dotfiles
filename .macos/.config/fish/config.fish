@@ -23,6 +23,8 @@ fish_add_path --prepend $HOME/.local/share/mise/shims
 
 fish_add_path $HOME/.cargo/bin
 
+mise activate fish | source
+
 # Set SSH agent socket to yubikey-agent
 # TODO: Finish config of ~/.ssh/config for per-host socket use
 set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"

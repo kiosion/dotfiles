@@ -77,6 +77,16 @@ call s:hi("DiffAdd", "NONE", s:base, s:green, "NONE", "NONE")
 call s:hi("DiffChange", "NONE", s:base, s:yellow, "NONE", "NONE")
 call s:hi("DiffDelete", "NONE", s:base, s:red, "NONE", "NONE")
 call s:hi("DiffText", "NONE", s:base, s:blue, "NONE", "NONE")
+" Magit-specific diff colours
+call s:hi("diffAdded", "NONE", s:green, "NONE", "NONE", "NONE")
+call s:hi("diffAddedText", "NONE", s:text, s:green, "NONE", "NONE")
+call s:hi("diffRemoved", "NONE", s:red, "NONE", "NONE", "NONE")
+call s:hi("diffRemovedText", "NONE", s:text, s:red, "NONE", "NONE")
+call s:hi("diffChanged", "NONE", s:yellow, "NONE", "NONE", "NONE")
+call s:hi("diffChangedText", "NONE", s:text, s:yellow, "NONE", "NONE")
+call s:hi("DiffAdded", "NONE", s:green, "NONE", "NONE", "NONE")
+call s:hi("DiffRemoved", "NONE", s:red, "NONE", "NONE", "NONE")
+
 call s:hi("EndOfBuffer", "NONE", "NONE", "NONE", "NONE", "NONE")
 call s:hi("ErrorMsg", "NONE", s:red, "NONE", "bolditalic"    , "bold,italic")
 call s:hi("VertSplit", "NONE", s:crust, "NONE", "NONE", "NONE")
@@ -170,7 +180,7 @@ hi link GitGutterAdd DiffAdd
 hi link GitGutterChange DiffChange
 hi link GitGutterDelete DiffDelete
 
-" Set terminal colors for playing well with plugins like fzf
+" terminal colors for playing well with plugins like fzf
 let g:terminal_ansi_colors = [
   \ s:surface1, s:red, s:green, s:yellow, s:blue, s:pink, s:teal, s:subtext1,
   \ s:surface2, s:red, s:green, s:yellow, s:blue, s:pink, s:teal, s:subtext0
