@@ -1,22 +1,26 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-# Custom format
-format = """$all[\\$](green bold) """
+# Explicit format — skips detection for unlisted modules
+format = """$username$hostname$directory$git_branch$git_status$golang$nodejs$rust[\\$](green bold) """
 
-# Allow higher timeout for git/nvm/asdf/etc exec in complex dirs
-command_timeout = 1200
+command_timeout = 500
 
-# Replace the "❯" symbol in the prompt
 [character]
 disabled = true
 
 [line_break]
 disabled = true
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = false
+[golang]
+format = "via [$symbol($version )]($style)"
+
+[nodejs]
+symbol = "💠 "
+format = "via [$symbol($version )]($style)"
+
+[rust]
+format = "via [$symbol($version )]($style)"
 
 # Username config
 [username]
@@ -33,7 +37,8 @@ disabled = false
 
 # Dir config
 [directory]
-truncation_length = 4
-truncate_to_repo = false
+truncation_length = 3
+truncate_to_repo = true
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 🔒"
+

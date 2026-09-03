@@ -2,7 +2,14 @@
 **/fish_variables
 git/gitconfig.local.symlink
 **/*.swp
-.claude/settings.local.json
-.claude/cache
+mise.toml
+**/.idea/
+**/.claude/
+**/.claude.json
+**/.claude.json.backup
+**/.claude-trace/
 CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+.mcp.json
 

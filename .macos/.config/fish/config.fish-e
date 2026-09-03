@@ -23,12 +23,9 @@ fish_add_path $HOME/.local/bin
 set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
 
 # Teleport local dev helpers
-# TP_SRC is what tpb builds from; point it at a worktree to build that branch.
 set -gx TELEPORT_USE_LOCAL_SSH_AGENT false
-set -gx TP_SRC "$HOME/Dev/gravitational/core"
 set -gx TP_CONF "$HOME/Dev/teleport-local/conf"
-# Don't clobber a universal TP_BIN set by `tpv set`.
-set -q TP_BIN; or set -gx TP_BIN "$HOME/Dev/teleport-local/bin/teleport"
+set -gx TP_BIN "$HOME/Dev/teleport-local/bin/teleport"
 
 # Setup gpg
 if status --is-interactive
@@ -58,5 +55,3 @@ if status --is-interactive
     printf '\33c\e[3J'
 end
 
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /Users/maxim/.ghcup/bin $PATH # ghcup-env

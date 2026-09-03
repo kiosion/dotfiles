@@ -7,6 +7,13 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+        pager = delta
+[interactive]
+        diffFilter = delta --color-only
+[delta]
+        navigate = true
+[merge]
+        conflictStyle = zdiff3
 [init]
 	defaultBranch = main
 [filter "lfs"]
@@ -15,4 +22,10 @@
 	process = git-lfs filter-process
 	required = true
 [push]
-	autoSetupRemote = true
+        autoSetupRemote = true
+[generated]
+        exclude = *.pb.go
+        exclude = *.gen.go
+        exclude = *_pb.ts
+[alias]
+        dx = "!f() { a=$(mktemp); trap 'rm -f \"$a\"' EXIT INT TERM; git config --get-all generated.exclude | sed 's/$/ -diff/' > \"$a\"; git -c core.attributesFile=\"$a\" diff \"$@\" | delta; }; f" 

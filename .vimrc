@@ -16,6 +16,9 @@ call plug#begin()
   " ALE, syntax highlighting and linting support
   Plug 'dense-analysis/ale'
 
+  " P lang support and ALE linting
+  Plug 'kiosion/p-vim'
+
   " vim-svelte-plugin, syntax + indent support for svelte filetypes
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
   
@@ -66,6 +69,9 @@ call plug#end()
 
 "-------------------------------------------------------------
 " Plugin configs {{{1
+
+" enable P linting
+let g:p_lint = 1
 
 " raise max mem for ale/coc/ripgrep
 set mmp=5000
