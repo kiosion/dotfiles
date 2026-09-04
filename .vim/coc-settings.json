@@ -5,6 +5,8 @@
     "border": true
   },
   "elixir.pathToElixirLS": "/opt/homebrew/bin/elixir-ls",
+  "go.goplsPath": "/Users/maxim/.local/bin/gopls-mise",
+  "go.goplsUseDaemon": false,
   "go.goplsOptions": {
     "completeUnimported": true
   },
