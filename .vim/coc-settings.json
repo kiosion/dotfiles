@@ -1,15 +1,49 @@
 {
   "diagnostic.displayByAle": true,
-  "suggest.enableFloat": true,
+
+  "suggest.noselect": true,
+  "suggest.selection": "recentlyUsedByPrefix",
+  "suggest.labelMaxLength": 60,
+  "suggest.timeout": 1000,
   "suggest.floatConfig": {
     "border": true
   },
+  "hover.floatConfig": {
+    "border": true
+  },
+  "signature.floatConfig": {
+    "border": true
+  },
+
+  "inlayHint.enable": true,
+
+  "semanticTokens.enable": true,
+
   "elixir.pathToElixirLS": "/opt/homebrew/bin/elixir-ls",
+
   "go.goplsPath": "/Users/maxim/.local/bin/gopls-mise",
   "go.goplsUseDaemon": false,
   "go.goplsOptions": {
-    "completeUnimported": true
+    "usePlaceholders": true,
+    "staticcheck": true,
+    "semanticTokens": true,
+    "noSemanticString": true,
+    "noSemanticNumber": true,
+    "analyses": {
+      "nilness": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "useany": true
+    },
+    "hints": {
+      "assignVariableTypes": true,
+      "compositeLiteralFields": true,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true
+    }
   },
+
   "svelte.enable-ts-plugin": true
 }
-

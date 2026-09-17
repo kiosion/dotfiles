@@ -122,6 +122,18 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 " Copilot
+"
+" Copilot hides its ghost text whenever a completion menu is open. That check
+" is in copilot.vim itself (autoload/copilot.vim, s:HideDuringCompletion) and
+" it defaults on. coc opens a menu on nearly every keystroke. In practice the
+" two were never on screen together and each appeared to eat the other.
+" Turning it off lets the menu and the ghost text coexist.
+let g:copilot_hide_during_completion = 0
+
+" Copilot claims <Tab> by default, which then does nothing useful while coc's
+" menu is up. Each gets its own key instead, further down.
+let g:copilot_no_tab_map = 1
+
 let g:copilot_ignore_node_version = 1
 
 " ALE
@@ -164,6 +176,16 @@ let g:ale_pattern_options = {
 
 let g:ale_fix_on_save = 1
 
+" Show each diagnostic inline, after the code it belongs to. This is already
+" the default on a Vim with textprop and popupwin, which this is, but it is the
+" behaviour the whole setup leans on so it is worth saying out loud. Set it to
+" 'current' for the cursor's line only if every line at once gets noisy.
+let g:ale_virtualtext_cursor = 'all'
+
+" goimports on save both removes imports that are no longer used and adds ones
+" the file now needs. gopls adds the import by itself when a completion for an
+" unimported package is accepted.
+
 " GitGutter
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
@@ -174,7 +196,16 @@ let g:gitgutter_sign_removed = '-'
 let g:gitgutter_map_keys = 0
 
 " Airline
+"
+" The bar along the top listed open buffers whenever only one tab existed, and
+" silently switched to listing tabs once a second tab appeared. Two different
+" things in one strip, which is why it was hard to tell what a chip up there
+" referred to. It now always lists tabs, numbered.
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
@@ -192,11 +223,97 @@ set termguicolors
 
 colorscheme catppuccin_macchiato
 
-" coc.nvim
-highlight CocFloating ctermbg=DarkGrey ctermfg=LightGrey
-highlight CocMenuSel ctermbg=250 ctermfg=16
-highlight CocListBgGrey ctermbg=DarkGrey ctermfg=LightGrey
-highlight CocListLine ctermbg=DarkGrey ctermfg=LightGrey
+" The macchiato palette. The colourscheme keeps its own copy script-local, so
+" without this the groups below would be a wall of hex.
+let s:cat = {
+  \ 'crust':    '#181926',
+  \ 'mantle':   '#1E2030',
+  \ 'base':     '#24273A',
+  \ 'surface0': '#363A4F',
+  \ 'surface1': '#494D64',
+  \ 'surface2': '#5B6078',
+  \ 'overlay0': '#6E738D',
+  \ 'overlay1': '#8087A2',
+  \ 'overlay2': '#939AB7',
+  \ 'subtext0': '#A5ADCB',
+  \ 'subtext1': '#B8C0E0',
+  \ 'text':     '#CAD3F5',
+  \ 'lavender': '#B7BDF8',
+  \ 'blue':     '#8AADF4',
+  \ 'sapphire': '#7DC4E4',
+  \ 'sky':      '#91D7E3',
+  \ 'teal':     '#8BD5CA',
+  \ 'green':    '#A6DA95',
+  \ 'yellow':   '#EED49F',
+  \ 'peach':    '#F5A97F',
+  \ 'maroon':   '#EE99A0',
+  \ 'red':      '#ED8796',
+  \ 'mauve':    '#C6A0F6',
+  \ 'pink':     '#F5BDE6',
+  \ 'flamingo': '#F0C6C6',
+  \ }
+
+" Vim's bundled Go syntax highlights keywords and little else. A function name,
+" a type name and a struct field all render as plain text, which is why a Go
+" file looks so much flatter here than in GoLand. gopls reports what each
+" identifier actually is. The CocSem groups below therefore colour most of a
+" file, and the syntax file is left with strings, numbers and comments. That
+" split is deliberate. gopls sends one flat token for a whole string, where the
+" syntax file highlights the escapes and format verbs inside it.
+function! s:Colours() abort
+  let c = s:cat
+  let groups = {
+    \ 'CocFloating':           'guibg=' . c.mantle . ' guifg=' . c.text,
+    \ 'CocFloatSbar':          'guibg=' . c.surface0,
+    \ 'CocFloatThumb':         'guibg=' . c.overlay0,
+    \ 'CocFloatDividingLine':  'guifg=' . c.surface1,
+    \ 'CocMenuSel':            'guibg=' . c.surface1 . ' guifg=' . c.text,
+    \ 'CocPumSearch':          'guifg=' . c.blue . ' gui=bold',
+    \ 'CocListLine':           'guibg=' . c.surface0,
+    \
+    \ 'CocInlayHint':          'guibg=NONE guifg=' . c.overlay0 . ' gui=italic',
+    \
+    \ 'CocSemTypeNamespace':     'guifg=' . c.lavender,
+    \ 'CocSemTypeType':          'guifg=' . c.yellow,
+    \ 'CocSemTypeStruct':        'guifg=' . c.yellow,
+    \ 'CocSemTypeInterface':     'guifg=' . c.yellow,
+    \ 'CocSemTypeClass':         'guifg=' . c.yellow,
+    \ 'CocSemTypeEnum':          'guifg=' . c.yellow,
+    \ 'CocSemTypeTypeParameter': 'guifg=' . c.yellow . ' gui=italic',
+    \ 'CocSemTypeFunction':      'guifg=' . c.blue,
+    \ 'CocSemTypeMethod':        'guifg=' . c.blue,
+    \ 'CocSemTypeParameter':     'guifg=' . c.maroon,
+    \ 'CocSemTypeVariable':      'guifg=' . c.text,
+    \ 'CocSemTypeProperty':      'guifg=' . c.lavender,
+    \ 'CocSemTypeEnumMember':    'guifg=' . c.peach,
+    \ 'CocSemTypeMacro':         'guifg=' . c.peach,
+    \ 'CocSemTypeKeyword':       'guifg=' . c.mauve,
+    \ 'CocSemTypeModifier':      'guifg=' . c.mauve,
+    \ 'CocSemTypeOperator':      'guifg=' . c.sky,
+    \ 'CocSemTypeDecorator':     'guifg=' . c.pink,
+    \ 'CocSemTypeComment':       'guifg=' . c.overlay2,
+    \
+    \ 'PanelDoc':    'guifg=' . c.subtext0,
+    \ 'PanelCounts': 'guifg=' . c.subtext1 . ' gui=bold',
+    \ 'PanelKeys':   'guifg=' . c.overlay0,
+    \
+    \ 'CheatSection': 'guifg=' . c.blue . ' gui=bold',
+    \ 'CheatKey':     'guifg=' . c.flamingo,
+    \ }
+  for [group, spec] in items(groups)
+    execute 'highlight ' . group . ' ' . spec
+  endfor
+endfunction
+
+" coc installs its own defaults for these groups when it starts and again after
+" every :colorscheme, and a plain :highlight in this file was being overridden.
+" Running on both events is what makes these stick.
+augroup Colours
+    autocmd!
+    autocmd VimEnter,ColorScheme * call s:Colours()
+augroup END
+
+call s:Colours()
 
 "-------------------------------------------------------------
 " Features {{{1
@@ -254,9 +371,31 @@ set splitbelow
 " of loading a second copy. Quickfix jumps and :drop both read this.
 set switchbuf=useopen,usetab
 
+" A session file records the value of every option and mapping when 'options' is
+" included, and restoring it then overrides this vimrc with a stale copy of
+" itself. Layout only.
+set sessionoptions-=options
+
 if has('mouse')
     set mouse=a
+    " Right click moves the cursor to what was clicked before opening the menu
+    " defined further down.
+    set mousemodel=popup_setpos
 endif
+
+" Rest the pointer on a symbol and its documentation appears, no click needed.
+" This asks the terminal to report every mouse movement, which is a lot of
+" traffic and which some terminals mis-report as scroll wheel events. Turn it
+" off live with :set noballoonevalterm if it misbehaves.
+if has('balloon_eval_term')
+    set balloonevalterm
+    set balloondelay=400
+    set balloonexpr=BalloonHover()
+endif
+
+" Folding is built on request from the language server, which knows where a
+" function body or an if block actually ends. Nothing starts folded.
+set foldlevelstart=99
 
 " Indentation
 set shiftwidth=4
@@ -267,7 +406,10 @@ set expandtab
 " produced no folds, because none of these filetypes define syntax folds
 " without an opt-in flag. This vimrc marks its own sections with {{{1. Those get
 " foldmethod=marker instead.
-autocmd FileType vim setlocal foldmethod=marker foldlevel=0
+augroup vimrc_folding
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker foldlevel=0
+augroup END
 
 "------------------------------------------------------------
 " Keymaps {{{1
@@ -281,6 +423,7 @@ autocmd FileType vim setlocal foldmethod=marker foldlevel=0
 "   <Leader>g       git
 "   <Leader>w       window
 "   <Leader>t       tab
+"   <Leader>s       session
 "
 " <Leader>? prints the whole list.
 
@@ -293,23 +436,49 @@ nnoremap <Space> <Nop>
 " gd jumps in place, gD opens the definition beside the current file. gD is
 " normally go-to-declaration, which for Go and TypeScript is the same location
 " as the definition. The key is better spent on the split.
-nmap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gD :call CocAction('jumpDefinition', 'vsplit')<CR>
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gd :call CocActionAsync('jumpDefinition', g:symbol_open)<CR>
+nnoremap <silent> gD :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+nnoremap <silent> gy :call CocActionAsync('jumpTypeDefinition', g:symbol_open)<CR>
+nnoremap <silent> gi :call CocActionAsync('jumpImplementation', g:symbol_open)<CR>
 nmap <silent> gr <Plug>(coc-references)
 
-" Hover. definitionHover shows the signature and the definition body, which is
-" what hovering in a full IDE gives you.
-nnoremap <silent> K :call ShowDocumentation()<CR>
+" K opens the symbol panel: signature, doc comment, reference and
+" implementation counts, and one key per action. gK is the plain hover for
+" when the panel is more than the question deserves.
+nnoremap <silent> K :call SymbolPanel()<CR>
+nnoremap <silent> gK :call ShowDocumentation()<CR>
 
 " Ctrl+click goes to the declaration, or lists usages when already on it.
 " Ctrl+right-click walks the jump list back.
 nnoremap <silent> <C-LeftMouse> <LeftMouse>:call SmartJump()<CR>
 nnoremap <C-RightMouse> <C-o>
 
+" Double click opens the symbol panel on what was clicked, the mouse
+" equivalent of K. Shift+click cannot be used: terminals treat Shift with the
+" mouse as "bypass the application and let me select text myself". The click
+" never reaches Vim. Command+click is unavailable for a related reason,
+" the Command key is never forwarded to a terminal program at all.
+nnoremap <silent> <2-LeftMouse> :call SymbolPanel()<CR>
+
+" Right click opens this menu at whatever was clicked. <Leader>m opens the
+" same menu at the cursor, without the mouse. Every jump here opens in a tab,
+" reusing one that already holds the file rather than replacing this buffer.
+nnoremenu PopUp.Quick\ documentation :call SymbolPanel()<CR>
+nnoremenu PopUp.Go\ to\ definition   :call SmartJump()<CR>
+nnoremenu PopUp.Find\ usages         :call Usages()<CR>
+nnoremenu PopUp.Implementations      :call CocActionAsync('jumpImplementation', g:symbol_open)<CR>
+nnoremenu PopUp.Type\ definition     :call CocActionAsync('jumpTypeDefinition', g:symbol_open)<CR>
+nnoremenu PopUp.Rename\.\.\.         :call CocActionAsync('rename')<CR>
+nnoremenu PopUp.Code\ action         :call CocActionAsync('codeAction', 'cursor')<CR>
+nnoremenu PopUp.Call\ hierarchy      :call CocActionAsync('showIncomingCalls')<CR>
+
+nnoremap <silent> <Leader>m :popup PopUp<CR>
+
 " Highlight the other occurrences of whatever the cursor is on.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup vimrc_symbol_highlight
+    autocmd!
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 "------------------------------------------------------------
 " Keymaps: next and previous {{{2
@@ -398,7 +567,8 @@ nnoremap <silent> <Leader>gp :GitGutterPreviewHunk<CR>
 nnoremap <silent> <Leader>gu :GitGutterUndoHunk<CR>
 nnoremap <silent> <Leader>gS :GitGutterStageHunk<CR>
 
-" Files changed against HEAD.
+" Everything uncommitted, with its diff in the preview pane.
+nnoremap <silent> <Leader>gc :Changed<CR>
 nnoremap <silent> <Leader>gf :GFiles?<CR>
 
 "------------------------------------------------------------
@@ -424,6 +594,14 @@ nnoremap <silent> <Leader>wc :close<CR>
 nnoremap <silent> <Leader>wo :only<CR>
 nnoremap <silent> <Leader>w= <C-w>=
 
+" Move this window out to its own tab, or pull this tab back into a split.
+nnoremap <silent> <Leader>wt :call WindowToTab()<CR>
+nnoremap <silent> <Leader>wV :call TabToSplit('vsplit')<CR>
+nnoremap <silent> <Leader>wS :call TabToSplit('split')<CR>
+
+" Back to the file edited before this one.
+nnoremap <silent> <Leader><Leader> <C-^>
+
 " Resize with the arrow keys.
 nnoremap <C-Right> <C-w>>
 nnoremap <C-Left> <C-w><
@@ -448,6 +626,18 @@ nnoremap <silent> <Leader>8 :tabn 8<CR>
 nnoremap <silent> <Leader>9 :tablast<CR>
 
 "------------------------------------------------------------
+" Keymaps: session {{{2
+
+" Save once in a repository and its tabs, windows and splits are then restored by
+" a bare vim there, and written back when that Vim quits.
+nnoremap <silent> <Leader>ss :call SessionSave()<CR>
+nnoremap <silent> <Leader>sl :call SessionLoad()<CR>
+nnoremap <silent> <Leader>sd :call SessionDelete()<CR>
+
+" Apply an edit to this file without restarting.
+nnoremap <Leader>R :ReloadConfig<CR>
+
+"------------------------------------------------------------
 " Keymaps: everything else {{{2
 
 " Yank to end of line, matching D and C. Normal mode only: mapping this with
@@ -469,6 +659,9 @@ nnoremap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap <silent> <Leader>e :call ToggleTree()<CR>
 nnoremap <silent> <C-b> :call ToggleTree()<CR>
 
+" Build folds from the language server. za, zR and zM take over from there.
+nnoremap <silent> <Leader>zf :call BuildFolds()<CR>
+
 " The cheatsheet.
 nnoremap <silent> <Leader>? :call Cheatsheet()<CR>
 
@@ -481,25 +674,59 @@ nnoremap <C-y> 5<C-y>
 vnoremap <C-e> 5<C-e>
 vnoremap <C-y> 5<C-y>
 
-" Move the current line or selection up and down. macOS sends the composed
-" character for Option+j and Option+k rather than a meta key.
+" Option and Alt bindings. macOS sends the composed character for Option plus
+" a letter rather than a meta key, which is why these are the glyphs and not
+" <A-j>. Option+j is the character below, Option+b is the integral sign.
 if has('macunix')
+  " Move the current line or selection up and down.
   xnoremap ˚ :m-2<CR>gv=gv
   xnoremap ∆ :m'>+1<CR>gv=gv
   nnoremap ˚ :<C-u>m-2<CR>==
   nnoremap ∆ :<C-u>m+<CR>==
+
+  " Option+b and Option+f jump a word back and forward, in every mode.
+  nnoremap ∫ b
+  nnoremap ƒ w
+  xnoremap ∫ b
+  xnoremap ƒ w
+  inoremap ∫ <C-o>b
+  inoremap ƒ <C-o>w
+
+  " Option+Backspace deletes the word behind the cursor, as it does in a shell.
+  inoremap <M-BS> <C-w>
 else
   xnoremap <A-Up> :m-2<CR>gv=gv
   xnoremap <A-Down> :m'>+1<CR>gv=gv
   nnoremap <A-Up> :<C-u>m-2<CR>==
   nnoremap <A-Down> :<C-u>m+<CR>==
+
+  nnoremap <A-b> b
+  nnoremap <A-f> w
+  xnoremap <A-b> b
+  xnoremap <A-f> w
+  inoremap <A-b> <C-o>b
+  inoremap <A-f> <C-o>w
+  inoremap <A-BS> <C-w>
 endif
 
 "------------------------------------------------------------
 " Keymaps: insert mode {{{2
 
-" Enter accepts a completion when coc's menu is open. Copilot keeps Tab.
-inoremap <silent><expr> <Enter> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+" The two completions are now separate, one key each.
+"
+"   Ctrl-n / Ctrl-p   move through coc's menu
+"   Enter             take the coc item you moved to
+"   Ctrl-l            take Copilot's ghost text
+"   Ctrl-]            dismiss Copilot
+"   Tab               a tab
+"
+" suggest.noselect leaves nothing selected until you press Ctrl-n. Enter then
+" only ever accepts something you actually chose. Otherwise it is a newline.
+inoremap <silent><expr> <Enter>
+  \ coc#pum#visible() && coc#pum#info()['index'] >= 0
+  \ ? coc#pum#confirm() : "\<C-g>u\<CR>"
+
+imap <silent><script><expr> <C-l> copilot#Accept("\<C-l>")
 
 " Esc closes coc's menu before it leaves insert mode. This sits in the path of
 " every arrow key, since those send Esc-prefixed sequences. It works because
@@ -523,6 +750,394 @@ endfunction
 "------------------------------------------------------------
 " Functions: usages {{{2
 
+"------------------------------------------------------------
+" Functions: changed files {{{2
+
+" Every path with uncommitted work, staged or not, plus untracked ones. The
+" preview pane shows that file's diff rather than the file, which is what a
+" source control panel shows.
+function! s:ChangedSource() abort
+  let out = []
+  for line in systemlist('git status --porcelain=v1 --untracked-files=all')
+    if len(line) < 4
+      continue
+    endif
+    " A rename reads "old -> new". Keep the name the file has now.
+    let path = substitute(line[3:], '^.* -> ', '', '')
+    let path = substitute(path, '^"\(.*\)"$', '\1', '')
+    call add(out, printf("%s\t%s", line[0:1], path))
+  endfor
+  return out
+endfunction
+
+function! s:ChangedSink(lines) abort
+  for line in a:lines
+    let parts = split(line, "\t")
+    if len(parts) > 1
+      execute 'tab drop' fnameescape(parts[1])
+    endif
+  endfor
+endfunction
+
+command! Changed call fzf#run(fzf#wrap({
+  \ 'source': s:ChangedSource(),
+  \ 'sink*': function('s:ChangedSink'),
+  \ 'options': ['--ansi', '--multi', '--prompt', 'Changed> ',
+  \             '--delimiter', "\t", '--preview-window', 'right:60%',
+  \             '--preview',
+  \             'if git ls-files --error-unmatch {2} >/dev/null 2>&1; then '
+  \             . 'git diff --color=always HEAD -- {2} | head -500; '
+  \             . 'else cat {2} | head -200; fi']}))
+
+"------------------------------------------------------------
+" Functions: folding {{{2
+
+" Ask the language server where the folds are and leave them all open. The
+" server knows a function body from an if block, which is what indent folding
+" gets wrong.
+function! BuildFolds() abort
+  if !s:HasCoc('foldingRange')
+    echohl WarningMsg | echo 'No folding provider for this filetype' | echohl None
+    return
+  endif
+  call CocAction('fold')
+  normal! zR
+  echo 'Folds built. za toggles, zR opens all, zM closes all.'
+endfunction
+
+"------------------------------------------------------------
+" Functions: windows and tabs {{{2
+
+" Take this window out of its split and give it a tab of its own. <C-w>T does
+" the same thing and is native, this is here so the help screen can name it.
+function! WindowToTab() abort
+  if winnr('$') < 2
+    echohl WarningMsg | echo 'Only one window in this tab' | echohl None
+    return
+  endif
+  wincmd T
+endfunction
+
+" The reverse. Close this tab and reopen its file as a split of the tab that
+" Vim lands on, which is the one to the left.
+function! TabToSplit(cmd) abort
+  if tabpagenr('$') < 2
+    echohl WarningMsg | echo 'Only one tab open' | echohl None
+    return
+  endif
+  let buf = bufnr('%')
+  tabclose
+  execute a:cmd
+  execute 'buffer' buf
+endfunction
+
+"------------------------------------------------------------
+" Functions: symbol panel {{{2
+
+" How every jump started from the panel or the right click menu opens its
+" target. drop reuses a window or tab already showing the file, and 'switchbuf'
+" further up is what lets it look in other tabs.
+let g:symbol_open = 'tab drop'
+
+let s:panel = {'id': 0}
+
+" One blank line between paragraphs, none trailing.
+function! s:Squeeze(lines) abort
+  let out = []
+  for line in a:lines
+    if line =~# '^\s*$' && (empty(out) || out[-1] =~# '^\s*$')
+      continue
+    endif
+    call add(out, line)
+  endfor
+  while !empty(out) && out[-1] =~# '^\s*$'
+    call remove(out, -1)
+  endwhile
+  return out
+endfunction
+
+" Hover text arrives as markdown. A fenced block holds the signature and the doc
+" comment follows it as prose. The two are returned separately so that only the
+" signature is later highlighted as source. Highlighting the whole panel as Go
+" gave the word "for" in a doc comment the keyword colour.
+function! s:SplitHover(entries) abort
+  let code = []
+  let doc = []
+  let fenced = 0
+  for entry in type(a:entries) == v:t_list ? a:entries : []
+    for line in split(entry, "\n")
+      if line =~# '^\s*```'
+        let fenced = !fenced
+        continue
+      endif
+      if fenced
+        call add(code, line)
+        continue
+      endif
+      if line =~# '^\s*---\+\s*$'
+        continue
+      endif
+      " A hover ends with a link to the symbol on a documentation site. Worth
+      " having in a browser, noise in a panel that cannot follow it.
+      if line =~# '^\s*\[[^]]*\]([^)]*)\s*$'
+        continue
+      endif
+      let line = substitute(line, '\[\([^]]*\)\](\([^)]*\))', '\1', 'g')
+      call add(doc, substitute(line, '`', '', 'g'))
+    endfor
+  endfor
+  return {'code': s:Squeeze(code), 'doc': s:Squeeze(doc)}
+endfunction
+
+function! s:PanelCount(n) abort
+  return a:n < 0 ? '...' : a:n
+endfunction
+
+" Builds the panel text and records where each part of it ended up, because the
+" syntax rules below address those parts by line number and the signature grows
+" once the server answers.
+function! s:PanelLines() abort
+  let lines = copy(s:panel.hover.code)
+  let s:panel.code = len(lines)
+  let doc = s:panel.hover.doc
+  if empty(lines) && empty(doc)
+    let doc = ['No documentation for ' . s:panel.word]
+  endif
+  if !empty(doc)
+    if !empty(lines)
+      call add(lines, '')
+    endif
+    let lines += doc
+  endif
+  let s:panel.doc = len(lines)
+  call add(lines, '')
+  call add(lines, printf('%s references   %s implementations',
+    \ s:PanelCount(s:panel.refs), s:PanelCount(s:panel.impls)))
+  let s:panel.counts = len(lines)
+  call add(lines, '')
+  call add(lines, 'd definition   y type   i implementations   r references')
+  call add(lines, 'R rename       a action   c calls   j k scroll   q close')
+  return lines
+endfunction
+
+" syntax include is the mechanism for embedding one language in part of a buffer.
+" Every item it reads is marked contained, which is what keeps Go highlighting
+" inside the signature region and out of the prose below it.
+function! s:PanelSyntax() abort
+  if s:panel.id == 0
+    return
+  endif
+  let cmds = ['syntax clear']
+  if !empty(s:panel.ft) && s:panel.code > 0
+    call extend(cmds, [
+      \ 'unlet! b:current_syntax',
+      \ 'syntax include @PanelLang syntax/' . s:panel.ft . '.vim',
+      \ 'unlet! b:current_syntax',
+      \ printf('syntax region PanelCode start=/\%%1l/ end=/\%%%dl/ contains=@PanelLang keepend',
+      \   s:panel.code + 1),
+      \ ])
+  endif
+  call extend(cmds, [
+    \ printf('syntax match PanelDoc /\%%>%dl\%%<%dl.*/', s:panel.code, s:panel.doc + 1),
+    \ printf('syntax match PanelCounts /\%%%dl.*/', s:panel.counts),
+    \ printf('syntax match PanelKeys /\%%>%dl.*/', s:panel.counts),
+    \ ])
+  for cmd in cmds
+    call win_execute(s:panel.id, 'silent! ' . cmd)
+  endfor
+endfunction
+
+function! s:PanelRedraw() abort
+  if s:panel.id != 0 && !empty(popup_getoptions(s:panel.id))
+    call popup_settext(s:panel.id, s:PanelLines())
+    call s:PanelSyntax()
+  endif
+endfunction
+
+function! s:PanelScroll(winid, n) abort
+  let pos = popup_getpos(a:winid)
+  if empty(pos)
+    return
+  endif
+  let last = str2nr(trim(win_execute(a:winid, "echo line('$')")))
+  let first = pos.firstline + a:n
+  if first < 1
+    let first = 1
+  elseif pos.lastline + a:n > last
+    let first = last + pos.firstline - pos.lastline
+  endif
+  call popup_setoptions(a:winid, {'firstline': max([1, first])})
+endfunction
+
+function! s:PanelFilter(winid, key) abort
+  if a:key ==# 'j' || a:key ==# "\<Down>" || a:key ==# "\<ScrollWheelDown>"
+    call s:PanelScroll(a:winid, a:key ==# "\<ScrollWheelDown>" ? 3 : 1)
+    return 1
+  elseif a:key ==# 'k' || a:key ==# "\<Up>" || a:key ==# "\<ScrollWheelUp>"
+    call s:PanelScroll(a:winid, a:key ==# "\<ScrollWheelUp>" ? -3 : -1)
+    return 1
+  elseif a:key ==# "\<C-d>" || a:key ==# "\<PageDown>"
+    call s:PanelScroll(a:winid, 5)
+    return 1
+  elseif a:key ==# "\<C-u>" || a:key ==# "\<PageUp>"
+    call s:PanelScroll(a:winid, -5)
+    return 1
+  endif
+
+  if a:key ==# 'q' || a:key ==# "\<Esc>"
+    call popup_close(a:winid)
+    return 1
+  endif
+
+  let jumps = {
+    \ 'd': 'jumpDefinition',
+    \ 'y': 'jumpTypeDefinition',
+    \ 'i': 'jumpImplementation',
+    \ 'D': 'jumpDeclaration',
+    \ }
+
+  if has_key(jumps, a:key)
+    call popup_close(a:winid)
+    call CocActionAsync(jumps[a:key], g:symbol_open)
+    return 1
+  elseif a:key ==# 'r'
+    call popup_close(a:winid)
+    call Usages()
+    return 1
+  elseif a:key ==# 'R'
+    call popup_close(a:winid)
+    call CocActionAsync('rename')
+    return 1
+  elseif a:key ==# 'a'
+    call popup_close(a:winid)
+    call CocActionAsync('codeAction', 'cursor')
+    return 1
+  elseif a:key ==# 'c'
+    call popup_close(a:winid)
+    call CocActionAsync('showIncomingCalls')
+    return 1
+  endif
+
+  " Anything else is swallowed and changes nothing. Closing on every stray key
+  " is what made the panel vanish when it was opened from the menu, because the
+  " Enter that picked the menu item arrived here straight afterwards. Only q
+  " and Esc close it now.
+  return 1
+endfunction
+
+" One window describing whatever is under the cursor: signature, doc comment,
+" how many references and implementations it has, and a key for each action
+" that applies to it.
+function! SymbolPanel() abort
+  let word = expand('<cword>')
+  if empty(word)
+    echohl WarningMsg | echo 'No symbol under cursor' | echohl None
+    return
+  endif
+  if !s:HasCoc('hover')
+    echohl WarningMsg | echo 'No language server for this buffer' | echohl None
+    return
+  endif
+
+  if s:panel.id != 0
+    call popup_close(s:panel.id)
+  endif
+  let s:panel = {'id': 0, 'word': word, 'ft': &filetype,
+    \ 'hover': {'code': [], 'doc': ['Loading...']},
+    \ 'code': 0, 'doc': 1, 'counts': 3, 'refs': -1, 'impls': -1}
+
+  " popup_create rather than popup_atcursor: atcursor defaults to moved 'WORD',
+  " which closes the panel as soon as the cursor leaves the word it was opened
+  " on. This one stays until a key closes it.
+  let s:panel.id = popup_create(s:PanelLines(), {
+    \ 'title': ' ' . word . ' ',
+    \ 'pos': 'botleft',
+    \ 'line': 'cursor-1',
+    \ 'col': 'cursor',
+    \ 'border': [],
+    \ 'padding': [0, 1, 0, 1],
+    \ 'minwidth': 60,
+    \ 'maxwidth': 100,
+    \ 'maxheight': 24,
+    \ 'scrollbar': 1,
+    \ 'mapping': 0,
+    \ 'filter': function('s:PanelFilter'),
+    \ })
+
+  call s:PanelSyntax()
+
+  call CocActionAsync('getHover', {e, r -> s:PanelSetHover(r)})
+  call CocActionAsync('references', {e, r -> s:PanelSetCount('refs', r)})
+  call CocActionAsync('implementations', {e, r -> s:PanelSetCount('impls', r)})
+endfunction
+
+function! s:PanelSetHover(result) abort
+  let s:panel.hover = s:SplitHover(a:result)
+  call s:PanelRedraw()
+endfunction
+
+function! s:PanelSetCount(field, result) abort
+  let s:panel[a:field] = type(a:result) == v:t_list ? len(a:result) : 0
+  call s:PanelRedraw()
+endfunction
+
+"------------------------------------------------------------
+" Functions: pointer hover {{{2
+
+" Documentation under the mouse pointer, without clicking. Warp added mouse
+" motion reporting in January 2024 and this Vim has +balloon_eval_term, which
+" together are what make it possible at all. coc has no balloon support of its
+" own. The request goes straight to the language server for the position under
+" the pointer, and the balloon is filled in when the reply lands.
+
+function! s:BalloonService(bufnr) abort
+  let ft = getbufvar(a:bufnr, '&filetype')
+  for service in CocAction('services')
+    if service.state ==# 'running' && index(service.languageIds, ft) >= 0
+      return service.id
+    endif
+  endfor
+  return ''
+endfunction
+
+function! s:BalloonShow(err, result) abort
+  if !empty(a:err) || type(a:result) != v:t_dict
+    return
+  endif
+  let contents = get(a:result, 'contents', '')
+  if type(contents) == v:t_dict
+    let text = get(contents, 'value', '')
+  elseif type(contents) == v:t_list
+    let text = join(map(copy(contents),
+      \ 'type(v:val) == v:t_dict ? get(v:val, "value", "") : v:val'), "\n")
+  else
+    let text = contents
+  endif
+  " A balloon has no syntax of its own. The two halves are flattened back
+  " together for it.
+  let hover = s:SplitHover([text])
+  let lines = hover.code + (empty(hover.code) || empty(hover.doc) ? [] : ['']) + hover.doc
+  if !empty(lines)
+    call balloon_show(lines)
+  endif
+endfunction
+
+function! BalloonHover() abort
+  let id = s:BalloonService(v:beval_bufnr)
+  if empty(id)
+    return ''
+  endif
+  call CocRequestAsync(id, 'textDocument/hover', {
+    \ 'textDocument': {'uri': 'file://' . fnamemodify(bufname(v:beval_bufnr), ':p')},
+    \ 'position': {'line': v:beval_lnum - 1, 'character': v:beval_col - 1},
+    \ }, function('s:BalloonShow'))
+  " Nothing to show yet. The callback fills the balloon in.
+  return ''
+endfunction
+
+"------------------------------------------------------------
+" Functions: usages {{{2
+
 function! s:Uri2Path(uri) abort
   return substitute(a:uri, '^file://', '', '')
 endfunction
@@ -541,12 +1156,45 @@ let s:usages = {'pending': 0}
 
 function! s:UsagesEcho() abort
   redraw
-  echo printf('Usages of %s: %d refs, %d impls, %d text%s',
+  echo printf('Usages of %s: %d refs, %d impls, %d text%s%s',
     \ s:usages.word, s:usages.ref, s:usages.impl, len(s:usages.rg),
+    \ s:usages.dropped > 0 ? printf('  (%d outside or generated)', s:usages.dropped) : '',
     \ s:usages.pending > 0 ? '  (searching)' : '')
 endfunction
 
-" ripgrep already carries the line text for every hit it reports, and every
+" One rule about what belongs in results, applied to every source.
+"
+" ripgrep gets this for free: it searches under the working directory and is
+" given g:rg_exclude_args. The language server does not. It answers with
+" whatever it knows, which for a generated proto type means the .pb.go file the
+" type is declared in, and for a concrete type means every interface in the Go
+" standard library that the type happens to satisfy. Those are correct answers
+" to a question nobody asked, and they used to arrive at the top of the list.
+let s:exclude_re = map(copy(g:search_exclude), 'glob2regpat(v:val)')
+
+function! s:Excluded(path) abort
+  let tail = fnamemodify(a:path, ':t')
+  for re in s:exclude_re
+    if tail =~# re
+      return 1
+    endif
+  endfor
+  return 0
+endfunction
+
+function! s:WorkspaceRoot() abort
+  let root = trim(system('git rev-parse --show-toplevel'))
+  return v:shell_error == 0 && !empty(root) ? root : getcwd()
+endfunction
+
+function! s:Keep(abspath) abort
+  if s:Excluded(a:abspath)
+    return 0
+  endif
+  return stridx(a:abspath, s:usages.root . '/') == 0
+endfunction
+
+" ripgrep already reports the line text for every hit, and every
 " semantic reference is also a textual hit of the same word. Tagging ripgrep's
 " output from the language server's positions avoids opening each matched file
 " a second time just to read one line out of it.
@@ -584,10 +1232,10 @@ function! s:UsagesDone() abort
   let s:usages.seen = {}
   let lines = map(s:usages.rg, {_, l -> s:Tag(l)})
 
-  " A type that implements an interface almost never spells the interface name
-  " out as a whole word. ripgrep never reported those lines. Put the language
-  " server hits the text search could not have found in front, reading one
-  " line out of the file for each. Only a handful reach this loop.
+  " An implementer of an interface almost never spells the interface name out as
+  " a whole word. ripgrep cannot have reported those lines. Fill them in from
+  " the language server, reading one line out of each file. Everything here has
+  " already passed s:Keep. Only a handful reach this loop.
   let extra = []
   let cache = {}
   for [kind, path, lnum] in s:usages.locs
@@ -608,14 +1256,28 @@ function! s:UsagesDone() abort
 
   " fzf#vim#grep gives the preview window scrolled to the match, multi-select
   " with Tab, and a sink that fills the quickfix list when more than one line
-  " is chosen. Feeding it a file avoids re-running the search.
+  " is chosen. Feeding it a file avoids re-running the search. The label names
+  " the file being previewed, which fzf.vim does not set on its own.
   call fzf#vim#grep('cat ' . shellescape(tmp),
-    \ fzf#vim#with_preview({'options': ['--prompt', 'Usages(' . s:usages.word . ')> ']}), 0)
+    \ fzf#vim#with_preview({'options': [
+    \   '--prompt', 'Usages(' . s:usages.word . ')> ',
+    \   '--preview-label-pos', '2:top',
+    \   '--preview-label', '{1}']}), 0)
 endfunction
 
-function! s:CollectLsp(kind, err, result) abort
+function! s:CollectLsp(kind, gen, err, result) abort
+  " A slow server can answer after the next search has already started. Without
+  " this the old answers merge into the new search's results.
+  if a:gen != s:usages.gen
+    return
+  endif
   for loc in type(a:result) == v:t_list ? a:result : []
-    let path = fnamemodify(s:Uri2Path(loc.uri), ':.')
+    let abs = fnamemodify(s:Uri2Path(loc.uri), ':p')
+    if !s:Keep(abs)
+      let s:usages.dropped += 1
+      continue
+    endif
+    let path = fnamemodify(abs, ':.')
     let lnum = loc.range.start.line + 1
     let key = path . ':' . lnum
     if a:kind ==# 'impl' || !has_key(s:usages.marks, key)
@@ -629,7 +1291,10 @@ function! s:CollectLsp(kind, err, result) abort
   call s:UsagesDone()
 endfunction
 
-function! s:CollectRg(job, status) abort
+function! s:CollectRg(gen, job, status) abort
+  if a:gen != s:usages.gen
+    return
+  endif
   if filereadable(s:usages.tmp)
     let s:usages.rg = readfile(s:usages.tmp)
     call delete(s:usages.tmp)
@@ -645,6 +1310,7 @@ function! s:UsagesTimeout(timer) abort
   if s:usages.pending <= 0
     return
   endif
+  let s:usages.gen += 1
   echohl WarningMsg | echo 'Usages: language server did not answer, showing text matches' | echohl None
   let s:usages.pending = 0
   call s:UsagesDone()
@@ -666,29 +1332,28 @@ function! Usages() abort
     call job_stop(s:usages.job)
   endif
 
+  let gen = get(s:usages, 'gen', 0) + 1
   let s:usages = {'word': word, 'marks': {}, 'locs': [], 'seen': {}, 'rg': [],
-    \ 'ref': 0, 'impl': 0, 'pending': 1, 'tmp': tempname()}
+    \ 'ref': 0, 'impl': 0, 'dropped': 0, 'pending': 1, 'gen': gen,
+    \ 'tmp': tempname(), 'root': s:WorkspaceRoot()}
 
   for [kind, action, feature] in [
     \ ['ref', 'references', 'reference'],
     \ ['impl', 'implementations', 'implementation']]
     if s:HasCoc(feature)
       let s:usages.pending += 1
-      call CocActionAsync(action, function('s:CollectLsp', [kind]))
+      call CocActionAsync(action, function('s:CollectLsp', [kind, gen]))
     endif
   endfor
 
   " The trailing '.' and the null stdin both matter. A job's stdin is a pipe
   " rather than a terminal, and ripgrep with no path argument reads stdin when
   " it is not a terminal. It would find nothing and exit 1.
-  " Generated files are excluded from the text half only. A semantic hit in one
-  " still arrives from the language server and lands in the extra pass above,
-  " so a real reference inside generated code is never hidden.
   let s:usages.job = job_start(
     \ ['rg', '--vimgrep', '--word-regexp', '--fixed-strings']
     \   + g:rg_exclude_args + ['--', word, '.'],
     \ {'in_io': 'null', 'out_io': 'file', 'out_name': s:usages.tmp,
-    \  'err_io': 'null', 'exit_cb': function('s:CollectRg')})
+    \  'err_io': 'null', 'exit_cb': function('s:CollectRg', [gen])})
 
   let s:usages.timer = timer_start(20000, function('s:UsagesTimeout'))
   call s:UsagesEcho()
@@ -705,7 +1370,7 @@ function! s:SmartJumpDone(err, defs) abort
       \ && col('.') > d.range.start.character
       \ && col('.') <= d.range.end.character
     if !here
-      call CocActionAsync('jumpDefinition')
+      call CocActionAsync('jumpDefinition', g:symbol_open)
       return
     endif
   endif
@@ -785,6 +1450,96 @@ augroup nerdtree_sync
 augroup END
 
 "------------------------------------------------------------
+" Functions: session and reload {{{2
+
+" Sourcing this file again applies all of it to the running Vim. Every autocmd
+" in it is inside an augroup that begins with autocmd!, which is what stops a
+" reload from installing a second copy of each one. A new Plug line is the one
+" thing a reload cannot pick up, because vim-plug reads those only at startup.
+"
+" A command rather than a function, because Vim refuses to redefine a function
+" that is on the stack (E127). Reloading from inside one aborted the source at
+" that definition and left everything below it stale.
+"
+" The bare silent quiets airline, which reapplies its theme noisily on every
+" reload. A silent! would also swallow real errors.
+command! ReloadConfig silent source $MYVIMRC | echo 'Reloaded ' . $MYVIMRC
+
+let s:session_dir = expand('~/.vim/sessions')
+
+" One saved layout per repository rather than per directory. Opening Vim in a
+" subdirectory then finds the same layout as opening it at the root. The path
+" becomes the file name, with the separators replaced, because two repositories
+" can share a basename.
+function! s:SessionFile() abort
+  return s:session_dir . '/'
+    \ . substitute(s:WorkspaceRoot()[1:], '/', '%', 'g') . '.vim'
+endfunction
+
+function! SessionSave() abort
+  if !isdirectory(s:session_dir)
+    call mkdir(s:session_dir, 'p')
+  endif
+  " NERDTree does not survive the round trip. The session records its window and
+  " restores it holding an empty buffer. Close it before the write.
+  if exists('g:NERDTree') && g:NERDTree.IsOpen()
+    NERDTreeClose
+  endif
+  execute 'mksession! ' . fnameescape(s:SessionFile())
+  " Short on purpose. A message wider than the command line stops Vim on a
+  " hit-enter prompt, and a workspace path is easily that wide.
+  echo 'Layout saved'
+endfunction
+
+function! SessionLoad() abort
+  let file = s:SessionFile()
+  if !filereadable(file)
+    echohl WarningMsg | echo 'No saved layout here' | echohl None
+    return
+  endif
+  execute 'source ' . fnameescape(file)
+endfunction
+
+function! SessionDelete() abort
+  let file = s:SessionFile()
+  if !filereadable(file)
+    echohl WarningMsg | echo 'No saved layout here' | echohl None
+    return
+  endif
+  call delete(file)
+  echo 'Layout forgotten'
+endfunction
+
+" Exit writes the layout back only when this Vim saved or restored that layout in
+" the first place, which v:this_session is the record of. Keying off the file
+" existing instead meant that opening one named file in a tracked repository
+" overwrote the layout with a single window on the way out.
+function! s:SessionAutoSave() abort
+  if v:this_session ==# s:SessionFile()
+    silent call SessionSave()
+  endif
+endfunction
+
+" Only for a bare vim. Naming a file, piping into stdin or passing -S all say
+" what to open, and none of them should be overruled by a saved layout.
+function! s:SessionAutoLoad() abort
+  if argc() != 0 || !empty(v:this_session) || !filereadable(s:SessionFile())
+    return
+  endif
+  call SessionLoad()
+endfunction
+
+augroup vimrc_session
+    autocmd!
+    autocmd VimLeavePre * call s:SessionAutoSave()
+    autocmd VimEnter * nested call s:SessionAutoLoad()
+augroup END
+
+command! SessionSave call SessionSave()
+command! SessionLoad call SessionLoad()
+command! SessionDelete call SessionDelete()
+
+"------------------------------------------------------------
 " Functions: cheatsheet {{{2
 
 function! Cheatsheet() abort
@@ -795,9 +1550,17 @@ function! Cheatsheet() abort
     \ '    gy            type definition',
     \ '    gi            implementations',
     \ '    gr            references',
-    \ '    K             hover: signature and definition',
+    \ '    K             symbol panel, with its own action keys',
+    \ '    gK            plain hover',
+    \ '    double-click  symbol panel on what was clicked',
     \ '    Ctrl-click    declaration, or usages when already on it',
+    \ '    right-click / <Space>m   menu of all of the above',
     \ '    Ctrl-rightclick / Ctrl-o / Ctrl-i   back, back, forward',
+    \ '    Jumps open in a tab, reusing one already showing the file.',
+    \ '',
+    \ '  INSIDE THE SYMBOL PANEL (K)',
+    \ '    d definition   y type   i implementations   r references',
+    \ '    R rename       a action   c calls   j k scroll   q close',
     \ '',
     \ '  NEXT / PREVIOUS',
     \ '    ]d [d         diagnostic        ]c [c   git hunk',
@@ -827,25 +1590,51 @@ function! Cheatsheet() abort
     \ '    ci and co are call hierarchy, for functions and methods only.',
     \ '    On an interface use gi for implementations, or ct and cT.',
     \ '',
-    \ '  GIT                               WINDOW',
-    \ '    gs  status (fugitive)             wh wj wk wl  move window',
-    \ '    gm  status (magit)                wv ws        vsplit, split',
-    \ '    gb  blame                         wc wo        close, only',
-    \ '    gd  diff split                    w=           equalize',
-    \ '    gl  commits                       Ctrl-hjkl    move focus',
-    \ '    gL  commits for this file         Ctrl-arrows  resize',
-    \ '    gf  files changed vs HEAD',
-    \ '    gp  preview hunk',
-    \ '    gu  undo hunk',
-    \ '    gS  stage hunk',
+    \ '  GIT                               WINDOW (within one tab)',
+    \ '    gc  changed files, with diffs     wh wj wk wl  move window',
+    \ '    gs  status (fugitive)             wv ws        vsplit, split',
+    \ '    gm  status (magit)                wc wo        close, only',
+    \ '    gb  blame                         w=           equalize',
+    \ '    gd  diff split                    Ctrl-hjkl    move focus',
+    \ '    gl  commits                       Ctrl-arrows  resize',
+    \ '    gL  commits for this file         wt           window out to a tab',
+    \ '    gf  files changed vs HEAD         wV wS        tab back to a split',
+    \ '    gp gu gS  preview, undo, stage hunk',
     \ '',
-    \ '  TAB                               OTHER',
-    \ '    tn tc to  new, close, only        y Y p P   system clipboard',
-    \ '    1-8       go to tab               /         clear highlight',
-    \ '    9         last tab                e Ctrl-b  file tree',
-    \ '                                      ?         this screen',
+    \ '  TAB                               FOLD',
+    \ '    gt gT     next, previous           zf   build folds from the server',
+    \ '    ]T [T     move this tab            za   toggle the fold here',
+    \ '    tn tc to  new, close, only         zR   open every fold',
+    \ '    1-8       go to tab                zM   close every fold',
+    \ '    9         last tab                 zo zc  open, close',
+    \ '                                       zj zk  next, previous fold',
     \ '',
-    \ '  Opt-j / Opt-k moves the line or selection.  :Term opens fish.',
+    \ '  BUFFER vs TAB',
+    \ '    A buffer is an open file. A window shows one. A tab holds a layout',
+    \ '    of windows. Opening a file replaces what a window shows, and the',
+    \ '    old buffer stays loaded but hidden. The bar on top lists tabs only.',
+    \ '    ]b [b  cycle buffers    <Space><Space>  back to the previous file',
+    \ '    fb     pick a buffer    :ls             every loaded buffer',
+    \ '',
+    \ '  COMPLETION (insert mode)',
+    \ '    Ctrl-n Ctrl-p   move through the suggestion menu',
+    \ '    Enter           take the item you moved to (nothing is preselected)',
+    \ '    Ctrl-l          take Copilot ghost text     Ctrl-] dismiss it',
+    \ '    Ctrl-Space      ask for suggestions         Tab    stays a tab',
+    \ '',
+    \ '  SESSION (one saved layout per repository)',
+    \ '    ss  save this layout    sl  restore it    sd  forget it',
+    \ '    Once saved, a bare vim in this repository reopens that layout and',
+    \ '    quitting writes it back. Opening a named file leaves it untouched.',
+    \ '',
+    \ '  OTHER',
+    \ '    y Y p P   system clipboard      Opt-j Opt-k  move line or selection',
+    \ '    /         clear highlight       Opt-b Opt-f  jump a word',
+    \ '    e Ctrl-b  file tree             Opt-BS       delete word back',
+    \ '    ?         this screen           :Term        open fish',
+    \ '    R         reload this vimrc (a new Plug line still needs a restart)',
+    \ '',
+    \ '  Right click for a menu of the actions above at the cursor.',
     \ '  q closes this window.',
     \ ]
 
@@ -860,8 +1649,6 @@ function! Cheatsheet() abort
 
   syntax match CheatSection "^  [A-Z][A-Z /]*$"
   syntax match CheatKey "^\s\{4,\}\S\+\(\s\+\S\+\)\{0,3\}\ze\s\{2,\}"
-  highlight default link CheatSection Title
-  highlight default link CheatKey Identifier
 endfunction
 
 "------------------------------------------------------------
