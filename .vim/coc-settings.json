@@ -27,8 +27,10 @@
     "usePlaceholders": true,
     "staticcheck": true,
     "semanticTokens": true,
-    "noSemanticString": true,
-    "noSemanticNumber": true,
+    "semanticTokenTypes": {
+      "string": false,
+      "number": false
+    },
     "analyses": {
       "nilness": true,
       "unusedparams": true,

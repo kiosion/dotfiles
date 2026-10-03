@@ -87,6 +87,12 @@ Like with my linux dotfiles, I've also included a full list of every formulae an
 
 <h2 align="center">Installation</h2>
 
-The install scripts included in each OS dir are intended for my own use. Just clone this repo and either reverse-symlink, or copy files you want to use into place :p
+Clone the repo and run the installer. It lists the configuration groups for the current platform, links the chosen ones into `$HOME`, and renames any existing file at a target to `<target>.backup.<timestamp>` first. It then offers to install the packages listed under `.pkgs/`.
 
-Run: `git clone git@github.com:kiosion/dotfiles.git kio-dotfiles/`
+```sh
+git clone git@github.com:kiosion/dotfiles.git ~/dotfiles
+~/dotfiles/install.sh --dry-run   # preview changes
+~/dotfiles/install.sh
+```
+
+`--home DIR` links into another directory. System files under `.arch/` and `.bsd/` are not installed and need to be copied into place by hand.
