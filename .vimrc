@@ -70,6 +70,8 @@ call plug#begin()
   Plug 'wakatime/vim-wakatime'
 call plug#end()
 
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-elixir', 'coc-go']
+
 "-------------------------------------------------------------
 " Plugin configs {{{1
 
@@ -191,9 +193,10 @@ let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '-'
 
-" GitGutter claims ]c and [c for hunk navigation by default. Keep those, but
-" drop its other default maps so <Leader>g is free for the git group below.
+" Reserve <Leader>g for the git group below.
 let g:gitgutter_map_keys = 0
+nmap <silent> ]c <Plug>(GitGutterNextHunk)
+nmap <silent> [c <Plug>(GitGutterPrevHunk)
 
 " Airline
 "
@@ -1066,17 +1069,23 @@ function! SymbolPanel() abort
 
   call s:PanelSyntax()
 
-  call CocActionAsync('getHover', {e, r -> s:PanelSetHover(r)})
-  call CocActionAsync('references', {e, r -> s:PanelSetCount('refs', r)})
-  call CocActionAsync('implementations', {e, r -> s:PanelSetCount('impls', r)})
+  call CocActionAsync('getHover', function('s:PanelSetHover', [s:panel.id]))
+  call CocActionAsync('references', function('s:PanelSetCount', [s:panel.id, 'refs']))
+  call CocActionAsync('implementations', function('s:PanelSetCount', [s:panel.id, 'impls']))
 endfunction
 
-function! s:PanelSetHover(result) abort
+function! s:PanelSetHover(id, err, result) abort
+  if a:id != s:panel.id || empty(popup_getpos(a:id))
+    return
+  endif
   let s:panel.hover = s:SplitHover(a:result)
   call s:PanelRedraw()
 endfunction
 
-function! s:PanelSetCount(field, result) abort
+function! s:PanelSetCount(id, field, err, result) abort
+  if a:id != s:panel.id || empty(popup_getpos(a:id))
+    return
+  endif
   let s:panel[a:field] = type(a:result) == v:t_list ? len(a:result) : 0
   call s:PanelRedraw()
 endfunction
@@ -1139,7 +1148,9 @@ endfunction
 " Functions: usages {{{2
 
 function! s:Uri2Path(uri) abort
-  return substitute(a:uri, '^file://', '', '')
+  let path = substitute(a:uri, '^file://\%(localhost\)\?', '', '')
+  " Decode bytes together to preserve percent-encoded UTF-8 paths.
+  return substitute(path, '%\(\x\x\)', '\=eval(''"\x'' . submatch(1) . ''"'')', 'g')
 endfunction
 
 function! s:HasCoc(feature) abort
@@ -1291,8 +1302,9 @@ function! s:CollectLsp(kind, gen, err, result) abort
   call s:UsagesDone()
 endfunction
 
-function! s:CollectRg(gen, job, status) abort
+function! s:CollectRg(gen, tmp, job, status) abort
   if a:gen != s:usages.gen
+    call delete(a:tmp)
     return
   endif
   if filereadable(s:usages.tmp)
@@ -1306,8 +1318,8 @@ endfunction
 
 " A language server on a large repository can take a while to answer. Give up
 " waiting rather than leaving the search looking hung, and show what arrived.
-function! s:UsagesTimeout(timer) abort
-  if s:usages.pending <= 0
+function! s:UsagesTimeout(gen, timer) abort
+  if a:gen != s:usages.gen || a:timer != get(s:usages, 'timer', -1) || s:usages.pending <= 0
     return
   endif
   let s:usages.gen += 1
@@ -1328,11 +1340,15 @@ function! Usages() abort
     return
   endif
 
+  let gen = get(s:usages, 'gen', 0) + 1
+  let s:usages.gen = gen
+  if has_key(s:usages, 'timer')
+    call timer_stop(s:usages.timer)
+  endif
   if has_key(s:usages, 'job') && job_status(s:usages.job) ==# 'run'
     call job_stop(s:usages.job)
   endif
 
-  let gen = get(s:usages, 'gen', 0) + 1
   let s:usages = {'word': word, 'marks': {}, 'locs': [], 'seen': {}, 'rg': [],
     \ 'ref': 0, 'impl': 0, 'dropped': 0, 'pending': 1, 'gen': gen,
     \ 'tmp': tempname(), 'root': s:WorkspaceRoot()}
@@ -1353,9 +1369,9 @@ function! Usages() abort
     \ ['rg', '--vimgrep', '--word-regexp', '--fixed-strings']
     \   + g:rg_exclude_args + ['--', word, '.'],
     \ {'in_io': 'null', 'out_io': 'file', 'out_name': s:usages.tmp,
-    \  'err_io': 'null', 'exit_cb': function('s:CollectRg', [gen])})
+    \  'err_io': 'null', 'exit_cb': function('s:CollectRg', [gen, s:usages.tmp])})
 
-  let s:usages.timer = timer_start(20000, function('s:UsagesTimeout'))
+  let s:usages.timer = timer_start(20000, function('s:UsagesTimeout', [gen]))
   call s:UsagesEcho()
 endfunction
 

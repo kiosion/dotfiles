@@ -19,9 +19,9 @@
 
   "semanticTokens.enable": true,
 
-  "elixir.pathToElixirLS": "/opt/homebrew/bin/elixir-ls",
+  "elixir.pathToElixirLS": "elixir-ls",
 
-  "go.goplsPath": "/Users/maxim/.local/bin/gopls-mise",
+  "go.goplsPath": "~/.local/bin/gopls-mise",
   "go.goplsUseDaemon": false,
   "go.goplsOptions": {
     "usePlaceholders": true,
