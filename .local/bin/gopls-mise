@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+
+gopls="${XDG_CONFIG_HOME:-$HOME/.config}/coc/extensions/coc-go-data/bin/gopls"
+if [ ! -x "$gopls" ]; then
+  printf 'Install gopls in Vim with :CocCommand go.install.gopls\n' >&2
+  exit 1
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  exec mise exec -- "$gopls" "$@"
+fi
+exec "$gopls" "$@"

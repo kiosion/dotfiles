@@ -1,8 +1,13 @@
-# Setup cargo env
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
 
-# Setup mise shims
-eval "$(mise activate bash)"
+export TELEPORT_USE_LOCAL_SSH_AGENT=false
 
-TELEPORT_USE_LOCAL_SSH_AGENT=false
-
+case $- in
+    *i*)
+        if command -v mise >/dev/null 2>&1; then
+            eval "$(mise activate bash)"
+        fi
+        ;;
+esac

@@ -1,4 +1,5 @@
 *.DS_Store
+.Xauthority
 **/fish_variables
 git/gitconfig.local.symlink
 **/*.swp
@@ -12,4 +13,3 @@ CLAUDE.md
 CLAUDE.local.md
 AGENTS.md
 .mcp.json
-
