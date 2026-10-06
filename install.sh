@@ -8,8 +8,8 @@ Usage: install.sh [--dry-run] [--home DIR] [--platform macos|linux]
 
 symlinks selected config groups into DIR (default $HOME). On macOS,
 files under .macos/ take precedence and replace a root file with the
-same path. Existing file at targets are renamed to
-<target>.backup.<timestamp>.
+same path. Existing directories are merged by linking individual files.
+Conflicting files are renamed to <target>.backup.<timestamp>.
 
   -n, --dry-run    print actions
   --home DIR       specify target dir
@@ -18,7 +18,7 @@ EOF
 }
 
 repo=$(cd "$(dirname "$0")" && pwd -P)
-home=$HOME
+target_home=$HOME
 dry_run=0
 case "$(uname -s)" in
   Darwin) platform=macos ;;
@@ -28,7 +28,7 @@ esac
 while [ $# -gt 0 ]; do
   case "$1" in
     -n|--dry-run) dry_run=1 ;;
-    --home) home=${2:?--home requires a directory}; shift ;;
+    --home) target_home=${2:?--home requires a directory}; shift ;;
     --platform) platform=${2:?--platform requires a name}; shift ;;
     -h|--help) usage; exit 0 ;;
     *) usage >&2; exit 2 ;;
@@ -47,9 +47,14 @@ manifest() {
 all|shell|.bashrc|
 all|shell|.config/fish/config.fish|
 all|shell|.config/fish/fish_plugins|
+macos|shell|.config/fish/conf.d|
+macos|shell|.config/fish/functions|
 all|shell|.config/starship/starship.toml|
-linux|shell|.zshenv|
+all|shell|.zshenv|
+macos|shell|.zprofile|
+macos|shell|.zshrc|
 all|vim|.vimrc|
+all|vim|.local/bin/gopls-mise|
 all|vim|.vim/coc-settings.json|
 all|vim|.vim/colors/catppuccin_macchiato.vim|
 all|vim|.vim/colors/catppuccin_mocha.vim|
@@ -59,6 +64,7 @@ all|git|.gitignore|
 all|tmux|.tmux.conf|.config/.tmux.conf
 all|elixir|.iex.exs|
 all|terminal|.config/alacritty|
+macos|terminal|.config/ghostty/config|
 macos|desktop|.config/skhd/skhdrc|
 macos|desktop|.yabairc|.config/yabai/.yabairc
 linux|desktop|.config/bspwm|
@@ -105,29 +111,37 @@ resolve_source() {
 stamp=$(date +%Y%m%d%H%M%S)
 
 link() {
-  local src dst
+  local src dst child
   src=$(resolve_source "$2")
-  dst=$home/$1
+  dst=$target_home/$1
   if [ ! -e "$src" ]; then
     echo "skip    $1 (missing $src)"
+    skipped+=("$1 (source missing)")
     return
   fi
   if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
     echo "ok      $1"
     return
   fi
-  if [ -d "$dst" ] && [ ! -L "$dst" ]; then
-    echo "skip    $1 (existing directory, refusing to overwrite)"
-    return
+  if [ ! -d "$src" ] || [ ! -d "$dst" ] || [ -L "$dst" ]; then
+    if [ -e "$dst.backup.$stamp" ] || [ -L "$dst.backup.$stamp" ]; then
+      echo "skip    $1 ($1.backup.$stamp already exists)"
+      skipped+=("$1 (backup already exists)")
+      return
+    fi
+    run mkdir -p "$(dirname "$dst")"
+    if [ -e "$dst" ] || [ -L "$dst" ]; then
+      echo "backup  $1 -> $1.backup.$stamp"
+      run mv "$dst" "$dst.backup.$stamp"
+    fi
   fi
-  if [ -e "$dst.backup.$stamp" ] || [ -L "$dst.backup.$stamp" ]; then
-    echo "skip    $1 ($1.backup.$stamp already exists)"
+  if [ -d "$src" ]; then
+    run mkdir -p "$dst"
+    for child in "$src"/* "$src"/.[!.]* "$src"/..?*; do
+      [ -e "$child" ] || [ -L "$child" ] || continue
+      link "$1/${child##*/}" "$2/${child##*/}"
+    done
     return
-  fi
-  run mkdir -p "$(dirname "$dst")"
-  if [ -e "$dst" ] || [ -L "$dst" ]; then
-    echo "backup  $1 -> $1.backup.$stamp"
-    run mv "$dst" "$dst.backup.$stamp"
   fi
   echo "link    $1 -> $src"
   run ln -s "$src" "$dst"
@@ -139,8 +153,7 @@ install_packages() {
       echo 'Homebrew not found or installed.'
       return
     fi
-    echo "brew install < .pkgs/brew/pkgs"
-    [ "$dry_run" -eq 1 ] || xargs brew install < "$repo/.pkgs/brew/pkgs"
+    run brew bundle install --file="$repo/.pkgs/brew/Brewfile" --no-upgrade
   else
     if ! command -v paru >/dev/null 2>&1; then
       echo 'paru not found or not installed.'
@@ -153,7 +166,7 @@ install_packages() {
 
 group_names=$(entries | cut -d'|' -f1 | awk '!seen[$0]++')
 
-echo "Platform $platform, symlinking to $home$( [ "$dry_run" -eq 1 ] && echo ' (dry-run)')"
+echo "Platform $platform, symlinking to $target_home$( [ "$dry_run" -eq 1 ] && echo ' (dry-run)')"
 echo
 i=0
 for group in $group_names; do
@@ -186,27 +199,32 @@ case "$answer" in
 esac
 
 link_chosen() {
+  skipped=()
   for group in $chosen; do
-    entries | while IFS='|' read -r g target source; do
+    while IFS='|' read -r g target source; do
       if [ "$g" = "$group" ]; then
         link "$target" "$source"
       fi
-    done
+    done < <(entries)
   done
+  if [ "${#skipped[@]}" -gt 0 ]; then
+    printf '\nSkipped targets:\n'
+    printf '  %s\n' "${skipped[@]}"
+  fi
 }
 
 if [ -n "$chosen" ]; then
   echo
-  echo "Plan for $home:"
+  echo "Plan for $target_home:"
   requested_dry_run=$dry_run
   dry_run=1
   link_chosen
   if [ "$requested_dry_run" -eq 0 ]; then
     echo
-    printf 'Apply changes to %s? [y/N]: ' "$home"
+    printf 'Apply changes to %s? [y/N]: ' "$target_home"
     read -r answer || answer=
     case "$answer" in
-      y|Y|yes) dry_run=0; echo; link_chosen ;;
+      y|Y|yes) dry_run=0; echo; link_chosen; applied=1 ;;
       *) echo 'No changes made.' ;;
     esac
   fi
@@ -225,3 +243,22 @@ case "$answer" in
   y|Y|yes) install_packages ;;
 esac
 
+case " $(echo "$chosen" | tr '\n' ' ') " in
+  *' shell '*)
+    if [ "${applied:-0}" -eq 1 ] || [ "$dry_run" -eq 1 ]; then
+      echo
+      printf 'Restore Fish plugins with Fisher? [y/N]: '
+      read -r answer || answer=
+      case "$answer" in
+        y|Y|yes)
+          if command -v fish >/dev/null 2>&1; then
+            run env HOME="$target_home" XDG_CONFIG_HOME="$target_home/.config" \
+              fish --no-config "$repo/scripts/restore_fish_plugins.fish"
+          else
+            echo 'Fish is required to restore plugins.' >&2
+          fi
+          ;;
+      esac
+    fi
+    ;;
+esac
