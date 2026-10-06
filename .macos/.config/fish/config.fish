@@ -12,15 +12,12 @@
 # Configuration options for fish shell
 set -gx AWS_DEFAULT_REGION "us-east-1"
 
-# Setup user PATHs
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/sbin
-fish_add_path /usr/local/bin
-fish_add_path $HOME/.local/bin
+set -g fish_greeting ""
 
-# Set SSH agent socket to yubikey-agent
-# TODO: Finish config of ~/.ssh/config for per-host socket use
-set -gx SSH_AUTH_SOCK "/opt/homebrew//var/run/yubikey-agent.sock"
+# Setup user PATHs
+fish_add_path --path $HOME/.local/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set -gx GHCUP_INSTALL_BASE_PREFIX $HOME
+fish_add_path --path $HOME/.cabal/bin $GHCUP_INSTALL_BASE_PREFIX/.ghcup/bin
 
 # Teleport local dev helpers
 # TP_SRC is what tpb builds from; point it at a worktree to build that branch.
@@ -30,14 +27,12 @@ set -gx TP_CONF "$HOME/Dev/teleport-local/conf"
 # Don't clobber a universal TP_BIN set by `tpv set`.
 set -q TP_BIN; or set -gx TP_BIN "$HOME/Dev/teleport-local/bin/teleport"
 
-# Setup gpg
-if status --is-interactive
-    set -gx GPG_TTY (tty)
+if not status is-interactive
+    fish_add_path --path --move $HOME/.local/share/mise/shims
+    return
 end
 
-# Init starship
-set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
-starship init fish | source
+isatty stdin; and set -gx GPG_TTY (tty)
 
 # Abbrs
 abbr -a la "ls -lah"
@@ -50,13 +45,6 @@ abbr pf "pfetch"
 abbr python3 "python"
 abbr py "python"
 
-if status --is-interactive
-    # Init Zoxide (don't alias `cd` outside of interactive shells)
+if command -q zoxide
     zoxide init fish --cmd cd | source
-
-    # B/c MacOS is ✨ special ✨ and doesn't allow disabling new shells' login message :)
-    printf '\33c\e[3J'
 end
-
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /Users/maxim/.ghcup/bin $PATH # ghcup-env

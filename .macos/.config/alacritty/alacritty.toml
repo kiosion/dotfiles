@@ -1,4 +1,4 @@
-[shell]
+[terminal.shell]
 program = "/opt/homebrew/bin/fish"
 
 [colors.bright]
@@ -82,4 +82,3 @@ dynamic_title = true
 resize_increments = true
 decorations = 'Transparent'
 padding = { x = 8, y = 28 }
-

@@ -1,0 +1,43 @@
+font-family = MonoLisa Nerd Font
+font-style = Book
+font-size = 13
+font-thicken = true
+
+palette = 0=#51576d
+palette = 1=#e78284
+palette = 2=#a6d189
+palette = 3=#e5c890
+palette = 4=#8caaee
+palette = 5=#f4b8e4
+palette = 6=#81c8be
+palette = 7=#a5adce
+palette = 8=#626880
+palette = 9=#e78284
+palette = 10=#a6d189
+palette = 11=#e5c890
+palette = 12=#8caaee
+palette = 13=#f4b8e4
+palette = 14=#81c8be
+palette = 15=#b5bfe2
+background = 303446
+foreground = c6d0f5
+cursor-color = f2d5cf
+cursor-text = 232634
+selection-background = 44495d
+selection-foreground = c6d0f5
+split-divider-color = 414559
+
+background-opacity = 0.8
+background-blur = true
+macos-titlebar-style = transparent
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance = true
+
+adjust-cursor-thickness = 1
+
+command = /opt/homebrew/bin/fish --login
+shell-integration = fish
+
+# Vim uses Option-generated characters for several mappings.
+macos-option-as-alt = false

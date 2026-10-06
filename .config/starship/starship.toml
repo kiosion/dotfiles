@@ -6,6 +6,9 @@ format = """$username$hostname$directory$git_branch$git_status$golang$nodejs$rus
 
 command_timeout = 500
 
+[profiles]
+loading = "$username$hostname$directory[\\$](green bold) "
+
 [character]
 disabled = true
 
@@ -41,4 +44,3 @@ truncation_length = 3
 truncate_to_repo = true
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 🔒"
-
